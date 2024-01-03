@@ -1,0 +1,1 @@
+ALTER TABLE `construction`  ADD `annexureVI` TINYINT(1) NOT NULL  AFTER `annexure_V`,  ADD `annexure_VI` VARCHAR(255) NOT NULL  AFTER `annexureVI`,  ADD `layoutplan` TINYINT(1) NOT NULL  AFTER `annexure_VI`,  ADD `layout_plan` VARCHAR(255) NOT NULL  AFTER `layoutplan`;

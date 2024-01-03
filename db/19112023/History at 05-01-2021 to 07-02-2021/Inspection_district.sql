@@ -1,0 +1,1 @@
+ALTER TABLE `inspection`  ADD `owner_district` VARCHAR(100) NOT NULL  AFTER `annexure_9`;

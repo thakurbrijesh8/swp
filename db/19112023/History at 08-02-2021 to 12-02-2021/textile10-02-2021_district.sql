@@ -1,0 +1,1 @@
+ALTER TABLE `incentive_generalform_textile` ADD `district` TINYINT(1) NOT NULL AFTER `constitution`;

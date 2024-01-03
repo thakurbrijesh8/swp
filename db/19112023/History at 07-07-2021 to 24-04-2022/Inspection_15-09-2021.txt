@@ -1,0 +1,1 @@
+ALTER TABLE `inspection`  ADD `village` VARCHAR(200) NOT NULL  AFTER `district`;

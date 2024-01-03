@@ -1,0 +1,1 @@
+ALTER TABLE `inspection` CHANGE `owner_district` `district` TINYINT(1) NOT NULL;

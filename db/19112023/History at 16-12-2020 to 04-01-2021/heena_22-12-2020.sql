@@ -1,0 +1,20 @@
+ALTER TABLE `wm_registration` ADD `item_detail` VARCHAR(255) NOT NULL AFTER `application_category`;
+
+ALTER TABLE `occupancy_certificate` ADD `is_stability_certificate` int(11) NOT NULL AFTER `is_form_of_indemnity`;
+
+
+ALTER TABLE `wm_registration` ADD `trade_licence` VARCHAR(255) NOT NULL AFTER `proprietor_details`, ADD `proof_of_ownership` VARCHAR(255) NOT NULL AFTER `trade_licence`, ADD `gst_certificate` VARCHAR(255) NOT NULL AFTER `proof_of_ownership`, ADD `partnership_deed` VARCHAR(255) NOT NULL AFTER `gst_certificate`, ADD `memorandum_articles` VARCHAR(255) NOT NULL AFTER `partnership_deed`, ADD `item_to_be_packed` VARCHAR(255) NOT NULL AFTER `memorandum_articles`, ADD `list_of_directors` VARCHAR(255) NOT NULL AFTER `item_to_be_packed`, ADD `code_certificate` VARCHAR(255) NOT NULL AFTER `list_of_directors`;
+
+ALTER TABLE `wm_manufacturer` ADD `model_approval_certificate` VARCHAR(255) NOT NULL AFTER `monogram_uploader`, ADD `proof_of_ownership` VARCHAR(255) NOT NULL AFTER `model_approval_certificate`, ADD `gst_certificate` VARCHAR(255) NOT NULL AFTER `proof_of_ownership`, ADD `partnership_deed` VARCHAR(255) NOT NULL AFTER `gst_certificate`, ADD `memorandum_of_association` VARCHAR(255) NOT NULL AFTER `partnership_deed`, ADD `list_of_raw_material` VARCHAR(255) NOT NULL AFTER `memorandum_of_association`, ADD `list_of_machinery` VARCHAR(255) NOT NULL AFTER `list_of_raw_material`, ADD `list_of_wm` VARCHAR(255) NOT NULL AFTER `list_of_machinery`, ADD `list_of_directors` VARCHAR(255) NOT NULL AFTER `list_of_wm`;
+
+ALTER TABLE `wm_manufacturer_renewal` ADD `original_licence` VARCHAR(255) NOT NULL AFTER `monogram_uploader`, ADD `renewed_licence` VARCHAR(255) NOT NULL AFTER `original_licence`, ADD `periodical_return` VARCHAR(255) NOT NULL AFTER `renewed_licence`, ADD `verification_certificate` VARCHAR(255) NOT NULL AFTER `periodical_return`;
+
+
+ALTER TABLE `wm_dealer` ADD `model_approval_certificate` VARCHAR(255) NOT NULL AFTER `registration_of_importer`, ADD `proof_of_ownership` VARCHAR(255) NOT NULL AFTER `model_approval_certificate`, ADD `gst_certificate` VARCHAR(255) NOT NULL AFTER `proof_of_ownership`, ADD `partnership_deed` VARCHAR(255) NOT NULL AFTER `gst_certificate`, ADD `memorandum_of_association` VARCHAR(255) NOT NULL AFTER `partnership_deed`, ADD `list_of_raw_material` VARCHAR(255) NOT NULL AFTER `memorandum_of_association`, ADD `list_of_machinery` VARCHAR(255) NOT NULL AFTER `list_of_raw_material`, ADD `list_of_wm` VARCHAR(255) NOT NULL AFTER `list_of_machinery`, ADD `list_of_directors` VARCHAR(255) NOT NULL AFTER `list_of_wm`;
+
+ALTER TABLE `wm_dealer_renewal` ADD `original_licence` VARCHAR(255) NOT NULL AFTER `registration_of_importer`, ADD `renewed_licence` VARCHAR(255) NOT NULL AFTER `original_licence`, ADD `periodical_return` VARCHAR(255) NOT NULL AFTER `renewed_licence`, ADD `verification_certificate` VARCHAR(255) NOT NULL AFTER `periodical_return`;
+
+ALTER TABLE `wm_repairer` ADD `proof_of_ownership` VARCHAR(255) NOT NULL AFTER `license_application_result`, ADD `gst_certificate` VARCHAR(255) NOT NULL AFTER `proof_of_ownership`, ADD `education_qualification` VARCHAR(255) NOT NULL AFTER `gst_certificate`, ADD `experience_certificate` VARCHAR(255) NOT NULL AFTER `education_qualification`, ADD `partnership_deed` VARCHAR(255) NOT NULL AFTER `experience_certificate`, ADD `memorandum_of_association` VARCHAR(255) NOT NULL AFTER `partnership_deed`, ADD `list_of_raw_material` VARCHAR(255) NOT NULL AFTER `memorandum_of_association`, ADD `list_of_machinery` VARCHAR(255) NOT NULL AFTER `list_of_raw_material`, ADD `list_of_wm` VARCHAR(255) NOT NULL AFTER `list_of_machinery`, ADD `list_of_directors` VARCHAR(255) NOT NULL AFTER `list_of_wm`;
+
+ALTER TABLE `wm_repairer_renewal` ADD `original_licence` VARCHAR(255) NOT NULL AFTER `stock_details`, ADD `renewed_licence` VARCHAR(255) NOT NULL AFTER `original_licence`, ADD `periodical_return` VARCHAR(255) NOT NULL AFTER `renewed_licence`, ADD `verification_certificate` VARCHAR(255) NOT NULL AFTER `periodical_return`;
+

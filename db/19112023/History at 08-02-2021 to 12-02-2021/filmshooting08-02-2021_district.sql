@@ -1,0 +1,1 @@
+ALTER TABLE `filmshooting` ADD `district` TINYINT(1) NOT NULL AFTER `defense_installation`;

@@ -1,0 +1,1 @@
+ALTER TABLE `inspection`  ADD `registration_number` VARCHAR(100) NOT NULL  AFTER `admin_registration_number`;

@@ -1,0 +1,8 @@
+ALTER TABLE `construction`  ADD `labour_cess` VARCHAR(255) NOT NULL  AFTER `licensed_engineer_signature`,  ADD `undertaking` VARCHAR(255) NOT NULL  AFTER `labour_cess`,  ADD `fire_noc` VARCHAR(255) NOT NULL  AFTER `undertaking`,  ADD `owner_signature` VARCHAR(255) NOT NULL  AFTER `fire_noc`;
+
+ALTER TABLE `occupancy_certificate`  ADD `annexure_14` VARCHAR(255) NOT NULL  AFTER `is_stability_certificate`,  ADD `oc_part_oc` VARCHAR(255) NOT NULL  AFTER `annexure_14`,  ADD `fire_emergency` VARCHAR(255) NOT NULL  AFTER `oc_part_oc`,  ADD `building_plan` VARCHAR(255) NOT NULL  AFTER `fire_emergency`,  ADD `stability_certificate_dnh` VARCHAR(255) NOT NULL  AFTER `building_plan`,  ADD `occupancy_certificate_dnh` VARCHAR(255) NOT NULL  AFTER `stability_certificate_dnh`,  ADD `existing_cp` VARCHAR(255) NOT NULL  AFTER `occupancy_certificate_dnh`,  ADD `labour_cess_certificate` VARCHAR(255) NOT NULL  AFTER `existing_cp`,  ADD `valuation_certificate` VARCHAR(255) NOT NULL  AFTER `labour_cess_certificate`,  ADD `bank_deposit_sleep` VARCHAR(255) NOT NULL  AFTER `valuation_certificate`,  ADD `deviation_photographs` VARCHAR(255) NOT NULL  AFTER `bank_deposit_sleep`,  ADD `7_12_copy` VARCHAR(255) NOT NULL  AFTER `deviation_photographs`,  ADD `certificate_map` VARCHAR(255) NOT NULL  AFTER `7_12_copy`
+
+
+ALTER TABLE `occupancy_certificate`  ADD `is_occupancy_certificate_dnh` INT(11) NOT NULL  AFTER `stability_certificate_dnh`;
+
+ALTER TABLE `occupancy_certificate` CHANGE `7_12_copy` `copy_7_12` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
