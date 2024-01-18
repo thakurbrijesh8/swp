@@ -22,7 +22,7 @@
                         <th class="text-center" style="min-width: 100px;">Submitted On</th>
                         <th class="text-center" style="width: 90px;">Status</th>
                         <th class="text-center" style="width: 90px;">Query Status</th>
-                        <th class="text-center" style="width: 130px;">Action</th>
+                        <th class="text-center" style="width: 50px;">Action</th>
                     </tr>
                 </thead>
             </table>
