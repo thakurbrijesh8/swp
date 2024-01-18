@@ -2893,8 +2893,8 @@ function submitFeedbackRating(btnObj) {
                 return false;
             }
             showSuccess(parseData.message);
-            var frData = parseData.fr_data;
-            $('#fr_container_for_' + frData.module_type_for_fr + '_' + frData.module_id_for_fr).html(getFTDetails(frData.rating, frData.fr_datetime));
+            var returnFRData = parseData.fr_data;
+            $('#fr_container_for_' + frData.module_type_for_fr + '_' + frData.module_id_for_fr).html(getFTDetails(returnFRData.rating, returnFRData.fr_datetime));
         }
     });
 }
