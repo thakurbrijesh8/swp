@@ -104,6 +104,9 @@ Repairer.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return repairerActionTemplate(rowData);
     },
     loadRepairerData: function (sDistrict, sStatus) {
@@ -113,7 +116,8 @@ Repairer.listView = Backbone.View.extend({
         }
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_TWO, data);
+            return regNoRenderer(VALUE_TWO, data)
+                    + getFRContainer(VALUE_TWO, data, full.rating, full.fr_datetime);
         };
         var that = this;
         Repairer.router.navigate('repairer');
