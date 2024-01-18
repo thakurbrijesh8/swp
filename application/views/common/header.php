@@ -41,6 +41,7 @@
             var mOtherDocListTemplate = Handlebars.compile($('#m_other_doc_list_template').html());
             var mOtherDocItemTemplate = Handlebars.compile($('#m_other_doc_item_template').html());
             var mOtherDocItemViewTemplate = Handlebars.compile($('#m_other_doc_item_view_template').html());
+            var feedbackRatingTemplate = Handlebars.compile($('#feedback_rating_template').html());
             var iconSpinnerTemplate = spinnerTemplate({'type': 'light', 'extra_class': 'spinner-border-small'});
             var IS_DELETE = <?php echo IS_DELETE ?>;
 
@@ -227,6 +228,8 @@
             var damanVillagesArray = <?php echo json_encode($this->config->item('daman_village_array')); ?>;
             var diuVillagesArray = <?php echo json_encode($this->config->item('diu_village_array')); ?>;
             var dnhVillagesArray = <?php echo json_encode($this->config->item('dnh_village_array')); ?>;
+            
+            var ratingArray = <?php echo json_encode($this->config->item('rating_array')); ?>;
 
             var socRegUlStatusArray = <?php echo json_encode($this->config->item('soc_reg_ul_status_array')); ?>;
             var documentRowCnt = 1;

@@ -886,5 +886,7 @@
     
     //Business Module
     var udyamNumberValidationMessage = '<?php echo UDYAM_NUMBER_MESSAGE; ?>';
+    
+    var feedbackValidationMessage = '<?php echo FEEDBACK_MESSAGE; ?>';
 </script>
 

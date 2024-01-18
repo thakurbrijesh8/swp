@@ -788,7 +788,7 @@ function getSubCategoryData(categoryIdText, subCategoryIdText) {
 function generateBoxes(type, data, id, moduleName, existingArray, isBr, isDiv = false) {
     $.each(data, function (index, value) {
         var template = (isDiv ? '<div class="col-sm-4">' : '') + '<label class="' + type +
-                '-inline form-title f-w-n m-b-0px ' + (isDiv ? '' : 'm-r-10px') + ' cursor-pointer"><input type="' + type + '" class="mb-0" id="' + id +
+                '-inline form-title f-w-n m-b-0px ' + (isDiv ? '' : 'm-r-10px') + ' cursor-pointer"><input type="' + type + '" class="mb-0 cursor-pointer" id="' + id +
                 '_for_' + moduleName + '_' + index + '" name="' + id + '_for_' + moduleName + '" value="' +
                 index + '">&nbsp;&nbsp;' + value + '</label>' + (isDiv ? '</div>' : '');
         if (isBr) {
@@ -1306,13 +1306,13 @@ function submitQueryAnswerDetails() {
             btnObj.html(ogBtnHTML);
             btnObj.attr('onclick', ogBtnOnclick);
             if (textStatus.status === 403) {
-                    loginPage();
-                    return false;
-                }
-                if (!textStatus.statusText) {
-                    loginPage();
-                    return false;
-                }
+                loginPage();
+                return false;
+            }
+            if (!textStatus.statusText) {
+                loginPage();
+                return false;
+            }
             showError(textStatus.statusText);
             $('html, body').animate({scrollTop: '0px'}, 0);
         },
@@ -1438,13 +1438,13 @@ function uploadDocumentForQueryAnswer(tempCnt) {
         processData: false,
         error: function (textStatus, errorThrown) {
             if (textStatus.status === 403) {
-                    loginPage();
-                    return false;
-                }
-                if (!textStatus.statusText) {
-                    loginPage();
-                    return false;
-                }
+                loginPage();
+                return false;
+            }
+            if (!textStatus.statusText) {
+                loginPage();
+                return false;
+            }
             $('#spinner_template_for_query_answer_' + tempCnt).hide();
             $('#document_container_for_query_answer_' + tempCnt).show();
             $('#document_name_container_for_query_answer_' + tempCnt).hide();
@@ -1508,13 +1508,13 @@ function removeQueryAnswerDoc(queryDocumentId, cnt) {
         error: function (textStatus, errorThrown) {
             generateNewCSRFToken();
             if (textStatus.status === 403) {
-                    loginPage();
-                    return false;
-                }
-                if (!textStatus.statusText) {
-                    loginPage();
-                    return false;
-                }
+                loginPage();
+                return false;
+            }
+            if (!textStatus.statusText) {
+                loginPage();
+                return false;
+            }
             showError(textStatus.statusText);
         },
         success: function (response) {
@@ -1575,9 +1575,9 @@ function removeDocumentRow(cnt) {
         success: function (response) {
             var parseData = JSON.parse(response);
             if (parseData.is_logout === true) {
-                    loginPage();
-                    return false;
-                }
+                loginPage();
+                return false;
+            }
             setNewToken(parseData.temp_token);
             if (parseData.success === false) {
                 showError(parseData.message);
@@ -2650,11 +2650,11 @@ function removeMOtherDocumentItemRow(moduleType, moduleId, cnt, modId) {
             closeFullPageOverlay();
             btnObj.html(ogBtnHTML);
             btnObj.attr('onclick', ogBtnOnclick);
+            var parseData = JSON.parse(response);
             if (parseData.is_logout === true) {
                 loginPage();
                 return false;
             }
-            var parseData = JSON.parse(response);
             setNewToken(parseData.temp_token);
             if (parseData.success === false) {
                 showError(parseData.message);
@@ -2760,4 +2760,161 @@ function isJSON(str) {
         return false;
     }
     return true;
+}
+
+function askForFeedbackRating(btnObj, moduleType, moduleId) {
+    if (!tempIdInSession || tempIdInSession == null) {
+        loginPage();
+        return false;
+    }
+    if (!moduleType || moduleType == null || moduleType == VALUE_ZERO || !moduleId || moduleId == null || moduleId == VALUE_ZERO) {
+        showError(invalidAccessValidationMessage);
+        return false;
+    }
+    var ogBtnHTML = btnObj.html();
+    var ogBtnOnclick = btnObj.attr('onclick');
+    btnObj.html(iconSpinnerTemplate);
+    btnObj.attr('onclick', '');
+    $.ajax({
+        type: 'POST',
+        url: 'utility/get_basic_details_for_feedback_rating',
+        data: $.extend({}, {'module_type': moduleType, 'module_id': moduleId}, getTokenData()),
+        error: function (textStatus, errorThrown) {
+            generateNewCSRFToken();
+            closeFullPageOverlay();
+            btnObj.html(ogBtnHTML);
+            btnObj.attr('onclick', ogBtnOnclick);
+            if (textStatus.status === 403) {
+                loginPage();
+                return false;
+            }
+            if (!textStatus.statusText) {
+                loginPage();
+                return false;
+            }
+            showError(textStatus.statusText);
+        },
+        success: function (response) {
+            closeFullPageOverlay();
+            btnObj.html(ogBtnHTML);
+            btnObj.attr('onclick', ogBtnOnclick);
+            var parseData = JSON.parse(response);
+            if (parseData.is_logout === true) {
+                loginPage();
+                return false;
+            }
+            setNewToken(parseData.temp_token);
+            if (parseData.success === false) {
+                showError(parseData.message);
+                return false;
+            }
+            var frData = parseData.fr_data;
+            frData.module_type = moduleType;
+            frData.application_number = regNoRenderer(moduleType, frData.module_id);
+            if (frData.rating == VALUE_ZERO) {
+                frData.show_submit_btn = true;
+            }
+            showPopup();
+            $('.swal2-popup').css('width', '30em');
+            $('#popup_container').html(feedbackRatingTemplate(frData));
+            generateBoxes('radio', ratingArray, 'rating', 'fr', frData.rating);
+        }
+    });
+}
+
+function  checkValidationForFeedbackRating(frData) {
+    if (!tempIdInSession || tempIdInSession == null) {
+        loginPage();
+        return false;
+    }
+    if (!frData.rating_for_fr) {
+        $('#rating_for_fr_1').focus();
+        return getBasicMessageAndFieldJSONArray('rating_for_fr', oneOptionValidationMessage);
+    }
+    if (!frData.feedback_for_fr) {
+        return getBasicMessageAndFieldJSONArray('feedback_for_fr', feedbackValidationMessage);
+    }
+    return '';
+}
+
+function submitFeedbackRating(btnObj) {
+    if (!tempIdInSession || tempIdInSession == null) {
+        loginPage();
+        return false;
+    }
+    validationMessageHide();
+    var frData = $('#fr_form').serializeFormJSON();
+    if (!frData.module_type_for_fr || frData.module_type_for_fr == null || frData.module_type_for_fr == VALUE_ZERO ||
+            !frData.module_id_for_fr || frData.module_id_for_fr == null || frData.module_id_for_fr == VALUE_ZERO) {
+        showError(invalidAccessValidationMessage);
+        return false;
+    }
+    var validationData = checkValidationForFeedbackRating(frData);
+    if (validationData != '') {
+        $('#' + validationData.field).focus();
+        validationMessageShow('fr-' + validationData.field, validationData.message);
+        return false;
+    }
+    var ogBtnHTML = btnObj.html();
+    var ogBtnOnclick = btnObj.attr('onclick');
+    btnObj.html(iconSpinnerTemplate);
+    btnObj.attr('onclick', '');
+    $.ajax({
+        type: 'POST',
+        url: 'utility/update_details_for_feedback_rating',
+        data: $.extend({}, frData, getTokenData()),
+        error: function (textStatus, errorThrown) {
+            generateNewCSRFToken();
+            closeFullPageOverlay();
+            btnObj.html(ogBtnHTML);
+            btnObj.attr('onclick', ogBtnOnclick);
+            if (textStatus.status === 403) {
+                loginPage();
+                return false;
+            }
+            if (!textStatus.statusText) {
+                loginPage();
+                return false;
+            }
+            showError(textStatus.statusText);
+        },
+        success: function (response) {
+            closeFullPageOverlay();
+            btnObj.html(ogBtnHTML);
+            btnObj.attr('onclick', ogBtnOnclick);
+            var parseData = JSON.parse(response);
+            if (parseData.is_logout === true) {
+                loginPage();
+                return false;
+            }
+            setNewToken(parseData.temp_token);
+            if (parseData.success === false) {
+                showError(parseData.message);
+                return false;
+            }
+            showSuccess(parseData.message);
+            var frData = parseData.fr_data;
+            $('#fr_container_for_' + frData.module_type_for_fr + '_' + frData.module_id_for_fr).html(getFTDetails(frData.rating, frData.fr_datetime));
+        }
+    });
+}
+
+function getRating(rating) {
+    if (rating == VALUE_ZERO) {
+        return '';
+    }
+    var returnData = '';
+    $.each(ratingArray, function (index, value) {
+        returnData += '<span class="fa fa-star' + (rating >= value ? ' text-warning' : '') + '"></span>';
+    });
+    return returnData;
+}
+
+function getFRContainer(moduleType, moduleId, rating, frDateTime) {
+    return '<div id="fr_container_for_' + moduleType + '_' + moduleId + '">' + getFTDetails(rating, frDateTime) + '</div>';
+}
+
+function getFTDetails(rating, frDateTime) {
+    return '<div>' + getRating(rating) + '</div>';
+//            + '<div>' + (frDateTime != "0000-00-00 00:00:00" ? dateTo_DD_MM_YYYY_HH_II_SS(frDateTime) : '') + '</div>'
 }

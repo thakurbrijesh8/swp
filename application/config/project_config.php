@@ -2774,3 +2774,11 @@ $config['module_doc_array'] = array(
         ),
     ),
 );
+
+$config['rating_array'] = array(
+    VALUE_ONE => VALUE_ONE,
+    VALUE_TWO => VALUE_TWO,
+    VALUE_THREE => VALUE_THREE,
+    VALUE_FOUR => VALUE_FOUR,
+    VALUE_FIVE => VALUE_FIVE
+);

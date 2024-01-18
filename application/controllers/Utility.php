@@ -959,6 +959,102 @@ class Utility extends CI_Controller {
         }
     }
 
+    function get_basic_details_for_feedback_rating() {
+        try {
+            if (!is_ajax()) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
+            if (!is_authenticated()) {
+                echo json_encode(get_logout_array());
+                return false;
+            }
+            $session_user_id = get_from_session('temp_id_for_eodbsws');
+            $module_type = get_from_post('module_type');
+            $module_id = get_from_post('module_id');
+            if (!is_post() || $session_user_id == null || !$session_user_id || !$module_type || $module_type == NULL ||
+                    !$module_id || $module_id == NULL) {
+                echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+            $query_module_array = $this->config->item('query_module_array');
+            if (!isset($query_module_array[$module_type])) {
+                echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+            $qm_data = $query_module_array[$module_type];
+            $this->db->trans_start();
+            $ex_data = $this->utility_model->get_details_for_feedback_rating($qm_data, $module_id);
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
+                return;
+            }
+            if (empty($ex_data)) {
+                echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return;
+            }
+            $success_array = get_success_array();
+            $success_array['fr_data'] = $ex_data;
+            echo json_encode($success_array);
+        } catch (\Exception $e) {
+            echo json_encode(get_error_array($e->getMessage()));
+            return false;
+        }
+    }
+
+    function update_details_for_feedback_rating() {
+        try {
+            if (!is_ajax()) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
+            if (!is_authenticated()) {
+                echo json_encode(get_logout_array());
+                return false;
+            }
+            $session_user_id = get_from_session('temp_id_for_eodbsws');
+            $module_type = get_from_post('module_type_for_fr');
+            $module_id = get_from_post('module_id_for_fr');
+            if (!is_post() || $session_user_id == null || !$session_user_id || !$module_type || $module_type == NULL ||
+                    !$module_id || $module_id == NULL) {
+                echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+            $query_module_array = $this->config->item('query_module_array');
+            if (!isset($query_module_array[$module_type])) {
+                echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+            $fr_data = array();
+            $fr_data['rating'] = get_from_post('rating_for_fr');
+            if (!$fr_data['rating']) {
+                echo json_encode(get_error_array(ONE_OPTION_MESSAGE));
+                return false;
+            }
+            $fr_data['feedback'] = get_from_post('feedback_for_fr');
+            if (!$fr_data['feedback']) {
+                echo json_encode(get_error_array(FEEDBACK_MESSAGE));
+                return false;
+            }
+            $fr_data['fr_datetime'] = date('Y-m-d H:i:s');
+            $qm_data = $query_module_array[$module_type];
+            $this->db->trans_start();
+            $this->utility_model->update_data($qm_data['key_id_text'], $module_id, $qm_data['tbl_text'], $fr_data);
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
+                return;
+            }
+            $success_array = get_success_array();
+            $success_array['message'] = FEEDBACK_SUBMITTED_MESSAGE;
+            $success_array['fr_data'] = $fr_data;
+            echo json_encode($success_array);
+        } catch (\Exception $e) {
+            echo json_encode(get_error_array($e->getMessage()));
+            return false;
+        }
+    }
 }
 
 /*

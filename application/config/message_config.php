@@ -952,3 +952,6 @@ define('CFR_SUBMITTED_MESSAGE', 'Your Comments / Feedback on Regulation is Submi
 define('BD_SAVED_MESSAGE', 'Business Details Saved Successfully  !');
 define('UDYAM_NUMBER_MESSAGE', 'Enter Udyam Number !');
 define('DETAILS_ALREADY_EXISTS_MESSAGE', 'Details Already Exists !');
+
+define('FEEDBACK_MESSAGE', 'Enter Feedback !');
+define('FEEDBACK_SUBMITTED_MESSAGE', 'Thank You for Your Feedback / Rating !');
