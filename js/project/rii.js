@@ -32,8 +32,7 @@ RII.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_rii');
-        RII.router.navigate('rii');
+        activeLink('menu_dept_services');
         var templateData = {};
         this.$el.html(riiListTemplate(templateData));
         this.loadRIIData(sDistrict, sStatus);
@@ -44,7 +43,7 @@ RII.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_rii');
+        activeLink('menu_dept_services');
         this.$el.html(riiListTemplate);
         this.newRIIForm(false, {});
     },
