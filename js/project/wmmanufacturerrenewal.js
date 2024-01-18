@@ -104,6 +104,9 @@ ManufacturerRenewal.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return manufacturerRenewalActionTemplate(rowData);
     },
     loadManufacturerRenewalData: function (sDistrict, sStatus) {
@@ -114,7 +117,8 @@ ManufacturerRenewal.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_SIXTEEN, data);
+            return regNoRenderer(VALUE_SIXTEEN, data)
+                    + getFRContainer(VALUE_SIXTEEN, data, full.rating, full.fr_datetime);
         };
         var that = this;
         ManufacturerRenewal.router.navigate('manufacturer_renewal');
