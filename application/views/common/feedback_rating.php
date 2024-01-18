@@ -39,7 +39,7 @@
         </div>
     </div>
 </form>
-<div class="card-footer text-left pr-2 pb-2">
+<div class="card-footer text-left pl-2 pb-2">
     {{#if show_submit_btn}}
     <button type="button" id="submit_btn_for_fr" class="btn btn-sm btn-success" 
             onclick="submitFeedbackRating($(this));"
