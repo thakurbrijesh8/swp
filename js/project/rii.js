@@ -65,6 +65,9 @@ RII.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return riiActionTemplate(rowData);
     },
     loadRIIData: function (sDistrict, sStatus) {
@@ -74,7 +77,8 @@ RII.listView = Backbone.View.extend({
         }
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_FOURTYNINE, data);
+            return regNoRenderer(VALUE_FOURTYNINE, data)
+                    + getFRContainer(VALUE_FOURTYNINE, data, full.rating, full.fr_datetime);
         };
         var dateRendere = function (data, type, full, meta) {
             return dateTo_DD_MM_YYYY(full.created_time);
