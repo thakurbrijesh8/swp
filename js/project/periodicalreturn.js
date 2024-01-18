@@ -42,8 +42,7 @@ Periodicalreturn.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_periodicalreturn');
-        Periodicalreturn.router.navigate('periodicalreturn');
+        activeLink('menu_dept_services');
         var templateData = {};
         this.$el.html(periodicalreturnListTemplate(templateData));
         this.loadPeriodicalreturnData(sDistrict, sStatus);
@@ -54,7 +53,7 @@ Periodicalreturn.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_periodicalreturn');
+        activeLink('menu_dept_services');
         this.$el.html(periodicalreturnListTemplate);
         this.newPeriodicalreturnForm(false, {});
     },
@@ -77,6 +76,9 @@ Periodicalreturn.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return periodicalreturnActionTemplate(rowData);
     },
     loadPeriodicalreturnData: function (sDistrict, sStatus) {
@@ -87,7 +89,8 @@ Periodicalreturn.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_FIFTY, data);
+            return regNoRenderer(VALUE_FIFTY, data)
+                    + getFRContainer(VALUE_FIFTY, data, full.rating, full.fr_datetime);
         };
         var that = this;
         Periodicalreturn.router.navigate('periodicalreturn');
