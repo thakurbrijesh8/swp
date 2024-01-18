@@ -104,6 +104,9 @@ DealerRenewal.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return dealerRenewalActionTemplate(rowData);
     },
     loadDealerRenewalData: function (sDistrict, sStatus) {
@@ -113,7 +116,8 @@ DealerRenewal.listView = Backbone.View.extend({
         }
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_FIFTEEN, data);
+            return regNoRenderer(VALUE_FIFTEEN, data)
+                    + getFRContainer(VALUE_FIFTEEN, data, full.rating, full.fr_datetime);
         };
         var that = this;
         DealerRenewal.router.navigate('dealer_renewal');
