@@ -66,6 +66,9 @@ NilCertificate.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         rowData.module_type = VALUE_SIXTYONE;
         return nilCertificateActionTemplate(rowData);
     },
@@ -76,7 +79,8 @@ NilCertificate.listView = Backbone.View.extend({
         }
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_SIXTYONE, data);
+            return regNoRenderer(VALUE_SIXTYONE, data)
+                    + getFRContainer(VALUE_SIXTYONE, data, full.rating, full.fr_datetime);
         };
         var dvRenderer = function (data, type, full, meta) {
             var villageData = full.district == VALUE_ONE ? damanVillagesArray : (full.district == VALUE_TWO ? diuVillagesArray : (full.district == VALUE_THREE ? dnhVillagesArray : []));

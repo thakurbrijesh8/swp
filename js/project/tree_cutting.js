@@ -66,6 +66,9 @@ TreeCutting.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         rowData.module_type = VALUE_FIFTYNINE;
         return treeCuttingActionTemplate(rowData);
     },
@@ -76,7 +79,8 @@ TreeCutting.listView = Backbone.View.extend({
         }
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_FIFTYNINE, data);
+            return regNoRenderer(VALUE_FIFTYNINE, data)
+                    + getFRContainer(VALUE_FIFTYNINE, data, full.rating, full.fr_datetime);
         };
         var dvRenderer = function (data, type, full, meta) {
             var villageData = full.district == VALUE_ONE ? damanVillagesArray : (full.district == VALUE_TWO ? diuVillagesArray : (full.district == VALUE_THREE ? dnhVillagesArray : []));
