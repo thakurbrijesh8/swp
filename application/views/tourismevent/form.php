@@ -145,9 +145,9 @@
                     </div>
                     <hr class="m-b-1rem"> 
                     <div class="form-group">
-                        <button type="button" id="draft_btn_for_tourismevent" class="btn btn-sm btn-nic-blue" onclick="Tourismevent.listview.submitTourismevent({{VALUE_ONE}});" style="margin-right: 5px;">Save as a Draft</button>
-                        <button type="button" id="submit_btn_for_tourismevent" class="btn btn-sm btn-success" onclick="Tourismevent.listview.askForSubmitTourismevent({{VALUE_TWO}});" style="margin-right: 5px;"     >Submit Application</button>
-                        <button typee="button" class="btn btn-sm btn-danger" onclick="Tourismevent.listview.loadTourismeventData();">Close</button>
+                        <button type="button" id="draft_btn_for_tourismevent" class="btn btn-sm btn-nic-blue" onclick="Tourismevent.listview.submitTourismevent({{VALUE_ONE}});" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as a Draft</button>
+                        <button type="button" id="submit_btn_for_tourismevent" class="btn btn-sm btn-success" onclick="Tourismevent.listview.askForSubmitTourismevent({{VALUE_TWO}});" style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit Application</button>
+                        <button typee="button" class="btn btn-sm btn-danger" onclick="Tourismevent.listview.loadTourismeventData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>

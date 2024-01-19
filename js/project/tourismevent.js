@@ -61,6 +61,9 @@ Tourismevent.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return tourismeventActionTemplate(rowData);
     },
     loadTourismeventData: function (sDistrict, sStatus) {
@@ -78,7 +81,8 @@ Tourismevent.listView = Backbone.View.extend({
             }
         };
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_TWENTYFOUR, data);
+            return regNoRenderer(VALUE_TWENTYFOUR, data)
+                    + getFRContainer(VALUE_TWENTYFOUR, data, full.rating, full.fr_datetime);
         };
         var that = this;
         Tourismevent.router.navigate('tourismevent');
@@ -93,7 +97,7 @@ Tourismevent.listView = Backbone.View.extend({
                 {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
                 {data: 'tourismevent_id', 'class': 'v-a-m text-center f-w-b', 'render': tempRegNoRenderer},
                 {data: 'district', 'class': 'text-center', 'render': districtRenderer},
-                {data: 'entity_establishment_type', 'class': 'text-center', 'render':entityEstablishmentRenderer},
+                {data: 'entity_establishment_type', 'class': 'text-center', 'render': entityEstablishmentRenderer},
                 {data: 'name_of_person', 'class': 'text-center'},
                 {data: 'date_of_event', 'class': 'text-center', 'render': dateEventRendere},
                 {data: 'time_of_event', 'class': 'text-center'},
