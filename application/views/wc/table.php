@@ -2,7 +2,9 @@
     <div class="card-header">
         {{{s_display_text}}}
         <h3 class="card-title float-right">
-            <button type="button" class="btn btn-sm btn-primary" onclick="WC.listview.newWCForm(false, {});">Apply for New Water Connection</button>
+            <button type="button" class="btn btn-sm btn-primary" onclick="WC.listview.newWCForm(false, {});">
+                <i class="fas fa-plus"></i>&nbsp; Apply for New Water Connection
+            </button>
         </h3>
     </div>
     <div class="card-body" id="wc_datatable_container">
