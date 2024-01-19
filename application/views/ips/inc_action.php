@@ -11,7 +11,7 @@
     <button type="button" class="btn btn-sm btn-warning" id="query_btn_for_incentives_{{ips_incentive_id}}" 
             onclick="Ips.listview.getQueryData('{{ips_incentive_id}}');"
             style="padding: 2px 7px; margin-top: 1px; margin-bottom: 2px;">
-        <i class="fas fa-reply" style="margin-right: 5px;"></i>Respond / View Query</button>
+        <i class="fas fa-reply" style="margin-right: 5px;"></i> Respond / View Query</button>
     {{/if}}
     {{#if show_download_upload_challan_btn}}
     <a class="btn btn-sm btn-warning" target="_blank"

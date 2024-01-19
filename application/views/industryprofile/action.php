@@ -1,10 +1,10 @@
 <div class="text-center">
     <button type="button" class="btn btn-sm btn-success" onclick="IndustryProfile.listview.editOrViewIndustryProfile($(this),'{{company_survey_id}}', true);"
             style="padding: 2px 7px; margin-top: 1px; margin-bottom: 2px;">
-        <i class="fas fa-pencil-alt" style="margin-right: 2px;"></i>Edit</button>
+        <i class="fas fa-pencil-alt" style="margin-right: 2px;"></i> Edit</button>
     <button type="button" class="btn btn-sm btn-nic-blue" onclick="IndustryProfile.listview.editOrViewIndustryProfile($(this),'{{company_survey_id}}', false);"
             style="padding: 2px 7px; margin-top: 1px; margin-bottom: 2px;">
-        <i class="fas fa-eye" style="margin-right: 2px;"></i>View</button>
+        <i class="fas fa-eye" style="margin-right: 2px;"></i> View</button>
     <!-- {{#if show_form_one_btn}}
     <button type="button" class="btn btn-sm btn-danger" 
             onclick="IndustryProfile.listview.generateForm1('{{company_survey_id}}');"
@@ -13,7 +13,7 @@
     {{#if show_query_btn}}
     <button type="button" class="btn btn-sm btn-warning" id="query_btn_for_app_{{company_survey_id}}" onclick="IndustryProfile.listview.getQueryData('{{company_survey_id}}');"
             style="padding: 2px 7px; margin-top: 1px; margin-bottom: 2px;">
-        <i class="fas fa-reply" style="margin-right: 5px;"></i>Respond / View Query</button>
+        <i class="fas fa-reply" style="margin-right: 5px;"></i> Respond / View Query</button>
     {{/if}}
     {{#if show_download_upload_challan_btn}}
     <a class="btn btn-sm btn-warning" target="_blank"
