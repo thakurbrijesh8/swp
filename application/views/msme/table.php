@@ -15,7 +15,7 @@
                         <th class="text-center" style="width: 30px;">No.</th>
                         <th class="text-center" style="min-width: 100px;">Application Number</th>
                         <th class="text-center" style="width: 80px;">District</th>
-                        <th class="text-center" style="min-width: 30px;">Entity / Establishment Type</th>
+                        <th class="text-center" style="min-width: 30px;">Entity / Est. Type</th>
                         <th class="text-center" style="min-width: 165px;">Enterprise Name</th>
                         <th class="text-center" style="min-width: 165px;">Office Address</th>
                         <th class="text-center" style="min-width: 80px;">Submitted On</th>
