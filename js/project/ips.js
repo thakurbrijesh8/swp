@@ -920,6 +920,9 @@ Ips.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         rowData.module_type = VALUE_NINE;
         return ipsIncActionTemplate(rowData);
     },
@@ -929,7 +932,8 @@ Ips.listView = Backbone.View.extend({
             return false;
         }
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_FIFTYTWO, data);
+            return regNoRenderer(VALUE_FIFTYTWO, data)
+                    + getFRContainer(VALUE_FIFTYTWO, data, full.rating, full.fr_datetime);
         };
         var schemeTypeRenderer = function (data, type, full, meta) {
             return schemeTypeArray[data] ? schemeTypeArray[data] : '';
