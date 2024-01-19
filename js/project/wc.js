@@ -70,6 +70,9 @@ WC.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return wcActionTemplate(rowData);
     },
     loadWCData: function (sDistrict, sStatus) {
@@ -79,7 +82,8 @@ WC.listView = Backbone.View.extend({
         }
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_FIVE, data);
+            return regNoRenderer(VALUE_FIVE, data)
+                    + getFRContainer(VALUE_FIVE, data, full.rating, full.fr_datetime);
         };
         var that = this;
         WC.router.navigate('wc');
