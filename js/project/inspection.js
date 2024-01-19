@@ -68,6 +68,9 @@ Inspection.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return inspectionActionTemplate(rowData);
     },
     loadInspectionData: function (sDistrict, sStatus) {
@@ -78,7 +81,8 @@ Inspection.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_TWENTYSEVEN, data);
+            return regNoRenderer(VALUE_TWENTYSEVEN, data)
+                    + getFRContainer(VALUE_TWENTYSEVEN, data, full.rating, full.fr_datetime);
         };
         var that = this;
         Inspection.router.navigate('inspection');
@@ -587,7 +591,7 @@ Inspection.listView = Backbone.View.extend({
         inspectionData.module_type = VALUE_TWENTYSEVEN;
         $('#popup_container').html(inspectionUploadChallanTemplate(inspectionData));
         loadFB(VALUE_TWENTYSEVEN, inspectionData.fb_data);
-        
+
         if (inspectionData.payment_type == VALUE_TWO) {
             generateBoxes('radio', userPaymentTypeArray, 'user_payment_type', 'inspection_upload_challan', inspectionData.user_payment_type, true);
             showSubContainerForPaymentDetails('user_payment_type', 'inspection_upload_challan', 'uc', 'radio');

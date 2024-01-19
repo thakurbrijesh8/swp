@@ -129,8 +129,8 @@ Construction.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        // activeLink('menu_dic_dnh');
-        addClass('construction', 'active');
+        activeLink('menu_dept_services');
+//        addClass('construction', 'active');
         Construction.router.navigate('construction');
         var templateData = {};
         this.$el.html(constructionListTemplate(templateData));
@@ -166,6 +166,9 @@ Construction.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return constructionActionTemplate(rowData);
     },
     loadConstructionData: function (sDistrict, sStatus) {
@@ -176,7 +179,8 @@ Construction.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_TWENTYSIX, data);
+            return regNoRenderer(VALUE_TWENTYSIX, data)
+                    + getFRContainer(VALUE_TWENTYSIX, data, full.rating, full.fr_datetime);
         };
         var that = this;
         Construction.router.navigate('construction');
