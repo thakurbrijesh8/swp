@@ -264,7 +264,7 @@
                         </div>
                         <hr class="m-b-5px">
                         <div class="form-group">
-                            <button type="button" class="btn btn-sm btn-danger" onclick="Aplicence.listview.loadAplicenceData();">Close</button>
+                            <button type="button" class="btn btn-sm btn-danger" onclick="Aplicence.listview.loadAplicenceData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                         </div>
                     </div>
                 </form>

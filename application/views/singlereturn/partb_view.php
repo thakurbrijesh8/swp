@@ -62,7 +62,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-danger" onclick="SingleReturn.listview.loadSingleReturnData();">Cancel</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="SingleReturn.listview.loadSingleReturnData();"><i class="fas fa-times"></i>&nbsp; Cancel</button>
                         <button type="button" id="submit_btn_for_partb_details" class="btn btn-sm btn-success pull-right" onclick="SingleReturn.listview.editOrViewPartC($('#previous_btn_for_parta_details'), '{{singlereturn_id}}', false);" style="margin-right: 5px;">Next <span class="fas fa-hand-point-right"></span></button>
                         <button type="button" id="previous_btn_for_parta_details" class="btn btn-sm btn-success pull-right" onclick="SingleReturn.listview.editOrViewPartA($('#previous_btn_for_parta_details'), '{{singlereturn_id}}', false);" style="margin-right: 5px;"><span class="fas fa-hand-point-left"></span> Previous</button>
                     </div>

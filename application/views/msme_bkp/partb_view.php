@@ -171,7 +171,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-danger" onclick="MSME.listview.loadMSMEData();">Cancel</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="MSME.listview.loadMSMEData();"><i class="fas fa-times"></i>&nbsp; Cancel</button>
                         <button type="button" id="submit_btn_for_partb_details" class="btn btn-sm btn-success pull-right" onclick="MSME.listview.editOrViewFormsForView($('#previous_btn_for_partb_details'), '{{incentive_id}}', false, 'partb_form');" style="margin-right: 5px;">Next <span class="fas fa-hand-point-right"></span></button>
                         <button type="button" id="previous_btn_for_incentive_details" class="btn btn-sm btn-success pull-right" onclick="MSME.listview.editOrViewForms($('#previous_btn_for_partb_details'), '{{incentive_id}}', false, 'partb_form');" style="margin-right: 5px;"><span class="fas fa-hand-point-left"></span> Previous</button>
                     </div>

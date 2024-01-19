@@ -195,7 +195,7 @@
 
                     <hr class="m-b-5px">
                     <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-danger" onclick="AplicenceRenewal.listview.loadAplicenceRenewalData();">Close</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="AplicenceRenewal.listview.loadAplicenceRenewalData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>

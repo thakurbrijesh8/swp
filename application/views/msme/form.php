@@ -825,8 +825,8 @@
                         </table>
                     </div>
                     <div>
-                        <button type="button" id="draft_btn_for_msme" class="btn btn-sm btn-nic-blue" onclick="MSME.listview.submitMSME('{{VALUE_ONE}}');" style="margin-right: 5px;">Save As Draft</button>
-                        <button type="button" id="submit_btn_for_msme" class="btn btn-sm btn-success" onclick="MSME.listview.askForSubmitMSME('{{VALUE_TWO}}');"  style="margin-right: 5px;">Submit Application</button>
+                        <button type="button" id="draft_btn_for_msme" class="btn btn-sm btn-nic-blue" onclick="MSME.listview.submitMSME('{{VALUE_ONE}}');" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as a Draft</button>
+                        <button type="button" id="submit_btn_for_msme" class="btn btn-sm btn-success" onclick="MSME.listview.askForSubmitMSME('{{VALUE_TWO}}');"  style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit Application</button>
                         <button type="button" class="btn btn-sm btn-danger" onclick="MSME.listview.loadMSMEData();">Cancel</button  >
                     </div>
                 </div>

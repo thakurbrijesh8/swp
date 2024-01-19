@@ -149,9 +149,9 @@
                      <hr class="m-b-1rem"> 
                      
                     <div class="form-group">
-                        <button type="button" id="draft_btn_for_zone" class="btn btn-sm btn-nic-blue" onclick="Zone.listview.submitZone({{VALUE_ONE}});" style="margin-right: 5px;">Save as a Draft</button>
-                        <button type="button" id="submit_btn_for_zone" class="btn btn-sm btn-success" onclick="Zone.listview.askForSubmitZone({{VALUE_TWO}});" style="margin-right: 5px;">Submit Application</button>
-                        <button type="button" class="btn btn-sm btn-danger" onclick="Zone.listview.loadZoneData();">Close</button>
+                        <button type="button" id="draft_btn_for_zone" class="btn btn-sm btn-nic-blue" onclick="Zone.listview.submitZone({{VALUE_ONE}});" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as Draft</button>
+                        <button type="button" id="submit_btn_for_zone" class="btn btn-sm btn-success" onclick="Zone.listview.askForSubmitZone({{VALUE_TWO}});" style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit Application</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="Zone.listview.loadZoneData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>

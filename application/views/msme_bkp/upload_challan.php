@@ -50,7 +50,7 @@
             <button type="button" id="submit_btn_for_msme_upload_challan" class="btn btn-sm btn-success" onclick="MSME.listview.uploadFeesPaidChallan();"
                     style="margin-right: 5px;">Upload Fees Paid Challan Copy</button>
             {{/if}}
-            <button type="button" class="btn btn-sm btn-danger" onclick="Swal.close();">Close</button>
+            <button type="button" class="btn btn-sm btn-danger" onclick="Swal.close();"><i class="fas fa-times"></i>&nbsp; Close</button>
         </div>
     </div>
 </form>

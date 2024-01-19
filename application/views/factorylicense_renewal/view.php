@@ -121,7 +121,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-danger" onclick="FactoryLicenseRenewal.listview.loadFactoryLicenseRenewalData();">Close</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="FactoryLicenseRenewal.listview.loadFactoryLicenseRenewalData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>

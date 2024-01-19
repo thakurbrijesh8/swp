@@ -457,9 +457,9 @@
                     </div>
                     <hr class="m-b-1rem"> 
                     <div class="form-group">
-                        <button type="button" id="submit_btn_for_shop" class="btn btn-sm btn-nic-blue" onclick="Shop.listview.askForSubmitShop('{{VALUE_ONE}}');" style="margin-right: 5px;">Save As Draft</button>
-                        <button type="button" id="draft_btn_for_shop" class="btn btn-sm btn-success" onclick="Shop.listview.askForSubmitShop('{{VALUE_TWO}}');"  style="margin-right: 5px;">Submit Application</button>
-                        <button type="button" class="btn btn-sm btn-danger" onclick="Shop.listview.loadShopData();"  style="margin-right: 5px;">Cancel</button>
+                        <button type="button" id="submit_btn_for_shop" class="btn btn-sm btn-nic-blue" onclick="Shop.listview.askForSubmitShop('{{VALUE_ONE}}');" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as a Draft</button>
+                        <button type="button" id="draft_btn_for_shop" class="btn btn-sm btn-success" onclick="Shop.listview.askForSubmitShop('{{VALUE_TWO}}');"  style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit Application</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="Shop.listview.loadShopData();"  style="margin-right: 5px;"><i class="fas fa-times"></i>&nbsp; Cancel</button>
                     </div>
                 </div>
         </div>

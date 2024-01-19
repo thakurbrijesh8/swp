@@ -330,9 +330,9 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="button" id="draft_btn_for_transfer" class="btn btn-sm btn-nic-blue" onclick="Transfer.listview.submitTransfer({{VALUE_ONE}});" style="margin-right: 5px;">Save as a Draft</button>
-                        <button type="button" id="submit_btn_for_transfer" class="btn btn-sm btn-success" onclick="Transfer.listview.askForSubmitTransfer({{VALUE_TWO}});" style="margin-right: 5px;">Submit Application</button>
-                        <button type="button" class="btn btn-sm btn-danger" onclick="Transfer.listview.loadTransferData();">Close</button>
+                        <button type="button" id="draft_btn_for_transfer" class="btn btn-sm btn-nic-blue" onclick="Transfer.listview.submitTransfer({{VALUE_ONE}});" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as Draft</button>
+                        <button type="button" id="submit_btn_for_transfer" class="btn btn-sm btn-success" onclick="Transfer.listview.askForSubmitTransfer({{VALUE_TWO}});" style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit Application</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="Transfer.listview.loadTransferData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>

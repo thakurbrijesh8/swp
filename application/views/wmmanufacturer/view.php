@@ -584,7 +584,7 @@
                      <hr class="m-b-1rem"> 
 
                     <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-danger" onclick="Manufacturer.listview.loadManufacturerData();">Close</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="Manufacturer.listview.loadManufacturerData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>

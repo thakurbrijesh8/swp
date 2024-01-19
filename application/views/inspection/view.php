@@ -203,7 +203,7 @@
                     <hr class="m-b-1rem"> 
                     
                     <div class="form-group" style="margin-right: 5px;">                        
-                        <button type="button" class="btn btn-sm btn-danger" onclick="Inspection.listview.loadInspectionData();" style="margin-right: 10px;">Close</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="Inspection.listview.loadInspectionData();" style="margin-right: 10px;"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>

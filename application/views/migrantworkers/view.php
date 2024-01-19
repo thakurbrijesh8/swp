@@ -173,7 +173,7 @@
                     </div>
                     <hr class="m-b-1rem">
                     <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-danger" onclick="MigrantWorkers.listview.loadMigrantWorkersData();"  style="margin-right: 5px;">Cancel</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="MigrantWorkers.listview.loadMigrantWorkersData();"  style="margin-right: 5px;"><i class="fas fa-times"></i>&nbsp; Cancel</button>
                     </div>
                 </div>
             </form>

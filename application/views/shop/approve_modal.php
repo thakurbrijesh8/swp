@@ -75,6 +75,6 @@
     </div>
     <div class="modal-footer"style="padding: 0px 15px 15px 0px;">
         <button type="button" class="btn btn-success"  style="border: 1px solid #3c8dbc;" onclick="Shop.listview.labourDeptApproveForShop($(this), '{{s_id}}')">Approve</button>
-        <button type="button" class="btn btn-danger pull-right" data-dismiss="modal" >Close</button>
+        <button type="button" class="btn btn-danger pull-right" data-dismiss="modal" ><i class="fas fa-times"></i>&nbsp; Close</button>
     </div>
 </form>

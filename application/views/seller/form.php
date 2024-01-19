@@ -449,9 +449,9 @@
                     </div>
  
                     <div class="form-group">
-                        <button type="button" id="draft_btn_for_seller" class="btn btn-sm btn-nic-blue" onclick="Seller.listview.submitSeller({{VALUE_ONE}});" style="margin-right: 5px;">Save as a Draft</button>
-                        <button type="button" id="submit_btn_for_seller" class="btn btn-sm btn-success" onclick="Seller.listview.askForSubmitSeller({{VALUE_TWO}});" style="margin-right: 5px;">Submit Application</button>
-                        <button type="button" class="btn btn-sm btn-danger" onclick="Seller.listview.loadSellerData();">Close</button>
+                        <button type="button" id="draft_btn_for_seller" class="btn btn-sm btn-nic-blue" onclick="Seller.listview.submitSeller({{VALUE_ONE}});" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as Draft</button>
+                        <button type="button" id="submit_btn_for_seller" class="btn btn-sm btn-success" onclick="Seller.listview.askForSubmitSeller({{VALUE_TWO}});" style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit Application</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="Seller.listview.loadSellerData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>

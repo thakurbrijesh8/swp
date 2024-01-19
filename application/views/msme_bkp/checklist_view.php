@@ -378,7 +378,7 @@
                     </div>
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-danger" onclick="MSME.listview.loadMSMEData();"  style="margin-right: 5px;">Cancel</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="MSME.listview.loadMSMEData();"  style="margin-right: 5px;"><i class="fas fa-times"></i>&nbsp; Cancel</button>
                         <button type="button" id="previous_btn_for_incentive_details" class="btn btn-sm btn-success pull-right" onclick="MSME.listview.editOrViewDeclaration($('#previous_btn_for_declaration_details'), '{{incentive_id}}', false);" style="margin-right: 5px;"><span class="fas fa-hand-point-left"></span> Previous</button>
                     </div>
                 </div>

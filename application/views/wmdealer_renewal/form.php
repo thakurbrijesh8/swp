@@ -357,7 +357,7 @@
                      <hr class="m-b-1rem"> 
 
                     <div class="form-group">
-                        <button type="button" id="draft_btn_for_dealer" class="btn btn-sm btn-nic-blue" onclick="DealerRenewal.listview.submitDealerRenewal({{VALUE_ONE}});" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as a Draft</button>
+                        <button type="button" id="draft_btn_for_dealer" class="btn btn-sm btn-nic-blue" onclick="DealerRenewal.listview.submitDealerRenewal({{VALUE_ONE}});" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as Draft</button>
                         <button type="button" id="submit_btn_for_dealer" class="btn btn-sm btn-success" onclick="DealerRenewal.listview.askForSubmitDealerRenewal({{VALUE_TWO}});" style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit Application</button>
                         <button type="button" class="btn btn-sm btn-danger" onclick="DealerRenewal.listview.loadDealerRenewalData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>

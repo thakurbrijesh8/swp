@@ -999,8 +999,8 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="button" id="submit_btn_for_industry_profile" class="btn btn-sm btn-success" onclick="IndustryProfile.listview.submitIndustryProfile({{VALUE_ONE}});" style="margin-right: 5px;">Submit</button>
-                        <button type="button" class="btn btn-sm btn-danger" onclick="IndustryProfile.listview.loadIndustryProfileData();">Close</button>
+                        <button type="button" id="submit_btn_for_industry_profile" class="btn btn-sm btn-success" onclick="IndustryProfile.listview.submitIndustryProfile({{VALUE_ONE}});" style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="IndustryProfile.listview.loadIndustryProfileData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>

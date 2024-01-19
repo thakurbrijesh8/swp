@@ -56,7 +56,7 @@
                       <div class="form-group">
 
 
-<button type="button" class="btn btn-sm btn-danger" onclick="Property.listview.loadPropertyData();"  style="margin-right: 5px;">Cancel</button>
+<button type="button" class="btn btn-sm btn-danger" onclick="Property.listview.loadPropertyData();"  style="margin-right: 5px;"><i class="fas fa-times"></i>&nbsp; Cancel</button>
                         <button type="button" id="previous_btn_for_incentive_details" class="btn btn-sm btn-success pull-right" onclick="Property.listview.editOrViewProperty($('#previous_btn_for_declaration_details'), '{{property_id}}', false);" style="margin-right: 5px;"><span class="fas fa-hand-point-left"></span> Previous</button>
                     </div>
 

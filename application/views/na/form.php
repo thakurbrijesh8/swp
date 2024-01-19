@@ -479,9 +479,9 @@
                     <hr class="m-b-1rem"> 
 
                     <div class="form-group">
-                        <button type="button" id="draft_btn_for_na" class="btn btn-sm btn-nic-blue" onclick="Na.listview.submitNa({{VALUE_ONE}});" style="margin-right: 5px;">Save as a Draft</button>
-                        <button type="button" id="submit_btn_for_na" class="btn btn-sm btn-success" onclick="Na.listview.askForSubmitNa({{VALUE_TWO}});" style="margin-right: 5px;">Submit Application</button>
-                        <button type="button" class="btn btn-sm btn-danger" onclick="Na.listview.loadNaData();">Close</button>
+                        <button type="button" id="draft_btn_for_na" class="btn btn-sm btn-nic-blue" onclick="Na.listview.submitNa({{VALUE_ONE}});" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as Draft</button>
+                        <button type="button" id="submit_btn_for_na" class="btn btn-sm btn-success" onclick="Na.listview.askForSubmitNa({{VALUE_TWO}});" style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit Application</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="Na.listview.loadNaData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>

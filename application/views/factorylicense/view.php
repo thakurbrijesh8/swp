@@ -455,7 +455,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-danger" onclick="FactoryLicense.listview.loadFactoryLicenseData();">Close</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="FactoryLicense.listview.loadFactoryLicenseData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>

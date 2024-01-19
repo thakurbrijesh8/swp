@@ -62,9 +62,9 @@
         <div class="form-group">
             {{#if show_fees_paid}}
             <button type="button" id="submit_btn_for_society_registration_upload_passbook" class="btn btn-sm btn-success" onclick="SocietyRegistration.listview.submituploadPassbook();"
-                    style="margin-right: 5px;">Submit</button>
+                    style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit</button>
             {{/if}}
-            <button type="button" class="btn btn-sm btn-danger" onclick="Swal.close();">Close</button>
+            <button type="button" class="btn btn-sm btn-danger" onclick="Swal.close();"><i class="fas fa-times"></i>&nbsp; Close</button>
         </div>
     </div>
 </form>

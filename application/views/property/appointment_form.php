@@ -53,13 +53,13 @@
                       <div class="form-group">
                         <button type="button" id="previous_btn_for_incentive_details" class="btn btn-sm btn-success" onclick="Property.listview.editOrViewProperty($('#previous_btn_for_declaration_details'), '{{property_id}}', true);" style="margin-right: 5px;"><span class="fas fa-hand-point-left"></span> Previous</button>
 
-                         <button type="button" id="submit_btn_for_property" class="btn btn-sm btn-nic-blue" onclick="Property.listview.submitAppointment({{VALUE_ONE}});"  onclick="Property.listview.downloadUploadChallan('{{property_id}}');" style="margin-right: 5px;">Save As Draft</button>
+                         <button type="button" id="submit_btn_for_property" class="btn btn-sm btn-nic-blue" onclick="Property.listview.submitAppointment({{VALUE_ONE}});"  onclick="Property.listview.downloadUploadChallan('{{property_id}}');" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as a Draft</button>
                         
-                        <button type="button" id="draft_btn_for_property" class="btn btn-sm btn-success" onclick="Property.listview.askForSubmitProperty({{VALUE_TWO}});"  style="margin-right: 5px;">Submit Application</button>
+                        <button type="button" id="draft_btn_for_property" class="btn btn-sm btn-success" onclick="Property.listview.askForSubmitProperty({{VALUE_TWO}});"  style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit Application</button>
 
 
 
-                        <button type="button" class="btn btn-sm btn-danger" onclick="Property.listview.loadPropertyData();">Close</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="Property.listview.loadPropertyData();"><i class="fas fa-times"></i>&nbsp; Close</button>
 
                     </div>
                 </div>

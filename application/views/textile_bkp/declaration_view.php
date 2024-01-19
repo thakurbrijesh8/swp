@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-danger" onclick="Textile.listview.loadTextileData();">Cancel</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="Textile.listview.loadTextileData();"><i class="fas fa-times"></i>&nbsp; Cancel</button>
                         <button type="button" id="submit_btn_for_declaration_details" class="btn btn-sm btn-success pull-right" onclick="Textile.listview.editOrViewChecklist($('#previous_btn_for_checklist_details'), '{{incentive_id}}', false);" style="margin-right: 5px;">Next <span class="fas fa-hand-point-right"></span></button>
                         <button type="button" id="previous_btn_for_incentive_details" class="btn btn-sm btn-success pull-right" onclick="Textile.listview.editOrViewForms($('#previous_btn_for_parte_details'), '{{incentive_id}}', false, 'declaration_form');" style="margin-right: 5px;"><span class="fas fa-hand-point-left"></span> Previous</button>
                     </div>

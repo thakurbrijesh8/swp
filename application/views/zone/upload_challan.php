@@ -48,9 +48,9 @@
         <div class="form-group">
             {{#if show_fees_paid}}
             <button type="button" id="submit_btn_for_zone_upload_challan" class="btn btn-sm btn-success" onclick="Zone.listview.uploadFeesPaidChallan();"
-                    style="margin-right: 5px;">Submit</button>
+                    style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit</button>
             {{/if}}
-            <button type="button" class="btn btn-sm btn-danger" onclick="Swal.close();">Close</button>
+            <button type="button" class="btn btn-sm btn-danger" onclick="Swal.close();"><i class="fas fa-times"></i>&nbsp; Close</button>
         </div>
     </div>
 </form>

@@ -358,9 +358,9 @@
                         <div class="text-center color-nic-blue col-3 m-b-5px" id="spinner_template_{{VALUE_EIGHT}}" style="display: none;"><i class="fas fa-sync-alt fa-spin fa-1x"></i></div>
                     </div>
                     <div class="form-group">
-                        <button type="button" id="draft_btn_for_manufacturer" class="btn btn-sm btn-nic-blue" onclick="BoilerManufacture.listview.submitBoilerManufacture({{VALUE_ONE}});" style="margin-right: 5px;">Save as a Draft</button>
-                        <button type="button" id="submit_btn_for_manufacturer" class="btn btn-sm btn-success" onclick="BoilerManufacture.listview.askForBoilerManufacture({{VALUE_TWO}});" style="margin-right: 5px;">Submit Application</button>
-                        <button type="button" class="btn btn-sm btn-danger" onclick="BoilerManufacture.listview.loadBoilerManufactureData();">Close</button>
+                        <button type="button" id="draft_btn_for_manufacturer" class="btn btn-sm btn-nic-blue" onclick="BoilerManufacture.listview.submitBoilerManufacture({{VALUE_ONE}});" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as Draft</button>
+                        <button type="button" id="submit_btn_for_manufacturer" class="btn btn-sm btn-success" onclick="BoilerManufacture.listview.askForBoilerManufacture({{VALUE_TWO}});" style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit Application</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="BoilerManufacture.listview.loadBoilerManufactureData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>

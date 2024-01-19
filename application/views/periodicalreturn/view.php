@@ -312,7 +312,7 @@
 
                     <hr class="m-b-1rem"> 
                     <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-danger" disabled onclick="Periodicalreturn.listview.loadPeriodicalreturnData();">Close</button>
+                        <button type="button" class="btn btn-sm btn-danger" disabled onclick="Periodicalreturn.listview.loadPeriodicalreturnData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>

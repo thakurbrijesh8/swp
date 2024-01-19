@@ -366,7 +366,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-danger" onclick="Seller.listview.loadSellerData();">Close</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="Seller.listview.loadSellerData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>

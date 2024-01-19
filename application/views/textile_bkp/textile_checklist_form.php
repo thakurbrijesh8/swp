@@ -470,9 +470,9 @@
                     </div>
                     <div class="form-group">
                         <button type="button" id="previous_btn_for_incentive_details" class="btn btn-sm btn-success" onclick="Textile.listview.editOrViewDeclaration($('#previous_btn_for_declaration_details'), '{{incentive_id}}', true);" style="margin-right: 5px;"><span class="fas fa-hand-point-left"></span> Previous</button>
-                        <button type="button" id="submit_btn_for_incentive" class="btn btn-sm btn-nic-blue" onclick="Textile.listview.submitTextileChecklist('{{VALUE_ONE}}');" style="margin-right: 5px;">Save As Draft</button>
-                        <button type="button" id="draft_btn_for_incentive" class="btn btn-sm btn-success" onclick="Textile.listview.askForSubmitTextile('{{VALUE_TWO}}');"  style="margin-right: 5px;">Submit Application</button>
-                        <button type="button" class="btn btn-sm btn-danger" onclick="Textile.listview.loadTextileData();"  style="margin-right: 5px;">Cancel</button>
+                        <button type="button" id="submit_btn_for_incentive" class="btn btn-sm btn-nic-blue" onclick="Textile.listview.submitTextileChecklist('{{VALUE_ONE}}');" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as a Draft</button>
+                        <button type="button" id="draft_btn_for_incentive" class="btn btn-sm btn-success" onclick="Textile.listview.askForSubmitTextile('{{VALUE_TWO}}');"  style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit Application</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="Textile.listview.loadTextileData();"  style="margin-right: 5px;"><i class="fas fa-times"></i>&nbsp; Cancel</button>
                     </div>
                 </div>
             </form>

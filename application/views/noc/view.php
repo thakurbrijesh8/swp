@@ -285,7 +285,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-danger" onclick="Noc.listview.loadNocData();">Close</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="Noc.listview.loadNocData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>

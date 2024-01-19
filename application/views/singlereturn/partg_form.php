@@ -63,9 +63,9 @@
                     
                     <div class="form-group">
                         <button type="button" id="previous_btn_for_partf_details" class="btn btn-sm btn-success" onclick="SingleReturn.listview.editOrViewPartF($('#previous_btn_for_parta_details'), '{{singlereturn_id}}', true);" style="margin-right: 5px;"><span class="fas fa-hand-point-left"></span> Previous</button>
-                        <button type="button" id="submit_btn_for_shop" class="btn btn-sm btn-nic-blue" onclick="SingleReturn.listview.submitPartGDetails('{{VALUE_ONE}}');" style="margin-right: 5px;">Save As Draft</button>
-                        <button type="button" id="draft_btn_for_shop" class="btn btn-sm btn-success" onclick="SingleReturn.listview.askForSubmitSingleReturn('{{VALUE_TWO}}');"  style="margin-right: 5px;">Submit Application</button>
-                        <button type="button" class="btn btn-sm btn-danger" onclick="SingleReturn.listview.loadSingleReturnData();"  style="margin-right: 5px;">Cancel</button>
+                        <button type="button" id="submit_btn_for_shop" class="btn btn-sm btn-nic-blue" onclick="SingleReturn.listview.submitPartGDetails('{{VALUE_ONE}}');" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as a Draft</button>
+                        <button type="button" id="draft_btn_for_shop" class="btn btn-sm btn-success" onclick="SingleReturn.listview.askForSubmitSingleReturn('{{VALUE_TWO}}');"  style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit Application</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="SingleReturn.listview.loadSingleReturnData();"  style="margin-right: 5px;"><i class="fas fa-times"></i>&nbsp; Cancel</button>
                     </div>
                 </div>
             </form>

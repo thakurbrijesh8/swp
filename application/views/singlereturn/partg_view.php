@@ -63,7 +63,7 @@
                     
                     <div class="form-group">
                         <button type="button" id="previous_btn_for_partf_details" class="btn btn-sm btn-success" onclick="SingleReturn.listview.editOrViewPartF($('#previous_btn_for_parta_details'), '{{singlereturn_id}}', false);" style="margin-right: 5px;"><span class="fas fa-hand-point-left"></span> Previous</button>
-                        <button type="button" class="btn btn-sm btn-danger" onclick="SingleReturn.listview.loadSingleReturnData();"  style="margin-right: 5px;">Cancel</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="SingleReturn.listview.loadSingleReturnData();"  style="margin-right: 5px;"><i class="fas fa-times"></i>&nbsp; Cancel</button>
                     </div>
                 </div>
             </form>

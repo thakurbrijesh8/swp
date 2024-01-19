@@ -246,7 +246,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-danger" onclick="BoilerActRenewal.listview.loadBoilerActRenewalData();">Close</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="BoilerActRenewal.listview.loadBoilerActRenewalData();"><i class="fas fa-times"></i>&nbsp; Close</button>
                     </div>
                 </div>
             </form>
