@@ -32,8 +32,8 @@ BOCW.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_bocw');
-        BOCW.router.navigate('bocw');
+        activeLink('menu_dept_services');
+//        BOCW.router.navigate('bocw');
         var templateData = {};
         this.$el.html(bocwListTemplate(templateData));
         this.loadBOCWData(sDistrict, sStatus);
@@ -44,7 +44,7 @@ BOCW.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_bocw');
+        activeLink('menu_dept_services');
         this.$el.html(bocwListTemplate);
         this.newBOCWForm(false, {});
     },
@@ -67,6 +67,9 @@ BOCW.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return bocwActionTemplate(rowData);
     },
     loadBOCWData: function (sDistrict, sStatus) {
@@ -76,9 +79,9 @@ BOCW.listView = Backbone.View.extend({
         }
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_THIRTYTWO, data);
+            return regNoRenderer(VALUE_THIRTYTWO, data)
+                    + getFRContainer(VALUE_THIRTYTWO, data, full.rating, full.fr_datetime);
         };
-
         var that = this;
         BOCW.router.navigate('bocw');
         $('#bocw_form_and_datatable_container').html(bocwTableTemplate(searchData));

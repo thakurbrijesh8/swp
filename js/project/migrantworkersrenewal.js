@@ -35,8 +35,8 @@ MigrantworkersRenewal.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_labour');
-        addClass('menu_migrantworkers_renewal', 'active');
+        activeLink('menu_dept_services');
+//        addClass('menu_migrantworkers_renewal', 'active');
         MigrantworkersRenewal.router.navigate('migrantworkers_renewal');
         var templateData = {};
         this.$el.html(migrantworkersRenewalListTemplate(templateData));
@@ -48,8 +48,8 @@ MigrantworkersRenewal.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_labour');
-        addClass('menu_migrantworkers_renewal', 'active');
+        activeLink('menu_dept_services');
+//        addClass('menu_migrantworkers_renewal', 'active');
         this.$el.html(migrantworkersRenewalListTemplate);
         this.newMigrantworkersRenewalForm(false, {});
     },
@@ -72,6 +72,9 @@ MigrantworkersRenewal.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return migrantworkersRenewalActionTemplate(rowData);
     },
     loadMigrantworkersRenewalData: function (sDistrict, sStatus) {
@@ -82,7 +85,8 @@ MigrantworkersRenewal.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_FOURTYFIVE, data);
+            return regNoRenderer(VALUE_FOURTYFIVE, data)
+                    + getFRContainer(VALUE_FOURTYFIVE, data, full.rating, full.fr_datetime);
         };
         var that = this;
         MigrantworkersRenewal.router.navigate('migrantworkers_renewal');

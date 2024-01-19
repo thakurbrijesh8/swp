@@ -118,7 +118,7 @@ SingleReturn.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_single_return');
+        activeLink('menu_dept_services');
         var templateData = {};
         this.$el.html(singleReturnListTemplate(templateData));
     },
@@ -140,7 +140,7 @@ SingleReturn.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_single_return');
+        activeLink('menu_dept_services');
         this.$el.html(singleReturnListTemplate);
         this.newSingleReturnForm(false, {});
     },
@@ -191,6 +191,9 @@ SingleReturn.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return singleReturnActionTemplate(rowData);
     },
     loadSingleReturnData: function (sDistrict, sStatus) {
@@ -200,7 +203,8 @@ SingleReturn.listView = Backbone.View.extend({
         }
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_THIRTYNINE, data);
+            return regNoRenderer(VALUE_THIRTYNINE, data)
+                    + getFRContainer(VALUE_THIRTYNINE, data, full.rating, full.fr_datetime);
         };
         var that = this;
         SingleReturn.router.navigate('singlereturn');

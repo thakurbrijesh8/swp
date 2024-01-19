@@ -140,3 +140,48 @@ ALTER TABLE `inspection`
 ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
 ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
 ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `shop`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `shop_renewal`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `establishment`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `bocw`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `migrantworkers`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `migrantworkers_renewal`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `singlereturn`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `appli_licence`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `appli_licence_renewal`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;

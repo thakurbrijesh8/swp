@@ -35,8 +35,8 @@ MigrantWorkers.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_interstate_mw');
-        addClass('menu_interstate_mw', 'active');
+        activeLink('menu_dept_services');
+//        addClass('menu_interstate_mw', 'active');
         MigrantWorkers.router.navigate('migrantworkers');
         var templateData = {};
         this.$el.html(migrantWorkersListTemplate(templateData));
@@ -71,6 +71,9 @@ MigrantWorkers.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return migrantWorkersActionTemplate(rowData);
     },
     loadMigrantWorkersData: function (sDistrict, sStatus) {
@@ -80,7 +83,8 @@ MigrantWorkers.listView = Backbone.View.extend({
         }
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_THIRTYFOUR, data);
+            return regNoRenderer(VALUE_THIRTYFOUR, data)
+                    + getFRContainer(VALUE_THIRTYFOUR, data, full.rating, full.fr_datetime);
         };
         var that = this;
         $('#migrantworkers_form_and_table_container').html(migrantWorkersTableTemplate(searchData));

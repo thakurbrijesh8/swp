@@ -34,8 +34,8 @@ ShopRenewal.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_labour');
-        addClass('shoprenewal', 'active');
+        activeLink('menu_dept_services');
+//        addClass('shoprenewal', 'active');
         ShopRenewal.router.navigate('shop_renewal');
         var templateData = {};
         this.$el.html(shopRenewalListTemplate(templateData));
@@ -47,8 +47,8 @@ ShopRenewal.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_tourism');
-        addClass('shoprenewal', 'active');
+        activeLink('menu_dept_services');
+//        addClass('shoprenewal', 'active');
         this.$el.html(shopRenewalListTemplate);
         this.newShopRenewalForm(false, {});
     },
@@ -71,6 +71,9 @@ ShopRenewal.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return shopRenewalActionTemplate(rowData);
     },
     loadShopRenewalData: function (sDistrict, sStatus) {
@@ -81,7 +84,8 @@ ShopRenewal.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_FOURTYTWO, data);
+            return regNoRenderer(VALUE_FOURTYTWO, data)
+                    + getFRContainer(VALUE_FOURTYTWO, data, full.rating, full.fr_datetime);
         };
         var that = this;
         ShopRenewal.router.navigate('shop_renewal');

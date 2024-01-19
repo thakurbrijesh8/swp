@@ -37,4 +37,9 @@
             style="padding: 2px 7px;margin-top: 1px; margin-bottom: 2px;">
         <i class="fas fa-file-pdf" style="margin-right: 2px;"></i>Form-XXIV</button>
     {{/if}} 
+    {{#if show_fr_btn}}
+    <button type="button" class="btn btn-sm btn-success" onclick="askForFeedbackRating($(this), VALUE_THIRTYTHREE,'{{s_id}}')"
+            style="padding: 2px 7px; margin-top: 1px; margin-bottom: 2px;">
+        <i class="fas fa-star" style="margin-right: 2px;"></i> Feedback / Rating</button>
+    {{/if}}
 </div>

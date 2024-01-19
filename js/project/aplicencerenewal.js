@@ -81,6 +81,9 @@ AplicenceRenewal.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return aplicenceRenewalActionTemplate(rowData);
     },
     loadAplicenceRenewalData: function (sDistrict, sStatus) {
@@ -91,7 +94,8 @@ AplicenceRenewal.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_FOURTYSIX, data);
+            return regNoRenderer(VALUE_FOURTYSIX, data)
+                    + getFRContainer(VALUE_FOURTYSIX, data, full.rating, full.fr_datetime);
         };
         var that = this;
         AplicenceRenewal.router.navigate('aplicence_renewal');

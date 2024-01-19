@@ -34,7 +34,7 @@ CLACT.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_clact');
+        activeLink('menu_dept_services');
         CLACT.router.navigate('clact');
         this.$el.html(clactListTemplate);
         this.loadCLACTData(sDistrict, sStatus);
@@ -58,6 +58,9 @@ CLACT.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return clactActionTemplate(rowData);
     },
     loadCLACTData: function (sDistrict, sStatus) {
@@ -67,7 +70,8 @@ CLACT.listView = Backbone.View.extend({
         }
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_THIRTYONE, data);
+            return regNoRenderer(VALUE_THIRTYONE, data)
+                    + getFRContainer(VALUE_THIRTYONE, data, full.rating, full.fr_datetime);
         };
         var that = this;
         CLACT.router.navigate('clact');
@@ -114,7 +118,7 @@ CLACT.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_clact');
+        activeLink('menu_dept_services');
         this.$el.html(clactListTemplate);
         this.addCLACT(false, {});
     },
