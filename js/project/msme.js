@@ -68,6 +68,9 @@ MSME.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         rowData.module_type = VALUE_NINE;
         return msmeActionTemplate(rowData);
     },
@@ -78,7 +81,8 @@ MSME.listView = Backbone.View.extend({
         }
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_NINE, data);
+            return regNoRenderer(VALUE_NINE, data)
+                    + getFRContainer(VALUE_NINE, data, full.rating, full.fr_datetime);
         };
         var that = this;
         MSME.router.navigate('msme');

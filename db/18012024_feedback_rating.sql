@@ -109,3 +109,8 @@ ALTER TABLE `textile`
 ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
 ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
 ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `msme`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
