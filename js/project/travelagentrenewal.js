@@ -35,8 +35,8 @@ TravelagentRenewal.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_tourism');
-        addClass('travelagentrenewal', 'active');
+        activeLink('menu_dept_services');
+//        addClass('travelagentrenewal', 'active');
         TravelagentRenewal.router.navigate('travelagent_renewal');
         var templateData = {};
         this.$el.html(travelagentRenewalListTemplate(templateData));
@@ -48,8 +48,8 @@ TravelagentRenewal.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_tourism');
-        addClass('travelagentrenewal', 'active');
+        activeLink('menu_dept_services');
+//        addClass('travelagentrenewal', 'active');
         this.$el.html(travelagentRenewalListTemplate);
         this.newTravelagentRenewalForm(false, {});
     },
@@ -72,6 +72,9 @@ TravelagentRenewal.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return travelagentRenewalActionTemplate(rowData);
     },
     loadTravelagentRenewalData: function (sDistrict, sStatus) {
@@ -82,7 +85,8 @@ TravelagentRenewal.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_TWENTYTHREE, data);
+            return regNoRenderer(VALUE_TWENTYTHREE, data)
+                    + getFRContainer(VALUE_TWENTYTHREE, data, full.rating, full.fr_datetime);
         };
         var that = this;
         TravelagentRenewal.router.navigate('travelagent_renewal');
