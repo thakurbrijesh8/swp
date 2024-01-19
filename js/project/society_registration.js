@@ -72,6 +72,9 @@ SocietyRegistration.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         rowData.module_type = VALUE_SIXTY;
         return societyRegistrationActionTemplate(rowData);
     },
@@ -82,7 +85,8 @@ SocietyRegistration.listView = Backbone.View.extend({
         }
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_SIXTY, data);
+            return regNoRenderer(VALUE_SIXTY, data)
+                    + getFRContainer(VALUE_SIXTY, data, full.rating, full.fr_datetime);
         };
         var dvRenderer = function (data, type, full, meta) {
             return (talukaArray[data] ? talukaArray[data] : '');
