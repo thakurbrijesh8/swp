@@ -575,7 +575,7 @@
                     <div>
                         <button type="button" id="draft_btn_for_textile" class="btn btn-sm btn-nic-blue" onclick="Textile.listview.submitTextile('{{VALUE_ONE}}');" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as a Draft</button>
                         <button type="button" id="submit_btn_for_textile" class="btn btn-sm btn-success" onclick="Textile.listview.askForSubmitTextile('{{VALUE_TWO}}');"  style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit Application</button>
-                        <button type="button" class="btn btn-sm btn-danger" onclick="Textile.listview.loadTextileData();">Cancel</button  >
+                        <button type="button" class="btn btn-sm btn-danger" onclick="Textile.listview.loadTextileData();"><i class="fas fa-times"></i>&nbsp; Cancel</button>
                     </div>
                 </div>
             </form>

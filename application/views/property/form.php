@@ -202,7 +202,7 @@
 
 
                     <div class="form-group">
-                        <button type="button" class="btn btn-sm btn-danger" onclick="Property.listview.loadPropertyData();">Cancel</button  >
+                        <button type="button" class="btn btn-sm btn-danger" onclick="Property.listview.loadPropertyData();"><i class="fas fa-times"></i>&nbsp; Cancel</button>
                         <button type="button" id="submit_btn_for_property" class="btn btn-sm btn-success pull-right" onclick="Property.listview.submitProperty({{VALUE_ONE}});" style="margin-right: 5px;">Set Appointment  <span class="fas fa-hand-point-right"></span></button>
                     </div>
 

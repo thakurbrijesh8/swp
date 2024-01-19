@@ -144,7 +144,7 @@
                 </div>
                 <div id="view_document_container_for_msme"></div>
                 <div>
-                    <button type="button" class="btn btn-sm btn-danger" onclick="MSME.listview.loadMSMEData();">Cancel</button  >
+                    <button type="button" class="btn btn-sm btn-danger" onclick="MSME.listview.loadMSMEData();"><i class="fas fa-times"></i>&nbsp; Cancel</button>
                 </div>
             </div>
         </div>
