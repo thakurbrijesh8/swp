@@ -35,8 +35,8 @@ HotelRenewal.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_tourism');
-        addClass('hotelrenewal', 'active');
+        activeLink('menu_dept_services');
+//        addClass('hotelrenewal', 'active');
         HotelRenewal.router.navigate('hotel_renewal');
         var templateData = {};
         this.$el.html(hotelRenewalListTemplate(templateData));
@@ -48,8 +48,8 @@ HotelRenewal.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_tourism');
-        addClass('hotelrenewal', 'active');
+        activeLink('menu_dept_services');
+//        addClass('hotelrenewal', 'active');
         this.$el.html(hotelRenewalListTemplate);
         this.newHotelRenewalForm(false, {});
     },
@@ -72,6 +72,9 @@ HotelRenewal.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return hotelRenewalActionTemplate(rowData);
     },
     loadHotelRenewalData: function (sDistrict, sStatus) {
@@ -82,7 +85,8 @@ HotelRenewal.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_TWENTY, data);
+            return regNoRenderer(VALUE_TWENTY, data)
+                    + getFRContainer(VALUE_TWENTY, data, full.rating, full.fr_datetime);
         };
         var that = this;
         HotelRenewal.router.navigate('hotel_renewal');
