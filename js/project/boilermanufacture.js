@@ -61,8 +61,8 @@ BoilerManufacture.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_factory');
-        addClass('menu_boiler_manufacture', 'active');
+        activeLink('menu_dept_services');
+//        addClass('menu_boiler_manufacture', 'active');
         BoilerManufacture.router.navigate('boilermanufacture');
         var templateData = {};
         this.$el.html(boilerManufactureListTemplate(templateData));
@@ -74,8 +74,8 @@ BoilerManufacture.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_factory');
-        addClass('menu_boiler_manufacture', 'active');
+        activeLink('menu_dept_services');
+//        addClass('menu_boiler_manufacture', 'active');
         this.$el.html(boilerManufactureListTemplate);
         this.newBoilerManufactureForm(false, {});
     },
@@ -98,6 +98,9 @@ BoilerManufacture.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return boilerManufactureActionTemplate(rowData);
     },
     loadBoilerManufactureData: function (sDistrict, sStatus) {
@@ -117,7 +120,8 @@ BoilerManufacture.listView = Backbone.View.extend({
         // };
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_THIRTYEIGHT, data);
+            return regNoRenderer(VALUE_THIRTYEIGHT, data)
+                    + getFRContainer(VALUE_THIRTYEIGHT, data, full.rating, full.fr_datetime);
         };
         var that = this;
         BoilerManufacture.router.navigate('boilermanufacture');

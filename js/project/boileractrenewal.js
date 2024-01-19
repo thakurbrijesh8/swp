@@ -32,8 +32,8 @@ BoilerActRenewal.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_factory');
-        addClass('menu_boiler_act_renewal', 'active');
+        activeLink('menu_dept_services');
+//        addClass('menu_boiler_act_renewal', 'active');
         BoilerActRenewal.router.navigate('boileract_renewal');
         var templateData = {};
         this.$el.html(boilerActRenewalListTemplate(templateData));
@@ -45,8 +45,8 @@ BoilerActRenewal.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_factory');
-        addClass('menu_boiler_act_renewal', 'active');
+        activeLink('menu_dept_services');
+//        addClass('menu_boiler_act_renewal', 'active');
         this.$el.html(boilerActRenewalListTemplate);
         this.newBoilerActRenewalForm(false, {});
     },
@@ -69,6 +69,9 @@ BoilerActRenewal.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return boilerActRenewalActionTemplate(rowData);
     },
     loadBoilerActRenewalData: function (sDistrict, sStatus) {
@@ -79,7 +82,8 @@ BoilerActRenewal.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_FOURTYFOUR, data);
+            return regNoRenderer(VALUE_FOURTYFOUR, data)
+                    + getFRContainer(VALUE_FOURTYFOUR, data, full.rating, full.fr_datetime);
         };
         var that = this;
         BoilerActRenewal.router.navigate('boileract_renewal');

@@ -33,8 +33,8 @@ BuildingPlan.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_factory');
-        addClass('menu_building_plan', 'active');
+        activeLink('menu_dept_services');
+//        addClass('menu_building_plan', 'active');
         BuildingPlan.router.navigate('buildingplan');
         var templateData = {};
         this.$el.html(buildingPlanListTemplate(templateData));
@@ -46,7 +46,7 @@ BuildingPlan.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_building_plan');
+        activeLink('menu_dept_services');
         this.$el.html(buildingPlanListTemplate);
         this.newBuildingPlanForm(false, {});
     },
@@ -69,6 +69,9 @@ BuildingPlan.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return buildingPlanActionTemplate(rowData);
     },
     loadBuildingPlanData: function (sDistrict, sStatus) {
@@ -79,7 +82,8 @@ BuildingPlan.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_THIRTYSIX, data);
+            return regNoRenderer(VALUE_THIRTYSIX, data)
+                    + getFRContainer(VALUE_THIRTYSIX, data, full.rating, full.fr_datetime);
         };
         var that = this;
         BuildingPlan.router.navigate('buildingplan');

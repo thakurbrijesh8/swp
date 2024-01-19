@@ -32,8 +32,8 @@ BoilerAct.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_factory');
-        addClass('menu_boiler_act', 'active');
+        activeLink('menu_dept_services');
+//        addClass('menu_boiler_act', 'active');
         BoilerAct.router.navigate('boileract');
         var templateData = {};
         this.$el.html(boilerActListTemplate(templateData));
@@ -45,8 +45,8 @@ BoilerAct.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
-        activeLink('menu_factory');
-        addClass('menu_boiler_act', 'active');
+        activeLink('menu_dept_services');
+//        addClass('menu_boiler_act', 'active');
         this.$el.html(boilerActListTemplate);
         this.newBoilerActForm(false, {});
     },
@@ -69,6 +69,9 @@ BoilerAct.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
         return boilerActActionTemplate(rowData);
     },
     loadBoilerActData: function (sDistrict, sStatus) {
@@ -79,7 +82,8 @@ BoilerAct.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_THIRTYSEVEN, data);
+            return regNoRenderer(VALUE_THIRTYSEVEN, data)
+                    + getFRContainer(VALUE_THIRTYSEVEN, data, full.rating, full.fr_datetime);
         };
         var that = this;
         BoilerAct.router.navigate('boileract');

@@ -185,3 +185,33 @@ ALTER TABLE `appli_licence_renewal`
 ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
 ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
 ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `factorylicence`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `factorylicence_renewal`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `buildingplan`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `boileract`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `boileract_renewal`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
+
+ALTER TABLE `boilermanufactures`
+ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
+ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
+ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
