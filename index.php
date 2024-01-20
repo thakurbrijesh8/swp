@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("Asia/Kolkata");
 ini_set('max_file_uploads', '50');
 /**
  * CodeIgniter

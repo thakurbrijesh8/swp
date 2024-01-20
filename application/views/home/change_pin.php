@@ -72,7 +72,7 @@
                                 <span class="error-message error-message-pin-change-retype_new_pin_for_change_pin"></span>
                             </div>
                             <div>
-                                <button type="button" id="submit_btn_for_change_pin" class="btn btn-sm btn-success" onclick="Home.listview.changePin($(this));" style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit</button>
+                                <button type="button" id="submit_btn_for_change_pin" class="btn btn-sm btn-success" onclick="Home.listview.changePin($(this));" style="margin-right: 5px;">Submit</button>
                                 <button type="button" class="btn btn-sm btn-danger" onclick="Home.listview.resetChangePinForm();">Clear</button>
                             </div>
                         </div>

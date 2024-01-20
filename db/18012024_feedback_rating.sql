@@ -129,7 +129,6 @@ ALTER TABLE `construction`
 ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,
 ADD `feedback` varchar(200) COLLATE 'utf8_general_ci' NOT NULL AFTER `rating`,
 ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
-ADD `fr_datetime` datetime NOT NULL AFTER `feedback`;
 
 ALTER TABLE `occupancy_certificate`
 ADD `rating` tinyint(1) NOT NULL AFTER `query_status`,

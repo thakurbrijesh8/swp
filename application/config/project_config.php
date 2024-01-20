@@ -53,10 +53,10 @@ define('TEMP_TYPE_D', 3);
 define('FROM_NAME', 'noreply@swp.dddgov.in');
 define('FROM_EMAIL', 'noreply@swp.dddgov.in');
 
-define('VERSION', 'v=1.1.68');
+define('VERSION', 'v=1.1.70');
 
-// define('PROJECT_PATH', 'https://swp.dddgov.in/swp_admin/');
-define('PROJECT_PATH', 'http://localhost:90/swp_admin/');
+define('PROJECT_PATH', 'https://swp.dddgov.in/swp_admin/');
+//define('PROJECT_PATH', 'http://localhost:90/swp_admin/');
 
 define('DOC_PATH', PROJECT_PATH . 'documents/');
 define('ADMIN_REPAIRER_DOC_PATH', DOC_PATH . 'repairer/');
@@ -1532,7 +1532,7 @@ $config['scheme_ref_doc_array'] = array(
             'doc_path' => 'assets/department/dic/inc/A11_ANNEXURE_FOR_BEFORE_AND_AFTER_COMMENCEMENT_OF_SOLAR_POWER_GENERATION.pdf'
         ),
         array(
-            'doc_name' => 'Format for Certificate of CA for Capital Subsidy for Solar Plant',
+            'doc_name' => 'Format for Certificate of CA for Capital Subsidy for Solar Plant',
             'doc_path' => 'assets/department/dic/inc/CERTIFICATE_OF_CA_FOR_CAPITAL_SUBSIDY_FOR_SOLAR_PLANT.pdf'
         ),
     ),

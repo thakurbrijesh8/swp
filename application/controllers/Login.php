@@ -53,7 +53,7 @@ class Login extends CI_Controller {
             $session_data = array();
             $session_data['temp_id_for_eodbsws'] = $new_user_data['user_id'];
             $session_data['name'] = ucwords($new_user_data['applicant_name']);
-            $session_data['temp_logged'] = encrypt($log_id);
+//            $session_data['temp_logged'] = encrypt($log_id);
             $this->session->set_userdata($session_data);
             echo json_encode(get_success_array());
         } catch (\Exception $e) {
@@ -91,13 +91,13 @@ class Login extends CI_Controller {
      * This function is used to destroy the session.
      */
     function _destroy_session() {
-        $temp_user_id = get_from_session('temp_id_for_eodbsws');
-        if ($temp_user_id != NULL) {
-            $temp_logged_id = decrypt(get_from_session('temp_logged'));
-            if ($temp_logged_id) {
-                $this->utility_lib->logout_log($temp_logged_id);
-            }
-        }
+//        $temp_user_id = get_from_session('temp_id_for_eodbsws');
+//        if ($temp_user_id != NULL) {
+//            $temp_logged_id = decrypt(get_from_session('temp_logged'));
+//            if ($temp_logged_id) {
+//                $this->utility_lib->logout_log($temp_logged_id);
+//            }
+//        }
         $this->session->sess_destroy();
     }
 
