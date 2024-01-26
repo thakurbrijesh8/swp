@@ -380,7 +380,7 @@ $config['encryption_key'] = '';
   |
  */
 $config['sess_driver'] = 'database';
-$config['sess_cookie_name'] = 'ci_session';
+$config['sess_cookie_name'] = 'ci_session_swp';
 $config['sess_expiration'] = 86400;
 $config['sess_save_path'] = 'swp_sessions';
 $config['sess_match_ip'] = FALSE;
