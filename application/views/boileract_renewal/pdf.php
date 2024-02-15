@@ -183,7 +183,7 @@
                 <td class="first-column" style="height: 30px;">15</td>
                 <td class="second-column">Hydraulically Tested On</td>
                 <td class="third-column">
-                    <?php echo $boileract_renewal_data['hydraulically_tested_on']; ?>
+                    <?php echo convert_to_new_date_format($boileract_renewal_data['hydraulically_tested_on']); ?>
                 </td>
                 </td>
             </tr>
@@ -214,28 +214,28 @@
             <!-- <tr>
                 <td class="first-column" style="height: 30px;">19</td>
                 <td class="second-column">Application on Company Letter head</td>
-                <td class="third-column"><a href ="<?php //echo base_url(); ?>documents/boileract/<?php //echo $boileract_renewal_data['company_letter_head']; ?>" target="_blank"> View Document </a>
+                <td class="third-column"><a href ="<?php //echo base_url();  ?>documents/boileract/<?php //echo $boileract_renewal_data['company_letter_head'];  ?>" target="_blank"> View Document </a>
                 </td>
             </tr>
             <tr>
                 <td class="first-column" style="height: 30px;">20</td>
                 <td class="second-column">Fees as per the schedule</td>
-                <td class="third-column"><a href ="<?php //echo base_url(); ?>documents/boileract/<?php //echo $boileract_renewal_data['copy_of_challan']; ?>" target="_blank"> View Document </a>
+                <td class="third-column"><a href ="<?php //echo base_url();  ?>documents/boileract/<?php //echo $boileract_renewal_data['copy_of_challan'];  ?>" target="_blank"> View Document </a>
                 </td>
             </tr>
             <tr>
                 <td class="first-column" style="height: 30px;">21</td>
                 <td class="second-column">A copy of last Boiler License</td>
-                <td class="third-column"><a href ="<?php //echo base_url(); ?>documents/boileract/<?php //echo $boileract_renewal_data['last_boiler_license']; ?>" target="_blank"> View Document </a>
+                <td class="third-column"><a href ="<?php //echo base_url();  ?>documents/boileract/<?php //echo $boileract_renewal_data['last_boiler_license'];  ?>" target="_blank"> View Document </a>
                 </td>
             </tr> -->
-    </table>
-    <br />
-    <table style="margin-left: 475px;">
-        <tr><td class="border-none"><img src="<?php echo base_url(); ?>documents/boileract/<?php echo $boileract_renewal_data['sign_of_applicant']; ?>" height="100px" width="100px"></td></tr>
-    </table>
-    <table style="margin-left: 70%;margin-top: 0px;word-spacing: 2px;">
-        <tr><td class="border-none">Signature of Applicant</td></tr>
-    </table>
-</body>
+        </table>
+        <br />
+        <table style="margin-left: 475px;">
+            <tr><td class="border-none"><img src="<?php echo base_url(); ?>documents/boileract/<?php echo $boileract_renewal_data['sign_of_applicant']; ?>" height="100px" width="100px"></td></tr>
+        </table>
+        <table style="margin-left: 70%;margin-top: 0px;word-spacing: 2px;">
+            <tr><td class="border-none">Signature of Applicant</td></tr>
+        </table>
+    </body>
 </html>
