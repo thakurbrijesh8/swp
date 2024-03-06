@@ -20,7 +20,7 @@ class Payment_model extends CI_Model {
 
     function get_payment_history($user_id, $module_type = 0, $module_id = 0) {
         $this->db->select('fees_payment_id, op_order_number, reference_id, district, module_type, module_id, total_fees, op_status, '
-                . 'op_start_datetime, reference_number');
+                . 'op_start_datetime, reference_number, op_transaction_datetime, op_bank_code, op_bank_reference_number, op_message');
         $this->db->where('user_id', $user_id);
         if ($module_type != 0) {
             $this->db->where('module_type', $module_type);

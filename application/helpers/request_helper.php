@@ -99,8 +99,48 @@ function api_decryption($access_token) {
     $iv = chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0);
     return openssl_decrypt(base64_decode($access_token), $method, $password, OPENSSL_RAW_DATA, $iv);
 }
+
 function is_ajax() {
     return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
+}
+
+function check_pg_status() {
+    $wait = 1;
+    $host = PG_FULL_URL;
+//    $ports = ['http' => 80, 'https' => 443];
+    $ports = ['https' => 443];
+    $return_data = VALUE_ONE;
+    foreach ($ports as $key => $port) {
+        $fp = @fsockopen($host, $port, $errCode, $errStr, $wait);
+        if ($fp) {
+            fclose($fp);
+        } else {
+            $main_path = "other_logs";
+            if (!is_dir($main_path)) {
+                mkdir($main_path);
+                chmod($main_path, 0777);
+                copy('images' . DIRECTORY_SEPARATOR . 'index.html', $main_path . DIRECTORY_SEPARATOR . 'index.html');
+            }
+            $sbi_path = $main_path . DIRECTORY_SEPARATOR . "sbi";
+            if (!is_dir($sbi_path)) {
+                mkdir($sbi_path);
+                chmod($sbi_path, 0777);
+                copy($main_path . DIRECTORY_SEPARATOR . 'index.html', $sbi_path . DIRECTORY_SEPARATOR . 'index.html');
+            }
+            $file_path = $sbi_path . DIRECTORY_SEPARATOR . 'log-' . date('Y-m-d') . '.php';
+            if (!file_exists($file_path)) {
+                $n_file = fopen($file_path, "w");
+                fwrite($n_file, "<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>\n\n");
+                fclose($n_file);
+            }
+            $e_file = fopen($file_path, "a");
+            fwrite($e_file, 'ERROR - ' . date('Y-m-d H:i:s') . " --> $host:$port ($key) --> $errCode - $errStr \n");
+            fclose($e_file);
+            $return_data = VALUE_ZERO;
+            break;
+        }
+    }
+    return $return_data;
 }
 
 /**

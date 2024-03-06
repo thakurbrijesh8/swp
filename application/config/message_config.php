@@ -929,11 +929,9 @@ define('ENTER_AREA_MESSAGE', 'Enter Area !');
 define('TAX_ONE_ROW_MESSAGE', 'Atleast One Row is Required for Calculation !');
 
 define('PH_NOT_AVAILABLE_MESSAGE', 'Payment History Not Available !');
-
 define('RES_NOT_REC_MESSAGE', 'Response Not Received !');
-
 define('PG_NOT_AVAILABLE_MESSAGE', 'Online Payment is Under Maintenance !<br>Please Try Another Payment Type !');
-
+define('PG_DOWN_AVAILABLE_MESSAGE', 'SBI Online Payment Gateway is Down !<br>Please Try After 5 to 10 Minutes !');
 define('PG_PS_UPDATED_TA_MESSAGE', 'Latest Payment Status Updated Successfully !<br>Please Try After 5 to 10 Minutes !');
 define('PG_PS_UPDATED_MESSAGE', 'Latest Payment Status Updated Successfully !');
 

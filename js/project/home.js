@@ -441,6 +441,9 @@ Home.listView = Backbone.View.extend({
         var tempRegNoRenderer = function (data, type, full, meta) {
             return regNoRenderer(full.module_type, data);
         };
+        var tdtRenderer = function (data, type, full, meta) {
+            return full.op_transaction_datetime != '0000-00-00 00:00:00' ? dateTo_DD_MM_YYYY_HH_II_SS(full.op_transaction_datetime) : (full.op_start_datetime != '0000-00-00 00:00:00' ? dateTo_DD_MM_YYYY_HH_II_SS(full.op_start_datetime) : '-');
+        };
         var feeRenderer = function (data, type, full, meta) {
             return data + ' /-';
         };
@@ -458,7 +461,7 @@ Home.listView = Backbone.View.extend({
                 {data: 'department_name'},
                 {data: 'service_name'},
                 {data: 'module_id', 'class': 'text-center f-w-b', 'render': tempRegNoRenderer},
-                {data: 'op_start_datetime', 'class': 'text-center', 'render': dateTimeRenderer},
+                {data: '', 'class': 'text-center', 'render': tdtRenderer},
                 {data: 'total_fees', 'class': 'text-right', 'render': feeRenderer},
                 {data: 'reference_id', 'class': 'text-center'},
                 {data: 'op_status', 'class': 'text-center', 'render': pgStatusRenderer},

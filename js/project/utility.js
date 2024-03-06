@@ -1924,8 +1924,8 @@ function loadPH(moduleType, moduleId, phDetails) {
     $.each(phDetails, function (index, phd) {
         phd.module_type = moduleType;
         phd.ph_cnt = tempCnt;
-        phd.transaction_datetime = phd.op_start_datetime != '0000-00-00 00:00:00' ? dateTo_DD_MM_YYYY_HH_II_SS(phd.op_start_datetime) : '';
-        phd.status_text = pgStatusTextArray[phd.op_status] ? pgStatusTextArray[phd.op_status] : pgStatusTextArray[VALUE_ZERO];
+        phd.transaction_datetime = phd.op_transaction_datetime != '0000-00-00 00:00:00' ? dateTo_DD_MM_YYYY_HH_II_SS(phd.op_transaction_datetime) : (phd.op_start_datetime != '0000-00-00 00:00:00' ? dateTo_DD_MM_YYYY_HH_II_SS(phd.op_start_datetime) : '');
+        phd.status_text = getPGStatus(phd.op_status, phd.fees_payment_id);
         if (phd.op_status == VALUE_FOUR || phd.op_status == VALUE_FIVE || phd.op_status == VALUE_SIX) {
             phd.show_update_payment_status_btn = true;
         }
@@ -1941,8 +1941,12 @@ function loadPH(moduleType, moduleId, phDetails) {
 }
 
 var pgStatusRenderer = function (data, type, full, meta) {
-    return pgStatusTextArray[data] ? pgStatusTextArray[data] : pgStatusTextArray[VALUE_ZERO];
+    return getPGStatus(data, full.fees_payment_id);
 };
+
+function getPGStatus(data, feePaymentId) {
+    return '<div class="pg_status_' + feePaymentId + '">' + (pgStatusTextArray[data] ? pgStatusTextArray[data] : pgStatusTextArray[VALUE_ZERO]) + '</div>';
+}
 
 function checkValidationForPAN(moduleName, id, isBlankValidation) {
     if (typeof isBlankValidation == "undefined") {
@@ -2068,15 +2072,18 @@ function checkUID(uid) {
     }
 }
 
-function checkPaymentDV(btnObj, feesPaymentId) {
-    if (!tempIdInSession || tempIdInSession == null) {
-        loginPage();
-        return false;
-    }
-    if (!feesPaymentId || !btnObj) {
+function checkPaymentDV(btnObj, feesPaymentId, mType) {
+    if (!feesPaymentId || !btnObj || (mType != VALUE_ONE)) {
         showError(invalidAccessValidationMessage);
         return;
     }
+    if (mType == VALUE_ONE) {
+        if (!tempIdInSession || tempIdInSession == null) {
+            loginPage();
+            return false;
+        }
+    }
+
     $('.success-message-ph').html('');
     var ogBtnHTML = btnObj.html();
     var ogBtnOnclick = btnObj.attr('onclick');
@@ -2085,7 +2092,7 @@ function checkPaymentDV(btnObj, feesPaymentId) {
     $.ajax({
         url: 'payment_status/check_payment_dv',
         type: 'post',
-        data: $.extend({}, {'fees_payment_id': feesPaymentId}, getTokenData()),
+        data: $.extend({}, {'fees_payment_id': feesPaymentId, 'm_type': mType}, getTokenData()),
         error: function (textStatus, errorThrown) {
             generateNewCSRFToken();
             if (!textStatus.statusText) {

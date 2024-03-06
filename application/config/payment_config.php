@@ -94,6 +94,8 @@ $config['uban_array'] = array(
     ),
 );
 
+define('PG_FULL_URL', 'sbiepay.sbi');
+
 define('PG_MID', 1001501);
 define('PG_KEY', 'nprVtAlqf0ypMdzvXp7pZq5LakQoHKL7MqNM9l/0A64=');
 define('PG_OM', 'DOM');

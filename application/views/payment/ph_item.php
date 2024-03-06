@@ -7,7 +7,7 @@
     <td class="text-center">
         {{#if show_update_payment_status_btn}}
         <button type="button" class="btn btn-sm btn-info" 
-                onclick="checkPaymentDV($(this), '{{fees_payment_id}}');"
+                onclick="checkPaymentDV($(this), '{{fees_payment_id}}', VALUE_ONE);"
                 style="padding: 2px 7px; margin-top: 1px; margin-bottom: 2px;">
             <i class="fas fa-sync" style="margin-right: 2px;"></i> Update Status
         </button>
