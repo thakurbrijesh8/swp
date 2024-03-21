@@ -91,17 +91,17 @@ class Login extends CI_Controller {
      * This function is used to destroy the session.
      */
     function _destroy_session() {
-//        $temp_user_id = get_from_session('temp_id_for_eodbsws');
-//        if ($temp_user_id != NULL) {
+        $temp_user_id = get_from_session('temp_id_for_eodbsws');
+        if ($temp_user_id != NULL) {
 //            $temp_logged_id = decrypt(get_from_session('temp_logged'));
 //            if ($temp_logged_id) {
 //                $this->utility_lib->logout_log($temp_logged_id);
 //            }
-//        }
-//        $this->session->unset_userdata('temp_id_for_eodbsws');
-//        $this->session->unset_userdata('name');
+        }
+        $this->session->unset_userdata('temp_id_for_eodbsws');
+        $this->session->unset_userdata('name');
 //        $this->session->unset_userdata('temp_logged');
-        $this->session->sess_destroy();
+//        $this->session->sess_destroy();
     }
 }
 
