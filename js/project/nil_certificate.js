@@ -55,7 +55,7 @@ NilCertificate.listView = Backbone.View.extend({
             rowData.show_form_one_btn = true;
         }
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
-            if (rowData.payment_type != VALUE_THREE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
                 rowData.ADMIN_NIL_CERTIFICATE_DOC_PATH = ADMIN_NIL_CERTIFICATE_DOC_PATH;
                 rowData.show_download_upload_challan_btn = true;
             }
@@ -68,6 +68,9 @@ NilCertificate.listView = Backbone.View.extend({
         }
         if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
             rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         rowData.module_type = VALUE_SIXTYONE;
         return nilCertificateActionTemplate(rowData);
@@ -461,7 +464,7 @@ NilCertificate.listView = Backbone.View.extend({
     },
     showChallan: function (nilCertificateData) {
         showPopup();
-        if (nilCertificateData.status != VALUE_FIVE && nilCertificateData.status != VALUE_SIX && nilCertificateData.status != VALUE_SEVEN) {
+        if (nilCertificateData.status != VALUE_FIVE && nilCertificateData.status != VALUE_SIX && nilCertificateData.status != VALUE_SEVEN && nilCertificateData.status != VALUE_ELEVEN) {
             if (!nilCertificateData.hide_submit_btn) {
                 nilCertificateData.show_fees_paid = true;
             }

@@ -467,6 +467,39 @@ class Utility_lib {
         $this->generate_certificate('Legal', 'periodicalreturn', $data, 'periodicalreturn_certificate_');
     }
 
+    function calculate_processing_days($module_type, $submitted_datetime) {
+        $module_array = $this->CI->config->item('query_module_array');
+        $working_days = 'fdw';
+        if (isset($module_array[$module_type])) {
+            $working_days = isset($module_array[$module_type]['working_days']) ? $module_array[$module_type]['working_days'] : $working_days;
+        }
+        $temp_hdl = $this->CI->utility_model->get_result_data_by_id($working_days, VALUE_ONE, 'holidaylist');
+        $hdl_array = array();
+        foreach ($temp_hdl as $hdl) {
+            $hdl_ts = strtotime($hdl['holiday_date']);
+            if (!isset($hdl_array[$hdl_ts])) {
+                $hdl_array[$hdl_ts] = $hdl_ts;
+            }
+        }
+        if ($submitted_datetime == '0000-00-00 00:00:00' || $submitted_datetime == '1999-01-01 00:00:00') {
+            return VALUE_ZERO;
+        }
+        $total_holiday = 0;
+        $total_working_days = 0;
+        $startDate = new DateTime($submitted_datetime);
+
+        $endDate = new DateTime(date('d-m-Y'));
+        while ($startDate <= $endDate) {
+            $timestamp = strtotime($startDate->format('d-m-Y'));
+            if (isset($hdl_array[$timestamp])) {
+                $total_holiday += 1;
+            } else {
+                $total_working_days += 1;
+            }
+            $startDate->modify('+1 day');
+        }
+        return $total_working_days;
+    }
 }
 
 /**

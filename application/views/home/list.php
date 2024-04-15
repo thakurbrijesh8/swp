@@ -33,6 +33,7 @@
                                         <th class="text-center" style="width: 90px;">Pay. Confi.</th>
                                         <th class="text-center" style="width: 90px;">Appr.</th>
                                         <th class="text-center" style="width: 90px;">Reje.</th>
+                                        <th class="text-center" style="width: 90px;">With.</th>
                                     </tr>
                                     <tr>
                                         <th></th>
@@ -45,6 +46,7 @@
                                         <th>
                                             <input type="text" class="form-control" placeholder="Service Name" maxlength="10" />
                                         </th>
+                                        <th></th>
                                         <th></th>
                                         <th></th>
                                         <th></th>

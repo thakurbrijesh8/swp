@@ -64,6 +64,9 @@ Tourismevent.listView = Backbone.View.extend({
         if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
             rowData.show_fr_btn = true;
         }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
+        }
         return tourismeventActionTemplate(rowData);
     },
     loadTourismeventData: function (sDistrict, sStatus) {

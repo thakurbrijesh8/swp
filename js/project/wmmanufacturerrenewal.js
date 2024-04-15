@@ -93,7 +93,7 @@ ManufacturerRenewal.listView = Backbone.View.extend({
             rowData.show_form_one_btn = true;
         }
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
-            if (rowData.payment_type != VALUE_THREE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
                 rowData.ADMIN_MANUFACT_DOC_PATH = ADMIN_MANUFACT_DOC_PATH;
                 rowData.show_download_upload_challan_btn = true;
             }
@@ -106,6 +106,9 @@ ManufacturerRenewal.listView = Backbone.View.extend({
         }
         if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
             rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         return manufacturerRenewalActionTemplate(rowData);
     },
@@ -743,7 +746,7 @@ ManufacturerRenewal.listView = Backbone.View.extend({
     },
     showChallan: function (manufacturerData) {
         showPopup();
-        if (manufacturerData.status != VALUE_FIVE && manufacturerData.status != VALUE_SIX && manufacturerData.status != VALUE_SEVEN) {
+        if (manufacturerData.status != VALUE_FIVE && manufacturerData.status != VALUE_SIX && manufacturerData.status != VALUE_SEVEN && manufacturerData.status != VALUE_ELEVEN) {
             if (!manufacturerData.hide_submit_btn) {
                 manufacturerData.show_fees_paid = true;
             }

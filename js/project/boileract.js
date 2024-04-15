@@ -58,7 +58,7 @@ BoilerAct.listView = Backbone.View.extend({
             rowData.show_form_one_btn = true;
         }
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
-            if (rowData.payment_type != VALUE_THREE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
                 rowData.ADMIN_BOILER_DOC_PATH = ADMIN_BOILER_DOC_PATH;
                 rowData.show_download_upload_challan_btn = true;
             }
@@ -71,6 +71,9 @@ BoilerAct.listView = Backbone.View.extend({
         }
         if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
             rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         return boilerActActionTemplate(rowData);
     },
@@ -609,7 +612,7 @@ BoilerAct.listView = Backbone.View.extend({
     },
     showChallan: function (boilerActData) {
         showPopup();
-        if (boilerActData.status != VALUE_FIVE && boilerActData.status != VALUE_SIX && boilerActData.status != VALUE_SEVEN) {
+        if (boilerActData.status != VALUE_FIVE && boilerActData.status != VALUE_SIX && boilerActData.status != VALUE_SEVEN && boilerActData.status != VALUE_ELEVEN) {
             if (!boilerActData.hide_submit_btn) {
                 boilerActData.show_fees_paid = true;
             }

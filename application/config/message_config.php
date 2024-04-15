@@ -953,3 +953,6 @@ define('DETAILS_ALREADY_EXISTS_MESSAGE', 'Details Already Exists !');
 
 define('FEEDBACK_MESSAGE', 'Enter Feedback !');
 define('FEEDBACK_SUBMITTED_MESSAGE', 'Thank You for Your Feedback / Rating !');
+
+define('WITHDRAW_APPLICATION_MESSAGE', 'Application Withdraw Successfully !');
+define('ALREADY_WITHDRAW_APPLICATION_MESSAGE', 'Application Already Withdraw !');

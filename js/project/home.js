@@ -133,16 +133,17 @@ Home.listView = Backbone.View.extend({
         appData.VALUE_EIGHT = VALUE_EIGHT;
         appData.VALUE_NINE = VALUE_NINE;
         appData.VALUE_TEN = VALUE_TEN;
+        appData.VALUE_ELEVEN = VALUE_ELEVEN;
         return appData;
     },
     getDistWiseCalculation: function (dWiseData) {
         var totalCnt = dWiseData['delay_approved_app'] + dWiseData['delay_draft_app'] + dWiseData['delay_fees_paid_app'] +
                 dWiseData['delay_fees_pending_app'] + dWiseData['delay_fess_na_app'] + dWiseData['delay_pay_at_office_app'] +
-                dWiseData['delay_payment_confirmed_app'] + dWiseData['delay_rejected_app'] + dWiseData['delay_submitted_app'] +
+                dWiseData['delay_payment_confirmed_app'] + dWiseData['delay_rejected_app'] + dWiseData['delay_withdraw_app'] + dWiseData['delay_submitted_app'] +
                 dWiseData['delay_queried_app'] + dWiseData['ot_queried_app'] +
                 dWiseData['ot_approved_app'] + dWiseData['ot_draft_app'] + dWiseData['ot_fees_paid_app'] +
                 dWiseData['ot_fees_pending_app'] + dWiseData['ot_fess_na_app'] + dWiseData['ot_pay_at_office_app'] +
-                dWiseData['ot_payment_confirmed_app'] + dWiseData['ot_rejected_app'] + dWiseData['ot_submitted_app'];
+                dWiseData['ot_payment_confirmed_app'] + dWiseData['ot_rejected_app'] + dWiseData['ot_withdraw_app'] + dWiseData['ot_submitted_app'];
         return parseInt(totalCnt) ? parseInt(totalCnt) : 0;
     },
     hideShowPassword: function (obj, id) {

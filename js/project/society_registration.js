@@ -56,7 +56,7 @@ SocietyRegistration.listView = Backbone.View.extend({
             rowData.show_form_one_btn = true;
         }
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
-            if (rowData.payment_type != VALUE_THREE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
                 rowData.ADMIN_SOCIETY_REGISTRATION_DOC_PATH = ADMIN_SOCIETY_REGISTRATION_DOC_PATH;
                 rowData.show_download_upload_challan_btn = true;
             }
@@ -74,6 +74,9 @@ SocietyRegistration.listView = Backbone.View.extend({
         }
         if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
             rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         rowData.module_type = VALUE_SIXTY;
         return societyRegistrationActionTemplate(rowData);
@@ -442,7 +445,7 @@ SocietyRegistration.listView = Backbone.View.extend({
     },
     showChallan: function (societyRegistrationData) {
         showPopup();
-        if (societyRegistrationData.status != VALUE_FIVE && societyRegistrationData.status != VALUE_SIX && societyRegistrationData.status != VALUE_SEVEN) {
+        if (societyRegistrationData.status != VALUE_FIVE && societyRegistrationData.status != VALUE_SIX && societyRegistrationData.status != VALUE_SEVEN && societyRegistrationData.status != VALUE_ELEVEN) {
             if (!societyRegistrationData.hide_submit_btn) {
                 societyRegistrationData.show_fees_paid = true;
             }

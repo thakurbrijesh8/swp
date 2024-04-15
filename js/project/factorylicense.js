@@ -86,7 +86,7 @@ FactoryLicense.listView = Backbone.View.extend({
             rowData.show_form_one_btn = true;
         }
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
-            if (rowData.payment_type != VALUE_THREE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
                 rowData.ADMIN_FACTORY_DOC_PATH = ADMIN_FACTORY_DOC_PATH;
                 rowData.show_download_upload_challan_btn = true;
             }
@@ -99,6 +99,9 @@ FactoryLicense.listView = Backbone.View.extend({
         }
         if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
             rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         return factoryLicenseActionTemplate(rowData);
     },
@@ -1008,7 +1011,7 @@ FactoryLicense.listView = Backbone.View.extend({
     },
     showChallan: function (factoryLicenseData) {
         showPopup();
-        if (factoryLicenseData.status != VALUE_FIVE && factoryLicenseData.status != VALUE_SIX && factoryLicenseData.status != VALUE_SEVEN) {
+        if (factoryLicenseData.status != VALUE_FIVE && factoryLicenseData.status != VALUE_SIX && factoryLicenseData.status != VALUE_SEVEN && factoryLicenseData.status != VALUE_ELEVEN) {
             if (!factoryLicenseData.hide_submit_btn) {
                 factoryLicenseData.show_fees_paid = true;
             }

@@ -909,7 +909,7 @@ Ips.listView = Backbone.View.extend({
             rowData.show_edit_btn = true;
         }
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
-            if (rowData.payment_type != VALUE_THREE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
                 rowData.ADMIN_IPS_INC_DOC_PATH = ADMIN_IPS_INC_DOC_PATH;
                 rowData.show_download_upload_challan_btn = true;
             }
@@ -922,6 +922,9 @@ Ips.listView = Backbone.View.extend({
         }
         if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
             rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         rowData.module_type = VALUE_NINE;
         return ipsIncActionTemplate(rowData);
@@ -1609,7 +1612,7 @@ Ips.listView = Backbone.View.extend({
     },
     showChallan: function (incentiveData) {
         showPopup();
-        if (incentiveData.status != VALUE_FIVE && incentiveData.status != VALUE_SIX && incentiveData.status != VALUE_SEVEN) {
+        if (incentiveData.status != VALUE_FIVE && incentiveData.status != VALUE_SIX && incentiveData.status != VALUE_SEVEN && incentiveData.status != VALUE_ELEVEN) {
             if (!incentiveData.hide_submit_btn) {
                 incentiveData.show_fees_paid = true;
             }

@@ -60,7 +60,7 @@ MigrantWorkers.listView = Backbone.View.extend({
             rowData.show_form_one_btn = true;
         }
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
-            if (rowData.payment_type != VALUE_THREE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
                 rowData.ADMIN_MIGRANTWORKERS_DOC_PATH = ADMIN_MIGRANTWORKERS_DOC_PATH;
                 rowData.show_download_upload_challan_btn = true;
             }
@@ -73,6 +73,9 @@ MigrantWorkers.listView = Backbone.View.extend({
         }
         if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
             rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         return migrantWorkersActionTemplate(rowData);
     },
@@ -550,7 +553,7 @@ MigrantWorkers.listView = Backbone.View.extend({
     },
     showChallan: function (migrantworkersData) {
         showPopup();
-        if (migrantworkersData.status != VALUE_FIVE && migrantworkersData.status != VALUE_SIX && migrantworkersData.status != VALUE_SEVEN) {
+        if (migrantworkersData.status != VALUE_FIVE && migrantworkersData.status != VALUE_SIX && migrantworkersData.status != VALUE_SEVEN && migrantworkersData.status != VALUE_ELEVEN) {
             if (!migrantworkersData.hide_submit_btn) {
                 migrantworkersData.show_fees_paid = true;
             }

@@ -112,7 +112,7 @@ OccupancyCertificate.listView = Backbone.View.extend({
             rowData.show_form_one_btn = true;
         }
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
-            if (rowData.payment_type != VALUE_THREE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
                 rowData.ADMIN_OCCUPANCY_DOC_PATH = ADMIN_OCCUPANCY_DOC_PATH;
                 rowData.show_download_upload_challan_btn = true;
             }
@@ -125,6 +125,9 @@ OccupancyCertificate.listView = Backbone.View.extend({
         }
         if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
             rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         return occupancyCertificateActionTemplate(rowData);
     },
@@ -947,7 +950,7 @@ OccupancyCertificate.listView = Backbone.View.extend({
     },
     showChallan: function (occupancyCertificateData) {
         showPopup();
-        if (occupancyCertificateData.status != VALUE_FIVE && occupancyCertificateData.status != VALUE_SIX && occupancyCertificateData.status != VALUE_SEVEN) {
+        if (occupancyCertificateData.status != VALUE_FIVE && occupancyCertificateData.status != VALUE_SIX && occupancyCertificateData.status != VALUE_SEVEN && occupancyCertificateData.status != VALUE_ELEVEN) {
             if (!occupancyCertificateData.hide_submit_btn) {
                 occupancyCertificateData.show_fees_paid = true;
             }

@@ -41,6 +41,7 @@ class Main extends CI_Controller {
         $success_array['total_' . $type . '_approved_app'] = 0;
         $success_array['total_' . $type . '_rejected_app'] = 0;
         $success_array['total_' . $type . '_queried_app'] = 0;
+        $success_array['total_' . $type . '_withdraw_app'] = 0;
     }
 
     function get_dashboard_data() {
@@ -72,12 +73,12 @@ class Main extends CI_Controller {
         $this->_generate_ds_wise_array($session_user_id, $success_array, $module_type_array, VALUE_TWENTYFOUR);
         $this->_generate_ds_wise_array($session_user_id, $success_array, $module_type_array, VALUE_SEVEN);
         $this->_generate_ds_wise_array($session_user_id, $success_array, $module_type_array, VALUE_TWENTYONE);
-        
+
         // Revenue & Collectorates
         $this->_generate_ds_wise_array($session_user_id, $success_array, $module_type_array, VALUE_EIGHT);
         $this->_generate_ds_wise_array($session_user_id, $success_array, $module_type_array, VALUE_TWENTYTWO);
         $this->_generate_ds_wise_array($session_user_id, $success_array, $module_type_array, VALUE_FOURTY);
-        
+
         // ARCS in Collectorates
         $this->_generate_ds_wise_array($session_user_id, $success_array, $module_type_array, VALUE_SIXTY);
         $this->_generate_ds_wise_array($session_user_id, $success_array, $module_type_array, VALUE_SIXTYONE);
@@ -136,6 +137,7 @@ class Main extends CI_Controller {
         $dashboard_array[$type . '_pay_at_office_app'] = 0;
         $dashboard_array[$type . '_fess_na_app'] = 0;
         $dashboard_array[$type . '_queried_app'] = 0;
+        $dashboard_array[$type . '_withdraw_app'] = 0;
     }
 
     function _get_status_wise_basic_array() {
@@ -148,7 +150,7 @@ class Main extends CI_Controller {
     }
 
     function _calculate_type_wise($type, $t_array, &$success_array, &$dashboard_array) {
-        if ($t_array['status'] != VALUE_SIX &&
+        if (($t_array['status'] != VALUE_SIX && $t_array['status'] != VALUE_ELEVEN) &&
                 ($t_array['query_status'] == VALUE_ONE || $t_array['query_status'] == VALUE_TWO)) {
             $dashboard_array[$t_array['district']][$type . '_queried_app'] += $t_array['total_records'];
             $success_array['total_' . $type . '_queried_app'] += $t_array['total_records'];
@@ -188,6 +190,10 @@ class Main extends CI_Controller {
             if ($t_array['status'] == VALUE_NINE) {
                 $dashboard_array[$t_array['district']][$type . '_fess_na_app'] += $t_array['total_records'];
                 $success_array['total_' . $type . '_fess_na_app'] += $t_array['total_records'];
+            }
+            if ($t_array['status'] == VALUE_ELEVEN) {
+                $dashboard_array[$t_array['district']][$type . '_withdraw_app'] += $t_array['total_records'];
+                $success_array['total_' . $type . '_withdraw_app'] += $t_array['total_records'];
             }
         }
     }
@@ -234,7 +240,6 @@ class Main extends CI_Controller {
         }
         array_push($success_array['dept_wise_app_details'], $dashboard_array);
     }
-
 }
 
 /*

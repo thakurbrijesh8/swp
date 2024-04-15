@@ -17,6 +17,12 @@
             style="padding: 2px 7px; margin-top: 1px; margin-bottom: 2px;">
         <i class="fas fa-reply" style="margin-right: 5px;"></i> Respond / View Query</button>
     {{/if}}
+    {{#if show_withdraw_application_btn}}
+    <button type="button" class="btn btn-sm btn-secondary" id="withdraw_application_btn_{{periodicalreturn_id}}"
+            onclick="askForWithdrawApplication($(this), VALUE_FIFTY,'{{periodicalreturn_id}}')"
+            style="padding: 2px 7px; margin-top: 1px; margin-bottom: 2px;">
+        <i class="fas fa-undo" style="margin-right: 2px;"></i> Withdraw</button>
+    {{/if}}
     {{#if show_download_certificate_btn}}
     <button type="button" class="btn btn-sm btn-nic-blue" onclick="Periodicalreturn.listview.generateCertificate('{{periodicalreturn_id}}');"
             style="padding: 2px 7px; margin-top: 1px; margin-bottom: 2px;">

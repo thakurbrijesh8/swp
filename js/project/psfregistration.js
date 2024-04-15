@@ -100,7 +100,7 @@ Psfregistration.listView = Backbone.View.extend({
             return false;
         }
         activeLink('menu_dept_services');
-    //    addClass('psfregistration', 'active');
+        //    addClass('psfregistration', 'active');
         this.$el.html(psfregistrationListTemplate);
         this.newPsfregistrationForm(false, {});
     },
@@ -112,7 +112,7 @@ Psfregistration.listView = Backbone.View.extend({
             rowData.show_form_one_btn = true;
         }
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
-            if (rowData.payment_type != VALUE_THREE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
                 rowData.ADMIN_PSFREG_DOC_PATH = ADMIN_PSFREG_DOC_PATH;
                 rowData.show_download_upload_challan_btn = true;
             }
@@ -125,6 +125,9 @@ Psfregistration.listView = Backbone.View.extend({
         }
         if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
             rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         return psfregistrationActionTemplate(rowData);
     },
@@ -735,7 +738,7 @@ Psfregistration.listView = Backbone.View.extend({
     },
     showChallan: function (psfregistrationData) {
         showPopup();
-        if (psfregistrationData.status != VALUE_FIVE && psfregistrationData.status != VALUE_SIX && psfregistrationData.status != VALUE_SEVEN) {
+        if (psfregistrationData.status != VALUE_FIVE && psfregistrationData.status != VALUE_SIX && psfregistrationData.status != VALUE_SEVEN && psfregistrationData.status != VALUE_ELEVEN) {
             if (!psfregistrationData.hide_submit_btn) {
                 psfregistrationData.show_fees_paid = true;
             }

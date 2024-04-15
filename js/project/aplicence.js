@@ -70,7 +70,7 @@ Aplicence.listView = Backbone.View.extend({
             rowData.show_form_one_btn = true;
         }
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
-            if (rowData.payment_type != VALUE_THREE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
                 rowData.ADMIN_APLICENCE_DOC_PATH = ADMIN_APLICENCE_DOC_PATH;
                 rowData.show_download_upload_challan_btn = true;
             }
@@ -83,6 +83,9 @@ Aplicence.listView = Backbone.View.extend({
         }
         if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
             rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         return aplicenceActionTemplate(rowData);
     },
@@ -668,7 +671,7 @@ Aplicence.listView = Backbone.View.extend({
     },
     showChallan: function (aplicenceData) {
         showPopup();
-        if (aplicenceData.status != VALUE_FIVE && aplicenceData.status != VALUE_SIX && aplicenceData.status != VALUE_SEVEN) {
+        if (aplicenceData.status != VALUE_FIVE && aplicenceData.status != VALUE_SIX && aplicenceData.status != VALUE_SEVEN && aplicenceData.status != VALUE_ELEVEN) {
             if (!aplicenceData.hide_submit_btn) {
                 aplicenceData.show_fees_paid = true;
             }

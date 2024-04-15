@@ -278,6 +278,7 @@ $config['app_status_array'] = array(
     VALUE_SEVEN => '<span class="badge bg-success app-status">Payment Confirmed</span>',
     VALUE_EIGHT => '<span class="badge bg-warning app-status">Pay at Office</span>',
     VALUE_NINE => '<span class="badge bg-warning app-status">Fees N.A. & Application is Under Process</span>',
+    VALUE_ELEVEN => '<span class="badge bg-gray app-status">Application Withdraw</span>'
 );
 
 $config['app_status_text_array'] = array(
@@ -291,20 +292,8 @@ $config['app_status_text_array'] = array(
     VALUE_SEVEN => 'Payment Confirmed',
     VALUE_EIGHT => 'Pay at Office',
     VALUE_NINE => 'Fees N.A. & Application is Under Process',
-    VALUE_TEN => 'Queried'
-);
-
-$config['app_status_text_array'] = array(
-    VALUE_ONE => 'Draft',
-    VALUE_TWO => 'Application Submitted',
-    VALUE_THREE => 'Fees Pending',
-    VALUE_FOUR => 'Fees Paid',
-    VALUE_FIVE => 'Approved',
-    VALUE_SIX => 'Rejected',
-    VALUE_SEVEN => 'Payment Confirmed',
-    VALUE_EIGHT => 'Pay at Office',
-    VALUE_NINE => 'Fees N.A. & Application is Under Process',
-    VALUE_TEN => 'Queried'
+    VALUE_TEN => 'Queried',
+    VALUE_ELEVEN => 'Application Withdraw'
 );
 
 $config['renewal_status_array'] = array(

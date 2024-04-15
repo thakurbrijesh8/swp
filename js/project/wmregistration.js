@@ -59,7 +59,7 @@ Wmregistration.listView = Backbone.View.extend({
             rowData.show_form_one_btn = true;
         }
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
-            if (rowData.payment_type != VALUE_THREE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
                 rowData.ADMIN_WMREG_DOC_PATH = ADMIN_WMREG_DOC_PATH;
                 rowData.show_download_upload_challan_btn = true;
             }
@@ -72,6 +72,9 @@ Wmregistration.listView = Backbone.View.extend({
         }
         if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
             rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         return wmregistrationActionTemplate(rowData);
     },
@@ -708,7 +711,7 @@ Wmregistration.listView = Backbone.View.extend({
     },
     showChallan: function (wmregistrationData) {
         showPopup();
-        if (wmregistrationData.status != VALUE_FIVE && wmregistrationData.status != VALUE_SIX && wmregistrationData.status != VALUE_SEVEN) {
+        if (wmregistrationData.status != VALUE_FIVE && wmregistrationData.status != VALUE_SIX && wmregistrationData.status != VALUE_SEVEN && wmregistrationData.status != VALUE_ELEVEN) {
             if (!wmregistrationData.hide_submit_btn) {
                 wmregistrationData.show_fees_paid = true;
             }

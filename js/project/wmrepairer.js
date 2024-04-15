@@ -93,7 +93,7 @@ Repairer.listView = Backbone.View.extend({
             rowData.show_form_one_btn = true;
         }
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
-            if (rowData.payment_type != VALUE_THREE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
                 rowData.ADMIN_REPAIRER_DOC_PATH = ADMIN_REPAIRER_DOC_PATH;
                 rowData.show_download_upload_challan_btn = true;
             }
@@ -106,6 +106,9 @@ Repairer.listView = Backbone.View.extend({
         }
         if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
             rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         return repairerActionTemplate(rowData);
     },
@@ -891,7 +894,7 @@ Repairer.listView = Backbone.View.extend({
     },
     showChallan: function (repairerData) {
         showPopup();
-        if (repairerData.status != VALUE_FIVE && repairerData.status != VALUE_SIX && repairerData.status != VALUE_SEVEN) {
+        if (repairerData.status != VALUE_FIVE && repairerData.status != VALUE_SIX && repairerData.status != VALUE_SEVEN && repairerData.status != VALUE_ELEVEN) {
             if (!repairerData.hide_submit_btn) {
                 repairerData.show_fees_paid = true;
             }
