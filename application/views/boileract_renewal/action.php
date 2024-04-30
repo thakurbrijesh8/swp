@@ -1,6 +1,6 @@
 <div class="text-center">
     {{#if show_edit_btn}}
-    <button type="button" class="btn btn-sm btn-success" onclick="BoilerActRenewal.listview.editOrViewBoilerActRenewal($(this),'{{boiler_renewal_id}}', true);"
+    <button type="button" class="btn btn-sm btn-success" id="edit_btn_{{boiler_renewal_id}}" onclick="BoilerActRenewal.listview.editOrViewBoilerActRenewal($(this),'{{boiler_renewal_id}}', true);"
             style="padding: 2px 7px; margin-top: 1px; margin-bottom: 2px;">
         <i class="fas fa-pencil-alt" style="margin-right: 2px;"></i> Edit</button>
     {{/if}}

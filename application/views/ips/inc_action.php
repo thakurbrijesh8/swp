@@ -1,6 +1,6 @@
 <div class="text-center">
     {{#if show_edit_btn}}
-    <button type="button" class="btn btn-sm btn-success" onclick="Ips.listview.editOrViewIncentives($(this),'{{ips_incentive_id}}', true);"
+    <button type="button" class="btn btn-sm btn-success" id="edit_btn_{{ips_incentive_id}}" onclick="Ips.listview.editOrViewIncentives($(this),'{{ips_incentive_id}}', true);"
             style="padding: 2px 7px; margin-top: 1px; margin-bottom: 2px;">
         <i class="fas fa-pencil-alt"></i> &nbsp;Edit</button>
     {{/if}}

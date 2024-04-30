@@ -1,10 +1,10 @@
 <div class="text-center">
     {{#if show_edit_btn}}
-    <button type="button" class="btn btn-sm btn-success" id="edit_btn_for_clact_{{establishment_id}}" onclick="CLACT.listview.editOrViewCLACT($(this),'{{establishment_id}}', true);"
+    <button type="button" class="btn btn-sm btn-success" id="edit_btn_{{establishment_id}}" onclick="CLACT.listview.editOrViewCLACT($(this),'{{establishment_id}}', true);"
             style="padding: 2px 7px; margin-top: 1px; margin-bottom: 2px;">
         <i class="fas fa-pencil-alt" style="margin-right: 2px;"></i> Edit</button>
     {{/if}}
-    <button type="button" class="btn btn-sm btn-nic-blue" id="edit_btn_for_clact_{{establishment_id}}" onclick="CLACT.listview.editOrViewCLACT($(this),'{{establishment_id}}', false);"
+    <button type="button" class="btn btn-sm btn-nic-blue" id="edit_btn_{{establishment_id}}" onclick="CLACT.listview.editOrViewCLACT($(this),'{{establishment_id}}', false);"
             style="padding: 2px 7px; margin-top: 1px; margin-bottom: 2px;">
         <i class="fas fa-eye" style="margin-right: 2px;"></i> View</button>
     {{#if show_form_one_btn}}

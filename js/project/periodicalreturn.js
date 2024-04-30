@@ -113,8 +113,8 @@ Periodicalreturn.listView = Backbone.View.extend({
                 {data: 'applicant_address', 'class': 'text-center'},
                 {data: 'applicant_licence_no', 'class': 'text-center'},
                 {data: 'submitted_datetime', 'class': 'text-center', 'render': dateTimeRenderer},
-                {data: 'periodicalreturn_id ', 'class': 'v-a-m text-center', 'render': newAppStatusRenderer},
-                {data: 'periodicalreturn_id ', 'class': 'v-a-m text-center', 'render': queryStatusRenderer},
+                {data: 'periodicalreturn_id', 'class': 'v-a-m text-center', 'render': newAppStatusRenderer},
+                {data: 'periodicalreturn_id', 'class': 'v-a-m text-center', 'render': queryStatusRenderer},
                 {'class': 'details-control text-center', 'orderable': false, 'data': null, "defaultContent": ''}
             ],
             "initComplete": function (settings, json) {

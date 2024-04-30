@@ -3126,6 +3126,7 @@ function submitWithdrawApplication(btnObj) {
             showSuccess(parseData.message);
             var wData = parseData.wa_data;
             $('#status_' + waData.module_id_for_withdraw_application).html(appStatusArray[VALUE_ELEVEN]);
+            $('#edit_btn_' + waData.module_id_for_withdraw_application).remove();
             $('#withdraw_application_btn_' + waData.module_id_for_withdraw_application).remove();
             $('#query_status_' + waData.module_id_for_withdraw_application).html(queryStatusArray[wData['query_status']]);
         }
