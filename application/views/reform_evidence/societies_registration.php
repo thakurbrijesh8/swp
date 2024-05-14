@@ -33,14 +33,4 @@ $this->load->view('security');
         </div>
     </div>
 </section>
-
-<section class="pt-0 pb-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-
-            </div>
-        </div>
-    </div>
-</section>
 <?php $this->load->view('new_common/footer', array('base_url' => $base_url)); ?>
