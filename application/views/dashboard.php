@@ -275,10 +275,10 @@
                                                 <td class="text-center v-a-m">1</td>
                                                 <td>Consent to Establish under the Water (Prevention and Control of Pollution) Act 1974, Air (Prevention and Control of Pollution) Act, 1981 and DG Set Approval.</td>
                                                 <td class="text-center v-a-m font-weight-bold">90 Days</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">404</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">153</td>
-                                                <td class="text-center v-a-m font-weight-bold text-success">134</td>
-                                                <td class="text-center v-a-m font-weight-bold text-danger">19</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">2939</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">423</td>
+                                                <td class="text-center v-a-m font-weight-bold text-success">1855</td>
+                                                <td class="text-center v-a-m font-weight-bold text-danger">661</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">-</td>
                                             </tr>
@@ -295,20 +295,20 @@
                                                     </span>
                                                 </td>
                                                 <td class="text-center v-a-m font-weight-bold">90 Days</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">648</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">210</td>
-                                                <td class="text-center v-a-m font-weight-bold text-success">164</td>
-                                                <td class="text-center v-a-m font-weight-bold text-danger">46</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">5120</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">992</td>
+                                                <td class="text-center v-a-m font-weight-bold text-success">3299</td>
+                                                <td class="text-center v-a-m font-weight-bold text-danger">829</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">-</td>                                            </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
                                                 <td>Registration / Renewal under the E-waste management rules, 2016</td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-success">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-danger">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">2</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">0</td>
+                                                <td class="text-center v-a-m font-weight-bold text-success">0</td>
+                                                <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">-</td>
                                             </tr>
@@ -316,21 +316,18 @@
                                                 <td class="text-center v-a-m">4</td>
                                                 <td>Registration/ Renewal under Plastic Waste (Management and Handling) Rules, 2016</td>
                                                 <td class="text-center v-a-m font-weight-bold">30 days/15 days</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-success">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-danger">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
-                                                <td class="text-center v-a-m font-weight-bold">-</td>   
+                                                <td class="text-center v-a-m font-weight-bold text-primary" colspan="6">
+                                                    <a target="_blank" href="https://eprplastic.cpcb.gov.in/#/plastic/home/nationalDashboardSpcb"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                                </td>   
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">5</td>
                                                 <td>Authorization under Solid Waste Management (processing, recycling, treatment, and disposal of solid waste) Rules, 2016</td>
                                                 <td class="text-center v-a-m font-weight-bold"></td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-success">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-danger">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">0</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">0</td>
+                                                <td class="text-center v-a-m font-weight-bold text-success">0</td>
+                                                <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">-</td>   
                                             </tr>
@@ -338,10 +335,10 @@
                                                 <td class="text-center v-a-m">6</td>
                                                 <td>Authorization under Construction and Demolition Waste Management (Management and Handling) Rules, 2016</td>
                                                 <td class="text-center v-a-m font-weight-bold"></td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-success">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-danger">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">1</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">0</td>
+                                                <td class="text-center v-a-m font-weight-bold text-success">0</td>
+                                                <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">-</td>   
                                             </tr>
@@ -349,10 +346,10 @@
                                                 <td class="text-center v-a-m">7</td>
                                                 <td>Registration for dealers under The Batteries (Management & Handling) Rules, 2001</td>
                                                 <td class="text-center v-a-m font-weight-bold"></td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-success">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-danger">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">0</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">0</td>
+                                                <td class="text-center v-a-m font-weight-bold text-success">0</td>
+                                                <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">-</td>   
                                             </tr>
@@ -360,10 +357,10 @@
                                                 <td class="text-center v-a-m">8</td>
                                                 <td>Authorization under Bio-Medical Waste Management (Management and Handling) Rules, 2016</td>
                                                 <td class="text-center v-a-m font-weight-bold"></td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-success">-</td>
-                                                <td class="text-center v-a-m font-weight-bold text-danger">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">26</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">26</td>
+                                                <td class="text-center v-a-m font-weight-bold text-success">0</td>
+                                                <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">-</td>   
                                             </tr>
