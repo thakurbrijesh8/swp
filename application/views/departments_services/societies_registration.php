@@ -198,6 +198,51 @@
                     </table>
                 </td>
             </tr>
+            <tr>
+                <td class="text-center">7</td>
+                <td>Housing Society Basera</td>
+                <td class="text-center" style="padding: 0px;">
+                    <table class="table mb-0">
+                        <tr>
+                            <td style="border: none; border-right: 1px solid #dee2e6;
+                                border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
+                                <a href="assets/department/societies_registration/Housing_Society_Basera.pdf" target="_blank" class="btn btn-grad btn-sm">View</a>
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center">8</td>
+                <td>Credit Society</td>
+                <td class="text-center" style="padding: 0px;">
+                    <table class="table mb-0">
+                        <tr>
+                            <td style="border: none; border-right: 1px solid #dee2e6;
+                                border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
+                                <a href="assets/department/societies_registration/Credit_Society.pdf" target="_blank" class="btn btn-grad btn-sm">View</a>
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center">9</td>
+                <td>GCS ACT - 1961</td>
+                <td class="text-center" style="padding: 0px;">
+                    <table class="table mb-0">
+                        <tr>
+                            <td style="border: none; border-right: 1px solid #dee2e6;
+                                border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
+                                <a href="assets/department/societies_registration/GCS_ACT-1961.pdf" target="_blank" class="btn btn-grad btn-sm">View</a>
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
