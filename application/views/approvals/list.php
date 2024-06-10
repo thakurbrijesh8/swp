@@ -106,7 +106,6 @@ $this->load->view('security');
             url: 'utility/get_dept_wise_questionary_data',
             data: {'district_for_clearances': district},
             error: function (textStatus, errorThrown) {
-                generateNewCSRFToken();
                 $('#spinner_container_for_clearances').html('');
                 validationMessageShow('clact', textStatus.statusText);
                 $('html, body').animate({scrollTop: '0px'}, 0);
@@ -114,7 +113,6 @@ $this->load->view('security');
             success: function (data) {
                 $('#spinner_container_for_clearances').html('');
                 var parseData = JSON.parse(data);
-                setNewToken(parseData.temp_token);
                 if (parseData.success == false) {
                     validationMessageShow('clact', parseData.message);
                     $('html, body').animate({scrollTop: '0px'}, 0);

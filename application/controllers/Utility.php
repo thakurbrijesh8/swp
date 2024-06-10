@@ -503,7 +503,8 @@ class Utility extends CI_Controller {
                 echo json_encode(get_logout_array());
                 return false;
             }
-            $success_array = get_success_array();
+            $success_array = array();
+            $success_array['success'] = true;
             $success_array['dept_wise_questionary_data'] = array();
             $district = get_from_post('district_for_clearances');
             if ($district == NULL || !$district || ($district != TALUKA_DAMAN && $district != TALUKA_DIU && $district != TALUKA_DNH)) {
@@ -561,6 +562,8 @@ class Utility extends CI_Controller {
             $success_array['questions_data'] = $questions_data;
             echo json_encode($success_array);
         } catch (\Exception $e) {
+            $success_array = array();
+            $success_array['success'] = true;
             $success_array['dept_wise_questionary_data'] = array();
             $success_array['service_data'] = array();
             $success_array['questions_data'] = array();
