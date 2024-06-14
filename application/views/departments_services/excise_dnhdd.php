@@ -158,7 +158,21 @@
                         <td class="text-center">Deputy Commissioner</td>
                         <td class="text-center">Commissioner</td>
                     </tr>
-
+                    <tr>
+                        <td class="text-center">10</td>
+                        <td>Online Excise Verification Certificate</td>
+                        <td class="text-center">
+                            <a class="btn btn-grad btn-sm" href="https://ddnexcise.gov.in/Home" target="_blank">Click Here</a>
+                        </td>
+                        <td class="text-center">Excise Department</td>
+                        <td class="text-center">Same Day</td>
+                        <td class="text-center">
+                            <a target="_blank" href="<?php echo $base_url; ?>assets/department/excise/Reform_171_v1.pdf"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                        </td>
+                        <td class="text-center">Assistant Commissioner</td>
+                        <td class="text-center">Deputy Commissioner</td>
+                        <td class="text-center">Commissioner</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
