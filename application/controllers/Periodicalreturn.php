@@ -124,7 +124,6 @@ class Periodicalreturn extends CI_Controller {
 
             $this->db->trans_start();
 
-
             $periodicalreturn_data['applicant_licence_date'] = convert_to_mysql_date_format($periodicalreturn_data['applicant_licence_date']);
             $periodicalreturn_data['proprietor_details'] = $proprietorData;
             $periodicalreturn_data['other_details'] = $otherData;
@@ -324,6 +323,10 @@ class Periodicalreturn extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            if ($ex_em_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
             if ($ex_em_data['payment_type'] == VALUE_TWO) {
                 $user_payment_type = get_from_post('user_payment_type_for_periodicalreturn_upload_challan');
                 if ($user_payment_type != VALUE_ONE && $user_payment_type != VALUE_TWO) {
@@ -419,7 +422,6 @@ class Periodicalreturn extends CI_Controller {
             return false;
         }
     }
-
 }
 
 /*

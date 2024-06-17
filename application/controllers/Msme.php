@@ -298,6 +298,10 @@ class Msme extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            if ($ex_msme_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
             if ($ex_msme_data['payment_type'] == VALUE_TWO) {
                 $user_payment_type = get_from_post('user_payment_type_for_msme_upload_challan');
                 if ($user_payment_type != VALUE_ONE && $user_payment_type != VALUE_TWO && $user_payment_type != VALUE_THREE) {
@@ -523,7 +527,6 @@ class Msme extends CI_Controller {
             return false;
         }
     }
-
 }
 
 /*

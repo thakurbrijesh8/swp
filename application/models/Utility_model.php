@@ -243,7 +243,7 @@ class Utility_model extends CI_Model {
     }
 
     function get_incentive_details_by_id($ips_incentive_id) {
-        $this->db->select('i.*, r.ips_incentive_id, r.scheme_type, r.scheme, r.status, r.status_datetime, '
+        $this->db->select('i.*, r.ips_incentive_id, r.user_id ,r.scheme_type, r.scheme, r.status, r.status_datetime, '
                 . 'r.submitted_datetime, r.processing_days, r.query_status, r.challan, r.challan_updated_date, r.fees_paid_challan, '
                 . 'r.fees_paid_challan_updated_date, r.registration_number, r.valid_upto, r.certificate_file, r.final_certificate, '
                 . 'r.remarks, r.payment_type, r.user_payment_type, r.total_fees, r.last_op_reference_number');

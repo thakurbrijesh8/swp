@@ -103,7 +103,7 @@ class Migrantworkers extends CI_Controller {
             }
             if (!empty($new_est_cont_data)) {
                 foreach ($new_est_cont_data as &$value) {
-    //                $value['user_id'] = $user_id;
+                    //                $value['user_id'] = $user_id;
                     $value['mw_id'] = $mw_id;
                     $value['created_by'] = $user_id;
                     $value['created_time'] = date('Y-m-d H:i:s');
@@ -201,10 +201,10 @@ class Migrantworkers extends CI_Controller {
                 return false;
             }
             $contractor_data = $this->migrantworkers_model->get_migrantworkers_under_all_contractor($user_id, $mw_id);
-    //        if (empty($contractor_data)) {
-    //            echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE.'4'));
-    //            return false;
-    //        }
+            //        if (empty($contractor_data)) {
+            //            echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE.'4'));
+            //            return false;
+            //        }
             $this->db->trans_complete();
             if ($this->db->trans_status() === false) {
                 echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
@@ -336,6 +336,10 @@ class Migrantworkers extends CI_Controller {
             $ex_em_data = $this->utility_model->get_by_id('mw_id', $mw_id, 'migrantworkers');
             if (empty($ex_em_data)) {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+            if ($ex_em_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
                 return false;
             }
             if ($ex_em_data['payment_type'] == VALUE_TWO) {
@@ -533,7 +537,6 @@ class Migrantworkers extends CI_Controller {
             return false;
         }
     }
-
 }
 
 /*

@@ -302,6 +302,10 @@ class Bocw extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            if ($ex_em_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
             if ($ex_em_data['payment_type'] == VALUE_TWO) {
                 $user_payment_type = get_from_post('user_payment_type_for_bocw_upload_challan');
                 if ($user_payment_type != VALUE_ONE && $user_payment_type != VALUE_TWO && $user_payment_type != VALUE_THREE) {
@@ -438,7 +442,7 @@ class Bocw extends CI_Controller {
             if ($document_id == VALUE_TWO) {
                 $file_path = 'documents' . DIRECTORY_SEPARATOR . 'bocw' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR . $ex_est_data['sign_of_principal_employee'];
             }
-    //        $file_path = 'documents' . DIRECTORY_SEPARATOR . 'bocw' . DIRECTORY_SEPARATOR . $ex_est_data[$document_id];
+            //        $file_path = 'documents' . DIRECTORY_SEPARATOR . 'bocw' . DIRECTORY_SEPARATOR . $ex_est_data[$document_id];
             if (file_exists($file_path)) {
                 unlink($file_path);
             }
@@ -449,7 +453,7 @@ class Bocw extends CI_Controller {
             if ($document_id == VALUE_TWO) {
                 $this->utility_model->update_data('bocw_id', $bocw_id, 'bocw', array('sign_of_principal_employee' => '', 'updated_by' => $session_user_id, 'updated_time' => date('Y-m-d H:i:s')));
             }
-    //        $this->utility_model->update_data('bocw_id', $bocw_id, 'bocw', array($document_id => '', 'updated_by' => $session_user_id, 'updated_time' => date('Y-m-d H:i:s')));
+            //        $this->utility_model->update_data('bocw_id', $bocw_id, 'bocw', array($document_id => '', 'updated_by' => $session_user_id, 'updated_time' => date('Y-m-d H:i:s')));
             $success_array = get_success_array();
             $success_array['message'] = DOCUMENT_REMOVED_MESSAGE;
             echo json_encode($success_array);
@@ -505,7 +509,6 @@ class Bocw extends CI_Controller {
             return false;
         }
     }
-
 }
 
 /*

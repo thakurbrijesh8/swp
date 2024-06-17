@@ -456,6 +456,10 @@ class Filmshooting extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            if ($ex_fs_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
             if ($ex_fs_data['payment_type'] == VALUE_TWO) {
                 $user_payment_type = get_from_post('user_payment_type_for_filmshooting_upload_challan');
                 if ($user_payment_type != VALUE_ONE && $user_payment_type != VALUE_TWO && $user_payment_type != VALUE_THREE) {
@@ -573,7 +577,6 @@ class Filmshooting extends CI_Controller {
             $filmshooting_id = get_from_post('filmshooting_id');
             $file_no = get_from_post('file_no');
 
-
             if ($file_no == VALUE_ONE) {
                 $filmshooting_data = $this->utility_model->upload_document('declaration_for_filmshooting', 'filmshooting', 'declaration_', 'declaration');
             }
@@ -623,7 +626,6 @@ class Filmshooting extends CI_Controller {
             return false;
         }
     }
-
 }
 
 /*

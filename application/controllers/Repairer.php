@@ -483,6 +483,10 @@ class Repairer extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            if ($ex_rp_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
             if ($ex_rp_data['payment_type'] == VALUE_TWO) {
                 $user_payment_type = get_from_post('user_payment_type_for_repairer_upload_challan');
                 if ($user_payment_type != VALUE_ONE && $user_payment_type != VALUE_TWO && $user_payment_type != VALUE_THREE) {
@@ -583,10 +587,10 @@ class Repairer extends CI_Controller {
             }
             error_reporting(E_ERROR);
             $this->utility_lib->gc_for_repairer($existing_repairer_data);
-    //        $data = array('repairer_data' => $existing_repairer_data);
-    //        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'Legal']);
-    //        $mpdf->WriteHTML($this->load->view('wmrepairer/certificate', $data, TRUE));
-    //        $mpdf->Output('Repairer_certificate_' . time() . '.pdf', 'I');
+            //        $data = array('repairer_data' => $existing_repairer_data);
+            //        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'Legal']);
+            //        $mpdf->WriteHTML($this->load->view('wmrepairer/certificate', $data, TRUE));
+            //        $mpdf->Output('Repairer_certificate_' . time() . '.pdf', 'I');
         } catch (\Exception $e) {
             print_r($e->getMessage());
             return false;
@@ -670,7 +674,6 @@ class Repairer extends CI_Controller {
             return false;
         }
     }
-
 }
 
 /*

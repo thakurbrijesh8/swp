@@ -414,6 +414,10 @@ class Na extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            if ($ex_em_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
             if ($ex_em_data['payment_type'] == VALUE_TWO) {
                 $user_payment_type = get_from_post('user_payment_type_for_na_upload_challan');
                 if ($user_payment_type != VALUE_ONE && $user_payment_type != VALUE_TWO && $user_payment_type != VALUE_THREE) {
@@ -512,8 +516,8 @@ class Na extends CI_Controller {
                 print_r(DATABASE_ERROR_MESSAGE);
                 return;
             }
-    //        $taluka_array = $this->config->item('taluka_array');
-    //        $existing_na_data['district'] = isset($taluka_array[$existing_na_data['district']]) ? $taluka_array[$existing_na_data['district']] : '-';
+            //        $taluka_array = $this->config->item('taluka_array');
+            //        $existing_na_data['district'] = isset($taluka_array[$existing_na_data['district']]) ? $taluka_array[$existing_na_data['district']] : '-';
             error_reporting(E_ERROR);
             $this->utility_lib->gc_for_na($existing_na_data);
         } catch (\Exception $e) {
@@ -582,7 +586,6 @@ class Na extends CI_Controller {
             return false;
         }
     }
-
 }
 
 /*

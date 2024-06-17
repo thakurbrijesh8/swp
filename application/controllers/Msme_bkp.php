@@ -2342,7 +2342,6 @@ class Msme extends CI_Controller {
         //}
         $existing_msme_declaration_data = $this->utility_model->get_by_id('incentive_id', $incentive_id, 'msme_declaration');
 
-
         if (empty($existing_msme_data)) {
             print_r(INVALID_ACCESS_MESSAGE);
             return;
@@ -2423,6 +2422,10 @@ class Msme extends CI_Controller {
         $ex_msme_data = $this->utility_model->get_by_id('incentive_id', $incentive_id, 'incentive_generalform');
         if (empty($ex_msme_data)) {
             echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+            return false;
+        }
+        if ($ex_msme_data['user_id'] != $user_id) {
+            header("Location:" . base_url() . "login");
             return false;
         }
         if ($ex_msme_data['payment_type'] == VALUE_TWO) {
@@ -2512,7 +2515,6 @@ class Msme extends CI_Controller {
         error_reporting(E_ERROR);
         $this->utility_lib->gc_for_msme($existing_msme_data);
     }
-
 }
 
 /*

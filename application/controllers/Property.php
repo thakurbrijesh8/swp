@@ -139,7 +139,6 @@ class Property extends CI_Controller {
             $this->db->trans_start();
             $property_data['application_date'] = convert_to_mysql_date_format($property_data['application_date']);
 
-
             $dates_array = array();
             $holiday_dates = array();
             $temp_holiday_dates = $this->utility_model->get_result_data_by_id('fdw_ess', VALUE_ONE, 'holidaylist');
@@ -276,7 +275,6 @@ class Property extends CI_Controller {
             $appointment_data['created_by'] = $user_id;
             $appointment_data['created_time'] = date('Y-m-d H:i:s');
 
-
             if (!$appointment_id || $appointment_id == NULL) {
                 $appointment_id = $this->utility_model->insert_data('appointment', $appointment_data);
             } else {
@@ -311,7 +309,6 @@ class Property extends CI_Controller {
 
             $success_array = get_success_array();
             $success_array['message'] = $module_type == VALUE_ONE ? APP_DRAFT_MESSAGE : APP_SUBMITTED_MESSAGE;
-
 
             $success_array['encrypt_id'] = get_encrypt_id($property_id);
             $new_appointment_data['property_id'] = $property_id;
@@ -522,6 +519,10 @@ class Property extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            if ($ex_pr_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
             if ($ex_pr_data['payment_type'] == VALUE_TWO) {
                 $user_payment_type = get_from_post('user_payment_type_for_property_upload_challan');
                 if ($user_payment_type != VALUE_ONE && $user_payment_type != VALUE_TWO && $user_payment_type != VALUE_THREE) {
@@ -675,7 +676,6 @@ class Property extends CI_Controller {
             return false;
         }
     }
-
 }
 
 /*

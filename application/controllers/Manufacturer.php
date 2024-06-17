@@ -519,6 +519,10 @@ class Manufacturer extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            if ($ex_em_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
             if ($ex_em_data['payment_type'] == VALUE_TWO) {
                 $user_payment_type = get_from_post('user_payment_type_for_manufacturer_upload_challan');
                 if ($user_payment_type != VALUE_ONE && $user_payment_type != VALUE_TWO && $user_payment_type != VALUE_THREE) {
@@ -619,10 +623,10 @@ class Manufacturer extends CI_Controller {
             }
             error_reporting(E_ERROR);
             $this->utility_lib->gc_for_manufacturer($existing_manufacturer_data);
-    //        $data = array('manufacturer_data' => $existing_manufacturer_data);
-    //        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'Legal']);
-    //        $mpdf->WriteHTML($this->load->view('wmmanufacturer/certificate', $data, TRUE));
-    //        $mpdf->Output('Repairer_certificate_' . time() . '.pdf', 'I');
+            //        $data = array('manufacturer_data' => $existing_manufacturer_data);
+            //        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'Legal']);
+            //        $mpdf->WriteHTML($this->load->view('wmmanufacturer/certificate', $data, TRUE));
+            //        $mpdf->Output('Repairer_certificate_' . time() . '.pdf', 'I');
         } catch (\Exception $e) {
             print_r($e->getMessage());
             return false;
@@ -638,7 +642,6 @@ class Manufacturer extends CI_Controller {
             $session_user_id = get_from_session('temp_id_for_eodbsws');
             $manufacturer_id = get_from_post('manufacturer_id');
             $file_no = get_from_post('file_no');
-
 
             if ($file_no == VALUE_ONE) {
                 $manufacturer_data = $this->utility_model->upload_document('support_document_for_manufacturer', 'manufacturer', 'support_document_', 'support_document');
@@ -707,7 +710,6 @@ class Manufacturer extends CI_Controller {
             return false;
         }
     }
-
 }
 
 /*

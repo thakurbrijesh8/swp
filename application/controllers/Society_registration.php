@@ -272,6 +272,10 @@ class Society_registration extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            if ($ex_society_registration_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
             if ($ex_society_registration_data['payment_type'] == VALUE_TWO) {
                 $user_payment_type = get_from_post('user_payment_type_for_society_registration_upload_challan');
                 if ($user_payment_type != VALUE_ONE && $user_payment_type != VALUE_TWO && $user_payment_type != VALUE_THREE) {
@@ -346,7 +350,7 @@ class Society_registration extends CI_Controller {
             return false;
         }
     }
-    
+
     function upload_passbook() {
         try {
             if (!is_ajax()) {
@@ -364,7 +368,7 @@ class Society_registration extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
-            
+
             $society_registration_data = array();
             if ($_FILES['passbook_for_society_registration_upload_passbook']['name'] != '') {
                 $documents_path = 'documents';
@@ -390,7 +394,7 @@ class Society_registration extends CI_Controller {
                 $society_registration_data['passbook'] = $filename;
                 $society_registration_data['passbook_updated_date'] = date('Y-m-d H:i:s');
             }
-           
+
             $society_registration_data['updated_by'] = $user_id;
             $society_registration_data['updated_time'] = date('Y-m-d H:i:s');
             $this->db->trans_start();
@@ -403,13 +407,14 @@ class Society_registration extends CI_Controller {
             $success_array = get_success_array();
             $success_array['status'] = isset($society_registration_data['status']) ? $society_registration_data['status'] : $ex_society_registration_data['status'];
             $success_array['message'] = PASSBOOK_UPLOADED_MESSAGE;
-            
+
             echo json_encode($success_array);
         } catch (\Exception $e) {
             echo json_encode(get_error_array($e->getMessage()));
             return false;
         }
     }
+
     function remove_passbook() {
         try {
             if (!is_ajax()) {
@@ -446,7 +451,6 @@ class Society_registration extends CI_Controller {
             return false;
         }
     }
-
 }
 
 /*

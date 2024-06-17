@@ -1562,7 +1562,6 @@ class Textile extends CI_Controller {
         $new_textile_declaration_data['encrypt_id'] = $success_array['encrypt_id'];
         $success_array['declaration_data'] = $new_textile_declaration_data;
 
-
         echo json_encode($success_array);
     }
 
@@ -2698,7 +2697,6 @@ class Textile extends CI_Controller {
         // }
         $existing_textile_declaration_data = $this->utility_model->get_by_id('incentive_id', $incentive_id, 'textile_declaration');
 
-
         if (empty($existing_textile_data)) {
             print_r(INVALID_ACCESS_MESSAGE);
             return;
@@ -2777,6 +2775,10 @@ class Textile extends CI_Controller {
         $ex_textile_data = $this->utility_model->get_by_id('incentive_id', $incentive_id, 'incentive_generalform_textile');
         if (empty($ex_textile_data)) {
             echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+            return false;
+        }
+        if ($ex_textile_data['user_id'] != $user_id) {
+            header("Location:" . base_url() . "login");
             return false;
         }
         if ($ex_textile_data['payment_type'] == VALUE_TWO) {
@@ -2870,7 +2872,6 @@ class Textile extends CI_Controller {
 //        $mpdf->WriteHTML($this->load->view('textile/certificate', $data, TRUE));
 //        $mpdf->Output('Textile_certificate_' . time() . '.pdf', 'I');
     }
-
 }
 
 /*

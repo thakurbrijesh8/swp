@@ -285,7 +285,7 @@ class Aplicence_renewal extends CI_Controller {
             if ($document_type == VALUE_FOUR) {
                 $file_path = 'documents' . DIRECTORY_SEPARATOR . 'aplicence' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR . $ex_est_data['signature'];
             }
-    //        $file_path = 'documents' . DIRECTORY_SEPARATOR . 'aplicence' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR . $ex_est_data[$document_id];
+            //        $file_path = 'documents' . DIRECTORY_SEPARATOR . 'aplicence' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR . $ex_est_data[$document_id];
 
             if (file_exists($file_path)) {
                 unlink($file_path);
@@ -298,7 +298,7 @@ class Aplicence_renewal extends CI_Controller {
                 $this->utility_model->update_data('aplicence_renewal_id', $aplicence_renewal_id, 'appli_licence_renewal', array('signature' => '', 'updated_by' => $session_user_id, 'updated_time' => date('Y-m-d H:i:s')));
             }
 
-    //        $this->utility_model->update_data('aplicence_renewal_id', $aplicence_renewal_id, 'appli_licence_renewal', array($document_id => '', 'updated_by' => $session_user_id, 'updated_time' => date('Y-m-d H:i:s')));
+            //        $this->utility_model->update_data('aplicence_renewal_id', $aplicence_renewal_id, 'appli_licence_renewal', array($document_id => '', 'updated_by' => $session_user_id, 'updated_time' => date('Y-m-d H:i:s')));
 
 
             $success_array = get_success_array();
@@ -431,6 +431,10 @@ class Aplicence_renewal extends CI_Controller {
             $ex_em_data = $this->utility_model->get_by_id('aplicence_renewal_id', $aplicence_renewal_id, 'appli_licence_renewal');
             if (empty($ex_em_data)) {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+            if ($ex_em_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
                 return false;
             }
             if ($ex_em_data['payment_type'] == VALUE_TWO) {
@@ -611,7 +615,6 @@ class Aplicence_renewal extends CI_Controller {
             return false;
         }
     }
-
 }
 
 /*
