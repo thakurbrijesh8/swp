@@ -78,7 +78,7 @@ class Payment_lib {
 
         $temp_od = $district . '-' . $module_type . '-' . $module_id . '-' . $reference_number;
         $od = api_encryption($temp_od);
-        $on = $district_sc . $dept_sc_name . generate_registration_number($pm, $module_id) . '-' . $reference_number;
+        $on = PG_PSOURCE . $district_sc . $dept_sc_name . generate_registration_number($pm, $module_id) . '-' . $reference_number;
 
         $pg_rp = PG_MID . '|' . PG_OM . '|' . PG_COUNTRY . '|' . PG_CURRENCY . '|' . $total_fees . '|'
                 . $od . '|' . PG_SUCCESS_URL . '|' . PG_FAIL_URL . '|' . PG_AGG_ID . '|' . $on . '|'
