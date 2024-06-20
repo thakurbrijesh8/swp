@@ -120,6 +120,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
+                                <a target="_blank" href="https://daman.nic.in/websites/town_country_planning_department_daman/documents/2016/DD-Development-Control-Rules-2007.pdf"> <button type="button" class="btn btn-grad btn-sm">View</button></a>
                                 <a target="_blank" href="<?php echo $base_url; ?>assets/department/pda/Part_1_2023111049558033.pdf"> <button type="button" class="btn btn-grad btn-sm">View Part (I)</button></a>
                                 <a target="_blank" href="<?php echo $base_url; ?>assets/department/pda/Part_2_202311101625640472.pdf"> <button type="button" class="btn btn-grad btn-sm">View Part (II)</button></a>
                             </td>
