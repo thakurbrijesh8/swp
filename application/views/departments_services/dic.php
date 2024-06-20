@@ -56,7 +56,7 @@
                         <td class="text-center">District Industries Center - Daman</td>
                         <td class="text-center">30</td>
                         <td class="text-center">
-                            
+
                         </td>
                         <td class="text-center">General Manager</td>
                         <td class="text-center">Secretary</td>
@@ -215,6 +215,14 @@
                 <td style="border: none; border-right: 1px solid #dee2e6;
                     border-bottom: 1px solid #dee2e6;" class="text-center">
                     <a target="_blank" href="<?php echo $base_url; ?>assets/department/dic/Reform_number_148_149_150_151_152_307_308_309_310_311_BRAP_Order_17112022.pdf"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center">15</td>
+                <td>PM Gati Shakti - UT Level institutional framework - Mandate Constitution of institutional framework in line with PM Gati Shakti guidelines at State and District Level</td>
+                <td style="border: none; border-right: 1px solid #dee2e6;
+                    border-bottom: 1px solid #dee2e6;" class="text-center">
+                    <a target="_blank" href="<?php echo $base_url; ?>assets/department/dic/Reform_9_v1.pdf"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                 </td>
             </tr>
         </tbody>
