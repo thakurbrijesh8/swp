@@ -499,10 +499,6 @@ class Utility extends CI_Controller {
                 header("Location:" . base_url() . "login");
                 return false;
             }
-            if (!is_authenticated()) {
-                echo json_encode(get_logout_array());
-                return false;
-            }
             $success_array = array();
             $success_array['success'] = true;
             $success_array['dept_wise_questionary_data'] = array();

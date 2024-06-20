@@ -143,6 +143,30 @@ function check_pg_status() {
     return $return_data;
 }
 
+function check_crone_authentication() {
+    if (!isset($_GET['at'])) {
+        return false;
+    }
+    $tat = $_GET['at'];
+    if (!$tat || $tat == null) {
+        return false;
+    }
+    $at = api_decryption($tat);
+    if ($at != ENCRYPTION_KEY) {
+        return false;
+    }
+    return true;
+}
+
+function check_crone_ip_authentication() {
+    $CI = & get_instance();
+    $aips = $CI->config->item('allow_ips_for_crone');
+    if (!isset($aips[$_SERVER['REMOTE_ADDR']])) {
+        return false;
+    }
+    return true;
+}
+
 /**
  * EOF: ./application/helpers/request_helper.php
  */
