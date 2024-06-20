@@ -187,12 +187,13 @@
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
                                                 </th>
-                                                <th class="v-a-m" style="width: 10%;">Total Number of Applications Received</th>
-                                                <th class="v-a-m" style="width: 10%;">Total Number of Applications Processed</th>
-                                                <th class="v-a-m" style="width: 10%;">Total Number of Applications Approved</th>
-                                                <th class="v-a-m" style="width: 10%;">Total Number of Applications Rejected</th>
-                                                <th class="v-a-m" style="width: 10%;">Average Time Taken To Grant Approval</th>
-                                                <th class="v-a-m" style="width: 10%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 8%;">Total Number of Applications Received</th>
+                                                <th class="v-a-m" style="width: 8%;">Total Number of Applications Processed</th>
+                                                <th class="v-a-m" style="width: 8%;">Total Number of Applications Approved</th>
+                                                <th class="v-a-m" style="width: 8%;">Total Number of Applications Rejected</th>
+                                                <th class="v-a-m" style="width: 8%;">Average Time Taken To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 8%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 8%;">Fee Incurred to Grant Approval / Certificate</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -206,6 +207,7 @@
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($textile_rejected_app) ? $textile_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">22</td>
                                                 <td class="text-center v-a-m font-weight-bold">27</td>
+                                                <td class="text-center v-a-m font-weight-bold">Not Applicable</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
@@ -217,6 +219,7 @@
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($msme_rejected_app) ? $msme_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">25</td>
                                                 <td class="text-center v-a-m font-weight-bold">29</td>
+                                                <td class="text-center v-a-m font-weight-bold">Not Applicable</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
@@ -228,6 +231,7 @@
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($ips_incentive_rejected_app) ? $ips_incentive_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($ps_incentive_average_time_to_ga) ? $ps_incentive_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($ps_incentive_median_time_to_ga) ? $ps_incentive_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold">Not Applicable</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">4</td>
@@ -239,6 +243,7 @@
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($land_allotment_rejected_app) ? $land_allotment_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">25</td>
                                                 <td class="text-center v-a-m font-weight-bold">25</td>
+                                                <td class="text-center v-a-m font-weight-bold"></td>
                                             </tr>
                                         </tbody>
                                     </table>
