@@ -132,13 +132,11 @@ class Home extends CI_Controller {
         $this->load->model('dashboard_model');
         $dashboard_array = array();
         $module_array = $this->config->item('query_module_array');
-        $this->db->trans_start();
         foreach ($module_array as $m_array) {
             $this->_generate_status_wise_array($dashboard_array, $m_array['tbl_text']);
         }
-        error_reporting(~E_WARNING);
+        error_reporting(~E_WARNING & E_ALL & ~E_DEPRECATED);
         $dashboard_array['fire_dashboard'] = file_get_contents('http://eservices.ddfes.in/DashboardAppList/embedded');
-        $this->db->trans_complete();
         $this->load->view('dashboard', $dashboard_array);
     }
 
@@ -148,7 +146,6 @@ class Home extends CI_Controller {
         $module_name = 'construction';
         $this->_get_status_wise_basic_array($dashboard_array, $module_name);
         $dashboard_array[$module_name . '_timelimit'] = '30 Days';
-        $this->db->trans_start();
         $temp_dnh_pda_json = file_get_contents('http://103.77.196.165/BpamsClient/DataServices/ApplicationStatus.svc/GetDNHPDAStatus');
         $dnh_pda_array = json_decode($temp_dnh_pda_json, true);
         if (is_array($dnh_pda_array)) {
@@ -161,7 +158,6 @@ class Home extends CI_Controller {
                 $dashboard_array[$module_name . '_timelimit'] = isset($dnh_pda_array['services'][0]['TimeLimit']) ? $dnh_pda_array['services'][0]['TimeLimit'] : '30 Days';
             }
         }
-        $this->db->trans_complete();
         $this->load->view('dnh_pda_dashboard', $dashboard_array);
     }
 
@@ -225,7 +221,6 @@ class Home extends CI_Controller {
     public function grievance() {
         $this->load->model('query_grievance_model');
         $query_grievance_array = array();
-        $this->db->trans_start();
         $this->_generate_query_grievance_status_wise_array($query_grievance_array, 'query_grievance');
         $this->load->view('reform_evidence/grievance', $query_grievance_array);
     }
@@ -468,7 +463,6 @@ class Home extends CI_Controller {
     public function dmc_property_tax_calculator() {
         $this->load->view('departments_services/property_tax_calculator');
     }
-
 }
 
 /*
