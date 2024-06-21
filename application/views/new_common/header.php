@@ -44,6 +44,13 @@
                                         <div class="row w-100">
                                             <div class="col-sm-6 col-lg-3">
                                                 <ul class="list-unstyled">
+                                                    <li><a class="dropdown-item" href="<?php echo $base_url; ?>departments-and-services">All Departments</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="row w-100">
+                                            <div class="col-sm-6 col-lg-3">
+                                                <ul class="list-unstyled">
                                                     <li><a class="dropdown-item" href="<?php echo $base_url; ?>collectorate-dnhdd">Collectorates</a></li>
                                                     <li><a class="dropdown-item" href="<?php echo $base_url; ?>district-industries-center-dnhdd">District Industries Center</a></li>
                                                     <li><a class="dropdown-item" href="<?php echo $base_url; ?>district-panchayat-dnhdd">District Panchayats</a></li>
