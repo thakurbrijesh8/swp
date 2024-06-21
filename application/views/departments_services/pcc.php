@@ -146,6 +146,21 @@
                         <td class="text-center">Chairman</td>
                         <td class="text-center">-</td>
                     </tr>
+                    <tr>
+                        <td class="text-center">9</td>
+                        <td>Registration/ Renewal under Plastic Waste Management Rules, 2016 for manufacturer</td>
+                        <td class="text-center">
+                            <a class="btn btn-grad btn-sm" href="https://eprplastic.cpcb.gov.in/#/plastic/home" target="_blank">Click Here</a>
+                        </td>
+                        <td class="text-center">Pollution Control Committee</td>
+                        <td class="text-center">90 Days</td>
+                        <td class="text-center">
+                            <a target="_blank" class="btn btn-grad btn-sm" href="<?php echo $base_url; ?>assets/department/pcc/Guidance_Document_PCC_Manufacturer.pdf"> View</a>
+                        </td>
+                        <td class="text-center">Member Secretary</td>
+                        <td class="text-center">Chairman</td>
+                        <td class="text-center">-</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
