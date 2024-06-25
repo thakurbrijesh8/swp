@@ -76,7 +76,7 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m">1</td>
                                                 <td>Registration under "Shops & Establishment Act"</td>
                                                 <td class="text-center v-a-m">
-                                                    <button type="button" class="btn btn-grad btn-sm" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_THIRTYTHREE; ?>);">View</button>
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_THIRTYTHREE; ?>);">View</button>
                                                 </td>
                                                 <td class="text-center v-a-m font-weight-bold">15 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($shop_received_app) ? $shop_received_app : 0; ?></td>
