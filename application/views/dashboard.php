@@ -89,6 +89,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
                                                 <td>Renewal under "Shops and Establishment Act"</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_FOURTYTWO; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">20 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($shop_renewal_received_app) ? $shop_renewal_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($shop_renewal_processed_app) ? $shop_renewal_processed_app : 0; ?></td>
@@ -100,6 +103,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
                                                 <td>Registration / Renewal under "The Building and Other Construction Workers (Regulation of Employment Conditions of Service Act), 1996"</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_THIRTYTWO; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">20 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($bocw_received_app) ? $bocw_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($bocw_processed_app) ? $bocw_processed_app : 0; ?></td>
@@ -111,6 +117,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">4</td>
                                                 <td>Registration Certificate of "Establishment Inter State Migrant Workmen (RE&CS) Act, 1979 (License of Contractor Establishment)"</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_THIRTYFOUR; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">20 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($migrantworkers_received_app) ? $migrantworkers_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($migrantworkers_processed_app) ? $migrantworkers_processed_app : 0; ?></td>
@@ -122,6 +131,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">5</td>
                                                 <td>Renewal Certificate of "Establishment Inter State Migrant Workmen (RE&CS) Act, 1979 (License of Contractor Establishment)"</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_FOURTYFIVE; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">20 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($migrantworkers_renewal_received_app) ? $migrantworkers_renewal_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($migrantworkers_renewal_processed_app) ? $migrantworkers_renewal_processed_app : 0; ?></td>
@@ -133,6 +145,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">6</td>
                                                 <td>Registration / Renewal of principal employer's establishment under provision of The Contracts Labour (Regulation and Abolition) Act, 1970</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_THIRTYONE; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">20 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($establishment_received_app) ? $establishment_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($establishment_processed_app) ? $establishment_processed_app : 0; ?></td>
@@ -144,6 +159,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">7</td>
                                                 <td>License for Contractors under provision of The Contracts Labour (R & A) Act,1970</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_FOURTYTHREE; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">20 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($appli_licence_received_app) ? $appli_licence_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($appli_licence_processed_app) ? $appli_licence_processed_app : 0; ?></td>
@@ -155,6 +173,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">8</td>
                                                 <td>Renewal License for Contractors under provision of The Contracts Labour (R & A) Act,1970</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_FOURTYSIX; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">20 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($appli_licence_renewal_received_app) ? $appli_licence_renewal_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($appli_licence_renewal_processed_app) ? $appli_licence_renewal_processed_app : 0; ?></td>
@@ -166,6 +187,9 @@ $this->load->view('security');
 <!--                                            <tr>
                                                 <td class="text-center v-a-m">9</td>
                                                 <td>Single Annual Return form</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_THIRTYNINE; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">20 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($singlereturn_received_app) ? $singlereturn_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($singlereturn_processed_app) ? $singlereturn_processed_app : 0; ?></td>
@@ -192,6 +216,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="width: 10px;">Received Fees Details</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -209,6 +234,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">1</td>
                                                 <td>Incentives under Investment Promotion Scheme - 2015 for Textile Sector</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_TEN; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($textile_received_app) ? $textile_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($textile_processed_app) ? $textile_processed_app : 0; ?></td>
@@ -221,6 +249,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
                                                 <td>Incentives under Investment Promotion Scheme - 2015 for MSME</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_NINE; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($msme_received_app) ? $msme_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($msme_processed_app) ? $msme_processed_app : 0; ?></td>
@@ -233,6 +264,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
                                                 <td>Investment Promotion Scheme : 2022 to 2027 (20 May 2022 to 19 May 2027)</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_FIFTYTWO; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($ips_incentive_received_app) ? $ips_incentive_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($ips_incentive_processed_app) ? $ips_incentive_processed_app : 0; ?></td>
@@ -245,6 +279,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">4</td>
                                                 <td>Allotment of land in Industrial Area</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_TWENTYFIVE; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($land_allotment_received_app) ? $land_allotment_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($land_allotment_processed_app) ? $land_allotment_processed_app : 0; ?></td>
@@ -272,6 +309,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="width: 10px;">Received Fees Details</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -288,6 +326,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">1</td>
                                                 <td>Consent to Establish under the Water (Prevention and Control of Pollution) Act 1974, Air (Prevention and Control of Pollution) Act, 1981 and DG Set Approval.</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">90 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">2939</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">423</td>
@@ -308,6 +347,7 @@ $this->load->view('security');
                                                         (Note : The above consented DG Set is permitted for standby arrangement only and not as a captive power generation unit.)
                                                     </span>
                                                 </td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">90 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">5120</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">992</td>
@@ -318,6 +358,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
                                                 <td>Registration / Renewal under the E-waste management rules, 2016</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">2</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">0</td>
@@ -329,6 +370,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">4</td>
                                                 <td>Registration/ Renewal under Plastic Waste (Management and Handling) Rules, 2016</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">30 days/15 days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary" colspan="6">
                                                     <a target="_blank" href="https://eprplastic.cpcb.gov.in/#/plastic/home/nationalDashboardSpcb"><button type="button" class="btn btn-grad btn-sm">View</button></a>
@@ -337,6 +379,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">5</td>
                                                 <td>Authorization under Solid Waste Management (processing, recycling, treatment, and disposal of solid waste) Rules, 2016</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold"></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">0</td>
@@ -348,6 +391,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">6</td>
                                                 <td>Authorization under Construction and Demolition Waste Management (Management and Handling) Rules, 2016</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold"></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">1</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">0</td>
@@ -359,6 +403,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">7</td>
                                                 <td>Registration for dealers under The Batteries (Management & Handling) Rules, 2001</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold"></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">0</td>
@@ -370,6 +415,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">8</td>
                                                 <td>Authorization under Bio-Medical Waste Management (Management and Handling) Rules, 2016</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold"></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">26</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">26</td>
@@ -397,6 +443,7 @@ $this->load->view('security');
                                                 <tr class="text-center">
                                                     <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                     <th class="v-a-m">Name of Service</th>
+                                                    <th class="v-a-m" style="width: 10px;">Received Fees Details</th>
                                                     <th class="v-a-m" style="width: 14%;">
                                                         Time Limit Prescribed as per the Public<br>
                                                         Service Guarantee Act or Equivalent Act
@@ -413,6 +460,9 @@ $this->load->view('security');
                                                 <tr>
                                                     <td class="text-center v-a-m">1</td>
                                                     <td>Registration of license under The Factories Act, 1948</td>
+                                                    <td class="text-center v-a-m">
+                                                        <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_THIRTYFIVE; ?>);">View</button>
+                                                    </td>
                                                     <td class="text-center v-a-m font-weight-bold">20 Days</td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($factorylicence_received_app) ? $factorylicence_received_app : 0; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($factorylicence_processed_app) ? $factorylicence_processed_app : 0; ?></td>
@@ -424,6 +474,9 @@ $this->load->view('security');
                                                 <tr>
                                                     <td class="text-center v-a-m">2</td>
                                                     <td>Renewal of license under The Factories Act, 1948</td>
+                                                    <td class="text-center v-a-m">
+                                                        <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_FOURTYONE; ?>);">View</button>
+                                                    </td>
                                                     <td class="text-center v-a-m font-weight-bold">60 Days</td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($factorylicence_renewal_received_app) ? $factorylicence_renewal_received_app : 0; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($factorylicence_renewal_processed_app) ? $factorylicence_renewal_processed_app : 0; ?></td>
@@ -435,6 +488,9 @@ $this->load->view('security');
                                                 <tr>
                                                     <td class="text-center v-a-m">3</td>
                                                     <td>Approval of plan and permission to construct/extend/or take into use any building as a factory under the Factories Act, 1948</td>
+                                                    <td class="text-center v-a-m">
+                                                        <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_THIRTYSIX; ?>);">View</button>
+                                                    </td>
                                                     <td class="text-center v-a-m font-weight-bold">15 Days</td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($buildingplan_received_app) ? $buildingplan_received_app : 0; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($buildingplan_processed_app) ? $buildingplan_processed_app : 0; ?></td>
@@ -446,6 +502,9 @@ $this->load->view('security');
                                                 <tr>
                                                     <td class="text-center v-a-m">4</td>
                                                     <td>Registration of Boilers under The Boilers Act, 1923</td>
+                                                    <td class="text-center v-a-m">
+                                                        <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_THIRTYSEVEN; ?>);">View</button>
+                                                    </td>
                                                     <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($boileract_received_app) ? $boileract_received_app : 0; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($boileract_processed_app) ? $boileract_processed_app : 0; ?></td>
@@ -457,6 +516,9 @@ $this->load->view('security');
                                                 <tr>
                                                     <td class="text-center v-a-m">5</td>
                                                     <td>Renewal of Boilers under The Boilers Act, 1923</td>
+                                                    <td class="text-center v-a-m">
+                                                        <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_FOURTYFOUR; ?>);">View</button>
+                                                    </td>
                                                     <td class="text-center v-a-m font-weight-bold">15 Days</td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($boileract_renewal_received_app) ? $boileract_renewal_received_app : 0; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($boileract_renewal_processed_app) ? $boileract_renewal_processed_app : 0; ?></td>
@@ -468,6 +530,9 @@ $this->load->view('security');
                                                 <tr>
                                                     <td class="text-center v-a-m">6</td>
                                                     <td>Registration / Renewal of Boilers Manufactures under The Boilers Act, 1923</td>
+                                                    <td class="text-center v-a-m">
+                                                        <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_THIRTYEIGHT; ?>);">View</button>
+                                                    </td>
                                                     <td class="text-center v-a-m font-weight-bold">15 Days</td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($boilermanufactures_received_app) ? $boilermanufactures_received_app : 0; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($boilermanufactures_processed_app) ? $boilermanufactures_processed_app : 0; ?></td>
@@ -495,6 +560,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="width: 10px;">Received Fees Details</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -511,6 +577,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">1</td>
                                                 <td>Mobile Tower Approval</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">7 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
@@ -522,6 +589,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
                                                 <td>Trade Licenses</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">7 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">584</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">584</td>
@@ -548,6 +616,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="width: 10px;">Received Fees Details</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -564,6 +633,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">1</td>
                                                 <td>NA Application Form / Change in Land Use</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_FOURTY; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">90 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($na_received_app) ? $na_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($na_processed_app) ? $na_processed_app : 0; ?></td>
@@ -579,6 +651,9 @@ $this->load->view('security');
                                                     <br>
                                                     (Registration and Renewal)
                                                 </td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_EIGHT; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">45 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($cinema_received_app) ? $cinema_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($cinema_processed_app) ? $cinema_processed_app : 0; ?></td>
@@ -590,6 +665,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
                                                 <td>Film Shooting Permission(s) Form</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_TWENTYTWO; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">5 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($filmshooting_received_app) ? $filmshooting_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($filmshooting_processed_app) ? $filmshooting_processed_app : 0; ?></td>
@@ -601,6 +679,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">4</td>
                                                 <td>Society Registration</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_SIXTY; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">5 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($society_registration_received_app) ? $society_registration_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($society_registration_processed_app) ? $society_registration_processed_app : 0; ?></td>
@@ -612,6 +693,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">5</td>
                                                 <td>Approval for DG set installation</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">5 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">0</td>
@@ -651,6 +733,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="width: 10px;">Received Fees Details</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -667,6 +750,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">1</td>
                                                 <td>Registration under "Weights & Measure"</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_ONE; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_registration_received_app) ? $wm_registration_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_registration_processed_app) ? $wm_registration_processed_app : 0; ?></td>
@@ -678,6 +764,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
                                                 <td>Registration under "License for Repairer"</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_TWO; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_repairer_received_app) ? $wm_repairer_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_repairer_processed_app) ? $wm_repairer_processed_app : 0; ?></td>
@@ -689,6 +778,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
                                                 <td>Renewal under "License for Repairer"</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_FOURTEEN; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_repairer_renewal_received_app) ? $wm_repairer_renewal_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_repairer_renewal_processed_app) ? $wm_repairer_renewal_processed_app : 0; ?></td>
@@ -700,6 +792,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">4</td>
                                                 <td>Registration under "License for Dealer"</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_THREE; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_dealer_received_app) ? $wm_dealer_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_dealer_processed_app) ? $wm_dealer_processed_app : 0; ?></td>
@@ -711,6 +806,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">5</td>
                                                 <td>Renewal under "License for Dealer"</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_FIFTEEN; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_dealer_renewal_received_app) ? $wm_dealer_renewal_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_dealer_renewal_processed_app) ? $wm_dealer_renewal_processed_app : 0; ?></td>
@@ -722,6 +820,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">6</td>
                                                 <td>Registration under "License for Manufacturer"</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_FOUR; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_manufacturer_received_app) ? $wm_manufacturer_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_manufacturer_processed_app) ? $wm_manufacturer_processed_app : 0; ?></td>
@@ -733,6 +834,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">7</td>
                                                 <td>Renewal under "License for Manufacturer"</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_SIXTEEN; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_manufacturer_renewal_received_app) ? $wm_manufacturer_renewal_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_manufacturer_renewal_processed_app) ? $wm_manufacturer_renewal_processed_app : 0; ?></td>
@@ -744,6 +848,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">8</td>
                                                 <td>Registration under "Verification and Stamping of Weights & Measures"</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_FOURTYEIGHT; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">5 Days at Office & 7 Days at Applicant Premises</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">366</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">366</td>
@@ -771,6 +878,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="width: 10px;">Received Fees Details</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -790,6 +898,7 @@ $this->load->view('security');
                                                     Issue of New Electricity Connection
                                                     <br> a) Temporary connection
                                                 </td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">
                                                     15 Days
                                                 </td>
@@ -806,6 +915,7 @@ $this->load->view('security');
                                                     Issue of New Electricity Connection
                                                     <br> b) LT connection
                                                 </td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">
                                                     45 Days
                                                 </td>
@@ -822,6 +932,7 @@ $this->load->view('security');
                                                     Issue of New Electricity Connection
                                                     <br> c) HT connection
                                                 </td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">
                                                     45 Days
                                                 </td>
@@ -837,6 +948,7 @@ $this->load->view('security');
                                                 <td>
                                                     Approval for DG set installation (Registration and Renewal)
                                                 </td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">15 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">16</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">16</td>
@@ -864,6 +976,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="width: 10px;">Received Fees Details</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -880,6 +993,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">1</td>
                                                 <td>Water Connection</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_FIVE; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">07 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wc_received_app) ? $wc_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wc_processed_app) ? $wc_processed_app : 0; ?></td>
@@ -909,6 +1025,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="width: 10px;">Received Fees Details</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -925,6 +1042,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">1</td>
                                                 <td>Hotel Registration Form</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_SIX; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">21 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($hotel_received_app) ? $hotel_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($hotel_processed_app) ? $hotel_processed_app : 0; ?></td>
@@ -936,6 +1056,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
                                                 <td>Hotel Registration Form - Renewal</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_TWENTY; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">21 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($hotel_renewal_received_app) ? $hotel_renewal_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($hotel_renewal_processed_app) ? $hotel_renewal_processed_app : 0; ?></td>
@@ -947,6 +1070,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
                                                 <td>Travel Agency Registration Form</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_NINETEEN; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">21 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($travelagent_received_app) ? $travelagent_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($travelagent_processed_app) ? $travelagent_processed_app : 0; ?></td>
@@ -958,6 +1084,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">4</td>
                                                 <td>Travel Agency Form - Renewal</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_TWENTYTHREE; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">21 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($travelagent_renewal_received_app) ? $travelagent_renewal_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($travelagent_renewal_processed_app) ? $travelagent_renewal_processed_app : 0; ?></td>
@@ -969,6 +1098,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">5</td>
                                                 <td>Tourism Event - Performance License</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_TWENTYFOUR; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">21 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($tourismevent_received_app) ? $tourismevent_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($tourismevent_processed_app) ? $tourismevent_processed_app : 0; ?></td>
@@ -996,6 +1128,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="width: 10px;">Received Fees Details</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -1012,6 +1145,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">1</td>
                                                 <td>Partnership Firms Registration</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_SEVEN; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">15 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($psf_registration_received_app) ? $psf_registration_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($psf_registration_processed_app) ? $psf_registration_processed_app : 0; ?></td>
@@ -1023,6 +1159,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
                                                 <td>Property Registration</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_TWENTYONE; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">Same Day</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($property_registration_received_app) ? $property_registration_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($property_registration_processed_app) ? $property_registration_processed_app : 0; ?></td>
@@ -1034,6 +1173,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
                                                 <td>Nil Certificate for Encumbrance</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_SIXTYONE; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Day</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">416</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">416</td>
@@ -1060,6 +1202,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="width: 10px;">Received Fees Details</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -1076,6 +1219,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">1</td>
                                                 <td>Construction Permission / Building Plan Approval</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_TWENTYSIX; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">21 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($construction_received_app) ? $construction_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($construction_processed_app) ? $construction_processed_app : 0; ?></td>
@@ -1087,6 +1233,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
                                                 <td>Occupancy Certificate / Part Occupancy Certificate</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_TWENTYEIGHT; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($occupancy_certificate_received_app) ? $occupancy_certificate_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($occupancy_certificate_processed_app) ? $occupancy_certificate_processed_app : 0; ?></td>
@@ -1098,6 +1247,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
                                                 <td>Application for Inspection at Plinth level</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_TWENTYSEVEN; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">15 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($inspection_received_app) ? $inspection_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($inspection_processed_app) ? $inspection_processed_app : 0; ?></td>
@@ -1109,6 +1261,9 @@ $this->load->view('security');
                                            <!--  <tr>
                                                 <td class="text-center v-a-m">4</td>
                                                 <td>Site Elevation</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_TWENTYNINE; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">10 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($site_elevation_received_app) ? $site_elevation_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($site_elevation_processed_app) ? $site_elevation_processed_app : 0; ?></td>
@@ -1120,6 +1275,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">5</td>
                                                 <td>Zone Information</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_THIRTY; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">07 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($zone_information_received_app) ? $zone_information_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($zone_information_processed_app) ? $zone_information_processed_app : 0; ?></td>
@@ -1146,6 +1304,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="width: 10px;">Received Fees Details</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -1162,6 +1321,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">1</td>
                                                 <td>Label Registration/Brand Registration</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">10 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($incentive_generalform_textile_received_app) ? $incentive_generalform_textile_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($incentive_generalform_textile_processed_app) ? $incentive_generalform_textile_processed_app : 0; ?></td>
@@ -1173,6 +1333,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
                                                 <td> Export Permit (spirit) by Distilleries/Industries</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">3 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($incentive_generalform_received_app) ? $incentive_generalform_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($incentive_generalform_processed_app) ? $incentive_generalform_processed_app : 0; ?></td>
@@ -1184,6 +1345,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
                                                 <td>Export Permits(IMFL/CL/Beer/FL) by Distilleries/Brewery</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">3 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_received_app) ? $allotment_land_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_processed_app) ? $allotment_land_processed_app : 0; ?></td>
@@ -1195,6 +1357,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">4</td>
                                                 <td>Import Permit (spirit) by Distilleries/Industries</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">3 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_received_app) ? $allotment_land_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_processed_app) ? $allotment_land_processed_app : 0; ?></td>
@@ -1206,6 +1369,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">5</td>
                                                 <td>Import Permits(IMFL/CL/Beer/FL) by Wholesalers</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">3 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_received_app) ? $allotment_land_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_processed_app) ? $allotment_land_processed_app : 0; ?></td>
@@ -1217,6 +1381,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">6</td>
                                                 <td>Local Sale/Transport Permits(Spirit) by Distilleries/Industries)</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">1 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_received_app) ? $allotment_land_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_processed_app) ? $allotment_land_processed_app : 0; ?></td>
@@ -1228,6 +1393,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">7</td>
                                                 <td>Local Sale Permits(IMFL/CL/Beer/FL) by Distilleries/Brewery/Wholesalers</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">1 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_received_app) ? $allotment_land_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_processed_app) ? $allotment_land_processed_app : 0; ?></td>
@@ -1239,6 +1405,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">8</td>
                                                 <td>Occasional License</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">7 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_received_app) ? $allotment_land_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_processed_app) ? $allotment_land_processed_app : 0; ?></td>
@@ -1250,6 +1417,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">9</td>
                                                 <td>Renewal of Licenses(Distilleries/Brewery/Wholesalers/Retailers/Hotels) </td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_received_app) ? $allotment_land_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_processed_app) ? $allotment_land_processed_app : 0; ?></td>
@@ -1276,6 +1444,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="width: 10px;">Received Fees Details</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -1292,6 +1461,9 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">1</td>
                                                 <td>Tree Cutting Permission</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_FIFTYNINE; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($tree_cutting_received_app) ? $tree_cutting_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($tree_cutting_processed_app) ? $tree_cutting_processed_app : 0; ?></td>
@@ -1318,6 +1490,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="width: 10px;">Received Fees Details</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -1334,6 +1507,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">1</td>
                                                 <td>Retail Drug License (Pharmacy) (Registration and Renewal)</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">55</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">55</td>
@@ -1345,6 +1519,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
                                                 <td>Wholesale Drug License (Registration and Renewal)</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">30 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">24</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">24</td>
@@ -1356,6 +1531,7 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
                                                 <td>Drug Manufacturing License (registration and Renewal)</td>
+                                                <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">45 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">18</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">18</td>
@@ -1382,82 +1558,82 @@ $this->load->view('security');
 <script type="text/javascript" src="<?php echo $base_url; ?>plugins/datatables/jquery.dataTables.js"></script>
 <script type="text/javascript" src="<?php echo $base_url; ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <script type="text/javascript">
-    var spinnerTemplate = Handlebars.compile($('#spinner_template').html());
-    var iconSpinnerTemplate = spinnerTemplate({'type': 'light', 'extra_class': 'spinner-border-sm'});
-    var fdListTemplate = Handlebars.compile($('#fd_list_template').html());
+                                                        var spinnerTemplate = Handlebars.compile($('#spinner_template').html());
+                                                        var iconSpinnerTemplate = spinnerTemplate({'type': 'light', 'extra_class': 'spinner-border-sm'});
+                                                        var fdListTemplate = Handlebars.compile($('#fd_list_template').html());
 
-    var VALUE_ZERO = <?php echo VALUE_ZERO; ?>;
-    var invalidAccessValidationMessage = '<?php echo INVALID_ACCESS_MESSAGE ?>';
-    var prefixModuleArray = <?php echo json_encode($this->config->item('prefix_module_array')); ?>;
+                                                        var VALUE_ZERO = <?php echo VALUE_ZERO; ?>;
+                                                        var invalidAccessValidationMessage = '<?php echo INVALID_ACCESS_MESSAGE ?>';
+                                                        var prefixModuleArray = <?php echo json_encode($this->config->item('prefix_module_array')); ?>;
 
-    function viewReceivedFeeDetails(btnObj, moduleType) {
-        if (!btnObj || !moduleType || moduleType == VALUE_ZERO || moduleType == null) {
-            showError(invalidAccessValidationMessage);
-            return false;
-        }
-        $('.preloader').show();
-        var ogBtnHTML = btnObj.html();
-        var ogBtnOnclick = btnObj.attr('onclick');
-        btnObj.html(iconSpinnerTemplate);
-        btnObj.attr('onclick', '');
-        $.ajax({
-            type: 'POST',
-            url: 'utility/get_service_wise_payment_details',
-            data: $.extend({}, {'module_type': moduleType}, getTokenData()),
-            error: function (textStatus, errorThrown) {
-                $('.preloader').hide();
-                generateNewCSRFToken();
-                btnObj.html(ogBtnHTML);
-                btnObj.attr('onclick', ogBtnOnclick);
-                if (textStatus.status === 403) {
-                    loginPage();
-                    return false;
-                }
-                if (!textStatus.statusText) {
-                    loginPage();
-                    return false;
-                }
-                showError(textStatus.statusText);
-            },
-            success: function (data) {
-                var parseData = JSON.parse(data);
-                if (!isJSON(data)) {
-                    loginPage();
-                    return false;
-                }
-                $('.preloader').hide();
-                setNewToken(parseData.temp_token);
-                btnObj.html(ogBtnHTML);
-                btnObj.attr('onclick', ogBtnOnclick);
-                if (parseData.success == false) {
-                    showError(parseData.message);
-                    return false;
-                }
-                loadMWFD(parseData);
-            }
-        });
-    }
+                                                        function viewReceivedFeeDetails(btnObj, moduleType) {
+                                                            if (!btnObj || !moduleType || moduleType == VALUE_ZERO || moduleType == null) {
+                                                                showError(invalidAccessValidationMessage);
+                                                                return false;
+                                                            }
+                                                            $('.preloader').show();
+                                                            var ogBtnHTML = btnObj.html();
+                                                            var ogBtnOnclick = btnObj.attr('onclick');
+                                                            btnObj.html(iconSpinnerTemplate);
+                                                            btnObj.attr('onclick', '');
+                                                            $.ajax({
+                                                                type: 'POST',
+                                                                url: 'utility/get_service_wise_payment_details',
+                                                                data: $.extend({}, {'module_type': moduleType}, getTokenData()),
+                                                                error: function (textStatus, errorThrown) {
+                                                                    $('.preloader').hide();
+                                                                    generateNewCSRFToken();
+                                                                    btnObj.html(ogBtnHTML);
+                                                                    btnObj.attr('onclick', ogBtnOnclick);
+                                                                    if (textStatus.status === 403) {
+                                                                        loginPage();
+                                                                        return false;
+                                                                    }
+                                                                    if (!textStatus.statusText) {
+                                                                        loginPage();
+                                                                        return false;
+                                                                    }
+                                                                    showError(textStatus.statusText);
+                                                                },
+                                                                success: function (data) {
+                                                                    var parseData = JSON.parse(data);
+                                                                    if (!isJSON(data)) {
+                                                                        loginPage();
+                                                                        return false;
+                                                                    }
+                                                                    $('.preloader').hide();
+                                                                    setNewToken(parseData.temp_token);
+                                                                    btnObj.html(ogBtnHTML);
+                                                                    btnObj.attr('onclick', ogBtnOnclick);
+                                                                    if (parseData.success == false) {
+                                                                        showError(parseData.message);
+                                                                        return false;
+                                                                    }
+                                                                    loadMWFD(parseData);
+                                                                }
+                                                            });
+                                                        }
 
-    function loadMWFD(parseData) {
-        showPopup();
-        $('#popup_container').html(fdListTemplate({'dept_name': parseData.dept_name, 'service_name': parseData.service_name}));
+                                                        function loadMWFD(parseData) {
+                                                            showPopup();
+                                                            $('#popup_container').html(fdListTemplate({'dept_name': parseData.dept_name, 'service_name': parseData.service_name}));
 
-        var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(full.module_type, data);
-        };
-        var feesRenderer = function (data, type, full, meta) {
-            return data + '/-';
-        };
-        $('#rfd_datatable').DataTable({
-            data: parseData.payment_history,
-            paging: false,
-            ordering: false,
-            columns: [
-                {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
-                {data: 'module_id', 'render': tempRegNoRenderer, 'class': 'text-center'},
-                {data: 'op_transaction_datetime', 'render': dateTimeRenderer, 'class': 'text-center'},
-                {data: 'total_fees', 'render': feesRenderer, 'class': 'text-right'}
-            ],
-        });
-    }
+                                                            var tempRegNoRenderer = function (data, type, full, meta) {
+                                                                return regNoRenderer(full.module_type, data);
+                                                            };
+                                                            var feesRenderer = function (data, type, full, meta) {
+                                                                return data + '/-';
+                                                            };
+                                                            $('#rfd_datatable').DataTable({
+                                                                data: parseData.payment_history,
+                                                                paging: false,
+                                                                ordering: false,
+                                                                columns: [
+                                                                    {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
+                                                                    {data: 'module_id', 'render': tempRegNoRenderer, 'class': 'text-center'},
+                                                                    {data: 'op_transaction_datetime', 'render': dateTimeRenderer, 'class': 'text-center'},
+                                                                    {data: 'total_fees', 'render': feesRenderer, 'class': 'text-right'}
+                                                                ],
+                                                            });
+                                                        }
 </script>
