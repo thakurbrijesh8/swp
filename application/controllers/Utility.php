@@ -1180,6 +1180,38 @@ class Utility extends CI_Controller {
             return false;
         }
     }
+
+    function get_service_wise_payment_details() {
+        if (!is_ajax()) {
+            header("Location:" . base_url() . "login");
+            return false;
+        }
+        $success_array = get_success_array();
+        $success_array['dept_name'] = '';
+        $success_array['service_name'] = '';
+        try {
+            if (!is_post()) {
+                $success_array['payment_history'] = array();
+                echo json_encode($success_array);
+                return false;
+            }
+            $module_type = get_from_post('module_type');
+            $module_type_array = $this->config->item('query_module_array');
+            if (!isset($module_type_array[$module_type])) {
+                $success_array['payment_history'] = array();
+                echo json_encode($success_array);
+                return false;
+            }
+            $mt_data = $module_type_array[$module_type];
+            $success_array['payment_history'] = $this->payment_model->get_mwise_payment_history($module_type);
+            $success_array['dept_name'] = $mt_data['department_name'];
+            $success_array['service_name'] = $mt_data['title'];
+            echo json_encode($success_array);
+        } catch (\Exception $e) {
+            $success_array['payment_history'] = array();
+            echo json_encode($success_array);
+        }
+    }
 }
 
 /*

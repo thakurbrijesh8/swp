@@ -44,6 +44,18 @@ class Payment_model extends CI_Model {
         return $resc->result_array();
     }
 
+    function get_mwise_payment_history($module_type = 0) {
+        $this->db->select('fees_payment_id, module_type, module_id, op_transaction_datetime, total_fees');
+        if ($module_type != 0) {
+            $this->db->where('module_type', $module_type);
+        }
+        $this->db->where('op_status ', VALUE_TWO);
+        $this->db->from('fees_payment');
+        $this->db->where('is_delete !=' . IS_DELETE);
+        $this->db->order_by('fees_payment_id', 'DESC');
+        $resc = $this->db->get();
+        return $resc->result_array();
+    }
 }
 
 /*

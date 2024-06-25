@@ -9,4 +9,5 @@
     <script src="<?php echo $base_url; ?>assets/vendor/wow/wow.min.js"></script>
 <?php } ?>
 <script src="<?php echo $base_url; ?>assets/js/functions.js"></script>
+<script src="<?php echo $base_url; ?>plugins/sweetalert2/sweetalert2.min.js"></script>
 <script src="<?php echo $base_url; ?>js/project/utility.js"></script>

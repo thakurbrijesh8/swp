@@ -16,3 +16,4 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>assets/css/style.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>assets/css/color.css?version=<?php echo VERSION; ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>assets/css/project.css?version=<?php echo VERSION; ?>"/>
+<link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>plugins/sweetalert2/sweetalert2.css">

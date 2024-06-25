@@ -1,5 +1,10 @@
-<?php $base_url = base_url(); ?>
-<?php $this->load->view('new_common/header', array('base_url' => $base_url, 'dashboard' => 'active')); ?>
+<?php
+$base_url = base_url();
+$this->load->view('new_common/header', array('base_url' => $base_url, 'dashboard' => 'active'));
+$this->load->view('common/utility_template');
+$this->load->view('security');
+?>
+<link rel="stylesheet" href="<?php echo $base_url; ?>plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 
 <div class="innerpage-banner center bg-overlay-dark-7 py-5" style="background:url(<?php echo $base_url; ?>assets/images/bg/04.jpg) no-repeat; background-size:cover; background-position: center center;">
     <div class="container">
@@ -53,22 +58,26 @@
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="width: 10px;">Received Fees Details</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
                                                 </th>
-                                                <th class="v-a-m" style="width: 10%;">Total Number of Applications Received</th>
-                                                <th class="v-a-m" style="width: 10%;">Total Number of Applications Processed</th>
-                                                <th class="v-a-m" style="width: 10%;">Total Number of Applications Approved</th>
-                                                <th class="v-a-m" style="width: 10%;">Total Number of Applications Rejected</th>
-                                                <th class="v-a-m" style="width: 10%;">Average Time Taken To Grant Approval</th>
-                                                <th class="v-a-m" style="width: 10%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 8%;">Total Number of Applications Received</th>
+                                                <th class="v-a-m" style="width: 8%;">Total Number of Applications Processed</th>
+                                                <th class="v-a-m" style="width: 8%;">Total Number of Applications Approved</th>
+                                                <th class="v-a-m" style="width: 8%;">Total Number of Applications Rejected</th>
+                                                <th class="v-a-m" style="width: 8%;">Average Time Taken To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 8%;">Median Time Taken to Grant Approval</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td class="text-center v-a-m">1</td>
                                                 <td>Registration under "Shops & Establishment Act"</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_THIRTYTHREE; ?>);">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">15 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($shop_received_app) ? $shop_received_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($shop_processed_app) ? $shop_processed_app : 0; ?></td>
@@ -876,9 +885,9 @@
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wc_processed_app) ? $wc_processed_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-success"><?php echo isset($wc_approved_app) ? $wc_approved_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($wc_rejected_app) ? $wc_rejected_app : 0; ?></td>
-                                                <!--<td class="text-center v-a-m font-weight-bold text-primary"><?php // echo isset($wc_average_time_to_ga) ? $wc_average_time_to_ga : '-';                                   ?></td>-->
+                                                <!--<td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wc_average_time_to_ga) ? $wc_average_time_to_ga : '-'; ?></td>-->
                                                 <td class="text-center v-a-m font-weight-bold text-primary">5 Days</td>
-                                            <!--<td class="text-center v-a-m font-weight-bold"><?php // echo isset($wc_median_time_to_ga) ? $wc_median_time_to_ga : '-';                                   ?></td>-->
+                                                <!--<td class="text-center v-a-m font-weight-bold"><?php echo isset($wc_median_time_to_ga) ? $wc_median_time_to_ga : '-'; ?></td>-->
                                                 <td class="text-center v-a-m font-weight-bold">2 Application in <br> 7 Days</td>
                                             </tr>
                                         </tbody>
@@ -1353,7 +1362,7 @@
                                                 <td class="text-center v-a-m font-weight-bold text-success">18</td>
                                                 <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">41</td>
-                                                <td class="text-center v-a-m font-weight-bold">43</td>
+                                                <td class="text-center v-a-m font-weight-bold spinner-border-">43</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -1366,4 +1375,89 @@
         </div>
     </div>
 </section>
-<?php $this->load->view('new_common/footer', array('base_url' => $base_url)); ?>
+<?php $this->load->view('new_common/footer', array('base_url' => $base_url, 'is_handlebars' => true)); ?>
+<script type="text/x-handlebars-template" id="fd_list_template">
+<?php $this->load->view('new_common/fd_list'); ?>
+</script>
+<script type="text/javascript" src="<?php echo $base_url; ?>plugins/datatables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="<?php echo $base_url; ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script type="text/javascript">
+    var spinnerTemplate = Handlebars.compile($('#spinner_template').html());
+    var iconSpinnerTemplate = spinnerTemplate({'type': 'light', 'extra_class': 'spinner-border-sm'});
+    var fdListTemplate = Handlebars.compile($('#fd_list_template').html());
+
+    var VALUE_ZERO = <?php echo VALUE_ZERO; ?>;
+    var invalidAccessValidationMessage = '<?php echo INVALID_ACCESS_MESSAGE ?>';
+    var prefixModuleArray = <?php echo json_encode($this->config->item('prefix_module_array')); ?>;
+
+    function viewReceivedFeeDetails(btnObj, moduleType) {
+        if (!btnObj || !moduleType || moduleType == VALUE_ZERO || moduleType == null) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        $('.preloader').show();
+        var ogBtnHTML = btnObj.html();
+        var ogBtnOnclick = btnObj.attr('onclick');
+        btnObj.html(iconSpinnerTemplate);
+        btnObj.attr('onclick', '');
+        $.ajax({
+            type: 'POST',
+            url: 'utility/get_service_wise_payment_details',
+            data: $.extend({}, {'module_type': moduleType}, getTokenData()),
+            error: function (textStatus, errorThrown) {
+                $('.preloader').hide();
+                generateNewCSRFToken();
+                btnObj.html(ogBtnHTML);
+                btnObj.attr('onclick', ogBtnOnclick);
+                if (textStatus.status === 403) {
+                    loginPage();
+                    return false;
+                }
+                if (!textStatus.statusText) {
+                    loginPage();
+                    return false;
+                }
+                showError(textStatus.statusText);
+            },
+            success: function (data) {
+                var parseData = JSON.parse(data);
+                if (!isJSON(data)) {
+                    loginPage();
+                    return false;
+                }
+                $('.preloader').hide();
+                setNewToken(parseData.temp_token);
+                btnObj.html(ogBtnHTML);
+                btnObj.attr('onclick', ogBtnOnclick);
+                if (parseData.success == false) {
+                    showError(parseData.message);
+                    return false;
+                }
+                loadMWFD(parseData);
+            }
+        });
+    }
+
+    function loadMWFD(parseData) {
+        showPopup();
+        $('#popup_container').html(fdListTemplate({'dept_name': parseData.dept_name, 'service_name': parseData.service_name}));
+
+        var tempRegNoRenderer = function (data, type, full, meta) {
+            return regNoRenderer(full.module_type, data);
+        };
+        var feesRenderer = function (data, type, full, meta) {
+            return data + '/-';
+        };
+        $('#rfd_datatable').DataTable({
+            data: parseData.payment_history,
+            paging: false,
+            ordering: false,
+            columns: [
+                {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
+                {data: 'module_id', 'render': tempRegNoRenderer, 'class': 'text-center'},
+                {data: 'op_transaction_datetime', 'render': dateTimeRenderer, 'class': 'text-center'},
+                {data: 'total_fees', 'render': feesRenderer, 'class': 'text-right'}
+            ],
+        });
+    }
+</script>
