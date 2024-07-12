@@ -109,7 +109,7 @@ class Api extends CI_Controller {
             header("Location: " . base_url() . 'home/page_not_found');
             return false;
         }
-        $logs_data = $this->_bd_for_logs(VALUE_ONE);
+        $logs_data = $this->_bd_for_logs(VALUE_TWO);
         $check_ip = check_crone_ip_authentication();
         if (!$check_ip) {
             $this->_insert_log($logs_data, VALUE_ONE, INVALID_IP_MESSAGE);
