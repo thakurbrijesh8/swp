@@ -24,7 +24,7 @@
                         <td class="text-center">1</td>
                         <td>Registration for Trade License</td>
                         <td class="text-center">
-                            <a class="btn btn-grad btn-sm" href="https://dmcdaman.in/services/#/onlineServices/apply-new-licence" target="_blank">Click Here</a>
+                            <a class="btn btn-grad btn-sm" href="https://sampark.dmcdaman.in/#/shopestablishment-license/shop-establishment" target="_blank">Click Here</a>
                         </td>
                         <td class="text-center">Municipal Council - Daman</td>
                         <td class="text-center">7 Days</td>
@@ -39,7 +39,7 @@
                         <td class="text-center">2</td>
                         <td>Mobile Tower Approval (Registration and Renewal)</td>
                         <td class="text-center">
-                            <a class="btn btn-grad btn-sm" href="https://dmcdaman.in/services/#/onlineServices/apply-new-licence" target="_blank">Click Here</a>
+                            <a class="btn btn-grad btn-sm" href="#">Click Here</a>
                         </td>
                         <td class="text-center">Municipal Council - Daman</td>
                         <td class="text-center">7 Days</td>
@@ -54,7 +54,7 @@
                         <td class="text-center">3</td>
                         <td>Travel Agency (Registration and Renewal)</td>
                         <td class="text-center">
-                            <a class="btn btn-grad btn-sm" href="https://dmcdaman.in/services/#/onlineServices/apply-new-licence" target="_blank">Click Here</a>
+                            <a class="btn btn-grad btn-sm" href="https://sampark.dmcdaman.in/#/shopestablishment-license/shop-establishment" target="_blank">Click Here</a>
                         </td>
                         <td class="text-center">Municipal Council - Daman</td>
                         <td class="text-center">7 Days</td>
@@ -69,7 +69,7 @@
                         <td class="text-center">4</td>
                         <td>Signage License for advertisement (Registration and Renewal)</td>
                         <td class="text-center">
-                            <a class="btn btn-grad btn-sm" target="_blank" href="https://dmcdaman.in/services/#/onlineServices/create-advertisement">Click Here</a>
+                            <a class="btn btn-grad btn-sm" target="_blank" href="https://sampark.dmcdaman.in/#/advertisement/application">Click Here</a>
                         </td>
                         <td class="text-center">Municipal Council - Daman</td>
                         <td class="text-center">7 Days</td>
@@ -109,7 +109,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://dmcdaman.in/services/#/onlineServices/property-tax"><button type="button" class="btn btn-grad btn-sm">View</button></a></br><a target="_blank" href="https://dmcdaman.in/docs/pdf/DMC_property_tax_assessment_list_20-21.pdf"><button type="button" class="btn btn-grad btn-sm">Document</button></a>
+                                <a target="_blank" href="https://sampark.dmcdaman.in/#/propertytax/paymentlist"><button type="button" class="btn btn-grad btn-sm">View</button></a></br><a target="_blank" href="https://dmcdaman.in/docs/pdf/DMC_property_tax_assessment_list_20-21.pdf"><button type="button" class="btn btn-grad btn-sm">Document</button></a>
                             </td>
 
                         </tr>
@@ -125,7 +125,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://dmcdaman.in/services/#/onlineServices/property-tax"><button type="button" class="btn btn-grad btn-sm">View</button></a></br><a target="_blank" href="https://dmcdaman.in/docs/pdf/DMC_property_tax_assessment_list_20-21.pdf"><button type="button" class="btn btn-grad btn-sm">Document</button></a>
+                                <a target="_blank" href="https://sampark.dmcdaman.in/#/propertytax/paymentlist"><button type="button" class="btn btn-grad btn-sm">View</button></a></br><a target="_blank" href="https://dmcdaman.in/docs/pdf/DMC_property_tax_assessment_list_20-21.pdf"><button type="button" class="btn btn-grad btn-sm">Document</button></a>
                             </td>
 
                         </tr>
@@ -141,7 +141,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://odps.dmcdaman.in/BpamsClient/"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a href="#"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -157,7 +157,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://odps.dmcdaman.in/BpamsClient/"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a href="#"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -173,7 +173,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://odps.dmcdaman.in/BpamsClient/"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a href="#"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -189,7 +189,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://odps.dmcdaman.in/BpamsClient/"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a href="#"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -205,7 +205,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://odps.dmcdaman.in/BpamsClient/"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a href="#"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -221,7 +221,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://odps.dmcdaman.in/BpamsClient/"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a href="#"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -237,7 +237,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://odps.dmcdaman.in/BpamsClient/"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a href="#"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -253,7 +253,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://odps.dmcdaman.in/BpamsClient/"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a href="#"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -269,7 +269,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://odps.dmcdaman.in/BpamsClient/"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a href="#"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -285,7 +285,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://odps.dmcdaman.in/BpamsClient/"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a href="#"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -301,7 +301,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://odps.dmcdaman.in/BpamsClient/"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a href="#"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -318,7 +318,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://odps.dmcdaman.in/BpamsClient/"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a target="_blank" href="https://dmcdaman.in/#/service/construction"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -334,7 +334,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://odps.dmcdaman.in/BpamsClient/"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a target="_blank" href="https://dmcdaman.in/assets/Pdf/Checklist%20For%20Building-.pdf"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -350,7 +350,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://dmcdaman.in/services/#/onlineServices/licence-services"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a target="_blank" href="https://sampark.dmcdaman.in/#/shopestablishment-license/ShopList"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -366,7 +366,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://dmcdaman.in/services/#/onlineServices/apply-new-licence"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a href="#"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -382,7 +382,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://dmcdaman.in/services/#/onlineServices/property-tax"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a target="_blank" href="https://sampark.dmcdaman.in/#/propertytax/paymentlist"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -398,7 +398,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://dmcdaman.in/publications.php#gsc.tab=0"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a target="_blank" href="https://dmcdaman.in/assets/Pdf/Checklist%20For%20Building-.pdf"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -414,7 +414,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://dmcdaman.in/services/#/onlineServices/licence-services"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a target="_blank" href="https://dmcdaman.in/#/service/licence"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -430,7 +430,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://dmcdaman.in/services/#/onlineServices/licence-services"><button type="button" class="btn btn-grad btn-sm">View</button></a></br>
+                                <a target="_blank" href="https://sampark.dmcdaman.in/#/shopestablishment-license/ShopList"><button type="button" class="btn btn-grad btn-sm">View</button></a></br>
                                 <a target="_blank" href="<?php echo $base_url; ?>assets/department/municipal_council/ev8131611923901.pdf"><button type="button" class="btn btn-grad btn-sm">Document</button></a>
                             </td>
 
@@ -447,7 +447,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://dmcdaman.in/services/#/onlineServices/advertisement"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a target="_blank" href="https://sampark.dmcdaman.in/#/advertisement/application"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -463,7 +463,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://dmcdaman.in/services/#/onlineServices/advertisement"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a target="_blank" href="https://sampark.dmcdaman.in/#/advertisement/application"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -479,7 +479,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://dmcdaman.in/services/#/onlineServices/advertisement"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a target="_blank" href="https://sampark.dmcdaman.in/#/advertisement/application"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -495,7 +495,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://dmcdaman.in/services/#/onlineServices/advertisement"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a target="_blank" href="https://sampark.dmcdaman.in/#/advertisement/application"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -511,7 +511,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://dmcdaman.in/services/#/onlineServices/apply-new-licence"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a href="#"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                             </td>
 
                         </tr>
@@ -639,7 +639,7 @@
                         <td class="text-center">2</td>
                         <td>Signage License for advertisement (Registration and Renewal)</td>
                         <td class="text-center">
-                            <a class="btn btn-grad btn-sm" href="https://smcdnh.in/advertisement/application" target="_blank">Click Here</a>
+                            <a class="btn btn-grad btn-sm" href="https://sampark.dmcdaman.in/#/advertisement/application" target="_blank">Click Here</a>
                         </td>
                         <td class="text-center">Municipal Council - Silvassa</td>
                         <td class="text-center">-</td>

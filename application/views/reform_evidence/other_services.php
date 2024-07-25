@@ -49,7 +49,7 @@ $this->load->view('security');
                                 <td>Signage License for advertisement (Registration and Renewal)</td>
                                 <td class="text-center">Municipal Council Silvassa</td>
                                 <td class="text-center">DNH</td>
-                                <td class="text-center"><a target="_black" href="https://smcdnh.in/advertisement/application">https://smcdnh.in/advertisement/application</a></td>
+                                <td class="text-center"><a target="_black" href="https://sampark.dmcdaman.in/#/advertisement/application">https://sampark.dmcdaman.in/#/advertisement/application</a></td>
                                 <td class="text-center"><a target="_blank" class="nav-link" href="<?php  $base_url; ?>assets/department/otherservices/reform_51_DNH.pdf">Click Here</a></td>
                             </tr>
 

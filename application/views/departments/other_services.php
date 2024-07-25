@@ -147,7 +147,7 @@
                                     <td class="text-center">1</td>
                                     <td>Registration for Trade License</td>
                                     <td class="text-center">
-                                        <a class="btn btn-grad btn-sm" href="https://dmcdaman.in/services/#/onlineServices/apply-new-licence" target="_blank">Click Here</a>
+                                        <a class="btn btn-grad btn-sm" href="https://sampark.dmcdaman.in/#/shopestablishment-license/shop-establishment" target="_blank">Click Here</a>
                                     </td>
                                     <td class="text-center">Municipal Council - Daman</td>
                                     <td class="text-center">7 Days</td>
@@ -190,12 +190,12 @@
                                     <td class="text-center">1</td>
                                     <td>Signage License for advertisement (Registration and Renewal)</td>
                                     <td class="text-center">
-                                        <a class="btn btn-grad btn-sm" target="_blank" href="https://dmcdaman.in/services/#/onlineServices/apply-new-licence">Click Here</a>
+                                        <a class="btn btn-grad btn-sm" target="_blank" href="https://sampark.dmcdaman.in/#/advertisement/application">Click Here</a>
                                     </td>
                                     <td class="text-center">Municipal Council - Daman</td>
                                     <td class="text-center">15 Days</td>
                                     <td class="text-center">
-                                        <a class="btn btn-grad btn-sm" href="https://dmcdaman.in/services/#/onlineServices/advertisement" target="_blank">View</a>
+                                        <a class="btn btn-grad btn-sm" href="https://sampark.dmcdaman.in/#/advertisement/application" target="_blank">View</a>
                                     </td>
                                     <td class="text-center">Chief Officer</td>
                                     <td class="text-center">Director</td>
@@ -700,7 +700,7 @@
                                     <td class="text-center">1</td>
                                     <td>Mobile Tower Approval (Registration and Renewal)</td>
                                     <td class="text-center">
-                                        <a class="btn btn-grad btn-sm" href="https://dmcdaman.in/services/#/onlineServices/apply-new-licence" target="_blank">Click Here</a>
+                                        <a class="btn btn-grad btn-sm" href="#">Click Here</a>
                                     </td>
                                     <td class="text-center">Municipal Council - Daman</td>
                                     <td class="text-center">7 Days</td>

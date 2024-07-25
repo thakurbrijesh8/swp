@@ -50,7 +50,7 @@ $this->load->view('security');
                         <td class="text-center">1</td>
                         <td>Registration for Trade License</td>
                         <td class="text-center">
-                            <a class="btn btn-grad btn-sm" href="https://dmcdaman.in/services/#/onlineServices/apply-new-licence" target="_blank">Click Here</a>
+                            <a class="btn btn-grad btn-sm" href="https://sampark.dmcdaman.in/#/shopestablishment-license/shop-establishment" target="_blank">Click Here</a>
                         </td>
                         <td class="text-center">Municipal Council - Daman</td>
                         <td class="text-center">07 Days</td>

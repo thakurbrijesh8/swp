@@ -70,7 +70,7 @@ $this->load->view('common/validation_message');
                         onclick="calculateTax();">
                     <i class="fa fa-percent"></i>Calculate Tax
                 </button>
-                <a target="_blank" href="https://dmcdaman.in/services/#/onlineServices/property-tax"
+                <a target="_blank" href="https://sampark.dmcdaman.in/#/propertytax/paymentlist"
                    class="btn btn-success btn-sm m-b-0px">
                     <i class="fa fa-rupee"></i>Pay Tax
                 </a>
