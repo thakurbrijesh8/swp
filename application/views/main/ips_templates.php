@@ -43,6 +43,12 @@
 <script type="text/x-handlebars-template" id="ips_inc_doc_item_view_template">
 <?php $this->load->view('ips/inc_doc_item_view'); ?>
 </script>
+<script type="text/x-handlebars-template" id="ips_inc_od_item_template">
+<?php $this->load->view('ips/inc_od_item'); ?>
+</script>
+<script type="text/x-handlebars-template" id="ips_inc_od_item_view_template">
+<?php $this->load->view('ips/inc_od_item_view'); ?>
+</script>
 <script type="text/x-handlebars-template" id="ips_inc_upload_challan_template">
-    <?php $this->load->view('ips/inc_upload_challan'); ?>
+<?php $this->load->view('ips/inc_upload_challan'); ?>
 </script>

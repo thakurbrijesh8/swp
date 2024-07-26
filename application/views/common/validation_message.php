@@ -56,8 +56,10 @@
     var fatherNameValidationMessage = '<?php echo FATHER_NAME_MESSAGE; ?>';
     var proprietorAddressValidationMessage = '<?php echo PROPRIETOR_ADDRESS_MESSAGE; ?>';
     var uploadDocumentValidationMessage = '<?php echo UPLOAD_DOCUMENT_MESSAGE; ?>';
+    var docNotUploadedValidationMessage = '<?php echo DOC_NOT_UPLOAD_MESSAGE; ?>';
     var identityChoiceValidationMessage = '<?php echo IDENTITY_CHOICE_MESSAGE; ?>';
     var premisesStatusValidationMessage = '<?php echo PREMISES_STATUS_MESSAGE; ?>';
+    var tenEntriesValidationMessage = '<?php echo TEN_ENTRIES_MESSAGE; ?>';
 
 
     // Weight & Measure Dealer

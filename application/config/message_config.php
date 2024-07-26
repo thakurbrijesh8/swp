@@ -56,6 +56,7 @@ define('ENTER_PROPER_NUMBER_MESSAGE', 'Enter Proper 9 Digit Number !');
 define('INVALID_BARCODE_NUMBER_MESSAGE', 'Invalid Barcode / Certificate Number !');
 define('SELECT_DISTRICT', 'Select District !');
 define('ENTITY_ESTABLISHMENT_TYPE_MESSAGE', 'Select Entity / Establishment Type !');
+define('TEN_ENTRIES_MESSAGE', 'Only 10 Entries Allow in Other Documents !');
 
 // Weight & Measure Repairer
 define('REPAIRMEN_NAME_MESSAGE', 'Enter Name of the concern seeking the license !');
@@ -180,6 +181,7 @@ define('UPLOAD_DOC_MESSAGE', 'Upload any Document !');
 define('DOC_NOT_UPLOAD_MESSAGE', 'Document Not Uploaded !');
 define('UPLOAD_MAX_ONE_MB_MESSAGE', 'Maximum upload size 20 MB only.');
 define('QUERY_DOCUMENT_ITEM_REMOVED_MESSAGE', 'Query Document Item Removed Successfully !');
+define('UPLOAD_MAX_TEN_MB_MESSAGE', 'Maximum upload size 10 MB only.');
 
 // Incentive General Form
 define('OFFICE_ADDRESS_MESSAGE', 'Enter Office Address with pin code No. !');

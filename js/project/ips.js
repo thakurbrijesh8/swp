@@ -13,7 +13,12 @@ var ipsIncViewTemplate = Handlebars.compile($('#ips_inc_view_template').html());
 var ipsIncRefDocItemTemplate = Handlebars.compile($('#ips_inc_ref_doc_item_template').html());
 var ipsIncDocItemTemplate = Handlebars.compile($('#ips_inc_doc_item_template').html());
 var ipsIncDocItemViewTemplate = Handlebars.compile($('#ips_inc_doc_item_view_template').html());
+var ipsIncODItemTemplate = Handlebars.compile($('#ips_inc_od_item_template').html());
+var ipsIncODItemViewTemplate = Handlebars.compile($('#ips_inc_od_item_view_template').html());
 var ipsIncUploadChallanTemplate = Handlebars.compile($('#ips_inc_upload_challan_template').html());
+
+var oDocCnt = 1;
+
 var Ips = {
     run: function () {
         this.router = new this.Router();
@@ -1003,6 +1008,7 @@ Ips.listView = Backbone.View.extend({
                 incData.show_submit_qr_details = true;
             }
         }
+        oDocCnt = 1;
         var that = this;
         incData.no_record_fount_for_doc = noRecordFoundTemplate({'colspan': 3, 'message': 'Document Not Available !'});
         $('#incentives_form_and_datatable_container').html(ipsIncFormTemplate(incData));
@@ -1014,6 +1020,9 @@ Ips.listView = Backbone.View.extend({
             $('#scheme_for_incentives').val(incData.scheme);
             that.loadIncReferenceDocument(incData.scheme);
             that.loadIncDocument(incData.scheme, incData.doc_details);
+            $.each(incData.other_doc_details, function (index, otherDocData) {
+                that.addOtherDocItem(otherDocData);
+            });
         }
         generateSelect2();
         $('#incentive_form').find('input').keypress(function (e) {
@@ -1163,6 +1172,54 @@ Ips.listView = Backbone.View.extend({
             showError(invalidAccessValidationMessage);
             return false;
         }
+
+        var exiODItems = [];
+        var isODItemValidation;
+        $('.iod_document_row').each(function () {
+            var that = $(this);
+            var tempCnt = that.find('.og_iod_document_cnt').val();
+            if (tempCnt == '' || tempCnt == null) {
+                showError(invalidAccessValidationMessage);
+                isODItemValidation = true;
+                return false;
+            }
+            var qdItem = {};
+            var docName = $('#doc_name_for_iod_' + tempCnt).val();
+            if (docName == '' || docName == null) {
+                $('#doc_name_for_iod_' + tempCnt).focus();
+                validationMessageShow('iod-doc_name_for_iod_' + tempCnt, documentNameValidationMessage);
+                isODItemValidation = true;
+                return false;
+            }
+            qdItem.doc_name = docName;
+            if ($('#document_container_for_iod_' + tempCnt).is(':visible')) {
+                var uploadDoc = $('#document_for_iod_' + tempCnt).val();
+                if (!uploadDoc) {
+                    validationMessageShow('iod-document_for_iod_' + tempCnt, uploadDocValidationMessage);
+                    isODItemValidation = true;
+                    return false;
+                }
+                var uploadDocMessage = pdffileUploadValidation('document_for_iod_' + tempCnt, 10240);
+                if (uploadDocMessage != '') {
+                    validationMessageShow('iod-document_for_iod_' + tempCnt, uploadDocMessage);
+                    isODItemValidation = true;
+                    return false;
+                }
+            }
+            var ipsIODId = $('#ips_incentive_od_id_for_iod_' + tempCnt).val();
+            if (!ipsIODId || ipsIODId == null) {
+                showError(invalidAccessValidationMessage);
+                isODItemValidation = true;
+                return false;
+            }
+            qdItem.ips_incentive_od_id = ipsIODId;
+            exiODItems.push(qdItem);
+        });
+        if (isODItemValidation) {
+            return false;
+        }
+        formData.exi_od_items = exiODItems;
+
         if (moduleType == VALUE_THREE) {
             that.askForSubmitIncentives(moduleType);
             return false;
@@ -1300,10 +1357,10 @@ Ips.listView = Backbone.View.extend({
         $('#popup_container').html(ipsIncViewTemplate(incentiveData));
         var docDetails = incentiveData.doc_details;
         var schemeDocuments = schemeDocArray[incentiveData.scheme] ? schemeDocArray[incentiveData.scheme] : '';
-        var tCnt = 1;
+        var tdCnt = 1;
         $.each(schemeDocuments, function (docId, docNameText) {
             var docData = docDetails[docId] ? docDetails[docId] : {};
-            docData.doc_cnt = tCnt;
+            docData.doc_cnt = tdCnt;
             docData.VIEW_UPLODED_DOCUMENT = VIEW_UPLODED_DOCUMENT;
             docData.doc_id = docId;
             docData.doc_name_text = docNameText;
@@ -1311,10 +1368,26 @@ Ips.listView = Backbone.View.extend({
             if (docData.doc_name) {
                 that.loadIncentivesDocumentForView(docData.doc_id, docData);
             }
-            tCnt++;
+            tdCnt++;
         });
-        if (tCnt == 1) {
+        if (tdCnt == 1) {
             $('#doc_item_container_for_view_incentives').html(noRecordFoundTemplate({'colspan': 3, 'message': 'Document Not Available !'}));
+        }
+
+        var todCnt = 1;
+        if (incentiveData.other_doc_details) {
+            $.each(incentiveData.other_doc_details, function (index, odDetail) {
+                odDetail.cnt = todCnt;
+                odDetail.VIEW_UPLODED_DOCUMENT = VIEW_UPLODED_DOCUMENT;
+                $('#od_item_container_for_view_incentives').append(ipsIncODItemViewTemplate(odDetail));
+                if (odDetail['document'] != '') {
+                    that.loadOtherDocForView(odDetail.ips_incentive_od_id, 'document', 'iod', odDetail.document);
+                }
+                todCnt++;
+            });
+        }
+        if (todCnt == 1) {
+            $('#od_item_container_for_view_incentives').html(noRecordFoundTemplate({'colspan': 3, 'message': 'Document Not Available !'}));
         }
     },
     uploadIncDocument: function (docId) {
@@ -1496,6 +1569,334 @@ Ips.listView = Backbone.View.extend({
                 $('#upload_name_container_for_incentives_' + docId).hide();
                 $('#upload_container_for_incentives_' + docId).show();
                 $('#spinner_template_' + docId).hide();
+            }
+        });
+    },
+    addOtherDocItem: function (otherDocData) {
+        if (!tempIdInSession || tempIdInSession == null) {
+            loginPage();
+            return false;
+        }
+        if (returnCounter('iod_document_row') >= VALUE_TEN) {
+            showError(tenEntriesValidationMessage);
+            return false;
+        }
+        var that = this;
+        otherDocData.cnt = oDocCnt;
+        otherDocData.VIEW_UPLODED_DOCUMENT = VIEW_UPLODED_DOCUMENT;
+        $('#od_item_container_for_incentives').append(ipsIncODItemTemplate(otherDocData));
+        if (otherDocData.document) {
+            that.loadOtherDoc('document', oDocCnt, otherDocData);
+        }
+        resetCounter('iod-document-cnt');
+        oDocCnt++;
+    },
+    uploadOtherDoc: function (tempCnt) {
+        if (!tempIdInSession || tempIdInSession == null) {
+            loginPage();
+            return false;
+        }
+        var that = this;
+        validationMessageHide();
+        var ipsId = $('#ips_id_for_inc_list').val();
+        if (!ipsId) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        var schemeType = $('#scheme_type_for_incentives').val();
+        if (!schemeType) {
+            $('#scheme_type_for_incentives').focus();
+            validationMessageShow('incentives-scheme_type_for_incentives', oneOptionValidationMessage);
+            return false;
+        }
+        var scheme = $('#scheme_for_incentives').val();
+        if (!scheme) {
+            $('#scheme_for_incentives').focus();
+            validationMessageShow('incentives-scheme_for_incentives', oneOptionValidationMessage);
+            return false;
+        }
+        var id = 'document_for_iod_' + tempCnt;
+        var doc = $('#' + id).val();
+        if (doc == '') {
+            return false;
+        }
+        var docMessage = fileUploadValidation(id, 10240);
+        if (docMessage != '') {
+            showError(docMessage);
+            return false;
+        }
+        $('#document_container_for_iod_' + tempCnt).hide();
+        $('#document_name_container_for_iod_' + tempCnt).hide();
+        $('#spinner_template_for_iod_' + tempCnt).show();
+        openFullPageOverlay();
+        var formData = new FormData();
+        formData.append('ips_id_for_incentives', ipsId);
+        formData.append('ips_incentive_id_for_incentives', $('#ips_incentive_id_for_incentives').val());
+        formData.append('scheme_type_for_incentives', schemeType);
+        formData.append('scheme_for_incentives', scheme);
+        formData.append('ips_incentive_od_id_for_iod', $('#ips_incentive_od_id_for_iod_' + tempCnt).val());
+        formData.append('document_for_iod', $('#' + id)[0].files[0]);
+        $.ajax({
+            type: 'POST',
+            url: 'ips/upload_other_document',
+            data: formData,
+            mimeType: "multipart/form-data",
+            contentType: false,
+            cache: false,
+            processData: false,
+            error: function (textStatus, errorThrown) {
+                if (textStatus.status === 403) {
+                    loginPage();
+                    return false;
+                }
+                if (!textStatus.statusText) {
+                    loginPage();
+                    return false;
+                }
+                $('#spinner_template_for_iod_' + tempCnt).hide();
+                $('#document_container_for_iod_' + tempCnt).show();
+                $('#document_name_container_for_iod_' + tempCnt).hide();
+                closeFullPageOverlay();
+                $('#' + id).val('');
+                showError(docNotUploadedValidationMessage);
+            },
+            success: function (response) {
+                closeFullPageOverlay();
+                if (!isJSON(response)) {
+                    loginPage();
+                    return false;
+                }
+                var parseData = JSON.parse(response);
+                if (parseData.success == false) {
+                    $('#spinner_template_for_iod_' + tempCnt).hide();
+                    $('#document_container_for_iod_' + tempCnt).show();
+                    $('#document_name_container_for_iod_' + tempCnt).hide();
+                    $('#' + id).val('');
+                    showError(parseData.message);
+                    return false;
+                }
+                $('#spinner_template_for_iod_' + tempCnt).hide();
+                $('#document_name_container_for_iod_' + tempCnt).hide();
+                $('#' + id).val('');
+                $('#ips_incentive_id_for_incentives').val(parseData.ips_incentive_id);
+                $('#scheme_type_for_incentives').attr("disabled", 'disabled');
+                $('#scheme_for_incentives').attr("disabled", 'disabled');
+                $('#ips_incentive_od_id_for_iod_' + tempCnt).val(parseData.ips_incentive_od_id);
+                var docItemData = {};
+                docItemData.ips_incentive_id = parseData.ips_incentive_id;
+                docItemData.ips_incentive_od_id = parseData.ips_incentive_od_id;
+                docItemData.document = parseData.document_name;
+                that.loadOtherDoc('document', tempCnt, docItemData);
+            }
+        });
+    },
+    loadOtherDoc: function (documentFieldName, tempCnt, docItemData) {
+        $('#' + documentFieldName + '_container_for_iod_' + tempCnt).hide();
+        $('#' + documentFieldName + '_name_container_for_iod_' + tempCnt).show();
+        $('#' + documentFieldName + '_name_href_for_iod_' + tempCnt).attr('href', 'documents/ips_inc/' + docItemData[documentFieldName]);
+        $('#' + documentFieldName + '_remove_btn_for_iod_' + tempCnt).attr('onclick', 'Ips.listview.askForRemoveOtherDoc("' + docItemData.ips_incentive_od_id + '","' + tempCnt + '")');
+    },
+    loadOtherDocForView: function (tempCnt, id, moduleType, docField) {
+        $('#' + id + '_name_container_for_' + moduleType + '_view_' + tempCnt).show();
+        $('#' + id + '_name_href_for_' + moduleType + '_view_' + tempCnt).attr('href', 'documents/ips_inc/' + docField);
+    },
+    askForRemoveOtherDoc: function (ipsIODId, cnt) {
+        if (!tempIdInSession || tempIdInSession == null) {
+            loginPage();
+            return false;
+        }
+        if (!ipsIODId || !cnt) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        var ipsId = $('#ips_id_for_inc_list').val();
+        if (!ipsId) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        var ipsIncentiveId = $('#ips_incentive_id_for_incentives').val();
+        if (!ipsIncentiveId) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        var tempIPSIODId = $('#ips_incentive_od_id_for_iod_' + cnt).val();
+        if (!tempIPSIODId) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        if (tempIPSIODId != ipsIODId) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        var yesEvent = 'Ips.listview.removeOtherDoc(' + ipsIODId + ', ' + cnt + ')';
+        showConfirmation(yesEvent, 'Remove');
+    },
+    removeOtherDoc: function (ipsIODId, cnt) {
+        if (!tempIdInSession || tempIdInSession == null) {
+            loginPage();
+            return false;
+        }
+        if (!ipsIODId || !cnt) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        var ipsId = $('#ips_id_for_inc_list').val();
+        if (!ipsId) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        var ipsIncentiveId = $('#ips_incentive_id_for_incentives').val();
+        if (!ipsIncentiveId) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        var tempIPSIODId = $('#ips_incentive_od_id_for_iod_' + cnt).val();
+        if (!tempIPSIODId) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        if (tempIPSIODId != ipsIODId) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        openFullPageOverlay();
+        var btnObj = $('#document_remove_btn_for_iod_' + cnt);
+        var ogBtnHTML = btnObj.html();
+        var ogBtnOnclick = btnObj.attr('onclick');
+        btnObj.html(iconSpinnerTemplate);
+        btnObj.attr('onclick', '');
+        $.ajax({
+            type: 'POST',
+            url: 'ips/remove_other_document',
+            data: $.extend({}, {'ips_id': ipsId, 'ips_incentive_id': ipsIncentiveId, 'ips_incentive_od_id': ipsIODId}, getTokenData()),
+            error: function (textStatus, errorThrown) {
+                closeFullPageOverlay();
+                generateNewCSRFToken();
+                if (textStatus.status === 403) {
+                    loginPage();
+                    return false;
+                }
+                if (!textStatus.statusText) {
+                    loginPage();
+                    return false;
+                }
+                btnObj.html(ogBtnHTML);
+                btnObj.attr('onclick', ogBtnOnclick);
+                showError(textStatus.statusText);
+            },
+            success: function (response) {
+                closeFullPageOverlay();
+                if (!isJSON(response)) {
+                    loginPage();
+                    return false;
+                }
+                btnObj.html(ogBtnHTML);
+                btnObj.attr('onclick', ogBtnOnclick);
+                var parseData = JSON.parse(response);
+                setNewToken(parseData.temp_token);
+                if (parseData.success === false) {
+                    showError(parseData.message);
+                    return false;
+                }
+                showSuccess(parseData.message);
+                removeDocument('document', 'iod_' + cnt);
+            }
+        });
+    },
+    askForRemoveOtherDocItem: function (cnt) {
+        if (!tempIdInSession || tempIdInSession == null) {
+            loginPage();
+            return false;
+        }
+        var that = this;
+        var ipsIODId = $('#ips_incentive_od_id_for_iod_' + cnt).val();
+        if (!ipsIODId || ipsIODId == 0 || ipsIODId == null) {
+            that.removeOtherDocItem(cnt);
+            return false;
+        }
+        var ipsId = $('#ips_id_for_inc_list').val();
+        if (!ipsId) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        var ipsIncentiveId = $('#ips_incentive_id_for_incentives').val();
+        if (!ipsIncentiveId) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        var yesEvent = 'Ips.listview.removeOtherDocItemRow(' + cnt + ')';
+        showConfirmation(yesEvent, 'Remove');
+    },
+    removeOtherDocItem: function (cnt) {
+        if (!tempIdInSession || tempIdInSession == null) {
+            loginPage();
+            return false;
+        }
+        $('#iod_document_row_' + cnt).remove();
+        resetCounter('iod-document-cnt');
+    },
+    removeOtherDocItemRow: function (cnt) {
+        if (!tempIdInSession || tempIdInSession == null) {
+            loginPage();
+            return false;
+        }
+        var ipsId = $('#ips_id_for_inc_list').val();
+        if (!ipsId) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        var ipsIncentiveId = $('#ips_incentive_id_for_incentives').val();
+        if (!ipsIncentiveId) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        var ipsIODId = $('#ips_incentive_od_id_for_iod_' + cnt).val();
+        if (!ipsIODId || ipsIODId == 0 || ipsIODId == null) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        openFullPageOverlay();
+        var btnObj = $('#document_item_remove_btn_for_iod_' + cnt);
+        var ogBtnHTML = btnObj.html();
+        var ogBtnOnclick = btnObj.attr('onclick');
+        btnObj.html(iconSpinnerTemplate);
+        btnObj.attr('onclick', '');
+        var that = this;
+        $.ajax({
+            type: 'POST',
+            url: 'ips/remove_other_doc_item',
+            data: $.extend({}, {'ips_id': ipsId, 'ips_incentive_id': ipsIncentiveId, 'ips_incentive_od_id': ipsIODId}, getTokenData()),
+            error: function (textStatus, errorThrown) {
+                closeFullPageOverlay();
+                generateNewCSRFToken();
+                if (textStatus.status === 403) {
+                    loginPage();
+                    return false;
+                }
+                if (!textStatus.statusText) {
+                    loginPage();
+                    return false;
+                }
+                btnObj.html(ogBtnHTML);
+                btnObj.attr('onclick', ogBtnOnclick);
+                showError(textStatus.statusText);
+            },
+            success: function (response) {
+                closeFullPageOverlay();
+                if (!isJSON(response)) {
+                    loginPage();
+                    return false;
+                }
+                btnObj.html(ogBtnHTML);
+                btnObj.attr('onclick', ogBtnOnclick);
+                var parseData = JSON.parse(response);
+                setNewToken(parseData.temp_token);
+                if (parseData.success === false) {
+                    showError(parseData.message);
+                    return false;
+                }
+                that.removeOtherDocItem(cnt);
+                showSuccess(parseData.message);
             }
         });
     },

@@ -54,7 +54,29 @@
                     </div>
                 </div>
             </div>
-
+            <div class="card">
+                <div class="card-header bg-nic-blue p-2">
+                    <h3 class="card-title f-w-b f-s-16px">OTHER DOCUMENTS (IF REQUIRE)</h3>
+                </div>
+                <div class="card-body border-nic-blue">
+                    <div class="color-nic-red f-w-b text-right mb-2">(Maximum File Size: 10MB)(Upload PDF Only)</div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="bg-light-gray">
+                                    <th class="text-center" style="width: 30px;">No.</th>
+                                    <th class="text-center" style="min-width: 350px;">Document Name</th>
+                                    <th class="text-center" style="width: 320px;">Document</th>
+                                    <th class="text-center" style="width: 50px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="od_item_container_for_incentives"></tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="btn btn-nic-blue btn-sm pull-right"
+                            onclick="Ips.listview.addOtherDocItem({});">Add More Documents</button>
+                </div>
+            </div>
             {{#if show_submit_qr_details}}
             <input type="hidden" id="query_status_for_incentives" value="{{query_status}}" />
             <input type="hidden" id="status_for_incentives" value="{{status}}" />

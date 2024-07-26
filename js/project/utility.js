@@ -892,6 +892,13 @@ function resetCounter(className) {
         cnt++;
     });
 }
+function returnCounter(className) {
+    var cnt = 0;
+    $('.' + className).each(function () {
+        cnt++;
+    });
+    return cnt;
+}
 
 function getTextOfId(dataArray, value, compareValue, otherValue) {
     var data = dataArray[value] ? dataArray[value] : '';

@@ -500,6 +500,8 @@ class Ips extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            $exi_od_items = $this->input->post('exi_od_items');
+
             $incentives_data = array();
             $is_validation = $this->utility_lib->app_edit_and_query_response($session_user_id, $module_type, VALUE_FIFTYTWO, $ips_incentive_id, $incentives_data);
             if ($is_validation != '') {
@@ -510,6 +512,9 @@ class Ips extends CI_Controller {
             $incentives_data['updated_by'] = $session_user_id;
             $incentives_data['updated_time'] = date('Y-m-d H:i:s');
             $this->utility_model->update_data('ips_incentive_id', $ips_incentive_id, 'ips_incentive', $incentives_data);
+
+            $this->_update_od_items($session_user_id, $exi_od_items);
+
             $this->db->trans_complete();
             if ($this->db->trans_status() === FALSE) {
                 echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
@@ -524,6 +529,18 @@ class Ips extends CI_Controller {
         } catch (\Exception $e) {
             echo json_encode(get_error_array($e->getMessage()));
             return false;
+        }
+    }
+
+    function _update_od_items($session_user_id, $exi_od_items) {
+        if ($exi_od_items != '') {
+            if (!empty($exi_od_items)) {
+                foreach ($exi_od_items as &$edrdi) {
+                    $edrdi['updated_by'] = $session_user_id;
+                    $edrdi['updated_time'] = date('Y-m-d H:i:s');
+                }
+                $this->utility_model->update_data_batch('ips_incentive_od_id', 'ips_incentive_od', $exi_od_items);
+            }
         }
     }
 
@@ -564,8 +581,10 @@ class Ips extends CI_Controller {
                 }
             }
             $inc_doc_details = generate_array_for_id_object($this->utility_model->get_result_data_by_id('ips_incentive_id', $ips_incentive_id, 'ips_incentive_doc', 'ips_id', $incentive_data['ips_id']), 'doc_id');
+            $inc_other_doc_details = $this->utility_model->get_result_data_by_id('ips_incentive_id', $ips_incentive_id, 'ips_incentive_od', 'ips_id', $incentive_data['ips_id']);
             $success_array = get_success_array();
             $incentive_data['doc_details'] = $inc_doc_details;
+            $incentive_data['other_doc_details'] = $inc_other_doc_details;
             $success_array['incentive_data'] = $incentive_data;
             echo json_encode($success_array);
         } catch (\Exception $e) {
@@ -867,6 +886,194 @@ class Ips extends CI_Controller {
                 $success_array['op_enct'] = $enc_pg_data['op_enct'];
                 $success_array['op_mt'] = $enc_pg_data['op_mt'];
             }
+            echo json_encode($success_array);
+        } catch (\Exception $e) {
+            echo json_encode(get_error_array($e->getMessage()));
+            return false;
+        }
+    }
+
+    function upload_other_document() {
+        try {
+            if (!is_ajax()) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
+            $session_user_id = get_from_session('temp_id_for_eodbsws');
+            $ips_id = get_from_post('ips_id_for_incentives');
+            if (!is_post() || $session_user_id == null || !$session_user_id || !$ips_id || $ips_id == null) {
+                echo json_encode(array('success' => FALSE, 'message' => INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+            $ips_incentive_id = get_from_post('ips_incentive_id_for_incentives');
+            $scheme_type = get_from_post('scheme_type_for_incentives');
+            $scheme = get_from_post('scheme_for_incentives');
+            if (!$scheme_type || !$scheme) {
+                echo json_encode(array('success' => FALSE, 'message' => ONE_OPTION_MESSAGE));
+                return false;
+            }
+            $ips_incentive_od_id = get_from_post('ips_incentive_od_id_for_iod');
+            if ($_FILES['document_for_iod']['name'] == '') {
+                echo json_encode(array('success' => FALSE, 'message' => UPLOAD_DOC_MESSAGE));
+                return;
+            }
+            $od_size = $_FILES['document_for_iod']['size'];
+            if ($od_size == 0) {
+                echo json_encode(array('success' => FALSE, 'message' => DOC_INVALID_SIZE_MESSAGE));
+                return;
+            }
+            $maxsize = '104857600';
+            if ($od_size >= $maxsize) {
+                echo json_encode(array('success' => FALSE, 'message' => UPLOAD_MAX_TEN_MB_MESSAGE));
+                return;
+            }
+            $path = 'documents';
+            if (!is_dir($path)) {
+                mkdir($path);
+                chmod("$path", 0755);
+            }
+            $main_path = $path . DIRECTORY_SEPARATOR . 'ips_inc';
+            if (!is_dir($main_path)) {
+                mkdir($main_path);
+                chmod("$main_path", 0755);
+            }
+            $this->load->library('upload');
+            $temp_od_filename = str_replace('_', '', $_FILES['document_for_iod']['name']);
+            $od_filename = $ips_id . "_" . $scheme_type . "_" . $scheme_type . "_other_doc_" . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_od_filename, PATHINFO_EXTENSION);
+
+            //Change file name
+            $od_final_path = $main_path . DIRECTORY_SEPARATOR . $od_filename;
+            if (!move_uploaded_file($_FILES['document_for_iod']['tmp_name'], $od_final_path)) {
+                echo json_encode(array('success' => FALSE, 'message' => DOCUMENT_NOT_UPLOAD_MESSAGE));
+                return;
+            }
+            $this->db->trans_start();
+            $incentives_data = array();
+            $incentives_data['scheme_type'] = $scheme_type;
+            $incentives_data['scheme'] = $scheme;
+            if (!$ips_incentive_id || $ips_incentive_id == null) {
+                $incentives_data['user_id'] = $session_user_id;
+                $incentives_data['ips_id'] = $ips_id;
+                $incentives_data['status'] = VALUE_ONE;
+                $incentives_data['created_by'] = $session_user_id;
+                $incentives_data['created_time'] = date('Y-m-d H:i:s');
+                $ips_incentive_id = $this->utility_model->insert_data('ips_incentive', $incentives_data);
+            }
+            $od_data = array();
+            $od_data['document'] = $od_filename;
+            if (!$ips_incentive_od_id || $ips_incentive_od_id == NULL) {
+                $od_data['ips_incentive_id'] = $ips_incentive_id;
+                $od_data['user_id'] = $ips_id;
+                $od_data['ips_id'] = $ips_id;
+                $od_data['created_by'] = $session_user_id;
+                $od_data['created_time'] = date('Y-m-d H:i:s');
+                $ips_incentive_od_id = $this->utility_model->insert_data('ips_incentive_od', $od_data);
+            } else {
+                $od_data['updated_by'] = $session_user_id;
+                $od_data['updated_time'] = date('Y-m-d H:i:s');
+                $this->utility_model->update_data('ips_incentive_od_id', $ips_incentive_od_id, 'ips_incentive_od', $od_data);
+            }
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(array('success' => FALSE, 'message' => DATABASE_ERROR_MESSAGE));
+                return;
+            }
+            $success_array = array();
+            $success_array['ips_incentive_id'] = $ips_incentive_id;
+            $success_array['ips_incentive_od_id'] = $ips_incentive_od_id;
+            $success_array['document_name'] = $od_filename;
+            echo json_encode($success_array);
+        } catch (\Exception $e) {
+            echo json_encode(array('success' => FALSE, 'message' => $e->getMessage()));
+            return false;
+        }
+    }
+
+    function remove_other_document() {
+        try {
+            if (!is_ajax()) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
+            $session_user_id = get_from_session('temp_id_for_eodbsws');
+            $ips_id = get_from_post('ips_id');
+            $ips_incentive_id = get_from_post('ips_incentive_id');
+            $ips_incentive_od_id = get_from_post('ips_incentive_od_id');
+            if (!is_post() || $session_user_id == null || !$session_user_id || $ips_id == null || !$ips_id ||
+                    $ips_incentive_id == null || !$ips_incentive_id || $ips_incentive_od_id == null || !$ips_incentive_od_id) {
+                echo json_encode(array('success' => FALSE, 'message' => INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+            $ex_data = $this->utility_model->get_by_id('ips_incentive_od_id', $ips_incentive_od_id, 'ips_incentive_od', 'ips_incentive_id', $ips_incentive_id, 'ips_id', $ips_id);
+            if (empty($ex_data)) {
+                echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return;
+            }
+            $this->db->trans_start();
+            if ($ex_data['document'] != '') {
+                $file_path = 'documents' . DIRECTORY_SEPARATOR . 'ips_inc' . DIRECTORY_SEPARATOR . $ex_data['document'];
+                if (file_exists($file_path)) {
+                    unlink($file_path);
+                }
+            }
+            $update_data = array();
+            $update_data['document'] = '';
+            $update_data['updated_by'] = $session_user_id;
+            $update_data['updated_time'] = date('Y-m-d H:i:s');
+            $this->utility_model->update_data('ips_incentive_od_id', $ips_incentive_od_id, 'ips_incentive_od', $update_data);
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
+                return;
+            }
+            $success_array = get_success_array();
+            $success_array['message'] = DOCUMENT_REMOVED_MESSAGE;
+            echo json_encode($success_array);
+        } catch (\Exception $e) {
+            echo json_encode(get_error_array($e->getMessage()));
+            return false;
+        }
+    }
+
+    function remove_other_doc_item() {
+        try {
+            if (!is_ajax()) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
+            $session_user_id = get_from_session('temp_id_for_eodbsws');
+            $ips_id = get_from_post('ips_id');
+            $ips_incentive_id = get_from_post('ips_incentive_id');
+            $ips_incentive_od_id = get_from_post('ips_incentive_od_id');
+            if (!is_post() || $session_user_id == null || !$session_user_id || $ips_id == null || !$ips_id ||
+                    $ips_incentive_id == null || !$ips_incentive_id || $ips_incentive_od_id == null || !$ips_incentive_od_id) {
+                echo json_encode(array('success' => FALSE, 'message' => INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+            $ex_data = $this->utility_model->get_by_id('ips_incentive_od_id', $ips_incentive_od_id, 'ips_incentive_od', 'ips_incentive_id', $ips_incentive_id, 'ips_id', $ips_id);
+            if (empty($ex_data)) {
+                echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return;
+            }
+            $this->db->trans_start();
+            if ($ex_data['document'] != '') {
+                $file_path = 'documents' . DIRECTORY_SEPARATOR . 'ips_inc' . DIRECTORY_SEPARATOR . $ex_data['document'];
+                if (file_exists($file_path)) {
+                    unlink($file_path);
+                }
+            }
+            $update_data = array();
+            $update_data['is_delete'] = IS_DELETE;
+            $update_data['updated_by'] = $session_user_id;
+            $update_data['updated_time'] = date('Y-m-d H:i:s');
+            $this->utility_model->update_data('ips_incentive_od_id', $ips_incentive_od_id, 'ips_incentive_od', $update_data);
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
+                return;
+            }
+            $success_array = get_success_array();
+            $success_array['message'] = DOCUMENT_ITEM_REMOVED_MESSAGE;
             echo json_encode($success_array);
         } catch (\Exception $e) {
             echo json_encode(get_error_array($e->getMessage()));
