@@ -236,6 +236,15 @@
     margin-bottom: 0px !important;
 }
 
+div.dataTables_wrapper div.dataTables_length select {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.page-link {
+    padding: 3px 7px;
+}
+
 .bg-light-gray{
     background-color: rgba(0,0,0,.05) !important;
 }

@@ -1626,7 +1626,7 @@ $this->load->view('security');
         };
         $('#rfd_datatable').DataTable({
             data: parseData.payment_history,
-            paging: false,
+            pageLength: 10,
             ordering: false,
             columns: [
                 {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
