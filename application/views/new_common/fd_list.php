@@ -25,7 +25,7 @@
                 <tr class="all-text-white bg-grad">
                     <th class="text-center" style="width: 35px;">No.</th>
                     <th class="text-center" style="min-width: 120px;">Application Number</th>
-                    <th class="text-center" style="min-width: 80px;">Transaction Date & Time</th>
+                    <th class="text-center" style="min-width: 120px;">Transaction Date & Time</th>
                     <th class="text-center" style="min-width: 80px;">Total Fees</th>
                 </tr>
             </thead>
