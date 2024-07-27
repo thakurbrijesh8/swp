@@ -177,7 +177,7 @@ class Utility_model extends CI_Model {
         return $resc->result_array();
     }
 
-    function get_district_wise_services($district) {
+    function get_district_wise_services($district, $risk_category, $size_of_firm, $foreign_domestic_investor) {
         $this->db->select('s.*, q.questionary_id, q.question, q.answer');
         if ($district == TALUKA_DAMAN) {
             $this->db->where('s.daman_district', $district);
@@ -187,6 +187,15 @@ class Utility_model extends CI_Model {
         }
         if ($district == TALUKA_DNH) {
             $this->db->where('s.dnh_district', $district);
+        }
+        if ($risk_category != '') {
+            $this->db->where('s.risk_category', $risk_category);
+        }
+        if ($size_of_firm != '') {
+            $this->db->where('s.size_of_firm', $size_of_firm);
+        }
+        if ($foreign_domestic_investor != '') {
+            $this->db->where('s.foreign_domestic_investor', $foreign_domestic_investor);
         }
         $this->db->where('s.is_delete != ' . VALUE_ONE);
         $this->db->from('service AS s');
@@ -275,14 +284,15 @@ class Utility_model extends CI_Model {
     }
 
     function get_details_for_ips_incentives_withdraw_application($qm_data, $module_id) {
-        $this->db->select('ii.*, i.*, ' . 'ii.'.$qm_data['key_id_text'] . " AS module_id");
-        $this->db->where('ii.'.$qm_data['key_id_text'], $module_id);
+        $this->db->select('ii.*, i.*, ' . 'ii.' . $qm_data['key_id_text'] . " AS module_id");
+        $this->db->where('ii.' . $qm_data['key_id_text'], $module_id);
         $this->db->where('ii.is_delete != ' . IS_DELETE);
-        $this->db->from($qm_data['tbl_text'] .' AS ii');
+        $this->db->from($qm_data['tbl_text'] . ' AS ii');
         $this->db->join('ips AS i', 'i.ips_id = ii.ips_id');
         $resc = $this->db->get();
         return $resc->row_array();
     }
+
 }
 
 /*

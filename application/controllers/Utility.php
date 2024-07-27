@@ -503,12 +503,15 @@ class Utility extends CI_Controller {
             $success_array['success'] = true;
             $success_array['dept_wise_questionary_data'] = array();
             $district = get_from_post('district_for_clearances');
+            $risk_category = get_from_post('risk_category_for_clearances');
+            $size_of_firm = get_from_post('size_of_firm_for_clearances');
+            $foreign_domestic_investor = get_from_post('foreign_domestic_investor_for_clearances');
             if ($district == NULL || !$district || ($district != TALUKA_DAMAN && $district != TALUKA_DIU && $district != TALUKA_DNH)) {
                 echo json_encode($success_array);
                 return false;
             }
             $this->db->trans_start();
-            $temp_questionary_data = $this->utility_model->get_district_wise_services($district);
+            $temp_questionary_data = $this->utility_model->get_district_wise_services($district, $risk_category, $size_of_firm, $foreign_domestic_investor);
             $questionary_data = array();
             $service_data = array();
             $questions_data = array();

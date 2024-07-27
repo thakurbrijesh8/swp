@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row pre_establishment_clearance" style="display:none;">
     <div class="col-md-12 mt-4">
         <h5 class="lh-15 text-grad">Pre-Establishment Clearances</h5>
     </div>
@@ -23,7 +23,7 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row post_establishment_clearance" style="display:none;">
     <div class="col-md-12 mt-4">
         <h5 class="lh-15 text-grad">Post-Establishment Clearances</h5>
     </div>
@@ -48,7 +48,7 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row pre_operation_clearance" style="display:none;">
     <div class="col-md-12 mt-4">
         <h5 class="lh-15 text-grad">Pre-Operation Clearances</h5>
     </div>
@@ -73,7 +73,7 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row post_operation_clearance" style="display:none;">
     <div class="col-md-12 mt-4">
         <h5 class="lh-15 text-grad">Post-Operation Clearances</h5>
     </div>
@@ -98,7 +98,7 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row renewals_clearance" style="display:none;">
     <div class="col-md-12 mt-4">
         <h5 class="lh-15 text-grad">Renewals Clearances</h5>
     </div>

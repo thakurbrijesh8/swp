@@ -68,6 +68,9 @@ $this->load->view('security');
     var iconSpinnerTemplate = spinnerTemplate({'type': 'light', 'extra_class': 'spinner-border-small'});
     var IS_DELETE = <?php echo IS_DELETE ?>;
     var talukaArray = <?php echo json_encode($this->config->item('taluka_array')); ?>;
+    var riskCategoryArray = <?php echo json_encode($this->config->item('risk_category_array')); ?>;
+    var foreignDomesticInvestorArray = <?php echo json_encode($this->config->item('foreign_domestic_investor_array')); ?>;
+    var cbTypeArray = <?php echo json_encode($this->config->item('cb_type_array')); ?>;
     var TALUKA_DAMAN = <?php echo TALUKA_DAMAN; ?>;
     var TALUKA_DIU = <?php echo TALUKA_DIU; ?>;
     var TALUKA_DNH = <?php echo TALUKA_DNH; ?>;
@@ -81,6 +84,9 @@ $this->load->view('security');
     var VALUE_SEVEN = <?php echo VALUE_SEVEN; ?>;
     $('#clearance_form_template').html(approvalFormTemplate);
     renderOptionsForTwoDimensionalArray(talukaArray, 'district_for_approvals', false);
+    renderOptionsForTwoDimensionalArray(riskCategoryArray, 'risk_category_for_approvals', false);
+    renderOptionsForTwoDimensionalArray(cbTypeArray, 'size_of_firm_for_approvals', false);
+    renderOptionsForTwoDimensionalArray(foreignDomesticInvestorArray, 'foreign_domestic_investor_for_approvals', false);
     var tempDeptData = <?php echo json_encode($temp_dept_data); ?>;
     var tempDeptWiseQueData = [];
     var tempServiceData = [];
@@ -89,29 +95,37 @@ $this->load->view('security');
         tempDeptWiseQueData = [];
         tempServiceData = [];
         tempQuestionsData = [];
-        $('#spinner_container_for_clearances').html('');
+        //$('#spinner_container_for_clearances').html('');
         $('#tab_main_container_for_approval').hide();
         $('#tabs_container_for_approval').html('');
         $('#tabs_content_container_for_approval').html('');
         validationMessageHide('approvals');
-        var district = obj.val();
+        //var district = obj.val();
+        var district = $('#district_for_approvals').val();
+        var riskCategory = $('#risk_category_for_approvals').val();
+        var sizeOfFirm = $('#size_of_firm_for_approvals').val();
+        var foreignDomesticInvestor = $('#foreign_domestic_investor_for_approvals').val();
         if (district != TALUKA_DAMAN && district != TALUKA_DIU && district != TALUKA_DNH) {
             $('#district_for_approvals').focus();
             validationMessageShow('approvals-district_for_approvals', districtValidationMessage);
             return false;
         }
-        $('#spinner_container_for_clearances').html(spinnerTemplate({'type': 'primary', 'extra_class': 'mb-4'}));
+//        if (!district || !riskCategory || !sizeOfFirm || !foreignDomesticInvestor) {
+//            return false;
+//        }
+       // $('#spinner_container_for_clearances').html(spinnerTemplate({'type': 'primary', 'extra_class': 'mb-4'}));
         $.ajax({
             type: 'POST',
             url: 'utility/get_dept_wise_questionary_data',
-            data: {'district_for_clearances': district},
+            data: {'district_for_clearances': district, 'risk_category_for_clearances': riskCategory, 'size_of_firm_for_clearances': sizeOfFirm,
+                'foreign_domestic_investor_for_clearances': foreignDomesticInvestor},
             error: function (textStatus, errorThrown) {
-                $('#spinner_container_for_clearances').html('');
+               // $('#spinner_container_for_clearances').html('');
                 validationMessageShow('clact', textStatus.statusText);
                 $('html, body').animate({scrollTop: '0px'}, 0);
             },
             success: function (data) {
-                $('#spinner_container_for_clearances').html('');
+                //$('#spinner_container_for_clearances').html('');
                 var parseData = JSON.parse(data);
                 if (parseData.success == false) {
                     validationMessageShow('clact', parseData.message);
@@ -121,51 +135,66 @@ $this->load->view('security');
                 tempDeptWiseQueData = parseData.dept_wise_questionary_data;
                 tempServiceData = parseData.service_data;
                 tempQuestionsData = parseData.questions_data;
-                loadDeptQuestionary();
+              //  loadDeptQuestionary();
             }
         });
     }
 
-    function loadDeptQuestionary() {
-        var deptCnt = 1;
-        var questionCnt = 1;
-        var tabHtml = '';
-        var tabContentHtml = '';
-        var deptName = '';
-        var questionData = [];
-        $.each(tempDeptWiseQueData, function (deptId, serviceIds) {
-            deptName = tempDeptData[deptId] ? tempDeptData[deptId]['department_name'] : '';
-            tabHtml = '<li class="nav-item"><a class="nav-link' + (deptCnt == 1 ? ' active' : '') + '" data-toggle="tab" href="#tab-1-' + deptId + '">' + deptName + '</a></li>';
-            $('#tabs_container_for_approval').append(tabHtml);
-            tabContentHtml = '<div class="tab-pane' + (deptCnt == 1 ? ' show active' : '') + '" id="tab-1-' + deptId + '"></div>';
-            $('#tabs_content_container_for_approval').append(tabContentHtml);
-            questionCnt = 1;
-            $.each(serviceIds, function (index, serviceId) {
-                $.each(tempServiceData[serviceId]['questionary_items'], function (index, questionaryId) {
-                    questionData = tempQuestionsData[questionaryId];
-                    questionData.department_id = deptId;
-                    questionData.VALUE_ONE = VALUE_ONE;
-                    questionData.VALUE_TWO = VALUE_TWO;
-                    questionData.cnt = questionCnt;
-                    $('#tab-1-' + deptId).append(approvalRadioTemplate(questionData));
-                    questionCnt++;
-                });
-            });
-            deptCnt++;
-        });
-        if (deptCnt == 1) {
-            return false;
-        }
-        $('#tab_main_container_for_approval').show();
-    }
+//    function loadDeptQuestionary() {
+//        var deptCnt = 1;
+//        var questionCnt = 1;
+//        var tabHtml = '';
+//        var tabContentHtml = '';
+//        var deptName = '';
+//        var questionData = [];
+//        $.each(tempDeptWiseQueData, function (deptId, serviceIds) {
+//            deptName = tempDeptData[deptId] ? tempDeptData[deptId]['department_name'] : '';
+//            tabHtml = '<li class="nav-item"><a class="nav-link' + (deptCnt == 1 ? ' active' : '') + '" data-toggle="tab" href="#tab-1-' + deptId + '">' + deptName + '</a></li>';
+//            $('#tabs_container_for_approval').append(tabHtml);
+//            tabContentHtml = '<div class="tab-pane' + (deptCnt == 1 ? ' show active' : '') + '" id="tab-1-' + deptId + '"></div>';
+//            $('#tabs_content_container_for_approval').append(tabContentHtml);
+//            questionCnt = 1;
+//            $.each(serviceIds, function (index, serviceId) {
+//                $.each(tempServiceData[serviceId]['questionary_items'], function (index, questionaryId) {
+//                    questionData = tempQuestionsData[questionaryId];
+//                    questionData.department_id = deptId;
+//                    questionData.VALUE_ONE = VALUE_ONE;
+//                    questionData.VALUE_TWO = VALUE_TWO;
+//                    questionData.cnt = questionCnt;
+//                    $('#tab-1-' + deptId).append(approvalRadioTemplate(questionData));
+//                    questionCnt++;
+//                });
+//            });
+//            deptCnt++;
+//        });
+//        if (deptCnt == 1) {
+//            return false;
+//        }
+//        $('#tab_main_container_for_approval').show();
+//    }
 
     function showClearances() {
         validationMessageHide('approvals-district_for_approvals');
         var district = $('#district_for_approvals').val();
+        var riskCategory = $('#risk_category_for_approvals').val();
+        var sizeOfFirm = $('#size_of_firm_for_approvals').val();
+        var foreignDomesticInvestor = $('#foreign_domestic_investor_for_approvals').val();
         if (!district) {
             validationMessageShow('approvals-district_for_approvals', districtValidationMessage);
             return false;
         }
+//        if (!riskCategory) {
+//            validationMessageShow('approvals-risk_category_for_approvals', oneOptionValidationMessage);
+//            return false;
+//        }
+//        if (!sizeOfFirm) {
+//            validationMessageShow('approvals-size_of_firm_for_approvals', oneOptionValidationMessage);
+//            return false;
+//        }
+//        if (!foreignDomesticInvestor) {
+//            validationMessageShow('approvals-foreign_domestic_investor_for_approvals', oneOptionValidationMessage);
+//            return false;
+//        }
         var selectedServiceIds = [];
         var trueAnsCnt = 0;
         var totalQuestion = 0;
@@ -202,36 +231,45 @@ $this->load->view('security');
             serviceData.department_name = tempDeptData[serviceData['department_id']] ? tempDeptData[serviceData['department_id']]['department_name'] : '';
             serviceData.district_name_text = districtName;
             if (serviceData['service_type'] == VALUE_ONE) {
+                $('.pre_establishment_clearance').show();
                 serviceData['table-counter-classname'] = 'pre_establishment_cnt';
                 appendData('pre_establishment_clearance_container', serviceData);
             }
             if (serviceData['service_type'] == VALUE_TWO) {
+                $('.pre_operation_clearance').show();
                 serviceData['table-counter-classname'] = 'pre_operation_cnt';
                 appendData('pre_operation_clearance_container', serviceData);
             }
             if (serviceData['service_type'] == VALUE_THREE) {
+                $('.pre_establishment_clearance').show();
                 serviceData['table-counter-classname'] = 'pre_establishment_cnt';
                 appendData('pre_establishment_clearance_container', serviceData);
-
+                
+                $('.pre_operation_clearance').show();
                 serviceData['table-counter-classname'] = 'pre_operation_cnt';
                 appendData('pre_operation_clearance_container', serviceData);
             }
             if (serviceData['service_type'] == VALUE_FOUR) {
+                $('.renewals_clearance').show();
                 serviceData['table-counter-classname'] = 'renewals_cnt';
                 appendData('renewals_clearance_container', serviceData);
             }
             if (serviceData['service_type'] == VALUE_FIVE) {
+                $('.post_establishment_clearance').show();
                 serviceData['table-counter-classname'] = 'post_establishment_cnt';
                 appendData('post_establishment_clearance_container', serviceData);
             }
             if (serviceData['service_type'] == VALUE_SIX) {
+                $('.post_operation_clearance').show();
                 serviceData['table-counter-classname'] = 'post_operation_cnt';
                 appendData('post_operation_clearance_container', serviceData);
             }
             if (serviceData['service_type'] == VALUE_SEVEN) {
+                $('.pre_operation_clearance').show();
                 serviceData['table-counter-classname'] = 'pre_operation_cnt';
                 appendData('pre_operation_clearance_container', serviceData);
 
+                $('.post_operation_clearance').show();
                 serviceData['table-counter-classname'] = 'post_operation_cnt';
                 appendData('post_operation_clearance_container', serviceData);
             }
@@ -251,6 +289,9 @@ $this->load->view('security');
     function backFromClearance(district) {
         $('#clearance_form_template').html(approvalFormTemplate);
         renderOptionsForTwoDimensionalArray(talukaArray, 'district_for_approvals', false);
+        renderOptionsForTwoDimensionalArray(riskCategoryArray, 'risk_category_for_approvals', false);
+        renderOptionsForTwoDimensionalArray(cbTypeArray, 'size_of_firm_for_approvals', false);
+        renderOptionsForTwoDimensionalArray(foreignDomesticInvestorArray, 'foreign_domestic_investor_for_approvals', false);
     }
 
     function showBasicDetails(serviceId) {
