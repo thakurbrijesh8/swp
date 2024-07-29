@@ -241,8 +241,12 @@ div.dataTables_wrapper div.dataTables_length select {
     margin-bottom: 0px;
 }
 
+div.dataTables_wrapper div.dataTables_paginate{
+    font-size: 10px;
+}
+
 .page-link {
-    padding: 3px 7px;
+    padding: 4px 7px;
 }
 
 .bg-light-gray{
