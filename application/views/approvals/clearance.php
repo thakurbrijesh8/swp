@@ -124,6 +124,9 @@
     </div>
 </div>
 <div class="row">
+    <div class="col-md-12 mt-4 clearance_list f-w-b" style="color:#343a40; font-size:20px;"></div>
+</div>
+<div class="row">
     <div class="col-12 mt-4 text-center">
         <button type="button" class="btn btn-sm btn-danger" onclick="backFromClearance({{district}});">
             <i class="fa fa-arrow-left mr-0"></i>&nbsp; Back

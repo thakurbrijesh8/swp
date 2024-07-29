@@ -113,14 +113,14 @@ $this->load->view('security');
 //        if (!district || !riskCategory || !sizeOfFirm || !foreignDomesticInvestor) {
 //            return false;
 //        }
-       // $('#spinner_container_for_clearances').html(spinnerTemplate({'type': 'primary', 'extra_class': 'mb-4'}));
+        // $('#spinner_container_for_clearances').html(spinnerTemplate({'type': 'primary', 'extra_class': 'mb-4'}));
         $.ajax({
             type: 'POST',
             url: 'utility/get_dept_wise_questionary_data',
             data: {'district_for_clearances': district, 'risk_category_for_clearances': riskCategory, 'size_of_firm_for_clearances': sizeOfFirm,
                 'foreign_domestic_investor_for_clearances': foreignDomesticInvestor},
             error: function (textStatus, errorThrown) {
-               // $('#spinner_container_for_clearances').html('');
+                // $('#spinner_container_for_clearances').html('');
                 validationMessageShow('clact', textStatus.statusText);
                 $('html, body').animate({scrollTop: '0px'}, 0);
             },
@@ -135,7 +135,7 @@ $this->load->view('security');
                 tempDeptWiseQueData = parseData.dept_wise_questionary_data;
                 tempServiceData = parseData.service_data;
                 tempQuestionsData = parseData.questions_data;
-              //  loadDeptQuestionary();
+                //  loadDeptQuestionary();
             }
         });
     }
@@ -244,7 +244,7 @@ $this->load->view('security');
                 $('.pre_establishment_clearance').show();
                 serviceData['table-counter-classname'] = 'pre_establishment_cnt';
                 appendData('pre_establishment_clearance_container', serviceData);
-                
+
                 $('.pre_operation_clearance').show();
                 serviceData['table-counter-classname'] = 'pre_operation_cnt';
                 appendData('pre_operation_clearance_container', serviceData);
@@ -275,6 +275,10 @@ $this->load->view('security');
             }
             serviceCnt++;
         });
+        console.log(serviceCnt);
+        if (serviceCnt == VALUE_ONE) {
+            $('.clearance_list').html('No Services Available for Selected Options !');
+        }
         resetCounter('pre_establishment_cnt');
         resetCounter('post_establishment_cnt');
         resetCounter('pre_operation_cnt');
