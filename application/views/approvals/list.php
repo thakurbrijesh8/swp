@@ -91,11 +91,10 @@ $this->load->view('security');
     var tempDeptWiseQueData = [];
     var tempServiceData = [];
     var tempQuestionsData = [];
-    function getDepartmentData(obj) {
+    function getDepartmentData() {
         tempDeptWiseQueData = [];
         tempServiceData = [];
         tempQuestionsData = [];
-        //$('#spinner_container_for_clearances').html('');
         $('#tab_main_container_for_approval').hide();
         $('#tabs_container_for_approval').html('');
         $('#tabs_content_container_for_approval').html('');
@@ -110,9 +109,6 @@ $this->load->view('security');
             validationMessageShow('approvals-district_for_approvals', districtValidationMessage);
             return false;
         }
-//        if (!district || !riskCategory || !sizeOfFirm || !foreignDomesticInvestor) {
-//            return false;
-//        }
         // $('#spinner_container_for_clearances').html(spinnerTemplate({'type': 'primary', 'extra_class': 'mb-4'}));
         $.ajax({
             type: 'POST',
@@ -135,43 +131,9 @@ $this->load->view('security');
                 tempDeptWiseQueData = parseData.dept_wise_questionary_data;
                 tempServiceData = parseData.service_data;
                 tempQuestionsData = parseData.questions_data;
-                //  loadDeptQuestionary();
             }
         });
     }
-
-//    function loadDeptQuestionary() {
-//        var deptCnt = 1;
-//        var questionCnt = 1;
-//        var tabHtml = '';
-//        var tabContentHtml = '';
-//        var deptName = '';
-//        var questionData = [];
-//        $.each(tempDeptWiseQueData, function (deptId, serviceIds) {
-//            deptName = tempDeptData[deptId] ? tempDeptData[deptId]['department_name'] : '';
-//            tabHtml = '<li class="nav-item"><a class="nav-link' + (deptCnt == 1 ? ' active' : '') + '" data-toggle="tab" href="#tab-1-' + deptId + '">' + deptName + '</a></li>';
-//            $('#tabs_container_for_approval').append(tabHtml);
-//            tabContentHtml = '<div class="tab-pane' + (deptCnt == 1 ? ' show active' : '') + '" id="tab-1-' + deptId + '"></div>';
-//            $('#tabs_content_container_for_approval').append(tabContentHtml);
-//            questionCnt = 1;
-//            $.each(serviceIds, function (index, serviceId) {
-//                $.each(tempServiceData[serviceId]['questionary_items'], function (index, questionaryId) {
-//                    questionData = tempQuestionsData[questionaryId];
-//                    questionData.department_id = deptId;
-//                    questionData.VALUE_ONE = VALUE_ONE;
-//                    questionData.VALUE_TWO = VALUE_TWO;
-//                    questionData.cnt = questionCnt;
-//                    $('#tab-1-' + deptId).append(approvalRadioTemplate(questionData));
-//                    questionCnt++;
-//                });
-//            });
-//            deptCnt++;
-//        });
-//        if (deptCnt == 1) {
-//            return false;
-//        }
-//        $('#tab_main_container_for_approval').show();
-//    }
 
     function showClearances() {
         validationMessageHide('approvals-district_for_approvals');
@@ -183,18 +145,6 @@ $this->load->view('security');
             validationMessageShow('approvals-district_for_approvals', districtValidationMessage);
             return false;
         }
-//        if (!riskCategory) {
-//            validationMessageShow('approvals-risk_category_for_approvals', oneOptionValidationMessage);
-//            return false;
-//        }
-//        if (!sizeOfFirm) {
-//            validationMessageShow('approvals-size_of_firm_for_approvals', oneOptionValidationMessage);
-//            return false;
-//        }
-//        if (!foreignDomesticInvestor) {
-//            validationMessageShow('approvals-foreign_domestic_investor_for_approvals', oneOptionValidationMessage);
-//            return false;
-//        }
         var selectedServiceIds = [];
         var trueAnsCnt = 0;
         var totalQuestion = 0;
