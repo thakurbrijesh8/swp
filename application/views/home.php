@@ -103,6 +103,7 @@ $this->load->view('security');
                     <h3 class="feature-box-title">Departments & Services </h3>
                     <p>List of Participating Departments which provide necessary clearances through Single Window system for Industrial Clearance System.</p>
                     <a class="mt-3 font-weight-bold" href="<?php echo $base_url; ?>departments-and-services">Departments & Services <i class="ti-new-window"></i></a>
+                    <a class="mt-1 font-weight-bold" href="<?php echo $base_url; ?>assets/pdf/GoLive_Departments_Circular_29072024.pdf">Services Online on NSWS Portal <i class="ti-new-window"></i></a>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 mt-30">
@@ -118,7 +119,7 @@ $this->load->view('security');
                     <h3 class="feature-box-title text-primary mt-0">Recent Updates</h3>
                     <hr class="mt-1 mb-2">
                     <div class="list-groupmbe-nur list-unstyled list-group-borderless">
-                        <a class="list-group-item list-group-item-action" href="<?php echo $base_url; ?>assets/pdf/GoLive_Departments_Circular_29072024.pdf" target="_blank"><i class="fa fa-circle"></i> Go Live Services Under NSWS Portal</a>
+                        <a class="list-group-item list-group-item-action" href="<?php echo $base_url; ?>assets/pdf/GoLive_Departments_Circular_29072024.pdf" target="_blank"><i class="fa fa-circle"></i> Services Online on NSWS Portal</a>
                         <a class="list-group-item list-group-item-action" href="<?php echo $base_url; ?>assets/pdf/Safety_Guidelines_For_Iron_Steel_Sector.pdf" target="_blank"><i class="fa fa-circle"></i> Safety Guidelines for Iron and Steel Sector</a>
                         <a class="list-group-item list-group-item-action" href="<?php echo $base_url; ?>assets/pdf/Notification_IPS_2022_DNH_DD.pdf" target="_blank"><i class="fa fa-circle"></i> Notification IPS 2022 DNH & DD</a>
                         <a class="list-group-item list-group-item-action" href="<?php echo $base_url; ?>assets/pdf/FAQs_IPS_2022_12072024_160000.pdf" target="_blank"><i class="fa fa-circle"></i> FAQs_IPS 2022</a>

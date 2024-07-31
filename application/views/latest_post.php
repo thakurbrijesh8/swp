@@ -23,7 +23,7 @@
                 <div class="title text-left pb-0">
                     <h2 class="text-grad">Recent Updates</h2>
                     <div class="list-group-number list-unstyled list-group-borderless">
-                        <a class="list-group-item list-group-item-action" href="<?php echo $base_url; ?>assets/pdf/GoLive_Departments_Circular_29072024.pdf" target="_blank"><i class="fa fa-circle text-grad"></i> Go Live Services Under NSWS Portal</a>
+                        <a class="list-group-item list-group-item-action" href="<?php echo $base_url; ?>assets/pdf/GoLive_Departments_Circular_29072024.pdf" target="_blank"><i class="fa fa-circle text-grad"></i> Services Online on NSWS Portal</a>
                         <a class="list-group-item list-group-item-action" href="<?php echo $base_url; ?>assets/pdf/Safety_Guidelines_For_Iron_Steel_Sector.pdf" target="_blank"><i class="fa fa-circle text-grad"></i> Safety Guidelines for Iron and Steel Sector</a>
                         <a class="list-group-item list-group-item-action" href="<?php echo $base_url; ?>assets/pdf/Notification_IPS_2022_DNH_DD.pdf" target="_blank"><i class="fa fa-circle text-grad"></i> Notification IPS 2022 DNH & DD</a>
                         <a class="list-group-item list-group-item-action" href="<?php echo $base_url; ?>assets/pdf/FAQs_IPS_2022_12072024_160000.pdf" target="_blank"><i class="fa fa-circle text-grad"></i> FAQs_IPS 2022</a>
