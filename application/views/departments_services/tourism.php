@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-md-12 mt-4">
         <div class="table-responsive">
+            <h5 class="text-grad">Tourism Department - * Services Online on NSWS Portal</h5>
             <table class="table p-04 table-hover">
                 <thead class="all-text-white bg-grad">
                     <tr class="text-center">
@@ -18,7 +19,7 @@
                 <tbody>
                     <tr>
                         <td class="text-center">1</td>
-                        <td>Hotel & Home stay/Bed & Breakfast registration Form</td>
+                        <td>* Hotel & Home stay/Bed & Breakfast registration Form</td>
                         <td class="text-center">
                             <a class="btn btn-grad btn-sm" href="https://www.nsws.gov.in/portal/ddd" target="_blank">Click Here</a>
                         </td>

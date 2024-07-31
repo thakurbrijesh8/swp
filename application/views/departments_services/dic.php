@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12 mt-4">
         <div class="table-responsive">
-            <h5 class="text-grad"> District Industries Center</h5>
+            <h5 class="text-grad">District Industries Center - * Services Online on NSWS Portal</h5>
             <table class="table p-04 table-hover">
                 <thead class="all-text-white bg-grad">
                     <tr class="text-center">
@@ -49,7 +49,7 @@
                     </tr>
                     <tr>
                         <td class="text-center">3</td>
-                        <td>Investment Promotion Scheme : 2022 to 2027 (20 May 2022 to 19 May 2027)</td>
+                        <td>* Investment Promotion Scheme : 2022 to 2027 (20 May 2022 to 19 May 2027)</td>
                         <td class="text-center">
                             <a target="_blank" class="btn btn-grad btn-sm" href="https://www.nsws.gov.in/portal/ddd">Click Here</a>
                         </td>

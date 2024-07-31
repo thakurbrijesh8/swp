@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-md-12 mt-4">
         <div class="table-responsive">
+            <h5 class="text-grad">Excise Department - * Services Online on NSWS Portal</h5>
             <table class="table p-04 table-hover">
                 <thead class="all-text-white bg-grad">
                     <tr class="text-center">
@@ -18,7 +19,7 @@
                 <tbody>
                     <tr>
                         <td class="text-center">1</td>
-                        <td>FORM FOR NEW LICENSE FOR RETAIL SALE FOR CONSUMPTION ON THE PREMISES OF “A” AND “B” CATEGORY HOTEL (See Rule 99 of the DNHDD Excise Duty Rules, 2020)</td>
+                        <td>* FORM FOR NEW LICENSE FOR RETAIL SALE FOR CONSUMPTION ON THE PREMISES OF “A” AND “B” CATEGORY HOTEL (See Rule 99 of the DNHDD Excise Duty Rules, 2020)</td>
                         <td class="text-center">
                             <a class="btn btn-grad btn-sm" href="https://www.nsws.gov.in/portal/ddd" target="_blank">Click Here</a>
                         </td>
@@ -34,7 +35,7 @@
                     </tr>
                     <tr>
                         <td class="text-center">2</td>
-                        <td>FORM FOR PERMIT/LICENSE FOR INDUSTRIAL UNITS (FOR POSSESSION AND USE OF EXCISABLE ARTICLES POTENTIALLY FIT FOR HUMAN CONSUMPTION, RECTIFIED SPIRIT, ABSOLUTE ALCOHOL AND DENATURED SPIRIT) (See Rule 42 of the DNHDD Excise Duty Rules, 2020)</td>
+                        <td>* FORM FOR PERMIT/LICENSE FOR INDUSTRIAL UNITS (FOR POSSESSION AND USE OF EXCISABLE ARTICLES POTENTIALLY FIT FOR HUMAN CONSUMPTION, RECTIFIED SPIRIT, ABSOLUTE ALCOHOL AND DENATURED SPIRIT) (See Rule 42 of the DNHDD Excise Duty Rules, 2020)</td>
                         <td class="text-center">
                             <a class="btn btn-grad btn-sm" href="https://www.nsws.gov.in/portal/ddd" target="_blank">Click Here</a>
                         </td>
@@ -50,7 +51,7 @@
                     </tr>
                     <tr>
                         <td class="text-center">3</td>
-                        <td>FORM FOR REGISTRATION OF GODOWN/ PERMIT FOR PRIVATE WAREHOUSE . (See Rule 26 of the DNHDD Excise Duty Rules, 2020) (For dealers/license holders desiring Private warehouse)</td>
+                        <td>* FORM FOR REGISTRATION OF GODOWN/ PERMIT FOR PRIVATE WAREHOUSE . (See Rule 26 of the DNHDD Excise Duty Rules, 2020) (For dealers/license holders desiring Private warehouse)</td>
                         <td class="text-center">
                             <a class="btn btn-grad btn-sm" href="https://www.nsws.gov.in/portal/ddd" target="_blank">Click Here</a>
                         </td>
