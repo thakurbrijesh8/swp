@@ -51,7 +51,7 @@
                         <td class="text-center">3</td>
                         <td>Investment Promotion Scheme : 2022 to 2027 (20 May 2022 to 19 May 2027)</td>
                         <td class="text-center">
-                            <a target="_blank" class="btn btn-grad btn-sm" href="<?php echo $base_url; ?>login">Click Here</a>
+                            <a target="_blank" class="btn btn-grad btn-sm" href="https://www.nsws.gov.in/portal/ddd">Click Here</a>
                         </td>
                         <td class="text-center">District Industries Center - Daman</td>
                         <td class="text-center">30</td>

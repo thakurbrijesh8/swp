@@ -18,6 +18,54 @@
                 <tbody>
                     <tr>
                         <td class="text-center">1</td>
+                        <td>FORM FOR NEW LICENSE FOR RETAIL SALE FOR CONSUMPTION ON THE PREMISES OF “A” AND “B” CATEGORY HOTEL (See Rule 99 of the DNHDD Excise Duty Rules, 2020)</td>
+                        <td class="text-center">
+                            <a class="btn btn-grad btn-sm" href="https://www.nsws.gov.in/portal/ddd" target="_blank">Click Here</a>
+                        </td>
+                        <td class="text-center">Excise Department</td>
+                        <td class="text-center">-</td>
+                        <td class="text-center">
+                            <a target="_blank" href="https://www.nsws.gov.in/portal/ddd"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+
+                        </td>
+                        <td class="text-center">Assistant Commissioner</td>
+                        <td class="text-center">Deputy Commissioner</td>
+                        <td class="text-center">Commissioner</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">2</td>
+                        <td>FORM FOR PERMIT/LICENSE FOR INDUSTRIAL UNITS (FOR POSSESSION AND USE OF EXCISABLE ARTICLES POTENTIALLY FIT FOR HUMAN CONSUMPTION, RECTIFIED SPIRIT, ABSOLUTE ALCOHOL AND DENATURED SPIRIT) (See Rule 42 of the DNHDD Excise Duty Rules, 2020)</td>
+                        <td class="text-center">
+                            <a class="btn btn-grad btn-sm" href="https://www.nsws.gov.in/portal/ddd" target="_blank">Click Here</a>
+                        </td>
+                        <td class="text-center">Excise Department</td>
+                        <td class="text-center">-</td>
+                        <td class="text-center">
+                            <a target="_blank" href="https://www.nsws.gov.in/portal/ddd"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+
+                        </td>
+                        <td class="text-center">Assistant Commissioner</td>
+                        <td class="text-center">Deputy Commissioner</td>
+                        <td class="text-center">Commissioner</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">3</td>
+                        <td>FORM FOR REGISTRATION OF GODOWN/ PERMIT FOR PRIVATE WAREHOUSE . (See Rule 26 of the DNHDD Excise Duty Rules, 2020) (For dealers/license holders desiring Private warehouse)</td>
+                        <td class="text-center">
+                            <a class="btn btn-grad btn-sm" href="https://www.nsws.gov.in/portal/ddd" target="_blank">Click Here</a>
+                        </td>
+                        <td class="text-center">Excise Department</td>
+                        <td class="text-center">-</td>
+                        <td class="text-center">
+                            <a target="_blank" href="https://www.nsws.gov.in/portal/ddd"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+
+                        </td>
+                        <td class="text-center">Assistant Commissioner</td>
+                        <td class="text-center">Deputy Commissioner</td>
+                        <td class="text-center">Commissioner</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">4</td>
                         <td> Label Registration/Brand Registration</td>
                         <td class="text-center">
                             <a class="btn btn-grad btn-sm" href="https://ddnexcise.gov.in/Home" target="_blank">Click Here</a>
@@ -33,7 +81,7 @@
                         <td class="text-center">Commissioner</td>
                     </tr>
                     <tr>
-                        <td class="text-center">2</td>
+                        <td class="text-center">5</td>
                         <td>  Export Permit (spirit) by Distilleries/Industries </td>
                         <td class="text-center">
                             <a class="btn btn-grad btn-sm" href="https://ddnexcise.gov.in/Home" target="_blank">Click Here</a>
@@ -48,7 +96,7 @@
                         <td class="text-center">Commissioner</td>
                     </tr>
                     <tr>
-                        <td class="text-center">3</td>
+                        <td class="text-center">6</td>
                         <td> Export Permits(IMFL/CL/Beer/FL) by Distilleries/Brewery  </td>
                         <td class="text-center">
                             <a class="btn btn-grad btn-sm" href="https://ddnexcise.gov.in/Home" target="_blank">Click Here</a>
@@ -64,7 +112,7 @@
                     </tr>
 
                     <tr>
-                        <td class="text-center">4</td>
+                        <td class="text-center">7</td>
                         <td> Import Permit (spirit) by Distilleries/Industries</td>
                         <td class="text-center">
                             <a class="btn btn-grad btn-sm" href="https://ddnexcise.gov.in/Home" target="_blank">Click Here</a>
@@ -79,7 +127,7 @@
                         <td class="text-center">Commissioner</td>
                     </tr>
                     <tr>
-                        <td class="text-center">5</td>
+                        <td class="text-center">8</td>
                         <td> Import Permits(IMFL/CL/Beer/FL) by Wholesalers 
                         </td>
                         <td class="text-center">
@@ -95,7 +143,7 @@
                         <td class="text-center">Commissioner</td>
                     </tr>
                     <tr>
-                        <td class="text-center">6</td>
+                        <td class="text-center">9</td>
                         <td> Local Sale/Transport Permits(Spirit) by Distilleries/Industries)
                         </td>
                         <td class="text-center">
@@ -111,7 +159,7 @@
                         <td class="text-center">Commissioner</td>
                     </tr>
                     <tr>
-                        <td class="text-center">7</td>
+                        <td class="text-center">10</td>
                         <td>  Local Sale Permits (IMFL/CL/Beer/FL) by Distilleries/Brewery/Wholesalers
                         </td>
                         <td class="text-center">
@@ -127,7 +175,7 @@
                         <td class="text-center">Commissioner</td>
                     </tr>
                     <tr>
-                        <td class="text-center">8</td>
+                        <td class="text-center">11</td>
                         <td> Occasional License
                         </td>
                         <td class="text-center">
@@ -143,7 +191,7 @@
                         <td class="text-center">Commissioner</td>
                     </tr>
                     <tr>
-                        <td class="text-center">9</td>
+                        <td class="text-center">12</td>
                         <td>  Renewal of Licenses (Distilleries / Brewery / Wholesalers / Retailers / Hotels) 
                         </td>
                         <td class="text-center">
@@ -159,7 +207,7 @@
                         <td class="text-center">Commissioner</td>
                     </tr>
                     <tr>
-                        <td class="text-center">10</td>
+                        <td class="text-center">13</td>
                         <td>Online Excise Verification Certificate</td>
                         <td class="text-center">
                             <a class="btn btn-grad btn-sm" href="https://ddnexcise.gov.in/Home" target="_blank">Click Here</a>

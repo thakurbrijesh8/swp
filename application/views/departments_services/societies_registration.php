@@ -20,7 +20,7 @@
                         <td class="text-center">1</td>
                         <td> Co-operative Society Registration</td>
                         <td class="text-center">
-                            <a class="btn btn-grad btn-sm" href="<?php echo $base_url; ?>login" target="_blank">Click Here</a>
+                            <a class="btn btn-grad btn-sm" href="https://www.nsws.gov.in/portal/ddd" target="_blank">Click Here</a>
                         </td>
                         <td class="text-center">Assistant Registrar Co-operative Societies</td>
                         <td class="text-center">30 Days</td>

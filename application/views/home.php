@@ -118,6 +118,7 @@ $this->load->view('security');
                     <h3 class="feature-box-title text-primary mt-0">Recent Updates</h3>
                     <hr class="mt-1 mb-2">
                     <div class="list-groupmbe-nur list-unstyled list-group-borderless">
+                        <a class="list-group-item list-group-item-action" href="<?php echo $base_url; ?>assets/pdf/GoLive_Departments_Circular_29072024.pdf" target="_blank"><i class="fa fa-circle"></i> Go Live Services Under NSWS Portal</a>
                         <a class="list-group-item list-group-item-action" href="<?php echo $base_url; ?>assets/pdf/Safety_Guidelines_For_Iron_Steel_Sector.pdf" target="_blank"><i class="fa fa-circle"></i> Safety Guidelines for Iron and Steel Sector</a>
                         <a class="list-group-item list-group-item-action" href="<?php echo $base_url; ?>assets/pdf/Notification_IPS_2022_DNH_DD.pdf" target="_blank"><i class="fa fa-circle"></i> Notification IPS 2022 DNH & DD</a>
                         <a class="list-group-item list-group-item-action" href="<?php echo $base_url; ?>assets/pdf/FAQs_IPS_2022_12072024_160000.pdf" target="_blank"><i class="fa fa-circle"></i> FAQs_IPS 2022</a>

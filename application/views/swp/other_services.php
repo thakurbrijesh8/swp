@@ -23,7 +23,7 @@
             <div class="col-md-12">
                 <div class="title text-left pb-0">
                     <h2 class="text-grad">Departments & Services</h2>
-                    <h6 class="mb-0 mt-2 text-grad"><a href="assets/department/MANDATE-FOR-ONLINE-SUBMISSION-OF-APPLICATIONS.pdf" target="_blank"><i class="fa fa-download"></i> Click here to Download Circular regarding Online Submission of application for various clearances / approvals.</a></h6>
+                    <h6 class="mb-0 mt-2 text-grad"><a href="assets/pdf/GoLive_Departments_Circular_29072024.pdf" target="_blank"><i class="fa fa-download"></i> Click here to Download Circular regarding Online Submission of application for various clearances / approvals.</a></h6>
                 </div>
             </div>
         </div>
