@@ -2793,6 +2793,6 @@ $config['risk_category_array'] = array(
 );
 
 $config['foreign_domestic_investor_array'] = array(
-    VALUE_ONE => 'Foreign / Domestic ',
+    VALUE_ONE => 'Foreign',
     VALUE_TWO => 'Domestic',
 );

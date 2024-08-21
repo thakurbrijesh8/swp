@@ -99,7 +99,6 @@ $this->load->view('security');
         $('#tabs_container_for_approval').html('');
         $('#tabs_content_container_for_approval').html('');
         validationMessageHide('approvals');
-        //var district = obj.val();
         var district = $('#district_for_approvals').val();
         var riskCategory = $('#risk_category_for_approvals').val();
         var sizeOfFirm = $('#size_of_firm_for_approvals').val();
@@ -109,22 +108,22 @@ $this->load->view('security');
             validationMessageShow('approvals-district_for_approvals', districtValidationMessage);
             return false;
         }
-        // $('#spinner_container_for_clearances').html(spinnerTemplate({'type': 'primary', 'extra_class': 'mb-4'}));
+//        $('#spinner_container_for_clearances').html(spinnerTemplate({'type': 'primary', 'extra_class': 'mb-4'}));
         $.ajax({
             type: 'POST',
             url: 'utility/get_dept_wise_questionary_data',
             data: {'district_for_clearances': district, 'risk_category_for_clearances': riskCategory, 'size_of_firm_for_clearances': sizeOfFirm,
                 'foreign_domestic_investor_for_clearances': foreignDomesticInvestor},
             error: function (textStatus, errorThrown) {
-                // $('#spinner_container_for_clearances').html('');
-                validationMessageShow('clact', textStatus.statusText);
+//                $('#spinner_container_for_clearances').html('');
+                showError(textStatus.statusText);
                 $('html, body').animate({scrollTop: '0px'}, 0);
             },
             success: function (data) {
-                //$('#spinner_container_for_clearances').html('');
+//                $('#spinner_container_for_clearances').html('');
                 var parseData = JSON.parse(data);
                 if (parseData.success == false) {
-                    validationMessageShow('clact', parseData.message);
+                    showError(parseData.message);
                     $('html, body').animate({scrollTop: '0px'}, 0);
                     return false;
                 }
@@ -138,94 +137,54 @@ $this->load->view('security');
     function showClearances() {
         validationMessageHide('approvals-district_for_approvals');
         var district = $('#district_for_approvals').val();
-        var riskCategory = $('#risk_category_for_approvals').val();
-        var sizeOfFirm = $('#size_of_firm_for_approvals').val();
-        var foreignDomesticInvestor = $('#foreign_domestic_investor_for_approvals').val();
+//        var riskCategory = $('#risk_category_for_approvals').val();
+//        var sizeOfFirm = $('#size_of_firm_for_approvals').val();
+//        var foreignDomesticInvestor = $('#foreign_domestic_investor_for_approvals').val();
         if (!district) {
             validationMessageShow('approvals-district_for_approvals', districtValidationMessage);
             return false;
         }
-        var selectedServiceIds = [];
-        var trueAnsCnt = 0;
-        var totalQuestion = 0;
-        var exiAnswer = 0;
-        var ans = 0;
-        var notConnected = 0;
-        $.each(tempServiceData, function (serviceId, serviceData) {
-            totalQuestion = 0;
-            trueAnsCnt = 0;
-            notConnected = 0;
-            $.each(serviceData['questionary_items'], function (index, questionaryId) {
-                // Existing  answer check karavvanu
-                exiAnswer = tempQuestionsData[questionaryId]['answer'];
-                ans = parseInt($('input[name="answer_for_approval_' + questionaryId + '"]:checked').val());
-                if (exiAnswer == ans) {
-                    trueAnsCnt++;
-                }
-                if (isNaN(ans)) {
-                    notConnected++;
-                }
-                totalQuestion++;
-            });
-            if (totalQuestion == trueAnsCnt || totalQuestion == notConnected) {
-                selectedServiceIds.push(serviceId);
-            }
-        });
+//        var selectedServiceIds = [];
+//        var trueAnsCnt = 0;
+//        var totalQuestion = 0;
+//        var exiAnswer = 0;
+//        var ans = 0;
+//        var notConnected = 0;
+//        $.each(tempServiceData, function (serviceId, serviceData) {
+//            totalQuestion = 0;
+//            trueAnsCnt = 0;
+//            notConnected = 0;
+//            $.each(serviceData['questionary_items'], function (index, questionaryId) {
+//                // Existing  answer check karavvanu
+//                exiAnswer = tempQuestionsData[questionaryId]['answer'];
+//                ans = parseInt($('input[name="answer_for_approval_' + questionaryId + '"]:checked').val());
+//                if (exiAnswer == ans) {
+//                    trueAnsCnt++;
+//                }
+//                if (isNaN(ans)) {
+//                    notConnected++;
+//                }
+//                totalQuestion++;
+//            });
+//            if (totalQuestion == trueAnsCnt || totalQuestion == notConnected) {
+//            selectedServiceIds.push(serviceId);
+//            }
+//        });
         $('#clearance_form_template').html(approvalClearanceTemplate);
         var serviceCnt = 1;
         var districtName = talukaArray[district] ? talukaArray[district] : '';
         var serviceData = [];
-        $.each(selectedServiceIds, function (index, serviceId) {
+        $.each(tempServiceData, function (serviceId, sData) {
             serviceData = tempServiceData[serviceId];
             serviceData.service_id = serviceId;
             serviceData.department_name = tempDeptData[serviceData['department_id']] ? tempDeptData[serviceData['department_id']]['department_name'] : '';
             serviceData.district_name_text = districtName;
-            if (serviceData['service_type'] == VALUE_ONE) {
-                $('.pre_establishment_clearance').show();
-                serviceData['table-counter-classname'] = 'pre_establishment_cnt';
-                appendData('pre_establishment_clearance_container', serviceData);
-            }
-            if (serviceData['service_type'] == VALUE_TWO) {
-                $('.pre_operation_clearance').show();
-                serviceData['table-counter-classname'] = 'pre_operation_cnt';
-                appendData('pre_operation_clearance_container', serviceData);
-            }
-            if (serviceData['service_type'] == VALUE_THREE) {
-                $('.pre_establishment_clearance').show();
-                serviceData['table-counter-classname'] = 'pre_establishment_cnt';
-                appendData('pre_establishment_clearance_container', serviceData);
-
-                $('.pre_operation_clearance').show();
-                serviceData['table-counter-classname'] = 'pre_operation_cnt';
-                appendData('pre_operation_clearance_container', serviceData);
-            }
-            if (serviceData['service_type'] == VALUE_FOUR) {
-                $('.renewals_clearance').show();
-                serviceData['table-counter-classname'] = 'renewals_cnt';
-                appendData('renewals_clearance_container', serviceData);
-            }
-            if (serviceData['service_type'] == VALUE_FIVE) {
-                $('.post_establishment_clearance').show();
-                serviceData['table-counter-classname'] = 'post_establishment_cnt';
-                appendData('post_establishment_clearance_container', serviceData);
-            }
-            if (serviceData['service_type'] == VALUE_SIX) {
-                $('.post_operation_clearance').show();
-                serviceData['table-counter-classname'] = 'post_operation_cnt';
-                appendData('post_operation_clearance_container', serviceData);
-            }
-            if (serviceData['service_type'] == VALUE_SEVEN) {
-                $('.pre_operation_clearance').show();
-                serviceData['table-counter-classname'] = 'pre_operation_cnt';
-                appendData('pre_operation_clearance_container', serviceData);
-
-                $('.post_operation_clearance').show();
-                serviceData['table-counter-classname'] = 'post_operation_cnt';
-                appendData('post_operation_clearance_container', serviceData);
-            }
+            var sTypes = serviceData['service_type'].split(',');
+            $.each(sTypes, function (index, sType) {
+                setSData(sType, serviceData);
+            });
             serviceCnt++;
         });
-        console.log(serviceCnt);
         if (serviceCnt == VALUE_ONE) {
             $('.clearance_list').html('No Services Available for Selected Options !');
         }
@@ -234,6 +193,52 @@ $this->load->view('security');
         resetCounter('pre_operation_cnt');
         resetCounter('post_operation_cnt');
         resetCounter('renewals_cnt');
+    }
+
+    function setSData(sType, serviceData) {
+        if (sType == VALUE_ONE) {
+            $('.pre_establishment_clearance').show();
+            serviceData['table-counter-classname'] = 'pre_establishment_cnt';
+            appendData('pre_establishment_clearance_container', serviceData);
+        }
+        if (sType == VALUE_TWO) {
+            $('.pre_operation_clearance').show();
+            serviceData['table-counter-classname'] = 'pre_operation_cnt';
+            appendData('pre_operation_clearance_container', serviceData);
+        }
+        if (sType == VALUE_THREE) {
+            $('.pre_establishment_clearance').show();
+            serviceData['table-counter-classname'] = 'pre_establishment_cnt';
+            appendData('pre_establishment_clearance_container', serviceData);
+
+            $('.pre_operation_clearance').show();
+            serviceData['table-counter-classname'] = 'pre_operation_cnt';
+            appendData('pre_operation_clearance_container', serviceData);
+        }
+        if (sType == VALUE_FOUR) {
+            $('.renewals_clearance').show();
+            serviceData['table-counter-classname'] = 'renewals_cnt';
+            appendData('renewals_clearance_container', serviceData);
+        }
+        if (sType == VALUE_FIVE) {
+            $('.post_establishment_clearance').show();
+            serviceData['table-counter-classname'] = 'post_establishment_cnt';
+            appendData('post_establishment_clearance_container', serviceData);
+        }
+        if (sType == VALUE_SIX) {
+            $('.post_operation_clearance').show();
+            serviceData['table-counter-classname'] = 'post_operation_cnt';
+            appendData('post_operation_clearance_container', serviceData);
+        }
+        if (sType == VALUE_SEVEN) {
+            $('.pre_operation_clearance').show();
+            serviceData['table-counter-classname'] = 'pre_operation_cnt';
+            appendData('pre_operation_clearance_container', serviceData);
+
+            $('.post_operation_clearance').show();
+            serviceData['table-counter-classname'] = 'post_operation_cnt';
+            appendData('post_operation_clearance_container', serviceData);
+        }
     }
 
     function appendData(id, data) {

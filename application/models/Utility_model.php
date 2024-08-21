@@ -189,13 +189,13 @@ class Utility_model extends CI_Model {
             $this->db->where('s.dnh_district', $district);
         }
         if ($risk_category != '') {
-            $this->db->where('s.risk_category', $risk_category);
+            $this->db->like('s.risk_category', $risk_category);
         }
         if ($size_of_firm != '') {
-            $this->db->where('s.size_of_firm', $size_of_firm);
+            $this->db->like('s.size_of_firm', $size_of_firm);
         }
         if ($foreign_domestic_investor != '') {
-            $this->db->where('s.foreign_domestic_investor', $foreign_domestic_investor);
+            $this->db->like('s.foreign_domestic_investor', $foreign_domestic_investor);
         }
         $this->db->where('s.is_delete != ' . VALUE_ONE);
         $this->db->from('service AS s');
