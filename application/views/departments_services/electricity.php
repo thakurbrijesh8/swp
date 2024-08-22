@@ -195,6 +195,7 @@
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
                                 <a target="_blank" href="assets/department/electricity/NameChangeCharges.xlsx"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                                <a target="_blank" href="assets/department/electricity/DDM-2996-JERC_Tariff_Order_–_DNHDDPDCL.pdf"><button type="button" class="btn btn-grad btn-sm">JERC Tariff Order</button></a>
                             </td>
 
                         </tr>
