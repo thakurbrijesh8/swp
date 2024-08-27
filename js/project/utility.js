@@ -317,6 +317,30 @@ function returnFees(full) {
     return (full.total_fees ? (full.total_fees != VALUE_ZERO ? '<hr><span class="badge bg-success app-status">Fees : ' + full.total_fees + '/-</span>' : '') : '')
 }
 
+function fdRenderer(full) {
+    var returnString = '<table class="table table-bordered mb-0 bg-beige f-s-app-details table-lh1">';
+    if ((full.fee_descriptions != '' && full.fee_descriptions != null) && (full.fees != '' && full.fees != null)) {
+        var feesArray = full.fees.split(',');
+        var feeDescriptionsArray = full.fee_descriptions.split(',');
+        var sn = 1;
+        returnString += '<tr><th class="text-center">Sr. No.</th><th class="text-center">Fee Description</th><th class="text-center">Fee</th></tr>';
+        for (var i = 0; i < feesArray.length; i++) {
+            var fee = feesArray[i];
+            var fd = feeDescriptionsArray[i];
+            returnString += '<tr>';
+            returnString += '<td class="text-center">' + sn + '</td>';
+            returnString += '<td class="text-left">' + fd + '</td>';
+            returnString += '<td>' + fee + '/-' + '</td>';
+            returnString += '</tr>';
+            sn++;
+        }
+    } else {
+        returnString = 'Fees Not Applicable';
+    }
+    returnString += '</table>';
+    return returnString;
+}
+
 var queryStatusRenderer = function (data, type, full, meta) {
     return '<div id="query_status_' + data + '">' + (queryStatusArray[full.query_status] ? queryStatusArray[full.query_status] : queryStatusArray[VALUE_ZERO]) + '</div>';
 };
@@ -1121,6 +1145,11 @@ function checkLogin(btnObj) {
 function regNoRenderer(moduleType, moduleId) {
     var pre = prefixModuleArray[moduleType] ? prefixModuleArray[moduleType] : '';
     return pre + ('00000' + moduleId).slice(-5);
+}
+
+function appNoRenderer(full) {
+    var pre = prefixModuleArray[full.mt] ? prefixModuleArray[full.mt] : '';
+    return pre + ('00000' + full.m_id).slice(-5);
 }
 
 function loadQueryManagementModule(parseData, templateData, tmpData) {

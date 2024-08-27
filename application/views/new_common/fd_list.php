@@ -24,9 +24,11 @@
             <thead>
                 <tr class="all-text-white bg-grad">
                     <th class="text-center" style="width: 35px;">No.</th>
-                    <th class="text-center" style="min-width: 120px;">Application Number</th>
-                    <th class="text-center" style="min-width: 120px;">Transaction Date & Time</th>
-                    <th class="text-center" style="min-width: 80px;">Total Fees</th>
+                    <th class="text-center" style="min-width: 80px;">Application No.</th>
+                    <th class="text-center" style="min-width: 80px;">Application Date</th>
+                    <th class="text-center" style="min-width: 80px;">Approval Date</th>
+                    <th class="text-center" style="min-width: 250px;">Fee Details</th>
+                    <th class="text-center" style="min-width: 80px;">Total Fee Charged</th>
                 </tr>
             </thead>
         </table>

@@ -44,15 +44,20 @@ class Payment_model extends CI_Model {
         return $resc->result_array();
     }
 
-    function get_mwise_payment_history($module_type = 0) {
-        $this->db->select('fees_payment_id, module_type, module_id, op_transaction_datetime, total_fees');
-        if ($module_type != 0) {
-            $this->db->where('module_type', $module_type);
-        }
-        $this->db->where('op_status ', VALUE_TWO);
-        $this->db->from('fees_payment');
-        $this->db->where('is_delete !=' . IS_DELETE);
-        $this->db->order_by('fees_payment_id', 'DESC');
+    function get_mwise_payment_history($mt_data, $module_type) {
+        $this->db->select(
+                'mt.' . $mt_data['key_id_text'] . ' AS m_id, mt.status, mt.submitted_datetime, mt.status_datetime, mt.total_fees, mt.is_delete,'
+                . 'fb.fees_bifurcation_id, fb.module_id, fb.module_type, fb.fee, fb.fee_description, "'.$module_type.'" AS mt, '
+                . 'GROUP_CONCAT(fb.fee ORDER BY fb.fees_bifurcation_id) as fees, GROUP_CONCAT(fb.fee_description ORDER BY fb.fees_bifurcation_id) as fee_descriptions'
+        );
+
+        $this->db->from($mt_data['tbl_text'] . ' AS mt');
+
+        $this->db->join('fees_bifurcation AS fb',
+                'fb.module_id = mt.' . $mt_data['key_id_text'] . ' AND fb.module_type = ' . $module_type, 'LEFT');
+        $this->db->where('mt.status', VALUE_FIVE);
+        $this->db->where('mt.is_delete !=', IS_DELETE);
+        $this->db->group_by('mt.' . $mt_data['key_id_text']);
         $resc = $this->db->get();
         return $resc->result_array();
     }

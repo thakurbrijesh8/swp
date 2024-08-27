@@ -1206,7 +1206,7 @@ class Utility extends CI_Controller {
                 return false;
             }
             $mt_data = $module_type_array[$module_type];
-            $success_array['payment_history'] = $this->payment_model->get_mwise_payment_history($module_type);
+            $success_array['payment_history'] = $this->payment_model->get_mwise_payment_history($mt_data, $module_type);
             $success_array['dept_name'] = $mt_data['department_name'];
             $success_array['service_name'] = $mt_data['title'];
             echo json_encode($success_array);
