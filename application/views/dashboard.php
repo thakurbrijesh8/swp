@@ -58,7 +58,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
-                                                <th class="v-a-m" style="width: 10px;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/ certificate</th>
+                                                <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -235,7 +235,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
-                                                <th class="v-a-m" style="width: 10px;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/ certificate</th>
+                                                <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -338,7 +338,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
-                                                <th class="v-a-m" style="width: 10px;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/ certificate</th>
+                                                <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -489,7 +489,7 @@ $this->load->view('security');
                                                 <tr class="text-center">
                                                     <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                     <th class="v-a-m">Name of Service</th>
-                                                    <th class="v-a-m" style="width: 10px;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/ certificate</th>
+                                                    <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                     <th class="v-a-m" style="width: 14%;">
                                                         Time Limit Prescribed as per the Public<br>
                                                         Service Guarantee Act or Equivalent Act
@@ -620,7 +620,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
-                                                <th class="v-a-m" style="width: 10px;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/ certificate</th>
+                                                <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -682,7 +682,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
-                                                <th class="v-a-m" style="width: 10px;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/ certificate</th>
+                                                <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -811,7 +811,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
-                                                <th class="v-a-m" style="width: 10px;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/ certificate</th>
+                                                <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -974,7 +974,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
-                                                <th class="v-a-m" style="width: 10px;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/ certificate</th>
+                                                <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -1082,7 +1082,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
-                                                <th class="v-a-m" style="width: 10px;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/ certificate</th>
+                                                <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -1135,7 +1135,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
-                                                <th class="v-a-m" style="width: 10px;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/ certificate</th>
+                                                <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -1250,7 +1250,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
-                                                <th class="v-a-m" style="width: 10px;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/ certificate</th>
+                                                <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -1332,7 +1332,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
-                                                <th class="v-a-m" style="width: 10px;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/ certificate</th>
+                                                <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -1446,7 +1446,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
-                                                <th class="v-a-m" style="width: 10px;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/ certificate</th>
+                                                <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -1606,7 +1606,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
-                                                <th class="v-a-m" style="width: 10px;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/ certificate</th>
+                                                <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
@@ -1656,7 +1656,7 @@ $this->load->view('security');
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
                                                 <th class="v-a-m">Name of Service</th>
-                                                <th class="v-a-m" style="width: 10px;">*"Average fee" taken by the Department for completion of entire process of obtaining approval/ certificate</th>
+                                                <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
                                                     Service Guarantee Act or Equivalent Act
