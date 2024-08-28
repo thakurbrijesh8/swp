@@ -53,7 +53,7 @@ define('TEMP_TYPE_D', 3);
 define('FROM_NAME', 'noreply@swp.dddgov.in');
 define('FROM_EMAIL', 'noreply@swp.dddgov.in');
 
-define('VERSION', 'v=1.1.75');
+define('VERSION', 'v=1.1.76');
 
 define('PROJECT_PATH', 'https://swpadmin.dddgov.in/');
 //define('PROJECT_PATH', 'http://localhost:90/swp_admin/');
