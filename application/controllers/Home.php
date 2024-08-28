@@ -168,6 +168,8 @@ class Home extends CI_Controller {
         $dashboard_array[$module_name . '_rejected_app'] = 0;
         $dashboard_array[$module_name . '_average_time_to_ga'] = '-';
         $dashboard_array[$module_name . '_median_time_to_ga'] = '-';
+        $dashboard_array[$module_name . '_min_time_to_ga'] = '-';
+        $dashboard_array[$module_name . '_max_time_to_ga'] = '-';
     }
 
     function _generate_status_wise_array(&$dashboard_array, $module_name) {
@@ -176,6 +178,7 @@ class Home extends CI_Controller {
         if (!empty($temp_array)) {
             $total_days = 0;
             $cnt = 1;
+            $processing_days_array = array();
             foreach ($temp_array as $t_array) {
                 if ($t_array['status'] != VALUE_ZERO && $t_array['status'] != VALUE_ONE) {
                     $dashboard_array[$module_name . '_received_app'] += $t_array['total_records'];
@@ -188,12 +191,19 @@ class Home extends CI_Controller {
                         if ($cnt == 1) {
                             $dashboard_array[$module_name . '_median_time_to_ga'] = $t_array['total_records'] . ' Application(s) in<br>' . $t_array['processing_days'] . ' Day(s)';
                         }
+                        array_push($processing_days_array, $t_array['processing_days']);
                     }
                     if ($t_array['status'] == VALUE_SIX) {
                         $dashboard_array[$module_name . '_rejected_app'] += $t_array['total_records'];
                     }
                 }
                 $cnt++;
+            }
+            if (!empty($processing_days_array)) {
+                $min_days = min($processing_days_array);
+                $dashboard_array[$module_name . '_min_time_to_ga'] = $min_days . ' Day(s)';
+                $max_days = max($processing_days_array);
+                $dashboard_array[$module_name . '_max_time_to_ga'] = $max_days . ' Day(s)';
             }
             if ($total_days != 0 && $dashboard_array[$module_name . '_approved_app'] != 0) {
                 $days = abs($total_days / $dashboard_array[$module_name . '_approved_app']);

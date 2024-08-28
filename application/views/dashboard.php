@@ -69,6 +69,8 @@ $this->load->view('security');
                                                 <th class="v-a-m" style="width: 8%;">Total Number of Applications Rejected</th>
                                                 <th class="v-a-m" style="width: 8%;">Average Time Taken To Grant Approval</th>
                                                 <th class="v-a-m" style="width: 8%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 8%;">Minimum Time To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 8%;">Maximum Time To Grant Approval</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -85,6 +87,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($shop_rejected_app) ? $shop_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($shop_average_time_to_ga) ? $shop_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($shop_median_time_to_ga) ? $shop_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($shop_min_time_to_ga) ? $shop_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($shop_max_time_to_ga) ? $shop_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
@@ -99,7 +103,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($shop_renewal_rejected_app) ? $shop_renewal_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($shop_renewal_average_time_to_ga) ? $shop_renewal_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($shop_renewal_median_time_to_ga) ? $shop_renewal_median_time_to_ga : '-'; ?></td>
-                                            </tr>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($shop_renewal_min_time_to_ga) ? $shop_renewal_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($shop_renewal_max_time_to_ga) ? $shop_renewal_max_time_to_ga : '-'; ?></td>
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
                                                 <td>Registration / Renewal under "The Building and Other Construction Workers (Regulation of Employment Conditions of Service Act), 1996"</td>
@@ -113,6 +118,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($bocw_rejected_app) ? $bocw_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($bocw_average_time_to_ga) ? $bocw_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($bocw_median_time_to_ga) ? $bocw_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($bocw_min_time_to_ga) ? $bocw_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($bocw_max_time_to_ga) ? $bocw_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">4</td>
@@ -127,6 +134,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($migrantworkers_rejected_app) ? $migrantworkers_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($migrantworkers_average_time_to_ga) ? $migrantworkers_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($migrantworkers_median_time_to_ga) ? $migrantworkers_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($migrantworkers_min_time_to_ga) ? $migrantworkers_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($migrantworkers_max_time_to_ga) ? $migrantworkers_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">5</td>
@@ -141,6 +150,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($migrantworkers_renewal_rejected_app) ? $migrantworkers_renewal_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($migrantworkers_renewal_average_time_to_ga) ? $migrantworkers_renewal_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($migrantworkers_renewal_median_time_to_ga) ? $migrantworkers_renewal_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($migrantworkers_renewal_min_time_to_ga) ? $migrantworkers_renewal_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($migrantworkers_renewal_max_time_to_ga) ? $migrantworkers_renewal_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">6</td>
@@ -155,6 +166,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($establishment_rejected_app) ? $establishment_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($establishment_average_time_to_ga) ? $establishment_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($establishment_median_time_to_ga) ? $establishment_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($establishment_min_time_to_ga) ? $establishment_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($establishment_max_time_to_ga) ? $establishment_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">7</td>
@@ -169,6 +182,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($appli_licence_rejected_app) ? $appli_licence_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($appli_licence_average_time_to_ga) ? $appli_licence_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($appli_licence_median_time_to_ga) ? $appli_licence_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($appli_licence_min_time_to_ga) ? $appli_licence_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($appli_licence_max_time_to_ga) ? $appli_licence_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">8</td>
@@ -183,6 +198,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($appli_licence_renewal_rejected_app) ? $appli_licence_renewal_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($appli_licence_renewal_average_time_to_ga) ? $appli_licence_renewal_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($appli_licence_renewal_median_time_to_ga) ? $appli_licence_renewal_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($appli_licence_renewal_min_time_to_ga) ? $appli_licence_renewal_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($appli_licence_renewal_max_time_to_ga) ? $appli_licence_renewal_max_time_to_ga : '-'; ?></td>
                                             </tr>
 <!--                                            <tr>
                                                 <td class="text-center v-a-m">9</td>
@@ -197,7 +214,9 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($singlereturn_rejected_app) ? $singlereturn_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($singlereturn_average_time_to_ga) ? $singlereturn_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($singlereturn_median_time_to_ga) ? $singlereturn_median_time_to_ga : '-'; ?></td>
-                                            </tr>-->
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($singlereturn_renewal_min_time_to_ga) ? $singlereturn_renewal_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($singlereturn_renewal_max_time_to_ga) ? $singlereturn_renewal_max_time_to_ga : '-'; ?></td>
+</tr>-->
                                         </tbody>
                                     </table>
                                 </div>
@@ -227,6 +246,8 @@ $this->load->view('security');
                                                 <th class="v-a-m" style="width: 8%;">Total Number of Applications Rejected</th>
                                                 <th class="v-a-m" style="width: 8%;">Average Time Taken To Grant Approval</th>
                                                 <th class="v-a-m" style="width: 8%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 8%;">Minimum Time To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 8%;">Maximum Time To Grant Approval</th>
                                                 <th class="v-a-m" style="width: 8%;">Fee Incurred to Grant Approval / Certificate</th>
                                             </tr>
                                         </thead>
@@ -244,6 +265,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($textile_rejected_app) ? $textile_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">22</td>
                                                 <td class="text-center v-a-m font-weight-bold">27</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($textile_min_time_to_ga) ? $textile_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($textile_max_time_to_ga) ? $textile_max_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold">Not Applicable</td>
                                             </tr>
                                             <tr>
@@ -259,6 +282,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($msme_rejected_app) ? $msme_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">25</td>
                                                 <td class="text-center v-a-m font-weight-bold">29</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($msme_min_time_to_ga) ? $msme_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($msme_max_time_to_ga) ? $msme_max_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold">Not Applicable</td>
                                             </tr>
                                             <tr>
@@ -274,6 +299,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($ips_incentive_rejected_app) ? $ips_incentive_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($ps_incentive_average_time_to_ga) ? $ps_incentive_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($ps_incentive_median_time_to_ga) ? $ps_incentive_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($ips_incentive_min_time_to_ga) ? $ips_incentive_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($ips_incentive_max_time_to_ga) ? $ips_incentive_max_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold">Not Applicable</td>
                                             </tr>
                                             <tr>
@@ -289,6 +316,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($land_allotment_rejected_app) ? $land_allotment_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">25</td>
                                                 <td class="text-center v-a-m font-weight-bold">25</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($land_allotment_min_time_to_ga) ? $land_allotment_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($land_allotment_max_time_to_ga) ? $land_allotment_max_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"></td>
                                             </tr>
                                         </tbody>
@@ -320,6 +349,8 @@ $this->load->view('security');
                                                 <th class="v-a-m" style="width: 10%;">Total Number of Applications Rejected</th>
                                                 <th class="v-a-m" style="width: 10%;">Average Time Taken To Grant Approval</th>
                                                 <th class="v-a-m" style="width: 10%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Minimum Time To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Maximum Time To Grant Approval</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -334,6 +365,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">661</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
@@ -354,7 +387,10 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-success">3299</td>
                                                 <td class="text-center v-a-m font-weight-bold text-danger">829</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
-                                                <td class="text-center v-a-m font-weight-bold">-</td>                                            </tr>
+                                                <td class="text-center v-a-m font-weight-bold">-</td>  
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                            </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
                                                 <td>Registration / Renewal under the E-waste management rules, 2016</td>
@@ -366,13 +402,15 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">4</td>
                                                 <td>Registration/ Renewal under Plastic Waste (Management and Handling) Rules, 2016</td>
                                                 <td class="text-center v-a-m">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">30 days/15 days</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary" colspan="6">
+                                                <td class="text-center v-a-m font-weight-bold text-primary" colspan="8">
                                                     <a target="_blank" href="https://eprplastic.cpcb.gov.in/#/plastic/home/nationalDashboardSpcb"><button type="button" class="btn btn-grad btn-sm">View</button></a>
                                                 </td>   
                                             </tr>
@@ -386,7 +424,9 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-success">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
-                                                <td class="text-center v-a-m font-weight-bold">-</td>   
+                                                <td class="text-center v-a-m font-weight-bold">-</td> 
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">6</td>
@@ -399,6 +439,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">-</td>   
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">7</td>
@@ -411,6 +453,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">-</td>   
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">8</td>
@@ -423,6 +467,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">-</td>   
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -454,6 +500,8 @@ $this->load->view('security');
                                                     <th class="v-a-m" style="width: 10%;">Total Number of Applications Rejected</th>
                                                     <th class="v-a-m" style="width: 10%;">Average Time Taken To Grant Approval</th>
                                                     <th class="v-a-m" style="width: 10%;">Median Time Taken to Grant Approval</th>
+                                                    <th class="v-a-m" style="width: 10%;">Minimum Time To Grant Approval</th>
+                                                    <th class="v-a-m" style="width: 10%;">Maximum Time To Grant Approval</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -470,6 +518,8 @@ $this->load->view('security');
                                                     <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($factorylicence_rejected_app) ? $factorylicence_rejected_app : 0; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($factorylicence_average_time_to_ga) ? $factorylicence_average_time_to_ga : '-'; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold"><?php echo isset($factorylicence_median_time_to_ga) ? $factorylicence_median_time_to_ga : '-'; ?></td>
+                                                    <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($factorylicence_min_time_to_ga) ? $factorylicence_min_time_to_ga : '-'; ?></td>
+                                                    <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($factorylicence_max_time_to_ga) ? $factorylicence_max_time_to_ga : '-'; ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center v-a-m">2</td>
@@ -484,6 +534,8 @@ $this->load->view('security');
                                                     <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($factorylicence_renewal_rejected_app) ? $factorylicence_renewal_rejected_app : 0; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($factorylicence_renewal_average_time_to_ga) ? $factorylicence_renewal_average_time_to_ga : '-'; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold"><?php echo isset($factorylicence_renewal_median_time_to_ga) ? $factorylicence_renewal_median_time_to_ga : '-'; ?></td>
+                                                    <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($factorylicence_renewal_min_time_to_ga) ? $factorylicence_renewal_min_time_to_ga : '-'; ?></td>
+                                                    <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($factorylicence_renewal_max_time_to_ga) ? $factorylicence_renewal_max_time_to_ga : '-'; ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center v-a-m">3</td>
@@ -498,6 +550,8 @@ $this->load->view('security');
                                                     <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($buildingplan_rejected_app) ? $buildingplan_rejected_app : 0; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($buildingplan_average_time_to_ga) ? $buildingplan_average_time_to_ga : '-'; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold"><?php echo isset($buildingplan_median_time_to_ga) ? $buildingplan_median_time_to_ga : '-'; ?></td>
+                                                    <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($buildingplan_min_time_to_ga) ? $buildingplan_min_time_to_ga : '-'; ?></td>
+                                                    <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($buildingplan_max_time_to_ga) ? $buildingplan_max_time_to_ga : '-'; ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center v-a-m">4</td>
@@ -512,6 +566,8 @@ $this->load->view('security');
                                                     <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($boileract_rejected_app) ? $boileract_rejected_app : 0; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($boileract_average_time_to_ga) ? $boileract_average_time_to_ga : '-'; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold"><?php echo isset($boileract_median_time_to_ga) ? $boileract_median_time_to_ga : '-'; ?></td>
+                                                    <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($boileract_min_time_to_ga) ? $boileract_min_time_to_ga : '-'; ?></td>
+                                                    <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($boileract_max_time_to_ga) ? $boileract_max_time_to_ga : '-'; ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center v-a-m">5</td>
@@ -526,6 +582,8 @@ $this->load->view('security');
                                                     <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($boileract_renewal_rejected_app) ? $boileract_renewal_rejected_app : 0; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($boileract_renewal_average_time_to_ga) ? $boileract_renewal_average_time_to_ga : '-'; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold"><?php echo isset($boileract_renewal_median_time_to_ga) ? $boileract_renewal_median_time_to_ga : '-'; ?></td>
+                                                    <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($boileract_renewal_min_time_to_ga) ? $boileract_renewal_min_time_to_ga : '-'; ?></td>
+                                                    <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($boileract_renewal_max_time_to_ga) ? $boileract_renewal_max_time_to_ga : '-'; ?></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center v-a-m">6</td>
@@ -540,6 +598,8 @@ $this->load->view('security');
                                                     <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($boilermanufactures_rejected_app) ? $boilermanufactures_rejected_app : 0; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($boilermanufactures_average_time_to_ga) ? $boilermanufactures_average_time_to_ga : '-'; ?></td>
                                                     <td class="text-center v-a-m font-weight-bold"><?php echo isset($boilermanufactures_median_time_to_ga) ? $boilermanufactures_median_time_to_ga : '-'; ?></td>
+                                                    <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($boilermanufactures_min_time_to_ga) ? $boilermanufactures_min_time_to_ga : '-'; ?></td>
+                                                    <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($boilermanufactures_max_time_to_ga) ? $boilermanufactures_max_time_to_ga : '-'; ?></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -571,6 +631,8 @@ $this->load->view('security');
                                                 <th class="v-a-m" style="width: 10%;">Total Number of Applications Rejected</th>
                                                 <th class="v-a-m" style="width: 10%;">Average Time Taken To Grant Approval</th>
                                                 <th class="v-a-m" style="width: 10%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Minimum Time To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Maximum Time To Grant Approval</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -585,6 +647,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">-</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">5 Day(s)</td>
                                                 <td class="text-center v-a-m font-weight-bold">6 Day(s)</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
@@ -597,6 +661,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">404</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">6 Day(s)</td>
                                                 <td class="text-center v-a-m font-weight-bold">7 Day(s)</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -627,6 +693,8 @@ $this->load->view('security');
                                                 <th class="v-a-m" style="width: 10%;">Total Number of Applications Rejected</th>
                                                 <th class="v-a-m" style="width: 10%;">Average Time Taken To Grant Approval</th>
                                                 <th class="v-a-m" style="width: 10%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Minimum Time To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Maximum Time To Grant Approval</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -643,6 +711,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($na_rejected_app) ? $na_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($na_average_time_to_ga) ? $na_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($na_median_time_to_ga) ? $na_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($na_min_time_to_ga) ? $na_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($na_max_time_to_ga) ? $na_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
@@ -661,6 +731,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($cinema_rejected_app) ? $cinema_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($cinema_average_time_to_ga) ? $cinema_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($cinema_median_time_to_ga) ? $cinema_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($cinema_min_time_to_ga) ? $cinema_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($cinema_max_time_to_ga) ? $cinema_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
@@ -675,6 +747,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($filmshooting_rejected_app) ? $filmshooting_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($filmshooting_average_time_to_ga) ? $filmshooting_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($filmshooting_median_time_to_ga) ? $filmshooting_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($filmshooting_min_time_to_ga) ? $filmshooting_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($filmshooting_max_time_to_ga) ? $filmshooting_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">4</td>
@@ -689,6 +763,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($society_registration_rejected_app) ? $society_registration_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($society_registration_average_time_to_ga) ? $society_registration_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($society_registration_median_time_to_ga) ? $society_registration_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($society_registration_min_time_to_ga) ? $society_registration_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($society_registration_max_time_to_ga) ? $society_registration_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">5</td>
@@ -701,6 +777,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                                 <td class="text-center v-a-m font-weight-bold">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -744,6 +822,8 @@ $this->load->view('security');
                                                 <th class="v-a-m" style="width: 10%;">Total Number of Applications Rejected</th>
                                                 <th class="v-a-m" style="width: 10%;">Average Time Taken To Grant Approval</th>
                                                 <th class="v-a-m" style="width: 10%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Minimum Time To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Maximum Time To Grant Approval</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -760,6 +840,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($wm_registration_rejected_app) ? $wm_registration_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_registration_average_time_to_ga) ? $wm_registration_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($wm_registration_median_time_to_ga) ? $wm_registration_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_registration_min_time_to_ga) ? $wm_registration_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_registration_max_time_to_ga) ? $wm_registration_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
@@ -774,6 +856,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($wm_repairer_rejected_app) ? $wm_repairer_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_repairer_average_time_to_ga) ? $wm_repairer_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($wm_repairer_median_time_to_ga) ? $wm_repairer_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_repairer_min_time_to_ga) ? $wm_repairer_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_repairer_max_time_to_ga) ? $wm_repairer_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
@@ -788,6 +872,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($wm_repairer_renewal_rejected_app) ? $wm_repairer_renewal_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_repairer_renewal_average_time_to_ga) ? $wm_repairer_renewal_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($wm_repairer_renewal_median_time_to_ga) ? $wm_repairer_renewal_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_repairer_renewal_min_time_to_ga) ? $wm_repairer_renewal_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_repairer_renewal_max_time_to_ga) ? $wm_repairer_renewal_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">4</td>
@@ -802,6 +888,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($wm_dealer_rejected_app) ? $wm_dealer_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_dealer_average_time_to_ga) ? $wm_dealer_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($wm_dealer_median_time_to_ga) ? $wm_dealer_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_dealer_min_time_to_ga) ? $wm_dealer_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_dealer_max_time_to_ga) ? $wm_dealer_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">5</td>
@@ -816,6 +904,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($wm_dealer_renewal_rejected_app) ? $wm_dealer_renewal_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_dealer_renewal_average_time_to_ga) ? $wm_dealer_renewal_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($wm_dealer_renewal_median_time_to_ga) ? $wm_dealer_renewal_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_dealer_renewal_min_time_to_ga) ? $wm_dealer_renewal_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_dealer_renewal_max_time_to_ga) ? $wm_dealer_renewal_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">6</td>
@@ -830,6 +920,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($wm_manufacturer_rejected_app) ? $wm_manufacturer_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_manufacturer_average_time_to_ga) ? $wm_manufacturer_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($wm_manufacturer_median_time_to_ga) ? $wm_manufacturer_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_manufacturer_min_time_to_ga) ? $wm_manufacturer_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_manufacturer_max_time_to_ga) ? $wm_manufacturer_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">7</td>
@@ -844,6 +936,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($wm_manufacturer_renewal_rejected_app) ? $wm_manufacturer_renewal_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_manufacturer_renewal_average_time_to_ga) ? $wm_manufacturer_renewal_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($wm_manufacturer_renewal_median_time_to_ga) ? $wm_manufacturer_renewal_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_manufacturer_renewal_min_time_to_ga) ? $wm_manufacturer_renewal_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wm_manufacturer_renewal_max_time_to_ga) ? $wm_manufacturer_renewal_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">8</td>
@@ -858,6 +952,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">3</td>
                                                 <td class="text-center v-a-m font-weight-bold">3</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -889,6 +985,8 @@ $this->load->view('security');
                                                 <th class="v-a-m" style="width: 10%;">Total Number of Applications Rejected</th>
                                                 <th class="v-a-m" style="width: 10%;">Average Time Taken To Grant Approval</th>
                                                 <th class="v-a-m" style="width: 10%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Minimum Time To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Maximum Time To Grant Approval</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -908,6 +1006,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">4</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">4</td>
                                                 <td class="text-center v-a-m font-weight-bold">3 Application in <br> 5 Days</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
@@ -925,6 +1025,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">20</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">8</td>
                                                 <td class="text-center v-a-m font-weight-bold">12 Application in <br> 11 Days</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
@@ -942,6 +1044,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">4</td>
                                                 <td class="text-center v-a-m font-weight-bold">2 Application in <br> 8 Days</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">4</td>
@@ -956,6 +1060,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">10</td>
                                                 <td class="text-center v-a-m font-weight-bold">3 Application in 15 Days</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -987,6 +1093,8 @@ $this->load->view('security');
                                                 <th class="v-a-m" style="width: 10%;">Total Number of Applications Rejected</th>
                                                 <th class="v-a-m" style="width: 10%;">Average Time Taken To Grant Approval</th>
                                                 <th class="v-a-m" style="width: 10%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Minimum Time To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Maximum Time To Grant Approval</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1005,6 +1113,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-primary">5 Days</td>
                                                 <!--<td class="text-center v-a-m font-weight-bold"><?php echo isset($wc_median_time_to_ga) ? $wc_median_time_to_ga : '-'; ?></td>-->
                                                 <td class="text-center v-a-m font-weight-bold">2 Application in <br> 7 Days</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wc_min_time_to_ga) ? $wc_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($wc_max_time_to_ga) ? $wc_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -1036,6 +1146,8 @@ $this->load->view('security');
                                                 <th class="v-a-m" style="width: 10%;">Total Number of Applications Rejected</th>
                                                 <th class="v-a-m" style="width: 10%;">Average Time Taken To Grant Approval</th>
                                                 <th class="v-a-m" style="width: 10%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Minimum Time To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Maximum Time To Grant Approval</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1052,6 +1164,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($hotel_rejected_app) ? $hotel_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($hotel_average_time_to_ga) ? $hotel_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($hotel_median_time_to_ga) ? $hotel_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($hotel_min_time_to_ga) ? $hotel_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($hotel_max_time_to_ga) ? $hotel_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
@@ -1066,6 +1180,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($hotel_renewal_rejected_app) ? $hotel_renewal_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($hotel_renewal_average_time_to_ga) ? $hotel_renewal_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($hotel_renewal_median_time_to_ga) ? $hotel_renewal_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($hotel_renewal_min_time_to_ga) ? $hotel_renewal_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($hotel_renewal_max_time_to_ga) ? $hotel_renewal_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
@@ -1080,6 +1196,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($travelagent_rejected_app) ? $travelagent_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($travelagent_average_time_to_ga) ? $travelagent_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($travelagent_median_time_to_ga) ? $travelagent_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($travelagent_min_time_to_ga) ? $travelagent_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($travelagent_max_time_to_ga) ? $travelagent_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">4</td>
@@ -1094,6 +1212,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($travelagent_renewal_rejected_app) ? $travelagent_renewal_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($travelagent_renewal_average_time_to_ga) ? $travelagent_renewal_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($travelagent_renewal_median_time_to_ga) ? $travelagent_renewal_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($travelagent_renewal_min_time_to_ga) ? $travelagent_renewal_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($travelagent_renewal_max_time_to_ga) ? $travelagent_renewal_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">5</td>
@@ -1108,6 +1228,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($tourismevent_rejected_app) ? $tourismevent_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($tourismevent_average_time_to_ga) ? $tourismevent_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($tourismevent_median_time_to_ga) ? $tourismevent_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($tourismevent_min_time_to_ga) ? $tourismevent_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($tourismevent_max_time_to_ga) ? $tourismevent_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -1139,6 +1261,8 @@ $this->load->view('security');
                                                 <th class="v-a-m" style="width: 10%;">Total Number of Applications Rejected</th>
                                                 <th class="v-a-m" style="width: 10%;">Average Time Taken To Grant Approval</th>
                                                 <th class="v-a-m" style="width: 10%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Minimum Time To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Maximum Time To Grant Approval</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1155,6 +1279,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($psf_registration_rejected_app) ? $psf_registration_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($psf_registration_average_time_to_ga) ? $psf_registration_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($psf_registration_median_time_to_ga) ? $psf_registration_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($psf_registration_min_time_to_ga) ? $psf_registration_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($psf_registration_max_time_to_ga) ? $psf_registration_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
@@ -1169,6 +1295,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($property_registration_rejected_app) ? $property_registration_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($property_registration_average_time_to_ga) ? $property_registration_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($property_registration_median_time_to_ga) ? $property_registration_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($property_registration_min_time_to_ga) ? $property_registration_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($property_registration_max_time_to_ga) ? $property_registration_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
@@ -1183,6 +1311,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">25 Day(s)</td>
                                                 <td class="text-center v-a-m font-weight-bold">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -1213,6 +1343,8 @@ $this->load->view('security');
                                                 <th class="v-a-m" style="width: 10%;">Total Number of Applications Rejected</th>
                                                 <th class="v-a-m" style="width: 10%;">Average Time Taken To Grant Approval</th>
                                                 <th class="v-a-m" style="width: 10%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Minimum Time To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Maximum Time To Grant Approval</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1229,6 +1361,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($construction_rejected_app) ? $construction_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($construction_average_time_to_ga) ? $construction_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($construction_median_time_to_ga) ? $construction_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($construction_min_time_to_ga) ? $construction_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($construction_max_time_to_ga) ? $construction_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
@@ -1243,6 +1377,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($occupancy_certificate_rejected_app) ? $occupancy_certificate_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($occupancy_certificate_average_time_to_ga) ? $occupancy_certificate_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($occupancy_certificate_median_time_to_ga) ? $occupancy_certificate_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($occupancy_certificate_min_time_to_ga) ? $occupancy_certificate_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($occupancy_certificate_max_time_to_ga) ? $occupancy_certificate_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
@@ -1257,6 +1393,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($inspection_rejected_app) ? $inspection_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($inspection_average_time_to_ga) ? $inspection_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($inspection_median_time_to_ga) ? $inspection_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($inspection_min_time_to_ga) ? $inspection_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($inspection_max_time_to_ga) ? $inspection_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                            <!--  <tr>
                                                 <td class="text-center v-a-m">4</td>
@@ -1271,7 +1409,9 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($site_elevation_rejected_app) ? $site_elevation_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($site_elevation_average_time_to_ga) ? $site_elevation_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($site_elevation_median_time_to_ga) ? $site_elevation_median_time_to_ga : '-'; ?></td>
-                                            </tr>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($site_elevation_min_time_to_ga) ? $site_elevation_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($site_elevation_max_time_to_ga) ? $site_elevation_max_time_to_ga : '-'; ?></td>
+                                           </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">5</td>
                                                 <td>Zone Information</td>
@@ -1285,7 +1425,9 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($zone_information_rejected_app) ? $zone_information_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($zone_information_average_time_to_ga) ? $zone_information_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($zone_information_median_time_to_ga) ? $zone_information_median_time_to_ga : '-'; ?></td>
-                                            </tr> -->
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($zone_information_min_time_to_ga) ? $zone_information_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($zone_information_max_time_to_ga) ? $zone_information_max_time_to_ga : '-'; ?></td>
+                                           </tr> -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -1315,6 +1457,8 @@ $this->load->view('security');
                                                 <th class="v-a-m" style="width: 10%;">Total Number of Applications Rejected</th>
                                                 <th class="v-a-m" style="width: 10%;">Average Time Taken To Grant Approval</th>
                                                 <th class="v-a-m" style="width: 10%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Minimum Time To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Maximum Time To Grant Approval</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1329,6 +1473,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($incentive_generalform_textile_rejected_app) ? $incentive_generalform_textile_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($incentive_generalform_textile_average_time_to_ga) ? $incentive_generalform_textile_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($incentive_generalform_textile_median_time_to_ga) ? $incentive_generalform_textile_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($incentive_generalform_textile_min_time_to_ga) ? $incentive_generalform_textile_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($incentive_generalform_textile_max_time_to_ga) ? $incentive_generalform_textile_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
@@ -1341,6 +1487,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($incentive_generalform_rejected_app) ? $incentive_generalform_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($incentive_generalform_average_time_to_ga) ? $incentive_generalform_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($incentive_generalform_median_time_to_ga) ? $incentive_generalform_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($incentive_generalform_min_time_to_ga) ? $incentive_generalform_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($incentive_generalform_max_time_to_ga) ? $incentive_generalform_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
@@ -1353,6 +1501,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($allotment_land_rejected_app) ? $allotment_land_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_average_time_to_ga) ? $allotment_land_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($allotment_land_median_time_to_ga) ? $allotment_land_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_min_time_to_ga) ? $allotment_land_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_max_time_to_ga) ? $allotment_land_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">4</td>
@@ -1365,6 +1515,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($allotment_land_rejected_app) ? $allotment_land_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_average_time_to_ga) ? $allotment_land_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($allotment_land_median_time_to_ga) ? $allotment_land_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_min_time_to_ga) ? $allotment_land_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_max_time_to_ga) ? $allotment_land_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">5</td>
@@ -1377,6 +1529,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($allotment_land_rejected_app) ? $allotment_land_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_average_time_to_ga) ? $allotment_land_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($allotment_land_median_time_to_ga) ? $allotment_land_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_min_time_to_ga) ? $allotment_land_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_max_time_to_ga) ? $allotment_land_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">6</td>
@@ -1389,6 +1543,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($allotment_land_rejected_app) ? $allotment_land_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_average_time_to_ga) ? $allotment_land_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($allotment_land_median_time_to_ga) ? $allotment_land_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_min_time_to_ga) ? $allotment_land_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_max_time_to_ga) ? $allotment_land_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">7</td>
@@ -1401,6 +1557,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($allotment_land_rejected_app) ? $allotment_land_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_average_time_to_ga) ? $allotment_land_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($allotment_land_median_time_to_ga) ? $allotment_land_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_min_time_to_ga) ? $allotment_land_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_max_time_to_ga) ? $allotment_land_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">8</td>
@@ -1413,6 +1571,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($allotment_land_rejected_app) ? $allotment_land_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_average_time_to_ga) ? $allotment_land_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($allotment_land_median_time_to_ga) ? $allotment_land_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_min_time_to_ga) ? $allotment_land_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_max_time_to_ga) ? $allotment_land_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">9</td>
@@ -1425,6 +1585,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($allotment_land_rejected_app) ? $allotment_land_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_average_time_to_ga) ? $allotment_land_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($allotment_land_median_time_to_ga) ? $allotment_land_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_min_time_to_ga) ? $allotment_land_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($allotment_land_max_time_to_ga) ? $allotment_land_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -1455,6 +1617,8 @@ $this->load->view('security');
                                                 <th class="v-a-m" style="width: 10%;">Total Number of Applications Rejected</th>
                                                 <th class="v-a-m" style="width: 10%;">Average Time Taken To Grant Approval</th>
                                                 <th class="v-a-m" style="width: 10%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Minimum Time To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Maximum Time To Grant Approval</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1471,6 +1635,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($tree_cutting_rejected_app) ? $tree_cutting_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($tree_cutting_average_time_to_ga) ? $tree_cutting_average_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($tree_cutting_median_time_to_ga) ? $tree_cutting_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($tree_cutting_min_time_to_ga) ? $tree_cutting_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($tree_cutting_max_time_to_ga) ? $tree_cutting_max_time_to_ga : '-'; ?></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -1501,6 +1667,8 @@ $this->load->view('security');
                                                 <th class="v-a-m" style="width: 10%;">Total Number of Applications Rejected</th>
                                                 <th class="v-a-m" style="width: 10%;">Average Time Taken To Grant Approval</th>
                                                 <th class="v-a-m" style="width: 10%;">Median Time Taken to Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Minimum Time To Grant Approval</th>
+                                                <th class="v-a-m" style="width: 10%;">Maximum Time To Grant Approval</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1515,6 +1683,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">29</td>
                                                 <td class="text-center v-a-m font-weight-bold">28</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
@@ -1527,6 +1697,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">4</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">27</td>
                                                 <td class="text-center v-a-m font-weight-bold">29</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center v-a-m">3</td>
@@ -1539,6 +1711,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-danger">0</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">41</td>
                                                 <td class="text-center v-a-m font-weight-bold spinner-border-">43</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">-</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -1558,88 +1732,88 @@ $this->load->view('security');
 <script type="text/javascript" src="<?php echo $base_url; ?>plugins/datatables/jquery.dataTables.js"></script>
 <script type="text/javascript" src="<?php echo $base_url; ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <script type="text/javascript">
-    var spinnerTemplate = Handlebars.compile($('#spinner_template').html());
-    var iconSpinnerTemplate = spinnerTemplate({'type': 'light', 'extra_class': 'spinner-border-sm'});
-    var fdListTemplate = Handlebars.compile($('#fd_list_template').html());
+                                                        var spinnerTemplate = Handlebars.compile($('#spinner_template').html());
+                                                        var iconSpinnerTemplate = spinnerTemplate({'type': 'light', 'extra_class': 'spinner-border-sm'});
+                                                        var fdListTemplate = Handlebars.compile($('#fd_list_template').html());
 
-    var VALUE_ZERO = <?php echo VALUE_ZERO; ?>;
-    var invalidAccessValidationMessage = '<?php echo INVALID_ACCESS_MESSAGE ?>';
-    var prefixModuleArray = <?php echo json_encode($this->config->item('prefix_module_array')); ?>;
+                                                        var VALUE_ZERO = <?php echo VALUE_ZERO; ?>;
+                                                        var invalidAccessValidationMessage = '<?php echo INVALID_ACCESS_MESSAGE ?>';
+                                                        var prefixModuleArray = <?php echo json_encode($this->config->item('prefix_module_array')); ?>;
 
-    function viewReceivedFeeDetails(btnObj, moduleType) {
-        if (!btnObj || !moduleType || moduleType == VALUE_ZERO || moduleType == null) {
-            showError(invalidAccessValidationMessage);
-            return false;
-        }
-        $('.preloader').show();
-        var ogBtnHTML = btnObj.html();
-        var ogBtnOnclick = btnObj.attr('onclick');
-        btnObj.html(iconSpinnerTemplate);
-        btnObj.attr('onclick', '');
-        $.ajax({
-            type: 'POST',
-            url: 'utility/get_service_wise_payment_details',
-            data: $.extend({}, {'module_type': moduleType}, getTokenData()),
-            error: function (textStatus, errorThrown) {
-                $('.preloader').hide();
-                generateNewCSRFToken();
-                btnObj.html(ogBtnHTML);
-                btnObj.attr('onclick', ogBtnOnclick);
-                if (textStatus.status === 403) {
-                    loginPage();
-                    return false;
-                }
-                if (!textStatus.statusText) {
-                    loginPage();
-                    return false;
-                }
-                showError(textStatus.statusText);
-            },
-            success: function (data) {
-                var parseData = JSON.parse(data);
-                if (!isJSON(data)) {
-                    loginPage();
-                    return false;
-                }
-                $('.preloader').hide();
-                setNewToken(parseData.temp_token);
-                btnObj.html(ogBtnHTML);
-                btnObj.attr('onclick', ogBtnOnclick);
-                if (parseData.success == false) {
-                    showError(parseData.message);
-                    return false;
-                }
-                loadMWFD(parseData);
-            }
-        });
-    }
+                                                        function viewReceivedFeeDetails(btnObj, moduleType) {
+                                                            if (!btnObj || !moduleType || moduleType == VALUE_ZERO || moduleType == null) {
+                                                                showError(invalidAccessValidationMessage);
+                                                                return false;
+                                                            }
+                                                            $('.preloader').show();
+                                                            var ogBtnHTML = btnObj.html();
+                                                            var ogBtnOnclick = btnObj.attr('onclick');
+                                                            btnObj.html(iconSpinnerTemplate);
+                                                            btnObj.attr('onclick', '');
+                                                            $.ajax({
+                                                                type: 'POST',
+                                                                url: 'utility/get_service_wise_payment_details',
+                                                                data: $.extend({}, {'module_type': moduleType}, getTokenData()),
+                                                                error: function (textStatus, errorThrown) {
+                                                                    $('.preloader').hide();
+                                                                    generateNewCSRFToken();
+                                                                    btnObj.html(ogBtnHTML);
+                                                                    btnObj.attr('onclick', ogBtnOnclick);
+                                                                    if (textStatus.status === 403) {
+                                                                        loginPage();
+                                                                        return false;
+                                                                    }
+                                                                    if (!textStatus.statusText) {
+                                                                        loginPage();
+                                                                        return false;
+                                                                    }
+                                                                    showError(textStatus.statusText);
+                                                                },
+                                                                success: function (data) {
+                                                                    var parseData = JSON.parse(data);
+                                                                    if (!isJSON(data)) {
+                                                                        loginPage();
+                                                                        return false;
+                                                                    }
+                                                                    $('.preloader').hide();
+                                                                    setNewToken(parseData.temp_token);
+                                                                    btnObj.html(ogBtnHTML);
+                                                                    btnObj.attr('onclick', ogBtnOnclick);
+                                                                    if (parseData.success == false) {
+                                                                        showError(parseData.message);
+                                                                        return false;
+                                                                    }
+                                                                    loadMWFD(parseData);
+                                                                }
+                                                            });
+                                                        }
 
-    function loadMWFD(parseData) {
-        showPopup();
-        $('.swal2-popup').css('width', '45em');
-        $('#popup_container').html(fdListTemplate({'dept_name': parseData.dept_name, 'service_name': parseData.service_name}));
+                                                        function loadMWFD(parseData) {
+                                                            showPopup();
+                                                            $('.swal2-popup').css('width', '45em');
+                                                            $('#popup_container').html(fdListTemplate({'dept_name': parseData.dept_name, 'service_name': parseData.service_name}));
 
-         var tempAppNoRenderer = function (data, type, full, meta) {
-            return appNoRenderer(full);
-        };
-        var feeDetailsRenderer = function (data, type, full, meta) {
-            return fdRenderer(full);
-        };
-        var feesRenderer = function (data, type, full, meta) {
-          return (data != VALUE_ZERO ? data + '/-' : 'N.A.');
-        };
-        $('#rfd_datatable').DataTable({
-            data: parseData.payment_history,
-            pageLength: 10,
-            ordering: false,
-            columns: [
-                {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
-                {data: '', 'render': tempAppNoRenderer, 'class': 'text-center'},
-                {data: 'submitted_datetime', 'render': dateRenderer, 'class': 'text-center'},
-                {data: 'status_datetime', 'render': dateRenderer, 'class': 'text-center'},
-                {data: '', 'render': feeDetailsRenderer , 'class': 'text-center'},
-                {data: 'total_fees', 'render': feesRenderer, 'class': 'text-right'},
-            ],
-        });
-    }
+                                                            var tempAppNoRenderer = function (data, type, full, meta) {
+                                                                return appNoRenderer(full);
+                                                            };
+                                                            var feeDetailsRenderer = function (data, type, full, meta) {
+                                                                return fdRenderer(full);
+                                                            };
+                                                            var feesRenderer = function (data, type, full, meta) {
+                                                                return (data != VALUE_ZERO ? data + '/-' : 'N.A.');
+                                                            };
+                                                            $('#rfd_datatable').DataTable({
+                                                                data: parseData.payment_history,
+                                                                pageLength: 10,
+                                                                ordering: false,
+                                                                columns: [
+                                                                    {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
+                                                                    {data: '', 'render': tempAppNoRenderer, 'class': 'text-center'},
+                                                                    {data: 'submitted_datetime', 'render': dateRenderer, 'class': 'text-center'},
+                                                                    {data: 'status_datetime', 'render': dateRenderer, 'class': 'text-center'},
+                                                                    {data: '', 'render': feeDetailsRenderer, 'class': 'text-center'},
+                                                                    {data: 'total_fees', 'render': feesRenderer, 'class': 'text-right'},
+                                                                ],
+                                                            });
+                                                        }
 </script>
