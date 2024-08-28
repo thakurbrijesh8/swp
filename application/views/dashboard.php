@@ -57,7 +57,7 @@ $this->load->view('security');
                                         <thead class="all-text-white bg-grad">
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
-                                                <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="min-width: 150px;">Name of Service</th>
                                                 <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
@@ -234,7 +234,7 @@ $this->load->view('security');
                                         <thead class="all-text-white bg-grad">
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
-                                                <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="min-width: 150px;">Name of Service</th>
                                                 <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
@@ -337,7 +337,7 @@ $this->load->view('security');
                                         <thead class="all-text-white bg-grad">
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
-                                                <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="min-width: 150px;">Name of Service</th>
                                                 <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
@@ -488,7 +488,7 @@ $this->load->view('security');
                                             <thead class="all-text-white bg-grad">
                                                 <tr class="text-center">
                                                     <th class="v-a-m" style="width: 10px;">Sr. No.</th>
-                                                    <th class="v-a-m">Name of Service</th>
+                                                    <th class="v-a-m" style="min-width: 150px;">Name of Service</th>
                                                     <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                     <th class="v-a-m" style="width: 14%;">
                                                         Time Limit Prescribed as per the Public<br>
@@ -619,7 +619,7 @@ $this->load->view('security');
                                         <thead class="all-text-white bg-grad">
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
-                                                <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="min-width: 150px;">Name of Service</th>
                                                 <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
@@ -681,7 +681,7 @@ $this->load->view('security');
                                         <thead class="all-text-white bg-grad">
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
-                                                <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="min-width: 150px;">Name of Service</th>
                                                 <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
@@ -810,7 +810,7 @@ $this->load->view('security');
                                         <thead class="all-text-white bg-grad">
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
-                                                <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="min-width: 150px;">Name of Service</th>
                                                 <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
@@ -973,7 +973,7 @@ $this->load->view('security');
                                         <thead class="all-text-white bg-grad">
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
-                                                <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="min-width: 150px;">Name of Service</th>
                                                 <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
@@ -1081,7 +1081,7 @@ $this->load->view('security');
                                         <thead class="all-text-white bg-grad">
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
-                                                <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="min-width: 150px;">Name of Service</th>
                                                 <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
@@ -1134,7 +1134,7 @@ $this->load->view('security');
                                         <thead class="all-text-white bg-grad">
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
-                                                <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="min-width: 150px;">Name of Service</th>
                                                 <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
@@ -1249,7 +1249,7 @@ $this->load->view('security');
                                         <thead class="all-text-white bg-grad">
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
-                                                <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="min-width: 150px;">Name of Service</th>
                                                 <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
@@ -1331,7 +1331,7 @@ $this->load->view('security');
                                         <thead class="all-text-white bg-grad">
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
-                                                <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="min-width: 150px;">Name of Service</th>
                                                 <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
@@ -1445,7 +1445,7 @@ $this->load->view('security');
                                         <thead class="all-text-white bg-grad">
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
-                                                <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="min-width: 150px;">Name of Service</th>
                                                 <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
@@ -1605,7 +1605,7 @@ $this->load->view('security');
                                         <thead class="all-text-white bg-grad">
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
-                                                <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="min-width: 150px;">Name of Service</th>
                                                 <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
@@ -1655,7 +1655,7 @@ $this->load->view('security');
                                         <thead class="all-text-white bg-grad">
                                             <tr class="text-center">
                                                 <th class="v-a-m" style="width: 10px;">Sr. No.</th>
-                                                <th class="v-a-m">Name of Service</th>
+                                                <th class="v-a-m" style="min-width: 150px;">Name of Service</th>
                                                 <th class="v-a-m" style="width: 10px;">Average Fee</th>
                                                 <th class="v-a-m" style="width: 14%;">
                                                     Time Limit Prescribed as per the Public<br>
