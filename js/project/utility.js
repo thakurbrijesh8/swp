@@ -323,7 +323,7 @@ function fdRenderer(full) {
         var feesArray = full.fees.split(',');
         var feeDescriptionsArray = full.fee_descriptions.split(',');
         var sn = 1;
-        returnString += '<tr><th class="text-center">Sr. No.</th><th class="text-center">Fee Description</th><th class="text-center">Fee</th></tr>';
+        returnString += '<tr><th class="text-center">No.</th><th class="text-center">Fee Description</th><th class="text-center">Fee</th></tr>';
         for (var i = 0; i < feesArray.length; i++) {
             var fee = feesArray[i];
             var fd = feeDescriptionsArray[i];

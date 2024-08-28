@@ -47,7 +47,7 @@ class Payment_model extends CI_Model {
     function get_mwise_payment_history($mt_data, $module_type) {
         $this->db->select(
                 'mt.' . $mt_data['key_id_text'] . ' AS m_id, mt.status, mt.submitted_datetime, mt.status_datetime, mt.total_fees, mt.is_delete,'
-                . 'fb.fees_bifurcation_id, fb.module_id, fb.module_type, fb.fee, fb.fee_description, "'.$module_type.'" AS mt, '
+                . 'fb.fees_bifurcation_id, fb.module_id, fb.module_type, fb.fee, fb.fee_description, "' . $module_type . '" AS mt, '
                 . 'GROUP_CONCAT(fb.fee ORDER BY fb.fees_bifurcation_id) as fees, GROUP_CONCAT(fb.fee_description ORDER BY fb.fees_bifurcation_id) as fee_descriptions'
         );
 
@@ -57,7 +57,9 @@ class Payment_model extends CI_Model {
                 'fb.module_id = mt.' . $mt_data['key_id_text'] . ' AND fb.module_type = ' . $module_type, 'LEFT');
         $this->db->where('mt.status', VALUE_FIVE);
         $this->db->where('mt.is_delete !=', IS_DELETE);
+        $this->db->where('mt.submitted_datetime >=', '2022-01-01 00:00:00');
         $this->db->group_by('mt.' . $mt_data['key_id_text']);
+        $this->db->order_by('mt.submitted_datetime', 'DESC');
         $resc = $this->db->get();
         return $resc->result_array();
     }
