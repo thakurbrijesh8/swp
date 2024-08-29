@@ -270,7 +270,8 @@
             var GENDER_MALE = <?php echo GENDER_MALE; ?>;
             var GENDER_FEMALE = <?php echo GENDER_FEMALE; ?>;
             var GENDER_OTHER = <?php echo GENDER_OTHER; ?>;
-            
+
+            var riskCategoryGeneralArray = <?php echo json_encode($this->config->item('risk_category_general_array')); ?>;
             var riskCategoryArray = <?php echo json_encode($this->config->item('risk_category_array')); ?>;
             var foreignDomesticInvestorArray = <?php echo json_encode($this->config->item('foreign_domestic_investor_array')); ?>;
 

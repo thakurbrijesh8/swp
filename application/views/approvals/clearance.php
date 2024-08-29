@@ -8,9 +8,9 @@
                 <thead class="all-text-white bg-grad">
                     <tr class="text-center">
                         <th class="text-center v-a-m" style="width: 60px;">Sr. No.</th>
+                        <th class="text-center v-a-m" style="min-width: 150px;">Department Name</th>
                         <th class="text-center v-a-m" style="min-width: 225px;">Name of Service</th>
                         <th class="text-center v-a-m" style="min-width: 105px;">Apply Link</th>
-                        <th class="text-center v-a-m" style="min-width: 150px;">Department Name</th>
                         <th class="text-center v-a-m" style="min-width: 120px;">Timeline<br>(Working Days)</th>
                         <th class="text-center v-a-m" style="min-width: 100px;">Fees / Procedure / Checklist</th>
                         <th class="text-center v-a-m" style="min-width: 150px;">Designation of the Authority Responsible to Deliver the Services</th>
@@ -33,9 +33,9 @@
                 <thead class="all-text-white bg-grad">
                     <tr class="text-center">
                         <th class="text-center v-a-m" style="width: 60px;">Sr. No.</th>
+                         <th class="text-center v-a-m" style="min-width: 150px;">Department Name</th>
                         <th class="text-center v-a-m" style="min-width: 225px;">Name of Service</th>
                         <th class="text-center v-a-m" style="min-width: 105px;">Apply Link</th>
-                        <th class="text-center v-a-m" style="min-width: 150px;">Department Name</th>
                         <th class="text-center v-a-m" style="min-width: 120px;">Timeline<br>(Working Days)</th>
                         <th class="text-center v-a-m" style="min-width: 100px;">Fees / Procedure / Checklist</th>
                         <th class="text-center v-a-m" style="min-width: 150px;">Designation of the Authority Responsible to Deliver the Services</th>
@@ -58,9 +58,9 @@
                 <thead class="all-text-white bg-grad">
                     <tr class="text-center">
                         <th class="text-center v-a-m" style="width: 60px;">Sr. No.</th>
+                         <th class="text-center v-a-m" style="min-width: 150px;">Department Name</th>
                         <th class="text-center v-a-m" style="min-width: 225px;">Name of Service</th>
                         <th class="text-center v-a-m" style="min-width: 105px;">Apply Link</th>
-                        <th class="text-center v-a-m" style="min-width: 150px;">Department Name</th>
                         <th class="text-center v-a-m" style="min-width: 120px;">Timeline<br>(Working Days)</th>
                         <th class="text-center v-a-m" style="min-width: 100px;">Fees / Procedure / Checklist</th>
                         <th class="text-center v-a-m" style="min-width: 150px;">Designation of the Authority Responsible to Deliver the Services</th>
@@ -83,9 +83,9 @@
                 <thead class="all-text-white bg-grad">
                     <tr class="text-center">
                         <th class="text-center v-a-m" style="width: 60px;">Sr. No.</th>
+                          <th class="text-center v-a-m" style="min-width: 150px;">Department Name</th>
                         <th class="text-center v-a-m" style="min-width: 225px;">Name of Service</th>
                         <th class="text-center v-a-m" style="min-width: 105px;">Apply Link</th>
-                        <th class="text-center v-a-m" style="min-width: 150px;">Department Name</th>
                         <th class="text-center v-a-m" style="min-width: 120px;">Timeline<br>(Working Days)</th>
                         <th class="text-center v-a-m" style="min-width: 100px;">Fees / Procedure / Checklist</th>
                         <th class="text-center v-a-m" style="min-width: 150px;">Designation of the Authority Responsible to Deliver the Services</th>
@@ -108,9 +108,9 @@
                 <thead class="all-text-white bg-grad">
                     <tr class="text-center">
                         <th class="text-center v-a-m" style="width: 60px;">Sr. No.</th>
+                        <th class="text-center v-a-m" style="min-width: 150px;">Department Name</th>
                         <th class="text-center v-a-m" style="min-width: 225px;">Name of Service</th>
                         <th class="text-center v-a-m" style="min-width: 105px;">Apply Link</th>
-                        <th class="text-center v-a-m" style="min-width: 150px;">Department Name</th>
                         <th class="text-center v-a-m" style="min-width: 120px;">Timeline<br>(Working Days)</th>
                         <th class="text-center v-a-m" style="min-width: 100px;">Fees / Procedure / Checklist</th>
                         <th class="text-center v-a-m" style="min-width: 150px;">Designation of the Authority Responsible to Deliver the Services</th>

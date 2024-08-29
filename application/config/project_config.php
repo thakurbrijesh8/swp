@@ -2782,10 +2782,13 @@ $config['allow_ips_for_crone'] = array(
     '103.212.121.220' => '103.212.121.220'
 );
 
-$config['risk_category_array'] = array(
+$config['risk_category_general_array'] = array(
     VALUE_ONE => 'Low',
     VALUE_TWO => 'Medium',
     VALUE_THREE => 'High',
+);
+
+$config['risk_category_array'] = array(
     VALUE_FOUR => 'Red',
     VALUE_FIVE => 'Orange',
     VALUE_SIX => 'Green',

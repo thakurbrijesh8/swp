@@ -68,6 +68,7 @@ $this->load->view('security');
     var iconSpinnerTemplate = spinnerTemplate({'type': 'light', 'extra_class': 'spinner-border-small'});
     var IS_DELETE = <?php echo IS_DELETE ?>;
     var talukaArray = <?php echo json_encode($this->config->item('taluka_array')); ?>;
+    var riskCategoryGeneralArray = <?php echo json_encode($this->config->item('risk_category_general_array')); ?>;
     var riskCategoryArray = <?php echo json_encode($this->config->item('risk_category_array')); ?>;
     var foreignDomesticInvestorArray = <?php echo json_encode($this->config->item('foreign_domestic_investor_array')); ?>;
     var cbTypeArray = <?php echo json_encode($this->config->item('cb_type_array')); ?>;
@@ -84,6 +85,7 @@ $this->load->view('security');
     var VALUE_SEVEN = <?php echo VALUE_SEVEN; ?>;
     $('#clearance_form_template').html(approvalFormTemplate);
     renderOptionsForTwoDimensionalArray(talukaArray, 'district_for_approvals', false);
+    renderOptionsForTwoDimensionalArray(riskCategoryGeneralArray, 'risk_category_general_for_approvals', false);
     renderOptionsForTwoDimensionalArray(riskCategoryArray, 'risk_category_for_approvals', false);
     renderOptionsForTwoDimensionalArray(cbTypeArray, 'size_of_firm_for_approvals', false);
     renderOptionsForTwoDimensionalArray(foreignDomesticInvestorArray, 'foreign_domestic_investor_for_approvals', false);
@@ -100,6 +102,7 @@ $this->load->view('security');
         $('#tabs_content_container_for_approval').html('');
         validationMessageHide('approvals');
         var district = $('#district_for_approvals').val();
+        var riskCategoryGeneral = $('#risk_category_general_for_approvals').val();
         var riskCategory = $('#risk_category_for_approvals').val();
         var sizeOfFirm = $('#size_of_firm_for_approvals').val();
         var foreignDomesticInvestor = $('#foreign_domestic_investor_for_approvals').val();
@@ -112,7 +115,7 @@ $this->load->view('security');
         $.ajax({
             type: 'POST',
             url: 'utility/get_dept_wise_questionary_data',
-            data: {'district_for_clearances': district, 'risk_category_for_clearances': riskCategory, 'size_of_firm_for_clearances': sizeOfFirm,
+            data: {'district_for_clearances': district, 'risk_category_general_for_clearances': riskCategoryGeneral, 'risk_category_for_clearances': riskCategory, 'size_of_firm_for_clearances': sizeOfFirm,
                 'foreign_domestic_investor_for_clearances': foreignDomesticInvestor},
             error: function (textStatus, errorThrown) {
 //                $('#spinner_container_for_clearances').html('');
@@ -248,6 +251,7 @@ $this->load->view('security');
     function backFromClearance(district) {
         $('#clearance_form_template').html(approvalFormTemplate);
         renderOptionsForTwoDimensionalArray(talukaArray, 'district_for_approvals', false);
+        renderOptionsForTwoDimensionalArray(riskCategoryGeneralArray, 'risk_category_general_for_approvals', false);
         renderOptionsForTwoDimensionalArray(riskCategoryArray, 'risk_category_for_approvals', false);
         renderOptionsForTwoDimensionalArray(cbTypeArray, 'size_of_firm_for_approvals', false);
         renderOptionsForTwoDimensionalArray(foreignDomesticInvestorArray, 'foreign_domestic_investor_for_approvals', false);

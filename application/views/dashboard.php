@@ -297,8 +297,8 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($ips_incentive_processed_app) ? $ips_incentive_processed_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-success"><?php echo isset($ips_incentive_approved_app) ? $ips_incentive_approved_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($ips_incentive_rejected_app) ? $ips_incentive_rejected_app : 0; ?></td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($ps_incentive_average_time_to_ga) ? $ps_incentive_average_time_to_ga : '-'; ?></td>
-                                                <td class="text-center v-a-m font-weight-bold"><?php echo isset($ps_incentive_median_time_to_ga) ? $ps_incentive_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($ips_incentive_average_time_to_ga) ? $ips_incentive_average_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold"><?php echo isset($ips_incentive_median_time_to_ga) ? $ips_incentive_median_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($ips_incentive_min_time_to_ga) ? $ips_incentive_min_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($ips_incentive_max_time_to_ga) ? $ips_incentive_max_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold">Not Applicable</td>
