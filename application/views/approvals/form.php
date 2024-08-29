@@ -15,7 +15,7 @@
                 onchange="checkValidation('approvals', 'risk_category_general_for_approvals', oneOptionValidationMessage);
                         getDepartmentData();"
                 class="custom-select select-big mb-0">
-            <option value="">Select Risk Category</option>
+            <option value="">Select Risk Category (General)</option>
         </select>
         <span class="error-message error-message-approvals-risk_category_general_for_approvals"></span>
     </div>
