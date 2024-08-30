@@ -20,12 +20,12 @@
         <span class="error-message error-message-approvals-risk_category_general_for_approvals"></span>
     </div>
     <div class="col-sm-4 col-md-3 form-group">
-        <label class="mb-0">Select Risk Category</label>
+        <label class="mb-0">Select Risk Category (For Pollution)</label>
         <select id="risk_category_for_approvals" data-placeholder="Select Risk Category !"
                 onchange="checkValidation('approvals', 'risk_category_for_approvals', oneOptionValidationMessage);
                         getDepartmentData();"
                 class="custom-select select-big mb-0">
-            <option value="">Select Risk Category</option>
+            <option value="">Select Risk Category (For Pollution)</option>
         </select>
         <span class="error-message error-message-approvals-risk_category_for_approvals"></span>
     </div>
