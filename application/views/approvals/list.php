@@ -34,6 +34,7 @@ $this->load->view('security');
                 <div class="title text-left">
                     <h2 class="fs-30px text-grad">Information Wizard</h2>
                     <h6 class="lh-15">Department will include additional new regulation or license in the online wizard/system within 30 days of it's implementation.</h6>
+                    <h6 class="lh-15">* Search separately to know the services of Pollution Department.</h6>
                     <hr>
                     <div id="clearance_form_template"></div>
                 </div>
