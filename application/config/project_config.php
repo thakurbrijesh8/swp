@@ -2799,3 +2799,8 @@ $config['foreign_domestic_investor_array'] = array(
     VALUE_ONE => 'Foreign',
     VALUE_TWO => 'Domestic',
 );
+
+$config['business_location_array'] = array(
+    VALUE_ONE => 'Rural',
+    VALUE_TWO => 'Urban',
+);

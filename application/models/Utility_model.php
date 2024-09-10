@@ -177,7 +177,7 @@ class Utility_model extends CI_Model {
         return $resc->result_array();
     }
 
-    function get_district_wise_services($district, $risk_category_general, $risk_category, $size_of_firm, $foreign_domestic_investor) {
+    function get_district_wise_services($district, $risk_category_general, $risk_category, $size_of_firm, $business_location, $foreign_domestic_investor) {
         $this->db->select('s.*, q.questionary_id, q.question, q.answer');
         if ($district == TALUKA_DAMAN) {
             $this->db->where('s.daman_district', $district);
@@ -196,6 +196,9 @@ class Utility_model extends CI_Model {
         }
         if ($size_of_firm != '') {
             $this->db->like('s.size_of_firm', $size_of_firm);
+        }
+        if ($business_location != '') {
+            $this->db->like('s.business_location', $business_location);
         }
         if ($foreign_domestic_investor != '') {
             $this->db->like('s.foreign_domestic_investor', $foreign_domestic_investor);
@@ -295,7 +298,6 @@ class Utility_model extends CI_Model {
         $resc = $this->db->get();
         return $resc->row_array();
     }
-
 }
 
 /*

@@ -12,42 +12,42 @@
     <div class="col-sm-4 col-md-3 form-group">
         <label class="mb-0">Select Risk Category (General)</label>
         <select id="risk_category_general_for_approvals" data-placeholder="Select Risk Category !"
-                onchange="checkValidation('approvals', 'risk_category_general_for_approvals', oneOptionValidationMessage);
-                        getDepartmentData();"
+                onchange="getDepartmentData();"
                 class="custom-select select-big mb-0">
             <option value="">Select Risk Category (General)</option>
         </select>
-        <span class="error-message error-message-approvals-risk_category_general_for_approvals"></span>
     </div>
     <div class="col-sm-4 col-md-3 form-group">
         <label class="mb-0">* Select Risk Category (For Pollution)</label>
         <select id="risk_category_for_approvals" data-placeholder="Select Risk Category !"
-                onchange="checkValidation('approvals', 'risk_category_for_approvals', oneOptionValidationMessage);
-                        getDepartmentData();"
+                onchange="getDepartmentData();"
                 class="custom-select select-big mb-0">
             <option value="">* Select Risk Category (For Pollution)</option>
         </select>
-        <span class="error-message error-message-approvals-risk_category_for_approvals"></span>
     </div>
     <div class="col-sm-4 col-md-3 form-group">
         <label class="mb-0">Select Size of firm</label>
         <select id="size_of_firm_for_approvals" data-placeholder="Select Size of firm !"
-                onchange="checkValidation('approvals', 'size_of_firm_for_approvals', oneOptionValidationMessage);
-                        getDepartmentData();"
+                onchange="getDepartmentData();"
                 class="custom-select select-big mb-0">
             <option value="">Select Size of firm</option>
         </select>
-        <span class="error-message error-message-approvals-size_of_firm_for_approvals"></span>
+    </div>
+    <div class="col-sm-4 col-md-3 form-group">
+        <label class="mb-0">Select Business Location</label>
+        <select id="business_location_for_approvals" data-placeholder="Select Business Location !"
+                onchange="getDepartmentData();"
+                class="custom-select select-big mb-0">
+            <option value="">Select Business Location</option>
+        </select>
     </div>
     <div class="col-sm-4 col-md-3 form-group">
         <label class="mb-0">Select Foreign Domestic Investor</label>
         <select id="foreign_domestic_investor_for_approvals" data-placeholder="Select Foreign Domestic Investor !"
-                onchange="checkValidation('approvals', 'foreign_domestic_investor_for_approvals', oneOptionValidationMessage);
-                        getDepartmentData();"
+                onchange="getDepartmentData();"
                 class="custom-select select-big mb-0">
             <option value="">Select Foreign Domestic Investor</option>
         </select>
-        <span class="error-message error-message-approvals-foreign_domestic_investor_for_approvals"></span>
     </div>
 </div>
 <div class="row"><div class="col-12 text-center" id="spinner_container_for_clearances"></div></div>

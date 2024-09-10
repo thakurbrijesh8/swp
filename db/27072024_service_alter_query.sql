@@ -18,3 +18,6 @@ CHANGE `service_type` `service_type` varchar(50) COLLATE 'utf8_general_ci' NOT N
 
 UPDATE `service` SET `foreign_domestic_investor` = '' WHERE foreign_domestic_investor = 0;
 UPDATE `service` SET `service_type` = '' WHERE service_type = 0;
+
+ALTER TABLE `service`
+ADD `business_location` varchar(50) COLLATE 'utf8_general_ci' NOT NULL AFTER `foreign_domestic_investor`;

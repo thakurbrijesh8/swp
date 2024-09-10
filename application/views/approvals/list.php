@@ -71,6 +71,7 @@ $this->load->view('security');
     var talukaArray = <?php echo json_encode($this->config->item('taluka_array')); ?>;
     var riskCategoryGeneralArray = <?php echo json_encode($this->config->item('risk_category_general_array')); ?>;
     var riskCategoryArray = <?php echo json_encode($this->config->item('risk_category_array')); ?>;
+    var buinessLocationArray = <?php echo json_encode($this->config->item('business_location_array')); ?>;
     var foreignDomesticInvestorArray = <?php echo json_encode($this->config->item('foreign_domestic_investor_array')); ?>;
     var cbTypeArray = <?php echo json_encode($this->config->item('cb_type_array')); ?>;
     var TALUKA_DAMAN = <?php echo TALUKA_DAMAN; ?>;
@@ -89,6 +90,7 @@ $this->load->view('security');
     renderOptionsForTwoDimensionalArray(riskCategoryGeneralArray, 'risk_category_general_for_approvals', false);
     renderOptionsForTwoDimensionalArray(riskCategoryArray, 'risk_category_for_approvals', false);
     renderOptionsForTwoDimensionalArray(cbTypeArray, 'size_of_firm_for_approvals', false);
+    renderOptionsForTwoDimensionalArray(buinessLocationArray, 'business_location_for_approvals', false);
     renderOptionsForTwoDimensionalArray(foreignDomesticInvestorArray, 'foreign_domestic_investor_for_approvals', false);
     var tempDeptData = <?php echo json_encode($temp_dept_data); ?>;
     var tempDeptWiseQueData = [];
@@ -106,6 +108,7 @@ $this->load->view('security');
         var riskCategoryGeneral = $('#risk_category_general_for_approvals').val();
         var riskCategory = $('#risk_category_for_approvals').val();
         var sizeOfFirm = $('#size_of_firm_for_approvals').val();
+        var businessLocation = $('#business_location_for_approvals').val();
         var foreignDomesticInvestor = $('#foreign_domestic_investor_for_approvals').val();
         if (district != TALUKA_DAMAN && district != TALUKA_DIU && district != TALUKA_DNH) {
             $('#district_for_approvals').focus();
@@ -116,8 +119,14 @@ $this->load->view('security');
         $.ajax({
             type: 'POST',
             url: 'utility/get_dept_wise_questionary_data',
-            data: {'district_for_clearances': district, 'risk_category_general_for_clearances': riskCategoryGeneral, 'risk_category_for_clearances': riskCategory, 'size_of_firm_for_clearances': sizeOfFirm,
-                'foreign_domestic_investor_for_clearances': foreignDomesticInvestor},
+            data: {
+                'district_for_clearances': district,
+                'risk_category_general_for_clearances': riskCategoryGeneral,
+                'risk_category_for_clearances': riskCategory,
+                'size_of_firm_for_clearances': sizeOfFirm,
+                'business_location_for_clearances': businessLocation,
+                'foreign_domestic_investor_for_clearances': foreignDomesticInvestor
+            },
             error: function (textStatus, errorThrown) {
 //                $('#spinner_container_for_clearances').html('');
                 showError(textStatus.statusText);
@@ -255,6 +264,7 @@ $this->load->view('security');
         renderOptionsForTwoDimensionalArray(riskCategoryGeneralArray, 'risk_category_general_for_approvals', false);
         renderOptionsForTwoDimensionalArray(riskCategoryArray, 'risk_category_for_approvals', false);
         renderOptionsForTwoDimensionalArray(cbTypeArray, 'size_of_firm_for_approvals', false);
+        renderOptionsForTwoDimensionalArray(buinessLocationArray, 'business_location_for_approvals', false);
         renderOptionsForTwoDimensionalArray(foreignDomesticInvestorArray, 'foreign_domestic_investor_for_approvals', false);
     }
 
