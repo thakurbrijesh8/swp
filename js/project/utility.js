@@ -330,7 +330,7 @@ function fdRenderer(full) {
             returnString += '<tr>';
             returnString += '<td class="text-center">' + sn + '</td>';
             returnString += '<td class="text-left">' + fd + '</td>';
-            returnString += '<td>' + fee + '/-' + '</td>';
+            returnString += '<td class="text-right">' + fee + '/-' + '</td>';
             returnString += '</tr>';
             sn++;
         }

@@ -1208,7 +1208,16 @@ class Utility extends CI_Controller {
                 return false;
             }
             $mt_data = $module_type_array[$module_type];
-            $success_array['payment_history'] = $this->payment_model->get_mwise_payment_history($mt_data, $module_type);
+            if ($module_type == VALUE_TWENTYONE) {
+                $success_array['payment_history'] = array();
+                $temp_dr_details = file_get_contents('https://sugam.dddgov.in/api_get_dr_details');
+                $dr_details = json_decode($temp_dr_details, true);
+                if (is_array($dr_details) && isset($dr_details['success'])) {
+                    $success_array['payment_history'] = $dr_details['dr_details'];
+                }
+            } else {
+                $success_array['payment_history'] = $this->payment_model->get_mwise_payment_history($mt_data, $module_type);
+            }
             $success_array['dept_name'] = $mt_data['department_name'];
             $success_array['service_name'] = $mt_data['title'];
             echo json_encode($success_array);

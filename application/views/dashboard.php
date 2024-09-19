@@ -1753,6 +1753,7 @@ $this->load->view('security');
                                                         var fdListTemplate = Handlebars.compile($('#fd_list_template').html());
 
                                                         var VALUE_ZERO = <?php echo VALUE_ZERO; ?>;
+                                                        var VALUE_TWENTYONE = <?php echo VALUE_TWENTYONE; ?>;
                                                         var invalidAccessValidationMessage = '<?php echo INVALID_ACCESS_MESSAGE ?>';
                                                         var prefixModuleArray = <?php echo json_encode($this->config->item('prefix_module_array')); ?>;
 
@@ -1810,6 +1811,9 @@ $this->load->view('security');
                                                             $('#popup_container').html(fdListTemplate({'dept_name': parseData.dept_name, 'service_name': parseData.service_name}));
 
                                                             var tempAppNoRenderer = function (data, type, full, meta) {
+                                                                if (full.mt == VALUE_TWENTYONE) {
+                                                                    return full.app_no;
+                                                                }
                                                                 return appNoRenderer(full);
                                                             };
                                                             var feeDetailsRenderer = function (data, type, full, meta) {
@@ -1820,7 +1824,7 @@ $this->load->view('security');
                                                             };
                                                             $('#rfd_datatable').DataTable({
                                                                 data: parseData.payment_history,
-                                                                pageLength: 10,
+                                                                pageLength: 5,
                                                                 ordering: false,
                                                                 columns: [
                                                                     {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
