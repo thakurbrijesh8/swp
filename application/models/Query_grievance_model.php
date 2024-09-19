@@ -10,31 +10,33 @@ class Query_grievance_model extends CI_Model {
         $resc = $this->db->get();
         return $resc->result_array();
     }
+
     function get_query_grievance_min_time($module_name, $industry_classification) {
-     	$this->db->where('industry_classification',$industry_classification);
+        $this->db->where('industry_classification', $industry_classification);
         $this->db->from('view_get_status_wise_' . $module_name . '_count');
-        $this->db->order_by('processing_days','ASC');
+        $this->db->order_by('processing_days', 'ASC');
         $query = $this->db->get();
-		return $query->row();
+        return $query->row();
     }
+
     function get_query_grievance_max_time($module_name, $industry_classification) {
-     	$this->db->where('industry_classification',$industry_classification);
+        $this->db->where('industry_classification', $industry_classification);
         $this->db->from('view_get_status_wise_' . $module_name . '_count');
-        $this->db->order_by('processing_days','DESC');
+        $this->db->order_by('processing_days', 'DESC');
         $query = $this->db->get();
-		return $query->row();
+        return $query->row();
     }
-    
-     function get_itwise_average_fees($industry_type) {
+
+    function get_itwise_average_fees($industry_type) {
         $this->db->select('*');
         $this->db->from('query_grievance');
         $this->db->where('industry_classification', $industry_type);
         $this->db->where('is_delete !=', IS_DELETE);
+        $this->db->where('submitted_datetime >=', '2022-01-01 00:00:00');
         $this->db->order_by('submitted_datetime', 'DESC');
         $resc = $this->db->get();
         return $resc->result_array();
     }
-
 }
 
 /*
