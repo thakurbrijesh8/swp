@@ -7,11 +7,13 @@ class Query_grievance extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('utility_model');
+        $this->load->model('query_grievance_model');
     }
 
     function index() {
         $this->load->view('query_grievance');
     }
+
     function submit_query_grievance() {
         $query_grievance_data = $this->_get_post_data_for_query_grievance();
         $validation_message = $this->_check_validation_for_query_grievance($query_grievance_data);
@@ -31,7 +33,7 @@ class Query_grievance extends CI_Controller {
             echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
             return;
         }
-        $query_grievance_message = base_url() . 'Your Query/Grievance is submited successfully. Please note your Reference Number :' . $query_grievance_data['query_reference_number'] .'Please track your Query/Grievance at' . base_url();
+        $query_grievance_message = base_url() . 'Your Query/Grievance is submited successfully. Please note your Reference Number :' . $query_grievance_data['query_reference_number'] . 'Please track your Query/Grievance at' . base_url();
         $this->load->helper('sms_helper');
         send_SMS($this, $query_grievance_data['user_id'], $query_grievance_data['mobile_no'], 'Query/Grievance Submitted Successfully. ' . $query_grievance_message, VALUE_FOUR);
         $message = 'You have successfully submitted your Query/Grievance details.<br><br>We have sent you an email with query reference number on your email address <span style="color: red;">' . $query_grievance_data['email'] . '</span> ';
@@ -95,6 +97,35 @@ class Query_grievance extends CI_Controller {
         return '';
     }
 
+    function get_query_grievance_average_fees_details() {
+        if (!is_ajax()) {
+            header("Location:" . base_url() . "login");
+            return false;
+        }
+        $success_array = get_success_array();
+        $success_array['service_name'] = '';
+        try {
+            if (!is_post()) {
+                $success_array['average_fees'] = array();
+                echo json_encode($success_array);
+                return false;
+            }
+            $industry_type = get_from_post('industry_type');
+            $industry_type_array = $this->config->item('industry_type_array');
+            if (!isset($industry_type_array[$industry_type])) {
+                $success_array['average_fees'] = array();
+                echo json_encode($success_array);
+                return false;
+            }
+            $it_data = $industry_type_array[$industry_type];
+            $success_array['average_fees'] = $this->query_grievance_model->get_itwise_average_fees($industry_type);
+            $success_array['service_name'] = $it_data;
+            echo json_encode($success_array);
+        } catch (\Exception $e) {
+            $success_array['average_fees'] = array();
+            echo json_encode($success_array);
+        }
+    }
 }
 
 /*

@@ -24,6 +24,16 @@ class Query_grievance_model extends CI_Model {
         $query = $this->db->get();
 		return $query->row();
     }
+    
+     function get_itwise_average_fees($industry_type) {
+        $this->db->select('*');
+        $this->db->from('query_grievance');
+        $this->db->where('industry_classification', $industry_type);
+        $this->db->where('is_delete !=', IS_DELETE);
+        $this->db->order_by('submitted_datetime', 'DESC');
+        $resc = $this->db->get();
+        return $resc->result_array();
+    }
 
 }
 

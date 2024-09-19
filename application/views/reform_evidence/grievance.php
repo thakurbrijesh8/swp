@@ -2,8 +2,10 @@
 $base_url = base_url();
 $this->load->view('new_common/header', array('base_url' => $base_url));
 $this->load->view('common/validation_message');
+$this->load->view('common/utility_template');
 $this->load->view('security');
 ?>
+<link rel="stylesheet" href="<?php echo $base_url; ?>plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 
 <div class="innerpage-banner center bg-overlay-dark-7 py-5" style="background:url(<?php echo $base_url; ?>assets/images/bg/04.jpg) no-repeat; background-size:cover; background-position: center center;">
     <div class="container">
@@ -67,7 +69,7 @@ $this->load->view('security');
                                             1. <a target="_blank" href="assets/pdf/notification-regarding-competent-authorities.pdf">Notification Dated 30-10-2017</a><br/>
                                             2. <a target="_blank" href="assets/department/sss/samay-sudhini-seva-v8.pdf">Notification Dated 23-01-2021</a><br />
                                             3. <a target="_blank" href="assets/department/sss/Public_Service_Guarantee_Act_Rules_2022_DNHDD_21072023.pdf">Notification Dated 17-10-2022</a>
-                                                
+
                                         </td>
                                     </tr>
                                     <tr>
@@ -90,7 +92,7 @@ $this->load->view('security');
                                             3. <a target="_blank" href="assets/department/sss/Public_Service_Guarantee_Act_Rules_2022_DNHDD_21072023.pdf">Notification Dated 17-10-2022</a>
                                         </td>
                                     </tr>
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -175,7 +177,22 @@ $this->load->view('security');
                                 <td class="text-center"><?php echo isset($query_grievance_max_time_for_medium) ? $query_grievance_max_time_for_medium : '-'; ?></td>
                                 <td class="text-center"><?php echo isset($query_grievance_max_time_for_large) ? $query_grievance_max_time_for_large : '-'; ?></td>
                             </tr>
-                            
+                            <tr>
+                                <td>Average Fees</td>
+                                <td class="text-center v-a-m">
+                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewAverageFeesDetails($(this), <?php echo VALUE_ONE; ?>);">View</button>
+                                </td>
+                                <td class="text-center v-a-m">
+                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewAverageFeesDetails($(this), <?php echo VALUE_TWO; ?>);">View</button>
+                                </td>
+                                <td class="text-center v-a-m">
+                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewAverageFeesDetails($(this), <?php echo VALUE_THREE; ?>);">View</button>
+                                </td>
+                                <td class="text-center v-a-m">
+                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewAverageFeesDetails($(this), <?php echo VALUE_FOUR; ?>);">View</button>
+                                </td>
+                            </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -184,4 +201,87 @@ $this->load->view('security');
 
     </div>
 </section>
-<?php $this->load->view('new_common/footer', array('base_url' => $base_url)); ?>
+<?php $this->load->view('new_common/footer', array('base_url' => $base_url, 'is_handlebars' => true)); ?>
+<script type="text/x-handlebars-template" id="af_list_template">
+<?php $this->load->view('new_common/af_list'); ?>
+</script>
+<script type="text/javascript" src="<?php echo $base_url; ?>plugins/datatables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="<?php echo $base_url; ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script type="text/javascript">
+                                        var spinnerTemplate = Handlebars.compile($('#spinner_template').html());
+                                        var iconSpinnerTemplate = spinnerTemplate({'type': 'light', 'extra_class': 'spinner-border-sm'});
+                                        var afListTemplate = Handlebars.compile($('#af_list_template').html());
+
+                                        var VALUE_ZERO = <?php echo VALUE_ZERO; ?>;
+                                        var invalidAccessValidationMessage = '<?php echo INVALID_ACCESS_MESSAGE ?>';
+                                        var prefixModuleArray = <?php echo json_encode($this->config->item('prefix_module_array')); ?>;
+
+                                        function viewAverageFeesDetails(btnObj, industryType) {
+                                            if (!btnObj || !industryType || industryType == VALUE_ZERO || industryType == null) {
+                                                showError(invalidAccessValidationMessage);
+                                                return false;
+                                            }
+                                            $('.preloader').show();
+                                            var ogBtnHTML = btnObj.html();
+                                            var ogBtnOnclick = btnObj.attr('onclick');
+                                            btnObj.html(iconSpinnerTemplate);
+                                            btnObj.attr('onclick', '');
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: 'query_grievance/get_query_grievance_average_fees_details',
+                                                data: $.extend({}, {'industry_type': industryType}, getTokenData()),
+                                                error: function (textStatus, errorThrown) {
+                                                    $('.preloader').hide();
+                                                    generateNewCSRFToken();
+                                                    btnObj.html(ogBtnHTML);
+                                                    btnObj.attr('onclick', ogBtnOnclick);
+                                                    if (textStatus.status === 403) {
+                                                        loginPage();
+                                                        return false;
+                                                    }
+                                                    if (!textStatus.statusText) {
+                                                        loginPage();
+                                                        return false;
+                                                    }
+                                                    showError(textStatus.statusText);
+                                                },
+                                                success: function (data) {
+                                                    var parseData = JSON.parse(data);
+                                                    if (!isJSON(data)) {
+                                                        loginPage();
+                                                        return false;
+                                                    }
+                                                    $('.preloader').hide();
+                                                    setNewToken(parseData.temp_token);
+                                                    btnObj.html(ogBtnHTML);
+                                                    btnObj.attr('onclick', ogBtnOnclick);
+                                                    if (parseData.success == false) {
+                                                        showError(parseData.message);
+                                                        return false;
+                                                    }
+                                                    loadAFD(parseData);
+                                                }
+                                            });
+                                        }
+
+                                        function loadAFD(parseData) {
+                                            showPopup();
+                                            $('.swal2-popup').css('width', '45em');
+                                            $('#popup_container').html(afListTemplate({'service_name': parseData.service_name}));
+
+                                            var feesRenderer = function (data, type, full, meta) {
+                                                return 'No Fees Charged';
+                                            };
+                                            $('#afd_datatable').DataTable({
+                                                data: parseData.average_fees,
+                                                pageLength: 10,
+                                                ordering: false,
+                                                columns: [
+                                                    {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
+                                                    {data: 'query_reference_number', 'class': 'text-center'},
+                                                    {data: 'submitted_datetime', 'render': dateRenderer, 'class': 'text-center'},
+                                                    {data: 'total_fees', 'render': feesRenderer, 'class': 'text-right'}
+                                                ],
+                                            });
+                                        }
+</script>
