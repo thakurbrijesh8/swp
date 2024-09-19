@@ -1282,7 +1282,7 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($psf_registration_min_time_to_ga) ? $psf_registration_min_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($psf_registration_max_time_to_ga) ? $psf_registration_max_time_to_ga : '-'; ?></td>
                                             </tr>
-                                            <tr>
+<!--                                            <tr>
                                                 <td class="text-center v-a-m">2</td>
                                                 <td>Property Registration</td>
                                                 <td class="text-center v-a-m">
@@ -1294,6 +1294,22 @@ $this->load->view('security');
                                                 <td class="text-center v-a-m font-weight-bold text-success"><?php echo isset($property_registration_approved_app) ? $property_registration_approved_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($property_registration_rejected_app) ? $property_registration_rejected_app : 0; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($property_registration_average_time_to_ga) ? $property_registration_average_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold"><?php echo isset($property_registration_median_time_to_ga) ? $property_registration_median_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($property_registration_min_time_to_ga) ? $property_registration_min_time_to_ga : '-'; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($property_registration_max_time_to_ga) ? $property_registration_max_time_to_ga : '-'; ?></td>
+                                            </tr>-->
+                                            <tr>
+                                                <td class="text-center v-a-m">2</td>
+                                                <td>Property Registration</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_TWENTYONE; ?>);">View</button>
+                                                </td>
+                                                <td class="text-center v-a-m font-weight-bold">Same Day</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($cdr_received_app) ? $cdr_received_app : 0; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($cdr_processed_app) ? $cdr_processed_app : 0; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-success"><?php echo isset($cdr_approved_app) ? $cdr_approved_app : 0; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-danger"><?php echo isset($cdr_rejected_app) ? $cdr_rejected_app : 0; ?></td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">Same Day</td>
                                                 <td class="text-center v-a-m font-weight-bold"><?php echo isset($property_registration_median_time_to_ga) ? $property_registration_median_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($property_registration_min_time_to_ga) ? $property_registration_min_time_to_ga : '-'; ?></td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary"><?php echo isset($property_registration_max_time_to_ga) ? $property_registration_max_time_to_ga : '-'; ?></td>
