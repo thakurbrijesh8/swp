@@ -220,7 +220,7 @@ class Home extends CI_Controller {
             }
             if (!empty($processing_days_array)) {
                 $min_days = min($processing_days_array);
-                $dashboard_array[$module_name . '_min_time_to_ga'] = $min_days . ' Day(s)';
+                $dashboard_array[$module_name . '_min_time_to_ga'] = ($min_days == VALUE_ZERO ? VALUE_ONE : $min_days) . ' Day(s)';
                 $max_days = max($processing_days_array);
                 $dashboard_array[$module_name . '_max_time_to_ga'] = $max_days . ' Day(s)';
             }
