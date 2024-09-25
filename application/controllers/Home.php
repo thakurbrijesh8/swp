@@ -313,47 +313,47 @@ class Home extends CI_Controller {
                         $query_grievance_array[$module_name . '_processed_app_for_micro'] += $t_array['total_records'];
                         $total_days_micro += $t_array['total_processing_days'];
                         $min_time_micro = $this->query_grievance_model->get_query_grievance_min_time($module_name, '1');
-                        $query_grievance_array[$module_name . '_min_time_for_micro'] = $min_time_micro->processing_days . ' Day(s)';
+                        $query_grievance_array[$module_name . '_min_time_for_micro'] = set_zero_to_one_day($min_time_micro->processing_days) . ' Day(s)';
 
                         $max_time_micro = $this->query_grievance_model->get_query_grievance_max_time($module_name, '1');
-                        $query_grievance_array[$module_name . '_max_time_for_micro'] = $max_time_micro->processing_days . ' Day(s)';
+                        $query_grievance_array[$module_name . '_max_time_for_micro'] = set_zero_to_one_day($max_time_micro->processing_days) . ' Day(s)';
                     }
                     if ($t_array['industry_classification'] == 2) {
                         $query_grievance_array[$module_name . '_processed_app_for_small'] += $t_array['total_records'];
                         $total_days_small += $t_array['total_processing_days'];
                         $min_time_small = $this->query_grievance_model->get_query_grievance_min_time($module_name, '2');
-                        $query_grievance_array[$module_name . '_min_time_for_small'] = $min_time_small->processing_days . ' Day(s)';
+                        $query_grievance_array[$module_name . '_min_time_for_small'] = set_zero_to_one_day($min_time_small->processing_days) . ' Day(s)';
 
                         $max_time_small = $this->query_grievance_model->get_query_grievance_max_time($module_name, '2');
-                        $query_grievance_array[$module_name . '_max_time_for_small'] = $max_time_small->processing_days . ' Day(s)';
+                        $query_grievance_array[$module_name . '_max_time_for_small'] = set_zero_to_one_day($max_time_small->processing_days) . ' Day(s)';
                     }
                     if ($t_array['industry_classification'] == 3) {
                         $query_grievance_array[$module_name . '_processed_app_for_medium'] += $t_array['total_records'];
                         $total_days_medium += $t_array['total_processing_days'];
                         $min_time_medium = $this->query_grievance_model->get_query_grievance_min_time($module_name, '3');
-                        $query_grievance_array[$module_name . '_min_time_for_medium'] = $min_time_medium->processing_days . ' Day(s)';
+                        $query_grievance_array[$module_name . '_min_time_for_medium'] = set_zero_to_one_day($min_time_medium->processing_days) . ' Day(s)';
 
                         $max_time_medium = $this->query_grievance_model->get_query_grievance_max_time($module_name, '3');
-                        $query_grievance_array[$module_name . '_max_time_for_medium'] = $max_time_medium->processing_days . ' Day(s)';
+                        $query_grievance_array[$module_name . '_max_time_for_medium'] = set_zero_to_one_day($max_time_medium->processing_days) . ' Day(s)';
                     }
                     if ($t_array['industry_classification'] == 4) {
                         $query_grievance_array[$module_name . '_processed_app_for_large'] += $t_array['total_records'];
                         $total_days_large += $t_array['total_processing_days'];
                         $min_time_large = $this->query_grievance_model->get_query_grievance_min_time($module_name, '4');
-                        $query_grievance_array[$module_name . '_min_time_for_large'] = $min_time_large->processing_days . ' Day(s)';
+                        $query_grievance_array[$module_name . '_min_time_for_large'] = set_zero_to_one_day($min_time_large->processing_days) . ' Day(s)';
 
                         $max_time_large = $this->query_grievance_model->get_query_grievance_max_time($module_name, '4');
-                        $query_grievance_array[$module_name . '_max_time_for_large'] = $max_time_large->processing_days . ' Day(s)';
+                        $query_grievance_array[$module_name . '_max_time_for_large'] = set_zero_to_one_day($max_time_large->processing_days) . ' Day(s)';
                     }
 
                     if ($t_array['industry_classification'] == 1 && $t_array['total_records'] != 0)
-                        $query_grievance_array[$module_name . '_median_time_to_ga_for_micro'] = $t_array['processing_days'] . ' Day(s)';
+                        $query_grievance_array[$module_name . '_median_time_to_ga_for_micro'] = set_zero_to_one_day($t_array['processing_days']) . ' Day(s)';
                     if ($t_array['industry_classification'] == 2 && $t_array['total_records'] != 0)
-                        $query_grievance_array[$module_name . '_median_time_to_ga_for_small'] = $t_array['processing_days'] . ' Day(s)';
+                        $query_grievance_array[$module_name . '_median_time_to_ga_for_small'] = set_zero_to_one_day($t_array['processing_days']) . ' Day(s)';
                     if ($t_array['industry_classification'] == 3 && $t_array['total_records'] != 0)
-                        $query_grievance_array[$module_name . '_median_time_to_ga_for_medium'] = $t_array['processing_days'] . ' Day(s)';
+                        $query_grievance_array[$module_name . '_median_time_to_ga_for_medium'] = set_zero_to_one_day($t_array['processing_days']) . ' Day(s)';
                     if ($t_array['industry_classification'] == 4 && $t_array['total_records'] != 0)
-                        $query_grievance_array[$module_name . '_median_time_to_ga_for_large'] = $t_array['processing_days'] . ' Day(s)';
+                        $query_grievance_array[$module_name . '_median_time_to_ga_for_large'] = set_zero_to_one_day($t_array['processing_days']) . ' Day(s)';
                 }
             }
             if ($total_days_micro != 0 && $query_grievance_array[$module_name . '_processed_app_for_micro'] != 0) {
@@ -362,7 +362,7 @@ class Home extends CI_Controller {
                     $td_array = explode(".", "$days");
                     $days = $td_array[0] + 1;
                 }
-                $query_grievance_array[$module_name . '_average_time_to_ga_for_micro'] = $days . ' Day(s)';
+                $query_grievance_array[$module_name . '_average_time_to_ga_for_micro'] = set_zero_to_one_day($days) . ' Day(s)';
             }
             if ($total_days_small != 0 && $query_grievance_array[$module_name . '_processed_app_for_small'] != 0) {
                 $days = abs($total_days_small / $query_grievance_array[$module_name . '_processed_app_for_small']);
@@ -370,7 +370,7 @@ class Home extends CI_Controller {
                     $td_array = explode(".", "$days");
                     $days = $td_array[0] + 1;
                 }
-                $query_grievance_array[$module_name . '_average_time_to_ga_for_small'] = $days . ' Day(s)';
+                $query_grievance_array[$module_name . '_average_time_to_ga_for_small'] = set_zero_to_one_day($days) . ' Day(s)';
             }
             if ($total_days_medium != 0 && $query_grievance_array[$module_name . '_processed_app_for_medium'] != 0) {
                 $days = abs($total_days_medium / $query_grievance_array[$module_name . '_processed_app_for_medium']);
@@ -378,7 +378,7 @@ class Home extends CI_Controller {
                     $td_array = explode(".", "$days");
                     $days = $td_array[0] + 1;
                 }
-                $query_grievance_array[$module_name . '_average_time_to_ga_for_medium'] = $days . ' Day(s)';
+                $query_grievance_array[$module_name . '_average_time_to_ga_for_medium'] = set_zero_to_one_day($days) . ' Day(s)';
             }
             if ($total_days_large != 0 && $query_grievance_array[$module_name . '_processed_app_for_large'] != 0) {
                 $days = abs($total_days_large / $query_grievance_array[$module_name . '_processed_app_for_large']);
@@ -386,7 +386,7 @@ class Home extends CI_Controller {
                     $td_array = explode(".", "$days");
                     $days = $td_array[0] + 1;
                 }
-                $query_grievance_array[$module_name . '_average_time_to_ga_for_large'] = $days . ' Day(s)';
+                $query_grievance_array[$module_name . '_average_time_to_ga_for_large'] = set_zero_to_one_day($days) . ' Day(s)';
             }
         }
     }

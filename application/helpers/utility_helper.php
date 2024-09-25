@@ -238,6 +238,10 @@ function is_json($string) {
     return json_last_error() == JSON_ERROR_NONE;
 }
 
+function set_zero_to_one_day($days) {
+    return ($days == VALUE_ZERO ? VALUE_ONE : $days);
+}
+
 /**
  * EOF: ./application/helpers/request_helper.php
  */
