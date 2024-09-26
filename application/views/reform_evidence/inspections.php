@@ -2,8 +2,10 @@
 $base_url = base_url();
 $this->load->view('new_common/header', array('base_url' => $base_url));
 $this->load->view('common/validation_message');
+$this->load->view('common/utility_template');
 $this->load->view('security');
 ?>
+<link rel="stylesheet" href="<?php echo $base_url; ?>plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 
 <div class="innerpage-banner center bg-overlay-dark-7 py-5" style="background:url(<?php echo $base_url; ?>assets/images/bg/04.jpg) no-repeat; background-size:cover; background-position: center center;">
     <div class="container">
@@ -219,6 +221,7 @@ $this->load->view('security');
                                 <th class="v-a-m" style="width:10%;">Medium</th>
                                 <th class="v-a-m" style="width:10%;">Large</th>
                                 <th class="v-a-m" style="width:10%;">Average / Median Time Taken</th>
+                                <th class="v-a-m" style="width:10%;">Average Fees</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -229,6 +232,9 @@ $this->load->view('security');
                                 <td class="text-center">6</td>
                                 <td class="text-center">3</td>
                                 <td class="text-center">6</td>
+                                <td class="text-center v-a-m">
+                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewAverageFeesDetails();">View</button>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Total Number of Companies that provide self-certifications and were exempted from inspections</td>
@@ -237,6 +243,9 @@ $this->load->view('security');
                                 <td class="text-center">5</td>
                                 <td class="text-center">3</td>
                                 <td class="text-center">3</td>
+                                <td class="text-center v-a-m">
+                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewAverageFeesDetails();">View</button>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Total Number of Companies that provide third party certifications and were exempted from inspections</td>
@@ -245,6 +254,9 @@ $this->load->view('security');
                                 <td class="text-center">6</td>
                                 <td class="text-center">2</td>
                                 <td class="text-center">2</td>
+                                <td class="text-center v-a-m">
+                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewAverageFeesDetails();">View</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -514,4 +526,19 @@ $this->load->view('security');
 </section> -->
 
 
-<?php $this->load->view('new_common/footer', array('base_url' => $base_url)); ?>
+<?php $this->load->view('new_common/footer', array('base_url' => $base_url, 'is_handlebars' => true)); ?>
+<script type="text/x-handlebars-template" id="iaf_list_template">
+<?php $this->load->view('new_common/iaf_list'); ?>
+</script>
+<script type="text/javascript" src="<?php echo $base_url; ?>plugins/datatables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="<?php echo $base_url; ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script type="text/javascript">
+                                        var iafListTemplate = Handlebars.compile($('#iaf_list_template').html());
+
+                                        function viewAverageFeesDetails() {
+                                            showPopup();
+                                            $('.swal2-popup').css('width', '45em');
+                                            $('#popup_container').html(iafListTemplate());
+                                            $('#iafd_datatable').append('<tr><td colspan="4" class="text-center">No Data Available !</td></tr>');
+                                        }
+</script>
