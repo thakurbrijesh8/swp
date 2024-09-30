@@ -503,7 +503,7 @@ $config['csrf_exclude_uris'] = array('utility/generate_new_token', 'utility/get_
     'factorylicense_renewal/upload_factorylicence_renewal_document', 'textile/upload_textile_document',
     'everify/check_number_for_everify', 'rii/generate_certificate', 'periodicalreturn/get_periodicalreturn_data', 'periodicalreturn/generate_form1', 'periodicalreturn/generate_certificate',
     'dealer_renewal/get_dealer_renewal_data', 'vc/generate_certificate', 'payment-fail', 'payment-success', 'ips/upload_ips_document',
-    'ips/upload_incentives_document', 'ips/upload_other_document', 'utility/upload_module_document', 'utility/upload_module_other_document');
+    'ips/upload_incentives_document', 'ips/upload_other_document', 'utility/upload_module_document', 'utility/upload_module_other_document', 'wc/generate_naw_certificate');
 
 /*
   |--------------------------------------------------------------------------

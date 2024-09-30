@@ -3,7 +3,7 @@
         {{{s_display_text}}}
         <h3 class="card-title float-right">
             <button type="button" class="btn btn-sm btn-primary" onclick="WC.listview.newWCForm(false, {});">
-                <i class="fas fa-plus"></i>&nbsp; Apply for New Water Connection
+                <i class="fas fa-plus"></i>&nbsp; Apply for New Water Connection or Certificate of Non-Availability of Water
             </button>
         </h3>
     </div>

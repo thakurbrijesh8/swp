@@ -1100,7 +1100,7 @@ $this->load->view('security');
                                         <tbody>
                                             <tr>
                                                 <td class="text-center v-a-m">1</td>
-                                                <td>Water Connection</td>
+                                                <td>Water Connection or Certificate of Non-Availability of Water</td>
                                                 <td class="text-center v-a-m">
                                                     <button type="button" class="btn btn-grad btn-sm mb-0" onclick="viewReceivedFeeDetails($(this),<?php echo VALUE_FIVE; ?>);">View</button>
                                                 </td>

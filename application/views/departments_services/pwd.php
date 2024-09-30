@@ -18,7 +18,7 @@
                 <tbody>
                     <tr>
                         <td class="text-center">1</td>
-                        <td>Water Connection</td>
+                        <td>Water Connection or Certificate of Non-Availability of Water</td>
                         <td class="text-center">
                             <a class="btn btn-grad btn-sm" href="<?php echo $base_url; ?>login" target="_blank">Click Here</a>
                         </td>

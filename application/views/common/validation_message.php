@@ -98,6 +98,7 @@
     var wcTypeValidationMessage = '<?php echo WC_TYPE_MESSAGE; ?>';
     var diameterServiceConnectionValidationMessage = '<?php echo DIAMETER_SERVICE_CONNECTION_MESSAGE; ?>';
     var waterMeterValidationMessage = '<?php echo WATER_METER_MESSAGE; ?>';
+    var applyingForValidationMessage = '<?php echo APPLYING_FOR_MESSAGE; ?>';
 
     // Cinema 
     var fatherNameValidationMessage = '<?php echo FATHER_NAME_MESSAGE; ?>';
@@ -879,16 +880,16 @@
 
     var areaValidationMessage = '<?php echo ENTER_AREA_MESSAGE; ?>';
     var taxOneRowValidationMessage = '<?php echo TAX_ONE_ROW_MESSAGE; ?>';
-    
+
     var societyNameValidationMessage = '<?php echo SOCIETY_NAME_MESSAGE; ?>';
     var societyAddressValidationMessage = '<?php echo SOCIETY_ADDRESS_MESSAGE; ?>';
 
     // Nil Certificate
     var propertyDetailValidationMessage = '<?php echo PROPERTY_DETAIL_MESSAGE; ?>';
-    
+
     //Business Module
     var udyamNumberValidationMessage = '<?php echo UDYAM_NUMBER_MESSAGE; ?>';
-    
+
     var feedbackValidationMessage = '<?php echo FEEDBACK_MESSAGE; ?>';
 </script>
 

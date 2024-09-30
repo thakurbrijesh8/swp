@@ -127,6 +127,7 @@ define('HOUSE_OWNERSHIP_MESSAGE', 'Enter House Ownership !');
 define('WC_TYPE_MESSAGE', 'Enter Water Connection Type !');
 define('DIAMETER_SERVICE_CONNECTION_MESSAGE', 'Enter Diameter of Service Connection !');
 define('WATER_METER_MESSAGE', 'Enter Water Meter !');
+define('APPLYING_FOR_MESSAGE', 'Select Applying For !');
 
 // Cinema
 //define('FATHER_NAME_MESSAGE', "Enter Father's Name. !");

@@ -12,7 +12,7 @@ $this->load->view('security');
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb text-left">
                         <li class="breadcrumb-item"><a href="<?php echo $base_url; ?>home"><i class="ti-home"></i> Home</a></li>
-                        <li class="breadcrumb-item">Water Connection</li>
+                        <li class="breadcrumb-item">Water Connection or Certificate of Non-Availability of Water</li>
                     </ol>
                 </nav>
             </div>
@@ -25,11 +25,11 @@ $this->load->view('security');
         <div class="row">
             <div class="col-md-12">
                 <div class="title text-left pb-0">
-                    <h2 class="fs-30px text-grad">Water Connection</h2>                     
+                    <h2 class="fs-30px text-grad">Water Connection or Certificate of Non-Availability of Water</h2>                     
                        <!--  <h6>
                             Ensure that the following services are provided through the online single window system -
                             <br />
-                            Water Connection
+                            Water Connection or Certificate of Non-Availability of Water
                     </h6> -->
                 </div>
             </div>

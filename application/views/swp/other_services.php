@@ -325,7 +325,7 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Water Connection</td>
+                                                <td>Water Connection or Certificate of Non-Availability of Water</td>
                                                 <td class="text-center">07 Days</td>
                                                 <td>Assistant Engineer, Sub-Div-I, PWD</td>
                                                 <td class="text-center">

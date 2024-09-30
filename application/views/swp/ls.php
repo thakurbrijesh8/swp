@@ -149,7 +149,7 @@
                                 <td>Public Works Department (PWD)</td>
                                 <td>
                                     <ul>
-                                        <li>Water Connection</li>
+                                        <li>Water Connection or Certificate of Non-Availability of Water</li>
                                     </ul>
                                 </td>
                             </tr>

@@ -165,7 +165,7 @@
                                 <tbody>
                                     <tr>
                                         <td class="text-center">1.</td>
-                                        <td>Water Connection</td>
+                                        <td>Water Connection or Certificate of Non-Availability of Water</td>
                                         <td class="text-center">
                                             <a href="Javascript:void(0);" onclick="WC.listview.listPage();">Click Here</a>
                                         </td>

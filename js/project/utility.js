@@ -291,6 +291,11 @@ var districtRenderer = function (data, type, full, meta) {
 var entityEstablishmentRenderer = function (data, type, full, meta) {
     return entityEstablishmentTypeArray[data] ? entityEstablishmentTypeArray[data] : '';
 };
+
+var entityEstablishmentWcRenderer = function (data, type, full, meta) {
+     return (entityEstablishmentTypeArray[data] ? entityEstablishmentTypeArray[data] : '') + '<hr>' + (applyingForWcArray[full.applying_for] ? applyingForWcArray[full.applying_for] : '');
+};
+
 var serialNumberRenderer = function (data, type, full, meta) {
     return meta.row + meta.settings._iDisplayStart + 1;
 };

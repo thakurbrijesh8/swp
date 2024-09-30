@@ -231,6 +231,8 @@
             var dnhVillagesArray = <?php echo json_encode($this->config->item('dnh_village_array')); ?>;
 
             var ratingArray = <?php echo json_encode($this->config->item('rating_array')); ?>;
+            
+            var applyingForWcArray = <?php echo json_encode($this->config->item('applying_for_wc_array')); ?>;
 
             var socRegUlStatusArray = <?php echo json_encode($this->config->item('soc_reg_ul_status_array')); ?>;
             var documentRowCnt = 1;

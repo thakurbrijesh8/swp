@@ -82,7 +82,7 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Water Connection</td>
+                                <td>Water Connection or Certificate of Non-Availability of Water</td>
                                 <td>Public Works Department</td>
                                 <td class="text-center" colspan="2"> <a href="https://daman.nic.in/websites/pwd_daman/documents/2017/BRAP-2017.pdf" target="_blank">Visit Link</a></td>
                                 <td class="text-center">07 Days</td>

@@ -131,6 +131,7 @@ class Wc extends CI_Controller {
 
     function _get_post_data_for_wc() {
         $wc_data = array();
+        $wc_data['applying_for'] = get_from_post('applying_for');
         $wc_data['name_of_applicant'] = get_from_post('name_of_applicant');
         $wc_data['house_no'] = get_from_post('house_no');
         $wc_data['ward_no'] = get_from_post('ward_no');
@@ -147,6 +148,9 @@ class Wc extends CI_Controller {
     }
 
     function _check_validation_for_wc($wc_data) {
+        if (!$wc_data['applying_for']) {
+            return APPLYING_FOR_MESSAGE;
+        }
         if (!$wc_data['name_of_applicant']) {
             return APPLICANT_NAME_MESSAGE;
         }
@@ -478,6 +482,44 @@ class Wc extends CI_Controller {
             }
             error_reporting(E_ERROR);
             $this->utility_lib->gc_for_wc($existing_wc_data);
+        } catch (\Exception $e) {
+            print_r($e->getMessage());
+            return false;
+        }
+    }
+
+    function generate_naw_certificate() {
+        try {
+            $user_id = get_from_session('temp_id_for_eodbsws');
+            $wc_id = get_from_post('wc_id_for_naw_certificate');
+            if (!is_post() || $user_id == null || !$user_id || $wc_id == null || !$wc_id) {
+                print_r(INVALID_ACCESS_MESSAGE);
+                return false;
+            }
+            $this->db->trans_start();
+            $existing_wc_data = $this->utility_model->get_by_id('wc_id', $wc_id, 'wc');
+            if (empty($existing_wc_data)) {
+                print_r(INVALID_ACCESS_MESSAGE);
+                return;
+            }
+            if (($existing_wc_data['status'] != VALUE_SIX && $existing_wc_data['reason_of_rejection'] != VALUE_ONE)) {
+                print_r(INVALID_ACCESS_MESSAGE);
+                return;
+            }
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === false) {
+                print_r(DATABASE_ERROR_MESSAGE);
+                return;
+            }
+            $filePath = PROJECT_PATH . 'documents/wc/' . $existing_wc_data['certificate_of_rejection'];
+            $final_filename = 'certificate_of_rejection_' . rand(111111111, 99999999) . '_' . time() . '.pdf';
+
+            ob_clean();
+            header('Content-Type: application/pdf');
+            header('Content-Disposition: inline; filename=' . $final_filename);
+
+            readfile($filePath);
+            exit;
         } catch (\Exception $e) {
             print_r($e->getMessage());
             return false;

@@ -67,6 +67,9 @@ WC.listView = Backbone.View.extend({
         if (rowData.status == VALUE_FIVE) {
             rowData.show_download_certificate_btn = true;
         }
+        if (rowData.status == VALUE_SIX && rowData.reason_of_rejection == VALUE_ONE) {
+            rowData.show_download_naw_certificate_btn = true;
+        }
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
@@ -101,7 +104,7 @@ WC.listView = Backbone.View.extend({
                 {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
                 {data: 'wc_id', 'class': 'v-a-m text-center f-w-b', 'render': tempRegNoRenderer},
                 {data: 'district', 'class': 'text-center', 'render': districtRenderer},
-                {data: 'entity_establishment_type', 'class': 'text-center', 'render': entityEstablishmentRenderer},
+                {data: 'entity_establishment_type', 'class': 'text-center', 'render': entityEstablishmentWcRenderer},
                 {data: 'name_of_applicant', 'class': 'text-center'},
                 {data: 'application_category', 'class': 'text-center'},
                 {data: 'house_ownership', 'class': 'text-center'},
@@ -151,8 +154,10 @@ WC.listView = Backbone.View.extend({
         $('#wc_form_and_datatable_container').html(wcFormTemplate((templateData)));
         renderOptionsForTwoDimensionalArray(talukaArray, 'district');
         renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
+        renderOptionsForTwoDimensionalArray(applyingForWcArray, 'applying_for');
         if (isEdit) {
             $('#declaration_for_wc').attr('checked', 'checked');
+            $('#applying_for').val(formData.applying_for);
             $('#application_category').val(formData.application_category);
             $('#house_ownership').val(formData.house_ownership);
             $('#wc_type').val(formData.wc_type);
@@ -248,6 +253,7 @@ WC.listView = Backbone.View.extend({
         }
         var formData = parseData.wc_data;
         formData.VIEW_UPLODED_DOCUMENT = VIEW_UPLODED_DOCUMENT;
+        formData.applying_for = applyingForWcArray[formData.applying_for] ? applyingForWcArray[formData.applying_for] : ' ';
         WC.router.navigate('view_wc_form');
 //        formData.registration_date = dateTo_DD_MM_YYYY(formData.registration_date);
         $('#wc_form_and_datatable_container').html(wcViewTemplate(formData));
@@ -281,6 +287,9 @@ WC.listView = Backbone.View.extend({
         if (!tempIdInSession || tempIdInSession == null) {
             loginPage();
             return false;
+        }
+        if (!wcData.applying_for) {
+            return getBasicMessageAndFieldJSONArray('applying_for', applyingForValidationMessage);
         }
         if (!wcData.name_of_applicant) {
             return getBasicMessageAndFieldJSONArray('name_of_applicant', applicantNameValidationMessage);
@@ -747,6 +756,15 @@ WC.listView = Backbone.View.extend({
         $('#wc_id_for_certificate').val(wcId);
         $('#wc_certificate_pdf_form').submit();
         $('#wc_id_for_certificate').val('');
+    },
+     generateNawCertificate: function (wcId) {
+        if (!wcId) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        $('#wc_id_for_naw_certificate').val(wcId);
+        $('#wc_naw_certificate_pdf_form').submit();
+        $('#wc_id_for_naw_certificate').val('');
     },
     getQueryData: function (wcId) {
         if (!tempIdInSession || tempIdInSession == null) {

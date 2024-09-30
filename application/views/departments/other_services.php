@@ -34,7 +34,7 @@
         <div id="other_services_main_container">
             <div class="row other_services_item">
                 <div class="col-md-12 mt-4">
-                    <h5 class="lh-15 text-grad">Water Connection</h5>
+                    <h5 class="lh-15 text-grad">Water Connection or Certificate of Non-Availability of Water</h5>
                 </div>
                 <div class="col-md-12">
                     <div class="table-responsive">
@@ -56,7 +56,7 @@
                                 <tr>
                                     <td class="text-center">1</td>
                                     <td>
-                                        Water Connection
+                                        Water Connection or Certificate of Non-Availability of Water
                                         <ul>
                                             <li><a href="https://daman.nic.in/websites/pwd_daman/documents/2018/Fixation-of-water-tariff.pdf" target="_blank">View Tariff</a></li>
                                         </ul>
@@ -76,7 +76,7 @@
                                 <tr>
                                     <td class="text-center">2</td>
                                     <td>
-                                        Water Connection
+                                        Water Connection or Certificate of Non-Availability of Water
                                         <ul>
                                             <li><a href="https://daman.nic.in/websites/pwd_daman/documents/2018/Fixation-of-water-tariff.pdf" target="_blank">View Tariff</a></li>
                                         </ul>
@@ -96,7 +96,7 @@
                                 <tr>
                                     <td class="text-center">3</td>
                                     <td>
-                                        Water Connection
+                                        Water Connection or Certificate of Non-Availability of Water
                                         <ul>
                                             <li><a href="https://smcdnh.in/makepayment" target="_blank">Bill Payment</a></li>
                                             <li><a href="https://smcdnh.in/WTConnectionStatus" target="_blank">Track Application Status</a></li>
