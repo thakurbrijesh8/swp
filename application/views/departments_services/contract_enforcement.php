@@ -26,6 +26,22 @@
                     </table>
                 </td>
             </tr>
+            <tr>
+                <td class="text-center">2</td>                                
+                <td>Notification on Commercial Courts</td>
+                <!--<td class="text-center">209 to 213</td>-->
+                <td class="text-center" style="padding: 0px;">
+                    <table class="table mb-0">
+                        <tr>
+                            <td style="border: none; border-right: 1px solid #dee2e6;
+                                border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
+                                <a class="btn btn-grad btn-sm" href="assets/department/Notification_on_Commercial_Courts_final.pdf" target="_blank">View</a>
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

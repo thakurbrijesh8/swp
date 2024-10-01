@@ -653,11 +653,13 @@ $this->load->view('security');
                                             <tr>
                                                 <td class="text-center v-a-m">2</td>
                                                 <td>Trade Licenses</td>
-                                                <td class="text-center v-a-m">-</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="getJSONDetails('Municipal Councils', 'Trade Licenses', 'trade_license');">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">7 Days</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">584</td>
-                                                <td class="text-center v-a-m font-weight-bold text-primary">584</td>
-                                                <td class="text-center v-a-m font-weight-bold text-success">180</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">587</td>
+                                                <td class="text-center v-a-m font-weight-bold text-primary">587</td>
+                                                <td class="text-center v-a-m font-weight-bold text-success">183</td>
                                                 <td class="text-center v-a-m font-weight-bold text-danger">404</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">6 Day(s)</td>
                                                 <td class="text-center v-a-m font-weight-bold">7 Day(s)</td>
@@ -1748,92 +1750,124 @@ $this->load->view('security');
 <script type="text/javascript" src="<?php echo $base_url; ?>plugins/datatables/jquery.dataTables.js"></script>
 <script type="text/javascript" src="<?php echo $base_url; ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <script type="text/javascript">
-                                                        var spinnerTemplate = Handlebars.compile($('#spinner_template').html());
-                                                        var iconSpinnerTemplate = spinnerTemplate({'type': 'light', 'extra_class': 'spinner-border-sm'});
-                                                        var fdListTemplate = Handlebars.compile($('#fd_list_template').html());
+    var spinnerTemplate = Handlebars.compile($('#spinner_template').html());
+    var iconSpinnerTemplate = spinnerTemplate({'type': 'light', 'extra_class': 'spinner-border-sm'});
+    var fdListTemplate = Handlebars.compile($('#fd_list_template').html());
 
-                                                        var VALUE_ZERO = <?php echo VALUE_ZERO; ?>;
-                                                        var VALUE_TWENTYONE = <?php echo VALUE_TWENTYONE; ?>;
-                                                        var invalidAccessValidationMessage = '<?php echo INVALID_ACCESS_MESSAGE ?>';
-                                                        var prefixModuleArray = <?php echo json_encode($this->config->item('prefix_module_array')); ?>;
+    var VALUE_ZERO = <?php echo VALUE_ZERO; ?>;
+    var VALUE_TWENTYONE = <?php echo VALUE_TWENTYONE; ?>;
+    var invalidAccessValidationMessage = '<?php echo INVALID_ACCESS_MESSAGE ?>';
+    var prefixModuleArray = <?php echo json_encode($this->config->item('prefix_module_array')); ?>;
 
-                                                        function viewReceivedFeeDetails(btnObj, moduleType) {
-                                                            if (!btnObj || !moduleType || moduleType == VALUE_ZERO || moduleType == null) {
-                                                                showError(invalidAccessValidationMessage);
-                                                                return false;
-                                                            }
-                                                            $('.preloader').show();
-                                                            var ogBtnHTML = btnObj.html();
-                                                            var ogBtnOnclick = btnObj.attr('onclick');
-                                                            btnObj.html(iconSpinnerTemplate);
-                                                            btnObj.attr('onclick', '');
-                                                            $.ajax({
-                                                                type: 'POST',
-                                                                url: 'utility/get_service_wise_payment_details',
-                                                                data: $.extend({}, {'module_type': moduleType}, getTokenData()),
-                                                                error: function (textStatus, errorThrown) {
-                                                                    $('.preloader').hide();
-                                                                    generateNewCSRFToken();
-                                                                    btnObj.html(ogBtnHTML);
-                                                                    btnObj.attr('onclick', ogBtnOnclick);
-                                                                    if (textStatus.status === 403) {
-                                                                        loginPage();
-                                                                        return false;
-                                                                    }
-                                                                    if (!textStatus.statusText) {
-                                                                        loginPage();
-                                                                        return false;
-                                                                    }
-                                                                    showError(textStatus.statusText);
-                                                                },
-                                                                success: function (data) {
-                                                                    var parseData = JSON.parse(data);
-                                                                    if (!isJSON(data)) {
-                                                                        loginPage();
-                                                                        return false;
-                                                                    }
-                                                                    $('.preloader').hide();
-                                                                    setNewToken(parseData.temp_token);
-                                                                    btnObj.html(ogBtnHTML);
-                                                                    btnObj.attr('onclick', ogBtnOnclick);
-                                                                    if (parseData.success == false) {
-                                                                        showError(parseData.message);
-                                                                        return false;
-                                                                    }
-                                                                    loadMWFD(parseData);
-                                                                }
-                                                            });
-                                                        }
+    function viewReceivedFeeDetails(btnObj, moduleType) {
+        if (!btnObj || !moduleType || moduleType == VALUE_ZERO || moduleType == null) {
+            showError(invalidAccessValidationMessage);
+            return false;
+        }
+        $('.preloader').show();
+        var ogBtnHTML = btnObj.html();
+        var ogBtnOnclick = btnObj.attr('onclick');
+        btnObj.html(iconSpinnerTemplate);
+        btnObj.attr('onclick', '');
+        $.ajax({
+            type: 'POST',
+            url: 'utility/get_service_wise_payment_details',
+            data: $.extend({}, {'module_type': moduleType}, getTokenData()),
+            error: function (textStatus, errorThrown) {
+                $('.preloader').hide();
+                generateNewCSRFToken();
+                btnObj.html(ogBtnHTML);
+                btnObj.attr('onclick', ogBtnOnclick);
+                if (textStatus.status === 403) {
+                    loginPage();
+                    return false;
+                }
+                if (!textStatus.statusText) {
+                    loginPage();
+                    return false;
+                }
+                showError(textStatus.statusText);
+            },
+            success: function (data) {
+                var parseData = JSON.parse(data);
+                if (!isJSON(data)) {
+                    loginPage();
+                    return false;
+                }
+                $('.preloader').hide();
+                setNewToken(parseData.temp_token);
+                btnObj.html(ogBtnHTML);
+                btnObj.attr('onclick', ogBtnOnclick);
+                if (parseData.success == false) {
+                    showError(parseData.message);
+                    return false;
+                }
+                loadMWFD(parseData);
+            }
+        });
+    }
 
-                                                        function loadMWFD(parseData) {
-                                                            showPopup();
-                                                            $('.swal2-popup').css('width', '45em');
-                                                            $('#popup_container').html(fdListTemplate({'dept_name': parseData.dept_name, 'service_name': parseData.service_name}));
+    var feesRenderer = function (data, type, full, meta) {
+        return (data != VALUE_ZERO ? data + '/-' : 'N.A.');
+    };
 
-                                                            var tempAppNoRenderer = function (data, type, full, meta) {
-                                                                if (full.mt == VALUE_TWENTYONE) {
-                                                                    return full.app_no;
-                                                                }
-                                                                return appNoRenderer(full);
-                                                            };
-                                                            var feeDetailsRenderer = function (data, type, full, meta) {
-                                                                return fdRenderer(full);
-                                                            };
-                                                            var feesRenderer = function (data, type, full, meta) {
-                                                                return (data != VALUE_ZERO ? data + '/-' : 'N.A.');
-                                                            };
-                                                            $('#rfd_datatable').DataTable({
-                                                                data: parseData.payment_history,
-                                                                pageLength: 5,
-                                                                ordering: false,
-                                                                columns: [
-                                                                    {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
-                                                                    {data: '', 'render': tempAppNoRenderer, 'class': 'text-center'},
-                                                                    {data: 'submitted_datetime', 'render': dateRenderer, 'class': 'text-center'},
-                                                                    {data: 'status_datetime', 'render': dateRenderer, 'class': 'text-center'},
-                                                                    {data: '', 'render': feeDetailsRenderer, 'class': 'text-center'},
-                                                                    {data: 'total_fees', 'render': feesRenderer, 'class': 'text-right'},
-                                                                ],
-                                                            });
-                                                        }
+    function loadMWFD(parseData) {
+        showPopup();
+        $('.swal2-popup').css('width', '45em');
+        $('#popup_container').html(fdListTemplate({'dept_name': parseData.dept_name, 'service_name': parseData.service_name}));
+
+        var tempAppNoRenderer = function (data, type, full, meta) {
+            if (full.mt == VALUE_TWENTYONE) {
+                return full.app_no;
+            }
+            return appNoRenderer(full);
+        };
+        var feeDetailsRenderer = function (data, type, full, meta) {
+            return fdRenderer(full);
+        };
+        $('#rfd_datatable').DataTable({
+            data: parseData.payment_history,
+            pageLength: 5,
+            ordering: false,
+            columns: [
+                {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
+                {data: '', 'render': tempAppNoRenderer, 'class': 'text-center'},
+                {data: 'submitted_datetime', 'render': dateRenderer, 'class': 'text-center'},
+                {data: 'status_datetime', 'render': dateRenderer, 'class': 'text-center'},
+                {data: '', 'render': feeDetailsRenderer, 'class': 'text-center'},
+                {data: 'total_fees', 'render': feesRenderer, 'class': 'text-right'},
+            ],
+        });
+    }
+
+    function getJSONDetails(deptName, sName, fName) {
+        showPopup();
+        $('.swal2-popup').css('width', '45em');
+        $('#popup_container').html(fdListTemplate({deptName, sName}));
+        
+        var fdjRenderer = function (data, type, full, meta) {
+            var returnString = '<table class="table table-bordered mb-0 bg-beige f-s-app-details table-lh1">';
+             returnString += '<tr><th class="text-center">No.</th><th class="text-center">Fee Description</th><th class="text-center">Fee</th></tr>';
+            returnString += '<tr><td class="text-center">1</td><td class="text-left">License Rate</td>';
+            returnString += '<td class="text-right">' + full.license_rate + '/-' + '</td></tr>';
+            returnString += '<tr><td class="text-center">2</td><td class="text-left">Board Tax</td>';
+            returnString += '<td class="text-right">' + full.board_tax + '/-' + '</td></tr>';
+            returnString += '</table>';
+            return returnString;
+        };
+
+        $('#rfd_datatable').DataTable({
+            ajax: {url: 'assets/json/' + fName + '.json', dataSrc: "trade_license_data", type: "get"},
+            pageLength: 5,
+            ordering: false,
+            columns: [
+                {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
+                {data: 'application_number', 'class': 'text-center'},
+                {data: 'application_date', 'class': 'text-center'},
+                {data: 'approve_date', 'class': 'text-center'},
+                {data: 'application_number', 'render': fdjRenderer, 'class': 'text-center'},
+                {data: 'total_amount', 'render': feesRenderer, 'class': 'text-right'},
+            ],
+        });
+    }
 </script>
