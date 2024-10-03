@@ -19,7 +19,7 @@ $this->load->view('security');
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb text-left">
                         <li class="breadcrumb-item"><a href="<?php echo $base_url; ?>home"><i class="ti-home"></i> Home</a></li>
-                        <li class="breadcrumb-item">Transport Wizard</li>
+                        <li class="breadcrumb-item">Decriminalization Wizard</li>
                     </ol>
                 </nav>
             </div>
@@ -32,7 +32,7 @@ $this->load->view('security');
         <div class="row">
             <div class="col-md-12">
                 <div class="title text-left">
-                    <h2 class="fs-30px text-grad">Transport Wizard</h2>
+                    <h2 class="fs-30px text-grad">Decriminalization Wizard</h2>
                     <hr>
                     <div id="transport_form_template">
                         <div class="row">
@@ -61,7 +61,7 @@ $this->load->view('security');
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" id="tw_item_main_container" style="display: none;">
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table p-04 table-hover">
@@ -89,19 +89,16 @@ $this->load->view('security');
     var iconSpinnerTemplate = spinnerTemplate({'type': 'light', 'extra_class': 'spinner-border-small'});
 
     var transportData = JSON.parse('<?php echo json_encode($temp_transport_data); ?>');
-    console.log(transportData['177']);
 
     function getMotorVehicalActData() {
-        validationMessageHide('approvals');
+        $('#tw_item_main_container').hide();
         var smvAct = $('#motor_vehical_act_for_transport').val();
-
         if (!smvAct) {
             $('#motor_vehical_act_for_transport').focus();
             validationMessageShow('transport-motor_vehical_act_for_transport', selectOneOptionValidationMessage);
             return false;
         }
-
-        var smvActData = transportData[smvAct];
+        var smvActData = transportData[smvAct] ? transportData[smvAct] : [];
         var smvActDetailsHtml = '';
         $.each(smvActData, function (index, act) {
             act.temp_cnt = (index + 1);
@@ -114,7 +111,7 @@ $this->load->view('security');
                     '<td class="text-center">' + act.smv_ov + '</td>' +
                     '</tr>';
         });
-
         $('#transport_smv_act').html(smvActDetailsHtml);
+        $('#tw_item_main_container').show();
     }
 </script>
