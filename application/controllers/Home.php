@@ -477,6 +477,13 @@ class Home extends CI_Controller {
         $this->load->view('approvals/list', $template_data);
     }
 
+    public function transport_wizard() {
+        $this->load->model('utility_model');
+        $template_data = array();
+        $template_data['temp_transport_data'] = generate_array_for_id_objects($this->utility_model->get_result_data('smv_transport'), 'smv_act');
+        $this->load->view('transport_wizard', $template_data);
+    }
+
     public function know_your_clearances() {
         $this->load->view('clearance');
     }
@@ -492,6 +499,7 @@ class Home extends CI_Controller {
     public function dmc_property_tax_calculator() {
         $this->load->view('departments_services/property_tax_calculator');
     }
+
 }
 
 /*

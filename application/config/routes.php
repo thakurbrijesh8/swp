@@ -125,3 +125,5 @@ $route['comments-feedback-on-regulation'] = 'feedback/index';
 $route['dmc-daman-diu-property-tax-calculator'] = 'home/dmc_property_tax_calculator';
 $route['payment-fail'] = 'payment_status/payment_failed';
 $route['payment-success'] = 'payment_status/payment_success';
+
+$route['transport-wizard'] = 'home/transport_wizard';
