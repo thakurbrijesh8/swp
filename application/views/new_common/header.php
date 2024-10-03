@@ -100,6 +100,7 @@
                                     <li><a class="dropdown-item" href="<?php echo $base_url; ?>know-your-clearances">Know Your Clearances</a></li>
                                     <li><a class="dropdown-item" href="<?php echo $base_url; ?>information-wizard">Information Wizard</a></li>
                                     <li><a class="dropdown-item" href="<?php echo $base_url; ?>transport-wizard">Transport Wizard</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo $base_url; ?>integrate-land-property-portal">Integrate Land / Property Portal</a></li>
                                     <li><a class="dropdown-item" href="<?php echo $base_url; ?>departments-and-services">Departments & Services</a></li>
                                     <li><a class="dropdown-item" href="<?php echo $base_url; ?>land-allotment-dnhdd">Land Allotment</a></li>
                                     <!--<li><a class="dropdown-item" href="<?php echo $base_url; ?>swp_ls">List of Services</a></li>-->

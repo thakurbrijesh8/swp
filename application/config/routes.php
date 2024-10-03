@@ -127,3 +127,5 @@ $route['payment-fail'] = 'payment_status/payment_failed';
 $route['payment-success'] = 'payment_status/payment_success';
 
 $route['transport-wizard'] = 'home/transport_wizard';
+$route['integrate-land-property-portal'] = 'home/integrate_land_property_portal';
+

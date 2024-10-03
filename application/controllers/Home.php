@@ -499,6 +499,10 @@ class Home extends CI_Controller {
     public function dmc_property_tax_calculator() {
         $this->load->view('departments_services/property_tax_calculator');
     }
+    
+    public function integrate_land_property_portal() {
+        $this->load->view('integrate_land_property_portal');
+    }
 
 }
 
