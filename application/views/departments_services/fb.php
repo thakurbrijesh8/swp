@@ -134,7 +134,7 @@
                         <tr>
                             <td style="border: none; border-right: 1px solid #dee2e6;
                                 border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
-                                <a target="_blank" href="https://www.labourdnhdd.in/documents/emp_form_doc_upload/notification-form/6348f94175509.pdf" target="_blank"><button type="button" class="btn btn-grad btn-sm">View</button></a></br>
+                                <a target="_blank" href="https://labourdnhdd.in/documents/notification-form/6348f7ddd67a6.pdf" target="_blank"><button type="button" class="btn btn-grad btn-sm">View</button></a></br>
                                 <a target="_blank" href="<?php echo $base_url; ?>assets/department/fb/reform_109_v2.pdf"><button type="button" class="btn btn-grad btn-sm">Document</button></a>
                             </td>
 
