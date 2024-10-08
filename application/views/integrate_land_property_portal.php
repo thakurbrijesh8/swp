@@ -12,7 +12,7 @@ $this->load->view('security');
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb text-left">
                         <li class="breadcrumb-item"><a href="<?php echo $base_url; ?>home"><i class="ti-home"></i> Home</a></li>
-                        <li class="breadcrumb-item">Integrate Land / Property Portal</li>
+                        <li class="breadcrumb-item">Integrated Land / Property Portal</li>
                     </ol>
                 </nav>
             </div>
@@ -25,11 +25,11 @@ $this->load->view('security');
         <div class="row">
             <div class="col-md-12">
                 <div class="title text-left">
-                    <h2 class="fs-30px text-grad mb-4">Integrate Land / Property Portal</h2>
+                    <h2 class="fs-30px text-grad mb-4">Integrated Land / Property Portal</h2>
                     <div class="row">
                         <div class="col-sm-6 col-md-3 mb-4">
                             <a href="https://dd.nlrmp.in/crsrsearch/" class="btn btn-grad btn-block f-s-16px">
-                                land transaction deeds for last 20 years
+                                Land Deeds for Last 20 Years
                             </a>
                         </div>
                         <div class="col-sm-6 col-md-3 mb-4">
@@ -38,8 +38,8 @@ $this->load->view('security');
                             </a>
                         </div>
                         <div class="col-sm-6 col-md-3 mb-4">
-                            <a href="https://sugam.dddgov.in/rural-land-tax?d=VkZaRk9WQlJQVDA9&t=VkZaRk9WQlJQVDA9" class="btn btn-grad btn-block f-s-16px">
-                                Data of Property Tax payment
+                            <a href="https://smcdnh.in/" class="btn btn-grad btn-block f-s-16px">
+                                Data of Property Tax Payment
                             </a>
                         </div>
                         <div class="col-sm-6 col-md-3 mb-4">
@@ -49,7 +49,7 @@ $this->load->view('security');
                         </div>
                         <div class="col-sm-6 col-md-3 mb-4">
                             <a href="https://daman.dcourts.gov.in/" class="btn btn-grad btn-block f-s-16px">
-                                Civil Court case data
+                                Civil Court Case Data
                             </a>
                         </div>
                         <div class="col-sm-6 col-md-3 mb-4">
@@ -58,13 +58,13 @@ $this->load->view('security');
                             </a>
                         </div>
                         <div class="col-sm-6 col-md-3 mb-4">
-                            <a href="" class="btn btn-grad btn-block f-s-16px">
+                            <a href="#" class="btn btn-grad btn-block f-s-16px">
                                 Water
                             </a>
                         </div>
                         <div class="col-sm-6 col-md-3 mb-4">
-                            <a href="#" class="btn btn-grad btn-block f-s-16px">
-                                Integrated with cadastral maps
+                            <a href="https://www.damanpda.in/wf/Home/dcr" class="btn btn-grad btn-block f-s-16px">
+                                Integrated with Cadastral Maps
                             </a>
                         </div>
                     </div>

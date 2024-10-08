@@ -481,6 +481,7 @@ class Home extends CI_Controller {
         $this->load->model('utility_model');
         $template_data = array();
         $template_data['temp_transport_data'] = generate_array_for_id_objects($this->utility_model->get_result_data('smv_transport'), 'smv_act');
+        $template_data['temp_watgst_data'] = generate_array_for_id_object($this->utility_model->get_result_data('smv_watgst'), 'smv_watgst_id');
         $this->load->view('transport_wizard', $template_data);
     }
 
