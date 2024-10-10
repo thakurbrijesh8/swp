@@ -331,6 +331,22 @@
                     </table>
                 </td>
             </tr>
+            <tr>
+                <td class="text-center">14</td>                                
+                <td>Valid master plans/zonal plans/land use plans for all urban and Panchayat areas</td>
+                <!--<td class="text-center">197</td>-->
+                <td class="text-center" style="padding: 0px;">
+                    <table class="table mb-0">
+                        <tr>
+                            <td style="border: none; border-right: 1px solid #dee2e6;
+                                border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
+                                <a target="_blank" href="https://www.damanpda.in/wf/Home/dcr"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                            </td>
+
+                        </tr>
+                    </table>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

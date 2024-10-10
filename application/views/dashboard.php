@@ -380,7 +380,9 @@ $this->load->view('security');
                                                         (Note : The above consented DG Set is permitted for standby arrangement only and not as a captive power generation unit.)
                                                     </span>
                                                 </td>
-                                                <td class="text-center v-a-m">-</td>
+                                                <td class="text-center v-a-m">
+                                                    <button type="button" class="btn btn-grad btn-sm mb-0" onclick="getJSONDetails('Pollution Control Committee', 'New/Renewal under the Water', 'pollution');">View</button>
+                                                </td>
                                                 <td class="text-center v-a-m font-weight-bold">90 Days</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">5120</td>
                                                 <td class="text-center v-a-m font-weight-bold text-primary">992</td>
@@ -1843,21 +1845,29 @@ $this->load->view('security');
     function getJSONDetails(deptName, sName, fName) {
         showPopup();
         $('.swal2-popup').css('width', '45em');
-        $('#popup_container').html(fdListTemplate({deptName, sName}));
-        
+        $('#popup_container').html(fdListTemplate({'dept_name': deptName, 'service_name': sName}));
+
         var fdjRenderer = function (data, type, full, meta) {
+            var od = '';
+            if (fName == 'trade_license') {
+                od = '<tr><td class="text-center">1</td><td class="text-left">License Rate</td>'
+                        + '<td class="text-right">' + full.license_rate + '/-' + '</td></tr>'
+                        + '<tr><td class="text-center">2</td><td class="text-left">Board Tax</td>'
+                        + '<td class="text-right">' + full.board_tax + '/-' + '</td></tr>';
+            }
+            if (fName == 'pollution') {
+                od = '<tr><td class="text-center">1</td><td class="text-left">Fees</td>'
+                        + '<td class="text-right">' + full.total_amount + '/-' + '</td></tr>';
+            }
             var returnString = '<table class="table table-bordered mb-0 bg-beige f-s-app-details table-lh1">';
-             returnString += '<tr><th class="text-center">No.</th><th class="text-center">Fee Description</th><th class="text-center">Fee</th></tr>';
-            returnString += '<tr><td class="text-center">1</td><td class="text-left">License Rate</td>';
-            returnString += '<td class="text-right">' + full.license_rate + '/-' + '</td></tr>';
-            returnString += '<tr><td class="text-center">2</td><td class="text-left">Board Tax</td>';
-            returnString += '<td class="text-right">' + full.board_tax + '/-' + '</td></tr>';
+            returnString += '<tr><th class="text-center">No.</th><th class="text-center">Fee Description</th><th class="text-center">Fee</th></tr>';
+            returnString += od;
             returnString += '</table>';
             return returnString;
         };
 
         $('#rfd_datatable').DataTable({
-            ajax: {url: 'assets/json/' + fName + '.json', dataSrc: "trade_license_data", type: "get"},
+            ajax: {url: 'assets/json/' + fName + '.json', dataSrc: fName + "_data", type: "get"},
             pageLength: 5,
             ordering: false,
             columns: [

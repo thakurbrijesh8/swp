@@ -41,7 +41,7 @@ $this->load->view('security');
             <div class="col-sm-12 col-md-1">
             </div>
             <div class="col-md-10 mt-2 mb-2">
-                <a href="<?php echo base_url(); ?>assets/department/sss/Public_Service_Guarantee_Act_Rules_2022_DNHDD_21072023.pdf" target="_blank" class="btn btn-grad btn-block f-s-16px">
+                <a href="<?php echo base_url(); ?>assets/department/sss/Public_Service_Guarantee_Act_Rules_2022.pdf" target="_blank" class="btn btn-grad btn-block f-s-16px">
                     Click here to download Notification regarding Right of Citizen to Public Service : Time-Bound Delivery of Services
                 </a>
                 <!--                <div class="table-responsive">
