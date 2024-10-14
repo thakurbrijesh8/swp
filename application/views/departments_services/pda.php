@@ -21,7 +21,7 @@
                         <td class="text-center">1</td>
                         <td>Construction Permission (Include Storage of Construction Material)</td>
                         <td class="text-center">
-                            <a target="_blank" class="btn btn-grad btn-sm" href="<?php echo $base_url; ?>login">Click Here</a>
+                            <a target="_blank" class="btn btn-grad btn-sm" href="https://www.damanpda.in/wf" target="_blank">Click Here</a>
                         </td>
                         <td class="text-center">Planning & Development Authority - Daman</td>
                         <td class="text-center">21 Days</td>
@@ -37,7 +37,7 @@
                         <td class="text-center">2</td>
                         <td>Occupancy Certificate / Part Occupancy Certificate</td>
                         <td class="text-center">
-                            <a target="_blank" class="btn btn-grad btn-sm" href="<?php echo $base_url; ?>login">Click Here</a>
+                            <a target="_blank" class="btn btn-grad btn-sm" href="https://www.damanpda.in/wf" target="_blank">Click Here</a>
                         </td>
                         <td class="text-center">Planning & Development Authority -Daman</td>
                         <td class="text-center">30 Days</td>
@@ -52,7 +52,7 @@
                         <td class="text-center">3</td>
                         <td>Application for Inspection at Plinth level</td>
                         <td class="text-center">
-                            <a target="_blank" class="btn btn-grad btn-sm" href="<?php echo $base_url; ?>login">Click Here</a>
+                            <a target="_blank" class="btn btn-grad btn-sm" href="https://www.damanpda.in/wf" target="_blank">Click Here</a>
                         </td>
                         <td class="text-center">Planning & Development Authority -Daman</td>
                         <td class="text-center">15 Days</td>
@@ -67,7 +67,7 @@
                         <td class="text-center">4</td>
                         <td>Site Elevation</td>
                         <td class="text-center">
-                            <a target="_blank" class="btn btn-grad btn-sm" href="<?php echo $base_url; ?>login">Click Here</a>
+                            <a target="_blank" class="btn btn-grad btn-sm" href="https://www.damanpda.in/wf" target="_blank">Click Here</a>
                         </td>
                         <td class="text-center">Planning & Development Authority -Daman</td>
                         <td class="text-center">10 Days</td>
@@ -82,7 +82,7 @@
                         <td class="text-center">5</td>
                         <td>Zone Information</td>
                         <td class="text-center">
-                            <a target="_blank" class="btn btn-grad btn-sm" href="<?php echo $base_url; ?>login">Click Here</a>
+                            <a target="_blank" class="btn btn-grad btn-sm" href="https://www.damanpda.in/wf" target="_blank">Click Here</a>
                         </td>
                         <td class="text-center">Planning & Development Authority -Daman</td>
                         <td class="text-center">7 Days</td>
@@ -331,6 +331,22 @@
                     </table>
                 </td>
             </tr>
+            <tr>
+                <td class="text-center">14</td>                                
+                <td>Valid master plans/zonal plans/land use plans for all urban and Panchayat areas</td>
+                <!--<td class="text-center">197</td>-->
+                <td class="text-center" style="padding: 0px;">
+                    <table class="table mb-0">
+                        <tr>
+                            <td style="border: none; border-right: 1px solid #dee2e6;
+                                border-bottom: 1px solid #dee2e6; width: 33.33%;" class="text-center">
+                                <a target="_blank" href="https://www.damanpda.in/wf/Home/dcr"><button type="button" class="btn btn-grad btn-sm">View</button></a>
+                            </td>
+
+                        </tr>
+                    </table>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
@@ -359,7 +375,7 @@
                         <td class="text-center">1</td>
                         <td></td>
                         <td class="text-center">
-                            <a target="_blank" class="btn btn-grad btn-sm" href="<?php echo $base_url; ?>login">Click Here</a>
+                            <a target="_blank" class="btn btn-grad btn-sm" href="https://www.damanpda.in/wf" target="_blank">Click Here</a>
                         </td>
                         <td class="text-center">Planning & Development Authority -DNH</td>
                         <td class="text-center">25 Days</td>

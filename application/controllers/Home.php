@@ -138,24 +138,24 @@ class Home extends CI_Controller {
         error_reporting(~E_WARNING & E_ALL & ~E_DEPRECATED);
         $dashboard_array['fire_dashboard'] = file_get_contents('http://eservices.ddfes.in/DashboardAppList/embedded');
         $this->_get_status_wise_basic_array($dashboard_array, 'cdr');
-//        $temp_dr_counts = file_get_contents('https://sugam.dddgov.in/api_get_dr_counts');
-//        $dr_details = json_decode($temp_dr_counts, true);
-//        if (is_array($dr_details) && isset($dr_details['success'])) {
-//            foreach ($dr_details['dr_counts'] as $drc) {
-//                if ($drc['status'] != VALUE_ZERO && $drc['status'] != VALUE_ONE) {
-//                    $dashboard_array['cdr_received_app'] += $drc['total_records'];
-//                }
-//                if ($drc['status'] == VALUE_FIVE || $drc['status'] == VALUE_SIX) {
-//                    $dashboard_array['cdr_processed_app'] += $drc['total_records'];
-//                    if ($drc['status'] == VALUE_FIVE) {
-//                        $dashboard_array['cdr_approved_app'] += $drc['total_records'];
-//                    }
-//                    if ($drc['status'] == VALUE_SIX) {
-//                        $dashboard_array['cdr_rejected_app'] += $drc['total_records'];
-//                    }
-//                }
-//            }
-//        }
+        $temp_dr_counts = file_get_contents('https://sugam.dddgov.in/api_get_dr_counts');
+        $dr_details = json_decode($temp_dr_counts, true);
+        if (is_array($dr_details) && isset($dr_details['success'])) {
+            foreach ($dr_details['dr_counts'] as $drc) {
+                if ($drc['status'] != VALUE_ZERO && $drc['status'] != VALUE_ONE) {
+                    $dashboard_array['cdr_received_app'] += $drc['total_records'];
+                }
+                if ($drc['status'] == VALUE_FIVE || $drc['status'] == VALUE_SIX) {
+                    $dashboard_array['cdr_processed_app'] += $drc['total_records'];
+                    if ($drc['status'] == VALUE_FIVE) {
+                        $dashboard_array['cdr_approved_app'] += $drc['total_records'];
+                    }
+                    if ($drc['status'] == VALUE_SIX) {
+                        $dashboard_array['cdr_rejected_app'] += $drc['total_records'];
+                    }
+                }
+            }
+        }
         $this->load->view('dashboard', $dashboard_array);
     }
 
@@ -477,6 +477,14 @@ class Home extends CI_Controller {
         $this->load->view('approvals/list', $template_data);
     }
 
+    public function transport_wizard() {
+        $this->load->model('utility_model');
+        $template_data = array();
+        $template_data['temp_transport_data'] = generate_array_for_id_objects($this->utility_model->get_result_data('smv_transport'), 'smv_act');
+        $template_data['temp_watgst_data'] = generate_array_for_id_object($this->utility_model->get_result_data('smv_watgst'), 'smv_watgst_id');
+        $this->load->view('transport_wizard', $template_data);
+    }
+
     public function know_your_clearances() {
         $this->load->view('clearance');
     }
@@ -492,6 +500,11 @@ class Home extends CI_Controller {
     public function dmc_property_tax_calculator() {
         $this->load->view('departments_services/property_tax_calculator');
     }
+    
+    public function integrate_land_property_portal() {
+        $this->load->view('integrate_land_property_portal');
+    }
+
 }
 
 /*
