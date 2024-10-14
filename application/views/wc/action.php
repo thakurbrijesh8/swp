@@ -42,7 +42,7 @@
     {{#if show_download_naw_certificate_btn}}
     <button type="button" class="btn btn-sm btn-nic-blue" onclick="WC.listview.generateNawCertificate('{{wc_id}}');"
             style="padding: 2px 7px; margin-top: 1px; margin-bottom: 2px;">
-        <i class="fas fa-certificate" style="margin-right: 2px;"></i> Download Non-Avaibility of Water Certificate</button>
+        <i class="fas fa-certificate" style="margin-right: 2px;"></i> Download Non-Availability of Water Certificate</button>
     {{/if}}
     {{#if show_fr_btn}}
     <button type="button" class="btn btn-sm btn-success" onclick="askForFeedbackRating($(this), VALUE_FIVE,'{{wc_id}}')"
