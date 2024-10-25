@@ -176,7 +176,7 @@
                         <div class="form-group col-sm-6">
                             <label>16. PAN Number:<span class="color-nic-red">*</span></label>
                             <div class="input-group">
-                                <input type="text" id="pan_no" name="pan_no" class="form-control" placeholder="Enter PAN Number !"  maxlength="100" onblur="checkValidation('transfer', 'pan_no', pannoValidationMessage);" value="{{transfer_data.pan_no}}">
+                                <input type="text" id="pan_no" name="pan_no" class="form-control" placeholder="Enter PAN Number !"  maxlength="100" onblur="checkValidation('transfer', 'pan_no', panNoValidationMessage);" value="{{transfer_data.pan_no}}">
                             </div>
                             <span class="error-message error-message-transfer-pan_no"></span>
                         </div>

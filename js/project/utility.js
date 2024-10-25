@@ -1997,7 +1997,7 @@ function checkValidationForPAN(moduleName, id, isBlankValidation) {
     var panNumber = $('#' + id).val();
     if (!panNumber) {
         if (isBlankValidation) {
-            validationMessageShow(moduleName + '-' + id, panCardValidationMessage);
+            validationMessageShow(moduleName + '-' + id, panNoValidationMessage);
         }
         return false;
     }

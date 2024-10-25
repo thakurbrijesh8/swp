@@ -472,7 +472,7 @@ Transfer.listView = Backbone.View.extend({
             return getBasicMessageAndFieldJSONArray('aadhar_no', aadharnoValidationMessage);
         }
         if (!transferData.pan_no) {
-            return getBasicMessageAndFieldJSONArray('pan_no', pannoValidationMessage);
+            return getBasicMessageAndFieldJSONArray('pan_no', panNoValidationMessage);
         }
         if (!transferData.gst_no) {
             return getBasicMessageAndFieldJSONArray('gst_no', gstnoValidationMessage);

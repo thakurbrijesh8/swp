@@ -25,12 +25,29 @@
                         <p>Departments & Services</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a id="menu_business" href="Javascript:void(0);" class="nav-link menu-close-click"
-                       onclick="Business.listview.listPage();">
-                        <i class="nav-icon fas fa-briefcase"></i>
-                        <p>Manage Business</p>
+                <li class="nav-item has-treeview">
+                    <a id="menu_business" href="Javascript:void(0)" class="nav-link">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>Manage Business <i class="right fas fa-angle-left"></i></p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a id="menu_zed" href="Javascript:void(0);"
+                               onclick="Business.listview.listPage();" class="nav-link menu-close-click">
+                                <i class="fas fa-briefcase nav-icon"></i>
+                                <p>Manage ZED</p>
+                            </a>
+                        </li>
+                        <?php if (get_from_session('temp_id_for_eodbsws') == 44) { ?>
+                            <li class="nav-item">
+                                <a id="menu_pan" href="Javascript:void(0);"
+                                   onclick="Business.listview.listPageForPAN();" class="nav-link menu-close-click">
+                                    <i class="fas fa-id-card nav-icon"></i>
+                                    <p>Manage PAN</p>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a id="menu_oph" href="Javascript:void(0);" class="nav-link menu-close-click"

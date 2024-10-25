@@ -329,7 +329,7 @@ define('TRANSFERER_NAME_MESSAGE', 'Enter Transferer Name !');
 define('NAME_OF_SERVICING_MESSAGE', 'Enter Name of Servicing !');
 define('OTHER_SERVICES_MESSAGE', 'Enter Other Servicing !');
 define('AADHAR_NO_MESSAGE', 'Enter Aadhar Number !');
-define('PAN_NO_MESSAGE', 'Enter Pan Number !');
+define('PAN_NO_MESSAGE', 'Enter PAN Number !');
 define('GST_NO_MESSAGE', 'Enter GST Number !');
 define('REQUEST_LETTER_MESSAGE', 'Select appropriate option to upload !');
 define('PROJECT_REPORT_MESSAGE', 'Select appropriate option to upload !');
@@ -931,3 +931,17 @@ define('FEEDBACK_SUBMITTED_MESSAGE', 'Thank You for Your Feedback / Rating !');
 
 define('WITHDRAW_APPLICATION_MESSAGE', 'Application Withdraw Successfully !');
 define('ALREADY_WITHDRAW_APPLICATION_MESSAGE', 'Application Already Withdraw !');
+
+define('PAN_NAME_MESSAGE', 'Enter Name as PAN !');
+define('PAN_FATHER_NAME_MESSAGE', 'Enter Father Name as PAN !');
+define('PAN_DOB_MESSAGE', 'Enter DOB as PAN !');
+define('PAN_VF_MESSAGE', 'PAN Details Verified & Fetched Successfully !');
+
+define('PFX_NOT_MESSAGE', 'PFX Not Available !');
+define('NOT_READ_PFX_MESSAGE', 'Could Not Read PFX !');
+define('PFX_NOT_PK_MESSAGE', 'Unable to Extract Private Key From PFX !<br> Ensure the PFX Contains a Private Key !');
+define('UNABLE_SIGN_MESSAGE', 'Unable to Sign Data !');
+define('PAN_INVALID_STATUS_MESSAGE', 'Invalid Status Received From PAN !');
+define('PAN_NAME_NM_MESSAGE', 'Name as per PAN is Not Matched with PAN Database !');
+define('PAN_DOB_NM_MESSAGE', 'DOB as per PAN is Not Matched with PAN Database !');
+define('PAN_INOPERATIVE_MESSAGE', 'Your PAN is Inoperative !');

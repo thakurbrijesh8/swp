@@ -104,7 +104,7 @@ $autoload['helper'] = array('url', 'request_helper', 'utility_helper');
   | config files.  Otherwise, leave it blank.
   |
  */
-$autoload['config'] = array('project_config', 'message_config', 'payment_config', 'zed_config');
+$autoload['config'] = array('project_config', 'message_config', 'payment_config', 'zed_config', 'pan_config');
 
 /*
   | -------------------------------------------------------------------

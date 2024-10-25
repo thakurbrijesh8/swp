@@ -301,7 +301,7 @@
     var nameofservicingValidationMessage = '<?php echo NAME_OF_SERVICING_MESSAGE; ?>';
     var otherservicesValidationMessage = '<?php echo OTHER_SERVICES_MESSAGE; ?>';
     var aadharnoValidationMessage = '<?php echo AADHAR_NO_MESSAGE; ?>'
-    var pannoValidationMessage = '<?php echo PAN_NO_MESSAGE; ?>'
+    var panNoValidationMessage = '<?php echo PAN_NO_MESSAGE; ?>'
     var gstnoValidationMessage = '<?php echo GST_NO_MESSAGE; ?>'
     var RequestLetterValidationMessage = '<?php echo REQUEST_LETTER_MESSAGE; ?>';
     var projectReportValidationMessage = '<?php echo PROJECT_REPORT_MESSAGE; ?>';
@@ -891,5 +891,9 @@
     var udyamNumberValidationMessage = '<?php echo UDYAM_NUMBER_MESSAGE; ?>';
 
     var feedbackValidationMessage = '<?php echo FEEDBACK_MESSAGE; ?>';
+    
+    var panNameValidationMessage = '<?php echo PAN_NAME_MESSAGE; ?>';
+    var panFatherNameValidationMessage = '<?php echo PAN_FATHER_NAME_MESSAGE; ?>';
+    var panDOBValidationMessage = '<?php echo PAN_DOB_MESSAGE; ?>';
 </script>
 

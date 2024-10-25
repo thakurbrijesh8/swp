@@ -50,7 +50,7 @@
         <hr class="mb-2">
         <div>
             <button type="button" id="save_btn_for_zed" class="btn btn-sm btn-success" 
-                    onclick="Business.listview.fetchDetailsFomZED($(this));" 
+                    onclick="Business.listview.fetchDetailsFromZED($(this));" 
                     style="margin-right: 5px;"><i class="fas fa-download"></i> &nbsp; Fetch Details From ZED</button>
         </div>
     </div>

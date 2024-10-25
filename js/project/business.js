@@ -2,6 +2,9 @@ var businessListTemplate = Handlebars.compile($('#business_list_template').html(
 var businessTableTemplate = Handlebars.compile($('#business_table_template').html());
 var businessActionTemplate = Handlebars.compile($('#business_action_template').html());
 var businessViewTemplate = Handlebars.compile($('#business_view_template').html());
+var panListTemplate = Handlebars.compile($('#pan_list_template').html());
+var panTableTemplate = Handlebars.compile($('#pan_table_template').html());
+var panActionTemplate = Handlebars.compile($('#pan_action_template').html());
 var Business = {
     run: function () {
         this.router = new this.Router();
@@ -10,10 +13,14 @@ var Business = {
 };
 Business.Router = Backbone.Router.extend({
     routes: {
-        'business': 'renderList',
+        'manage_zed': 'renderList',
+        'manage_pan': 'renderListForPAN',
     },
     renderList: function () {
         Business.listview.listPage();
+    },
+    renderListForPAN: function () {
+        Business.listview.listPageForPAN();
     },
 });
 Business.listView = Backbone.View.extend({
@@ -24,7 +31,8 @@ Business.listView = Backbone.View.extend({
             return false;
         }
         activeLink('menu_business');
-        Business.router.navigate('business');
+        addClass('menu_zed', 'active');
+        Business.router.navigate('manage_zed');
         var templateData = {};
         this.$el.html(businessListTemplate(templateData));
         this.loadBusinessData();
@@ -167,7 +175,7 @@ Business.listView = Backbone.View.extend({
         }
         return '';
     },
-    fetchDetailsFomZED: function (btnObj) {
+    fetchDetailsFromZED: function (btnObj) {
         if (!tempIdInSession || tempIdInSession == null) {
             loginPage();
             return false;
@@ -223,7 +231,7 @@ Business.listView = Backbone.View.extend({
             }
         });
     },
-    reFetchDetailsFomZED: function (btnObj, businessId) {
+    reFetchDetailsFromZED: function (btnObj, businessId) {
         if (!tempIdInSession || tempIdInSession == null) {
             loginPage();
             return false;
@@ -275,6 +283,133 @@ Business.listView = Backbone.View.extend({
                     $('#cd_container_for_blist_' + businessId).html(that.certDetails(parseData.business_data));
                     $('#amount_container_for_blist_' + businessId).html(that.amountDetails(parseData.business_data));
                 }
+            }
+        });
+    },
+    listPageForPAN: function () {
+        if (!tempIdInSession || tempIdInSession == null) {
+            loginPage();
+            return false;
+        }
+        activeLink('menu_business');
+        addClass('menu_pan', 'active');
+        Business.router.navigate('manage_pan');
+        var templateData = {};
+        this.$el.html(panListTemplate(templateData));
+        this.loadPANData();
+    },
+    loadPANData: function () {
+        if (!tempIdInSession || tempIdInSession == null) {
+            loginPage();
+            return false;
+        }
+        var that = this;
+        $('#pan_form_and_datatable_container').html(panTableTemplate);
+        datePicker();
+        setCaptchaCode('pan');
+        $('#pan_form').find('input').keypress(function (e) {
+            if (e.which == 13) {
+                that.fetchDetailsFromPAN($('#fetch_btn_for_pan'));
+            }
+        });
+
+        var actionRenderer = function (data, type, full, meta) {
+            return panActionTemplate(full);
+        };
+        panDataTable = $('#pan_datatable').DataTable({
+            ajax: {url: 'business/get_pan_data', dataSrc: "pan_data", type: "post", data: getTokenData()},
+            bAutoWidth: false,
+            pageLength: 10,
+            ordering: false,
+            language: dataTableProcessingAndNoDataMsg,
+            columns: [
+                {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
+                {data: 'pan_number', 'class': 'text-center'},
+                {data: 'name'},
+                {data: 'father_name'},
+                {data: 'dob', 'class': 'text-center', 'render': dateRenderer},
+                {data: '', 'render': actionRenderer},
+            ],
+            "initComplete": function (settings, json) {
+                setNewToken(json.temp_token);
+            }
+        });
+    },
+    checkValidationForPAN: function (panFormData) {
+        if (!panFormData.pan_number_for_pan) {
+            return getBasicMessageAndFieldJSONArray('pan_number_for_pan', panCardValidationMessage);
+        }
+        var panMessage = PANValidation(panFormData.pan_number_for_pan);
+        if (panMessage != '') {
+            return getBasicMessageAndFieldJSONArray('pan_number_for_pan', panMessage);
+        }
+        if (!panFormData.name_for_pan) {
+            return getBasicMessageAndFieldJSONArray('name_for_pan', panNameValidationMessage);
+        }
+        if (!panFormData.dob_for_pan) {
+            return getBasicMessageAndFieldJSONArray('dob_for_pan', dateValidationMessage);
+        }
+        if (!panFormData.captcha_code_varification_for_pan) {
+            return getBasicMessageAndFieldJSONArray('captcha_code_varification_for_pan', captchaValidationMessage);
+        }
+        if ((panFormData.captcha_code_varification_for_pan).trim() != (panFormData.captcha_code_for_pan).trim()) {
+            return getBasicMessageAndFieldJSONArray('captcha_code_varification_for_pan', captchaVerificationValidationMessage);
+        }
+        return '';
+    },
+    fetchDetailsFromPAN: function (btnObj) {
+        if (!tempIdInSession || tempIdInSession == null) {
+            loginPage();
+            return false;
+        }
+        validationMessageHide();
+        var panFormData = $('#pan_form').serializeFormJSON();
+        var validationData = this.checkValidationForPAN(panFormData);
+        if (validationData != '') {
+            setCaptchaCode('pan');
+            $('#' + validationData.field).focus();
+            validationMessageShow('pan-' + validationData.field, validationData.message);
+            return false;
+        }
+        var ogBtnHTML = btnObj.html();
+        var ogBtnOnclick = btnObj.attr('onclick');
+        btnObj.html(iconSpinnerTemplate);
+        btnObj.attr('onclick', '');
+        $.ajax({
+            url: 'business/fetch_details_from_pan',
+            type: 'post',
+            data: $.extend({}, panFormData, getTokenData()),
+            error: function (textStatus, errorThrown) {
+                generateNewCSRFToken();
+                setCaptchaCode('pan');
+                btnObj.html(ogBtnHTML);
+                btnObj.attr('onclick', ogBtnOnclick);
+                if (textStatus.status === 403) {
+//                    loginPage();
+                    return false;
+                }
+                if (!textStatus.statusText) {
+//                    loginPage();
+                    return false;
+                }
+                showError(textStatus.statusText);
+            },
+            success: function (response) {
+                btnObj.html(ogBtnHTML);
+                btnObj.attr('onclick', ogBtnOnclick);
+                if (!isJSON(response)) {
+//                    loginPage();
+                    return false;
+                }
+                var parseData = JSON.parse(response);
+                setNewToken(parseData.temp_token);
+                if (parseData.success == false) {
+                    setCaptchaCode('pan');
+                    showError(parseData.message);
+                    return false;
+                }
+                showSuccess(parseData.message);
+                Business.listview.listPageForPAN();
             }
         });
     },
