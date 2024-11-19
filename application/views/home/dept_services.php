@@ -524,7 +524,7 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-12 accordion-item">
+             <div class="col-12 accordion-item">
                 <div class="card card-primary">
                     <div class="card-header cursor-pointer" data-card-widget="collapse">
                         <h3 class="card-title">District Industries Centre - DNH</h3>
@@ -618,7 +618,7 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div> 
             <div class="col-12 accordion-item">
                 <div class="card card-primary">
                     <div class="card-header cursor-pointer" data-card-widget="collapse">
