@@ -293,7 +293,7 @@ var entityEstablishmentRenderer = function (data, type, full, meta) {
 };
 
 var entityEstablishmentWcRenderer = function (data, type, full, meta) {
-     return (entityEstablishmentTypeArray[data] ? entityEstablishmentTypeArray[data] : '') + '<hr>' + (applyingForWcArray[full.applying_for] ? applyingForWcArray[full.applying_for] : '');
+    return (entityEstablishmentTypeArray[data] ? entityEstablishmentTypeArray[data] : '') + '<hr>' + (applyingForWcArray[full.applying_for] ? applyingForWcArray[full.applying_for] : '');
 };
 
 var serialNumberRenderer = function (data, type, full, meta) {
@@ -1734,8 +1734,8 @@ function getPlotData(obj, id, moduleName) {
     this.getAreaData('plot_id', 'area');
 }
 
-function getAreaData(obj) {
-    var villageCode = $('#villages_for_noc_data').val();
+function getAreaData(obj, moduleName) {
+    var villageCode = $('#villages_for_' + moduleName).val();
     $('#govt_industrial_estate_area').val('');
     if (!villageCode) {
         return false;
@@ -3052,7 +3052,8 @@ function askForWithdrawApplication(btnObj, moduleType, moduleId) {
             } else if (moduleType == VALUE_THIRTYEIGHT) {
                 waData.title = 'Name of the Firm';
                 waData.establishment_name = waData.name_of_firm;
-            } else if (moduleType == VALUE_FIVE || moduleType == VALUE_ONE || moduleType == VALUE_FOURTYEIGHT ||
+            } else if (moduleType == VALUE_FIVE || moduleType == VALUE_ONE || moduleType == VALUE_ELEVEN ||
+                    moduleType == VALUE_THIRTEEN || moduleType == VALUE_EIGHTEEN || moduleType == VALUE_FOURTYEIGHT ||
                     moduleType == VALUE_FIFTY || moduleType == VALUE_EIGHT || moduleType == VALUE_FOURTY ||
                     moduleType == VALUE_TWENTYSEVEN || moduleType == VALUE_SIXTYONE || moduleType == VALUE_TWENTYFIVE) {
                 waData.title = 'Name of the Applicant';

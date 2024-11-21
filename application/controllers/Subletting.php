@@ -96,340 +96,7 @@ class Subletting extends CI_Controller {
                 return false;
             }
 
-
-            if ($subletting_data['request_letter'] == IS_CHECKED_YES) {
-                if ($_FILES['request_letter_premises_for_subletting']['name'] != '') {
-                    $main_path = 'documents/subletting';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'subletting';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['request_letter_premises_for_subletting']['name']);
-                    $filename = 'subletting_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['request_letter_premises_for_subletting']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $subletting_data['request_letter_premises'] = $filename;
-                }
-            }
-            if ($subletting_data['original_extract'] == IS_CHECKED_YES) {
-                if ($_FILES['original_extract_certificate_for_subletting']['name'] != '') {
-                    $main_path = 'documents/subletting';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'subletting';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['original_extract_certificate_for_subletting']['name']);
-                    $filename = 'original_extract_certificate_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['original_extract_certificate_for_subletting']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $subletting_data['original_extract_certificate'] = $filename;
-                }
-            }
-            if ($subletting_data['land_revenue'] == IS_CHECKED_YES) {
-                if ($_FILES['land_revenue_certificate_for_subletting']['name'] != '') {
-                    $main_path = 'documents/subletting';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'subletting';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['land_revenue_certificate_for_subletting']['name']);
-                    $filename = 'subletting_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['land_revenue_certificate_for_subletting']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $subletting_data['land_revenue_certificate'] = $filename;
-                }
-            }
-            if ($subletting_data['electricity_bill'] == IS_CHECKED_YES) {
-                if ($_FILES['electricity_bill_certificate_for_subletting']['name'] != '') {
-                    $main_path = 'documents/subletting';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'subletting';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['electricity_bill_certificate_for_subletting']['name']);
-                    $filename = 'subletting_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['electricity_bill_certificate_for_subletting']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $subletting_data['electricity_bill_certificate'] = $filename;
-                }
-            }
-            if ($subletting_data['bank_loan'] == IS_CHECKED_YES) {
-                if ($_FILES['bank_loan_certificate_for_subletting']['name'] != '') {
-                    $main_path = 'documents/subletting';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'subletting';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['bank_loan_certificate_for_subletting']['name']);
-                    $filename = 'subletting_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['bank_loan_certificate_for_subletting']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $subletting_data['bank_loan_certificate'] = $filename;
-                }
-            }
-            if ($subletting_data['panchayat_tax'] == IS_CHECKED_YES) {
-                if ($_FILES['panchayat_tax_certificate_for_subletting']['name'] != '') {
-                    $main_path = 'documents/subletting';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'subletting';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['panchayat_tax_certificate_for_subletting']['name']);
-                    $filename = 'subletting_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['panchayat_tax_certificate_for_subletting']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $subletting_data['panchayat_tax_certificate'] = $filename;
-                }
-            }
-            if ($subletting_data['challan_of_lease'] == IS_CHECKED_YES) {
-                if ($_FILES['challan_of_lease_rent_for_subletting']['name'] != '') {
-                    $main_path = 'documents/subletting';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'subletting';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['challan_of_lease_rent_for_subletting']['name']);
-                    $filename = 'subletting_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['challan_of_lease_rent_for_subletting']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $subletting_data['challan_of_lease_rent'] = $filename;
-                }
-            }
-            if ($subletting_data['occupancy'] == IS_CHECKED_YES) {
-                if ($_FILES['occupancy_certificate_for_subletting']['name'] != '') {
-                    $main_path = 'documents/subletting';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'subletting';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['occupancy_certificate_for_subletting']['name']);
-                    $filename = 'subletting_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['occupancy_certificate_for_subletting']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $subletting_data['occupancy_certificate'] = $filename;
-                }
-            }
-            if ($subletting_data['central_excise'] == IS_CHECKED_YES) {
-                if ($_FILES['central_excise_certificate_for_subletting']['name'] != '') {
-                    $main_path = 'documents/subletting';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'subletting';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['central_excise_certificate_for_subletting']['name']);
-                    $filename = 'subletting_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['central_excise_certificate_for_subletting']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $subletting_data['central_excise_certificate'] = $filename;
-                }
-            }
-            if ($subletting_data['authorization_sign'] == IS_CHECKED_YES) {
-                if ($_FILES['authorization_sign_lessee_for_subletting']['name'] != '') {
-                    $main_path = 'documents/subletting';
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'subletting';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['authorization_sign_lessee_for_subletting']['name']);
-                    $filename = 'subletting_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['authorization_sign_lessee_for_subletting']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $subletting_data['authorization_sign_lessee'] = $filename;
-                }
-            }
-
-
-            if ($_FILES['seal_and_stamp_for_subletting']['name'] != '') {
-                $main_path = 'documents/subletting';
-                $documents_path = 'documents';
-                if (!is_dir($documents_path)) {
-                    mkdir($documents_path);
-                    chmod($documents_path, 0777);
-                }
-                $module_path = $documents_path . DIRECTORY_SEPARATOR . 'subletting';
-                if (!is_dir($module_path)) {
-                    mkdir($module_path);
-                    chmod($module_path, 0777);
-                }
-                $this->load->library('upload');
-                $temp_filename = str_replace('_', '', $_FILES['seal_and_stamp_for_subletting']['name']);
-                $filename = 'subletting_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                //Change file name
-                $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                if (!move_uploaded_file($_FILES['seal_and_stamp_for_subletting']['tmp_name'], $final_path)) {
-                    echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                    return;
-                }
-                $subletting_data['signature'] = $filename;
-            }
-            //  $this->db->trans_start();
-            // // $noc_data['proprietor_details'] = $proprietorData;
-            // $subletting_data['application_date'] = convert_to_mysql_date_format($subletting_data['application_date']);
-            // $subletting_data['user_id'] = $user_id;
-            // $subletting_data['status'] = $module_type;
-            // if ($module_type == VALUE_TWO) {
-            //     $subletting_data['submitted_datetime'] = date('Y-m-d H:i:s');
-            // }
-            // if (!$subletting_id || $subletting_id == NULL) {
-            //     $subletting_data['application_date'] = date('Y-m-d');
-            //     $subletting_data['created_by'] = $user_id;
-            //     $subletting_data['created_time'] = date('Y-m-d H:i:s');
-            //     $subletting_id = $this->utility_model->insert_data('sub_letting', $subletting_data);
-            // } else {
-            //     $subletting_data['updated_by'] = $user_id;
-            //     $subletting_data['updated_time'] = date('Y-m-d H:i:s');
-            //     $this->utility_model->update_data('subletting_id', $subletting_id, 'sub_letting', $subletting_data);
-            // }
             $this->db->trans_start();
-            //  if ($subletting_data['request_letter'] == VALUE_TWO) {
-            //     $subletting_data['request_letter_premises'] = convert_to_mysql_date_format($subletting_data['request_letter_premises']);
-            // }
             $subletting_data['application_date'] = convert_to_mysql_date_format($subletting_data['application_date']);
             //  $subletting_data['date'] = convert_to_mysql_date_format($subletting_data['date']);
             $subletting_data['status'] = $module_type;
@@ -448,6 +115,10 @@ class Subletting extends CI_Controller {
                 $this->utility_model->update_data('subletting_id', $subletting_id, 'sub_letting', $subletting_data);
             }
 
+            if ($module_type == VALUE_TWO) {
+                $this->utility_lib->send_sms_and_email_for_app_submitted($user_id, VALUE_SIX, VALUE_THIRTEEN, $subletting_id);
+            }
+
             $this->db->trans_complete();
             if ($this->db->trans_status() === FALSE) {
                 echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
@@ -464,6 +135,7 @@ class Subletting extends CI_Controller {
 
     function _get_post_data_for_subletting() {
         $subletting_data = array();
+        $subletting_data['entity_establishment_type'] = get_from_post('entity_establishment_type');
         $subletting_data['name_of_applicant'] = get_from_post('name_of_applicant');
         $subletting_data['state'] = get_from_post('state');
         $subletting_data['district'] = get_from_post('district');
@@ -485,8 +157,6 @@ class Subletting extends CI_Controller {
         $subletting_data['occupancy'] = get_from_post('occupancy');
         $subletting_data['central_excise'] = get_from_post('central_excise');
         $subletting_data['authorization_sign'] = get_from_post('authorization_sign');
-
-
         return $subletting_data;
     }
 
@@ -589,8 +259,6 @@ class Subletting extends CI_Controller {
                 unlink($file_path);
             }
 
-
-
             if ($document_type == VALUE_ONE) {
                 $this->utility_model->update_data('subletting_id', $subletting_id, 'sub_letting', array('request_letter_premises' => '', 'updated_by' => $session_user_id, 'updated_time' => date('Y-m-d H:i:s')));
             }
@@ -687,6 +355,13 @@ class Subletting extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            $this->payment_lib->get_payment_history_data($session_user_id, VALUE_THIRTEEN, $subletting_id, $subletting_data);
+            $subletting_data['fb_data'] = $this->utility_model->get_result_data_by_id('module_type', VALUE_THIRTEEN, 'fees_bifurcation', 'module_id', $subletting_id);
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
+                return;
+            }
             $success_array = get_success_array();
             $success_array['subletting_data'] = $subletting_data;
             echo json_encode($success_array);
@@ -745,19 +420,39 @@ class Subletting extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            $ex_em_data = $this->utility_model->get_by_id('subletting_id', $subletting_id, 'sub_letting');
+            if (empty($ex_em_data)) {
+                echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+            if ($ex_em_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
+            if ($ex_em_data['payment_type'] == VALUE_TWO) {
+                $user_payment_type = get_from_post('user_payment_type_for_subletting_upload_challan');
+                if ($user_payment_type != VALUE_ONE && $user_payment_type != VALUE_TWO && $user_payment_type != VALUE_THREE) {
+                    echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                    return false;
+                }
+            }
             $subletting_data = array();
             if ($_FILES['fees_paid_challan_for_subletting_upload_challan']['name'] != '') {
                 $main_path = 'documents/subletting';
-                $documents_path = 'documents';
-                if (!is_dir($documents_path)) {
-                    mkdir($documents_path);
-                    chmod($documents_path, 0777);
+                if (!is_dir($main_path)) {
+                    mkdir($main_path);
+                    chmod("$main_path", 0755);
                 }
-                $module_path = $documents_path . DIRECTORY_SEPARATOR . 'subletting';
-                if (!is_dir($module_path)) {
-                    mkdir($module_path);
-                    chmod($module_path, 0777);
-                }
+//                $documents_path = 'documents';
+//                if (!is_dir($documents_path)) {
+//                    mkdir($documents_path);
+//                    chmod($documents_path, 0777);
+//                }
+//                $module_path = $documents_path . DIRECTORY_SEPARATOR . 'subletting';
+//                if (!is_dir($module_path)) {
+//                    mkdir($module_path);
+//                    chmod($module_path, 0777);
+//                }
                 $this->load->library('upload');
                 $temp_filename = str_replace('_', '', $_FILES['fees_paid_challan_for_subletting_upload_challan']['name']);
                 $filename = 'fees_paid_challan_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
@@ -771,6 +466,23 @@ class Subletting extends CI_Controller {
                 $subletting_data['fees_paid_challan'] = $filename;
                 $subletting_data['fees_paid_challan_updated_date'] = date('Y-m-d H:i:s');
             }
+            if ($ex_em_data['payment_type'] == VALUE_TWO) {
+                $subletting_data['status'] = VALUE_FOUR;
+                if ($user_payment_type == VALUE_TWO) {
+                    $subletting_data['status'] = VALUE_EIGHT;
+                } else if ($user_payment_type == VALUE_THREE) {
+                    $subletting_data['status'] = VALUE_THREE;
+
+                    $enc_pg_data = $this->payment_lib->get_encrypted_details_for_pg($user_id, VALUE_THIRTEEN, $subletting_id, $ex_em_data['district'], $ex_em_data['total_fees'], $subletting_data);
+                    if ($enc_pg_data['success'] == false) {
+                        echo json_encode(get_error_array($enc_pg_data['message']));
+                        return;
+                    }
+                }
+                $subletting_data['user_payment_type'] = $user_payment_type;
+            } else {
+                $subletting_data['user_payment_type'] = VALUE_ZERO;
+            }
             $subletting_data['updated_by'] = $user_id;
             $subletting_data['updated_time'] = date('Y-m-d H:i:s');
             $this->db->trans_start();
@@ -781,7 +493,15 @@ class Subletting extends CI_Controller {
                 return;
             }
             $success_array = get_success_array();
+            $success_array['status'] = isset($subletting_data['status']) ? $subletting_data['status'] : $ex_em_data['status'];
             $success_array['message'] = CHALLAN_UPLOADED_MESSAGE;
+            $success_array['payment_type'] = $ex_em_data['payment_type'];
+            $success_array['user_payment_type'] = $subletting_data['user_payment_type'];
+            if ($ex_em_data['payment_type'] == VALUE_TWO && $subletting_data['user_payment_type'] == VALUE_THREE) {
+                $success_array['op_mmptd'] = $enc_pg_data['op_mmptd'];
+                $success_array['op_enct'] = $enc_pg_data['op_enct'];
+                $success_array['op_mt'] = $enc_pg_data['op_mt'];
+            }
             echo json_encode($success_array);
         } catch (\Exception $e) {
             echo json_encode(get_error_array($e->getMessage()));
@@ -818,18 +538,92 @@ class Subletting extends CI_Controller {
             }
             error_reporting(E_ERROR);
             $this->utility_lib->gc_for_subletting($existing_subletting_data);
-    //        $data = array('subletting_data' => $existing_subletting_data);
-    //        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'Legal']);
-    //        $mpdf->WriteHTML($this->load->view('subletting/certificate', $data, TRUE));
-    //        $mpdf->Output('Repairer_certificate_' . time() . '.pdf', 'I');
+            //        $data = array('subletting_data' => $existing_subletting_data);
+            //        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'Legal']);
+            //        $mpdf->WriteHTML($this->load->view('subletting/certificate', $data, TRUE));
+            //        $mpdf->Output('Repairer_certificate_' . time() . '.pdf', 'I');
         } catch (\Exception $e) {
             echo json_encode(get_error_array($e->getMessage()));
             return false;
         }
     }
 
+    function upload_subletting_document() {
+        try {
+            if (!is_ajax()) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
+            $session_user_id = get_from_session('temp_id_for_eodbsws');
+            $subletting_id = get_from_post('subletting_id');
+            $file_no = get_from_post('file_no');
+
+            if ($file_no == VALUE_ONE) {
+                $subletting_data = $this->utility_model->upload_document('request_letter_premises_for_subletting', 'subletting', 'request_letter_premises_', 'request_letter_premises');
+            }
+            if ($file_no == VALUE_TWO) {
+                $subletting_data = $this->utility_model->upload_document('original_extract_certificate_for_subletting', 'subletting', 'original_extract_certificate_', 'original_extract_certificate');
+            }
+            if ($file_no == VALUE_THREE) {
+                $subletting_data = $this->utility_model->upload_document('land_revenue_certificate_for_subletting', 'subletting', 'land_revenue_certificate_', 'land_revenue_certificate');
+            }
+            if ($file_no == VALUE_FOUR) {
+                $subletting_data = $this->utility_model->upload_document('electricity_bill_certificate_for_subletting', 'subletting', 'electricity_bill_certificate_', 'electricity_bill_certificate');
+            }
+            if ($file_no == VALUE_FIVE) {
+                $subletting_data = $this->utility_model->upload_document('bank_loan_certificate_for_subletting', 'subletting', 'bank_loan_certificate_', 'bank_loan_certificate');
+            }
+            if ($file_no == VALUE_SIX) {
+                $subletting_data = $this->utility_model->upload_document('panchayat_tax_certificate_for_subletting', 'subletting', 'panchayat_tax_certificate_', 'panchayat_tax_certificate');
+            }
+            if ($file_no == VALUE_SEVEN) {
+                $subletting_data = $this->utility_model->upload_document('challan_of_lease_rent_for_subletting', 'subletting', 'challan_of_lease_rent_', 'challan_of_lease_rent');
+            }
+            if ($file_no == VALUE_EIGHT) {
+                $subletting_data = $this->utility_model->upload_document('occupancy_certificate_for_subletting', 'subletting', 'occupancy_certificate_', 'occupancy_certificate');
+            }
+            if ($file_no == VALUE_NINE) {
+                $subletting_data = $this->utility_model->upload_document('central_excise_certificate_for_subletting', 'subletting', 'central_excise_certificate_', 'central_excise_certificate');
+            }
+            if ($file_no == VALUE_TEN) {
+                $subletting_data = $this->utility_model->upload_document('authorization_sign_lessee_for_subletting', 'subletting', 'authorization_sign_lessee_', 'authorization_sign_lessee');
+            }
+            if ($file_no == VALUE_ELEVEN) {
+                $subletting_data = $this->utility_model->upload_document('seal_and_stamp_for_subletting', 'subletting', 'seal_and_stamp_', 'signature');
+            }
+            if (!$subletting_data) {
+                return false;
+            }
+            $this->db->trans_start();
+            if (!$subletting_id) {
+                $subletting_data['user_id'] = $session_user_id;
+                $subletting_data['status'] = VALUE_ONE;
+                $subletting_data['created_by'] = $session_user_id;
+                $subletting_data['created_time'] = date('Y-m-d H:i:s');
+                $subletting_id = $this->utility_model->insert_data('sub_letting', $subletting_data);
+            } else {
+                $subletting_data['updated_by'] = $session_user_id;
+                $subletting_data['updated_time'] = date('Y-m-d H:i:s');
+                $this->utility_model->update_data('subletting_id', $subletting_id, 'sub_letting', $subletting_data);
+            }
+
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(array('success' => FALSE, 'message' => DATABASE_ERROR_MESSAGE));
+                return;
+            }
+            $success_array = get_success_array();
+            $success_array['subletting_data'] = $subletting_data;
+            $success_array['subletting_id'] = $subletting_id;
+            $success_array['file_no'] = $file_no;
+            echo json_encode($success_array);
+        } catch (\Exception $e) {
+            echo json_encode(get_error_array($e->getMessage()));
+            return false;
+        }
+    }
 }
 
 /*
- * EOF: ./application/controller/BOCW.php
+ * EOF: ./application/controller/Subletting.php
  */

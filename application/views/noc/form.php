@@ -21,6 +21,17 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6">
+                            <label> Entity / Establishment Type <span class="color-nic-red">*</span></label>
+                            <div class="input-group">
+                                <select id="entity_establishment_type" name="entity_establishment_type" class="form-control select2"
+                                        data-placeholder="Select Entity / Establishment Type" style="width: 100%;" onblur="checkValidation('noc', 'entity_establishment_type', entityEstablishmentTypeValidationMessage);">
+                                </select>
+                            </div>
+                            <span class="error-message error-message-noc-entity_establishment_type"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
                             <label>1. Name of Applicant<span class="color-nic-red">*</span></label>
                             <div class="input-group">
                                 <input type="text" id="name_of_applicant" name="name_of_applicant" class="form-control" placeholder="Enter Name of Applicant !"
@@ -84,7 +95,7 @@
                             <div class="input-group">
                                 <select class="form-control" id="villages_for_noc_data" name="villages_for_noc_data"
                                         data-placeholder="Status !"  onchange="checkValidation('noc', 'villages_for_noc_data', villageNameValidationMessage);
-                                    getPlotData($(this), 'plot_no', 'noc_data');">
+                                            getPlotData($(this), 'plot_no', 'noc_data');">
                                     <option value="">Select Village</option>
                                 </select>
                             </div>
@@ -97,41 +108,41 @@
                             <div class="input-group">
                                 <select class="form-control" id="plot_no_for_noc_data" name="plot_no_for_noc_data"
                                         data-placeholder="Status !" onchange="checkValidation('noc', 'plot_no_for_noc_data', plotnoValidationMessage);
-                                    getAreaData($(this));">
+                                            getAreaData($(this), 'noc_data');">
                                     <option value="">Select Plot NO</option>
                                 </select>
                             </div>
                             <span class="error-message error-message-noc-plot_no_for_noc_data"></span>
                         </div>
-                    <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6">
                             <label>8. Survey No.<span class="color-nic-red">*</span></label>
                             <div class="input-group">
                                 <input type="text" id="survey_no" name="survey_no" class="form-control" placeholder="Enter Survey No !"  maxlength="100" onblur="checkValidation('noc', 'survey_no', surveynoValidationMessage);" value="{{noc_data.survey_no}}">
                             </div>
                             <span class="error-message error-message-noc-survey_no"></span>
                         </div>
-                       
-                       
+
+
                     </div>
                     <div class="row">
-                         <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6">
                             <label>9. Admeasuring in square metre <span class="color-nic-red">*</span></label>
                             <div class="input-group">
                                 <input type="text" id="govt_industrial_estate_area" name="govt_industrial_estate_area" class="form-control" placeholder="Enter Admeasuring square metre !"  maxlength="100" value="{{noc_data.govt_industrial_estate_area}}" readonly="">
                             </div>
                             <span class="error-message error-message-noc-govt_industrial_estate_area"></span>
                         </div>
-                     <!-- <div class="form-group col-sm-6">
-                            
-                              <label>10. Government Industrial Estate<span class="color-nic-red">*</span></label>
-                            <div class="input-group">
-                                <input type="text" id="admeasuring_square_metre" name="admeasuring_square_metre" class="form-control" placeholder="Enter  Government Industrial Estate!"  maxlength="100" onblur="checkValidation('noc', 'admeasuring_square_metre', admeasuringValidationMessage);" value="{{noc_data.admeasuring_square_metre}}">
-                            </div>
-                            <span class="error-message error-message-noc-admeasuring_square_metre"></span>
-                        </div> -->
-                         
+                        <!-- <div class="form-group col-sm-6">
+                               
+                                 <label>10. Government Industrial Estate<span class="color-nic-red">*</span></label>
+                               <div class="input-group">
+                                   <input type="text" id="admeasuring_square_metre" name="admeasuring_square_metre" class="form-control" placeholder="Enter  Government Industrial Estate!"  maxlength="100" onblur="checkValidation('noc', 'admeasuring_square_metre', admeasuringValidationMessage);" value="{{noc_data.admeasuring_square_metre}}">
+                               </div>
+                               <span class="error-message error-message-noc-admeasuring_square_metre"></span>
+                           </div> -->
 
-                        
+
+
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6">
@@ -141,7 +152,7 @@
                             </div>
                             <span class="error-message error-message-noc-loan_amount"></span>
                         </div>
-                        
+
                         <div class="form-group col-sm-6">
                             <label>12. Purpose Of Loan<span class="color-nic-red">*</span></label>
                             <div class="input-group">
@@ -215,18 +226,18 @@
                             <input type="radio" id="reason_of_loan_from_bank_no" name="reason_of_loan_from_bank" value="{{IS_CHECKED_NO}}"> No
                             <br><span class="error-message error-message-noc-reason_of_loan_from_bank"></span>
                         </div>
-                        <div class=" reason_of_loan_from_bank_div" style="display: none;">
+                        <div class="reason_of_loan_from_bank_div" style="display: none;">
                             <div class="form-group col-sm-12 " id="reason_of_loan_doc_container_for_noc">
                                 <label>18.1 Document of Lessee. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
                                 <input type="file" id="reason_of_loan_doc_for_noc" name="reason_of_loan_doc_for_noc"
-                                       accept="image/pdf">
+                                       accept="application/pdf" class="spinner_container_for_noc_{{VALUE_ONE}}" onchange="Noc.listview.uploadDocumentForNoc(VALUE_ONE);">
                                 <div class="error-message error-message-noc-reason_of_loan_doc_for_noc"></div>
                             </div>
 
                             <div class="form-group col-sm-12" id="reason_of_loan_doc_name_container_for_noc" style="display: none;">
                                 <label>18.1 Document of Lessee. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
-                                <a id="reason_of_loan_doc_name_download" target="_blank"><label id="reason_of_loan_doc_name_image" class="btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                                <button type="button" class="btn btn-xs btn-danger" style="vertical-align: top;"
+                                <a id="reason_of_loan_doc_name_download" target="_blank"><label id="reason_of_loan_doc_name_image" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_noc_{{VALUE_ONE}}" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                                <button type="button" id="reason_of_loan_doc_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_noc_{{VALUE_ONE}}" style="vertical-align: top;"
                                         onclick="Noc.listview.askForRemove('{{noc_data.noc_id}}', VALUE_ONE);">
                                     <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
                             </div>
@@ -243,14 +254,14 @@
                             <div class="form-group col-sm-12" id="request_letter_doc_container_for_noc">
                                 <label>19.1 Original Letter of Bank. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
                                 <input type="file" id="request_letter_doc_for_noc" name="request_letter_doc_for_noc"
-                                       accept="image/pdf">
+                                       accept="application/pdf" class="spinner_container_for_noc_{{VALUE_TWO}}" onchange="Noc.listview.uploadDocumentForNoc(VALUE_TWO);">
                                 <div class="error-message error-message-noc-request_letter_doc_for_noc"></div>
                             </div>
 
                             <div class="form-group col-sm-12" id="request_letter_doc_name_container_for_noc" style="display: none;">
                                 <label>19.1 Original Letter of Bank. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
-                                <a id="request_letter_doc_name_download" target="_blank"><label id="request_letter_doc_name_image" class="btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                                <button type="button" class="btn btn-xs btn-danger" style="vertical-align: top;"
+                                <a id="request_letter_doc_name_download" target="_blank"><label id="request_letter_doc_name_image" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_noc_{{VALUE_TWO}}" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                                <button type="button" id="request_letter_doc_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_noc_{{VALUE_TWO}}" style="vertical-align: top;"
                                         onclick="Noc.listview.askForRemove('{{noc_data.noc_id}}', VALUE_TWO);">
                                     <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
                             </div>
@@ -267,14 +278,14 @@
                             <div class="form-group col-sm-12" id="behalf_of_lessee_doc_container_for_noc">
                                 <label>20.1 Authorization Letter. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
                                 <input type="file" id="behalf_of_lessee_doc_for_noc" name="behalf_of_lessee_doc_for_noc"
-                                       accept="image/pdf">
+                                       accept="application/pdf" class="spinner_container_for_noc_{{VALUE_THREE}}" onchange="Noc.listview.uploadDocumentForNoc(VALUE_THREE);">
                                 <div class="error-message error-message-noc-behalf_of_lessee_doc_for_noc"></div>
                             </div>
 
                             <div class="form-group col-sm-12" id="behalf_of_lessee_doc_name_container_for_noc" style="display: none;">
                                 <label>20.1 Authorization Letter. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
-                                <a id="behalf_of_lessee_doc_name_download" target="_blank"><label id="behalf_of_lessee_doc_name_image" class="btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                                <button type="button" class="btn btn-xs btn-danger" style="vertical-align: top;"
+                                <a id="behalf_of_lessee_doc_name_download" target="_blank"><label id="behalf_of_lessee_doc_name_image" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_noc_{{VALUE_THREE}}" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                                <button type="button" id="behalf_of_lessee_doc_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_noc_{{VALUE_THREE}}" style="vertical-align: top;"
                                         onclick="Noc.listview.askForRemove('{{noc_data.noc_id}}', VALUE_THREE);">
                                     <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
                             </div>
@@ -291,37 +302,35 @@
                             <div class="form-group col-sm-12" id="public_undertaking_doc_container_for_noc">
                                 <label>21.1 Certificate for Public Undertaking. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
                                 <input type="file" id="public_undertaking_doc_for_noc" name="public_undertaking_doc_for_noc"
-                                       accept="image/pdf">
+                                       accept="application/pdf" class="spinner_container_for_noc_{{VALUE_FOUR}}" onchange="Noc.listview.uploadDocumentForNoc(VALUE_FOUR);">
                                 <div class="error-message error-message-noc-public_undertaking_doc_for_noc"></div>
                             </div>
 
                             <div class="form-group col-sm-12" id="public_undertaking_doc_name_container_for_noc" style="display: none;">
                                 <label>21.1 Certificate for Public Undertaking. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
-                                <a id="public_undertaking_doc_name_download" target="_blank"><label id="public_undertaking_doc_name_image" class="btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                                <button type="button" class="btn btn-xs btn-danger" style="vertical-align: top;"
+                                <a id="public_undertaking_doc_name_download" target="_blank"><label id="public_undertaking_doc_name_image" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_noc_{{VALUE_FOUR}}" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                                <button type="button" id="public_undertaking_doc_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_noc_{{VALUE_FOUR}}" style="vertical-align: top;"
                                         onclick="Noc.listview.askForRemove('{{noc_data.noc_id}}', VALUE_FOUR);">
                                     <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
                             </div>
                         </div>  
                     </div>
-
                     <div class="row">
                         <div class="col-12 m-b-5px" id="seal_and_stamp_container_for_noc">
                             <label>22.Signature<span style="color: red;">* (Maximum File Size: 1MB)(Upload jpg, png, jpeg ,jfif Only)</span></label><br>
                             <input type="file" id="seal_and_stamp_for_noc" name="seal_and_stamp_for_noc"
-                                   accept="image/jpg,image/png,image/jpeg,image/jfif">
+                                   accept="image/jpg,image/png,image/jpeg,image/jfif" class="spinner_container_for_noc_{{VALUE_FIVE}}" onchange="Noc.listview.uploadDocumentForNoc(VALUE_FIVE);">
                             <div class="error-message error-message-noc-seal_and_stamp_for_noc"></div>
                         </div>
                         <div class="form-group col-sm-12" id="seal_and_stamp_name_container_for_noc" style="display: none;">
-                            <label>22.Principal Employer Seal & Stamp <span style="color: red;">*</label><br>
-                            <a target="_blank" id="seal_and_stamp_download"><img id="seal_and_stamp_name_image_for_noc" style="width: 250px; height: 250px; border: 2px solid blue;"></a>
-                            <button type="button" class="btn btn-sm btn-danger" style="vertical-align: top;"
+                            <label>22.Signature<span style="color: red;">*</label><br>
+                            <a target="_blank" id="seal_and_stamp_download"><img id="seal_and_stamp_name_image_for_noc" class="spinner_name_container_for_noc_{{VALUE_FIVE}}" style="width: 250px; height: 250px; border: 2px solid blue;"></a>
+                            <button type="button" id="seal_and_stamp_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_noc_{{VALUE_FIVE}}" style="vertical-align: top;"
                                     onclick="Noc.listview.askForRemove('{{noc_data.noc_id}}', VALUE_FIVE);">
                                 <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
                         </div>
+                        <div class="text-center color-nic-blue col-3 m-b-5px" id="spinner_template_{{VALUE_FIVE}}" style="display: none;"><i class="fas fa-sync-alt fa-spin fa-1x"></i></div>
                     </div>
-
-                    
 
                     <div class="form-group">
                         <button type="button" id="draft_btn_for_noc" class="btn btn-sm btn-nic-blue" onclick="Noc.listview.submitNoc({{VALUE_ONE}});" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as Draft</button>

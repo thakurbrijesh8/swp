@@ -7,7 +7,7 @@
                 <div style="font-size: 16px; text-align: center; margin-top: 0px;font-weight: bold;">Application format for NOC of Mortgage rights of Government Industrial Plots</div>
             </div>
             <form role="form" id="noc_form" name="noc_form" onsubmit="return false;">
-                
+
                 <input type="hidden" id="noc_id" name="noc_id" value="{{noc_id}}">
                 <div class="card-body">
                     <div class="row">
@@ -21,13 +21,24 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6">
+                            <label> Entity / Establishment Type <span class="color-nic-red">*</span></label>
+                            <div class="input-group">
+                                <select id="entity_establishment_type" name="entity_establishment_type" class="form-control select2" disabled=""
+                                        data-placeholder="Select Entity / Establishment Type" style="width: 100%;">
+                                </select>
+                            </div>
+                            <span class="error-message error-message-noc-entity_establishment_type"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
                             <label>1. Name of Applicant<span class="color-nic-red">*</span></label>
                             <div class="input-group">
                                 <input type="text" id="name_of_applicant" name="name_of_applicant" class="form-control" value="{{name_of_applicant}}" readonly="">
                             </div>
                             <span class="error-message error-message-noc-name_of_applicant"></span>
                         </div>
-                              <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6">
                             <label>2. Date of Application<span style="color: red;">*</span></label>
                             <div class="input-group">
                                 <input type="text" class= "form-control" placeholder="dd-mm-yyyy"
@@ -38,10 +49,10 @@
                             </div>
                             <span class="error-message error-message-noc-application_date"></span>
                         </div>
-                       
+
                     </div>
 
-                      <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-6">
                             <label>3. State<span class="color-nic-red">*</span></label>
                             <div class="input-group">
@@ -49,7 +60,7 @@
                             </div>
                             <span class="error-message error-message-noc-state"></span>
                         </div>
-                    <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6">
                             <label>4. District<span class="color-nic-red">*</span></label>
                             <div class="input-group">
                                 <input type="text" id="district" name="district" class="form-control" readonly="" value="{{district}}">
@@ -58,7 +69,7 @@
                         </div>
                     </div>
 
-                     <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-6">
                             <label>5. Taluka<span class="color-nic-red">*</span></label>
                             <div class="input-group">
@@ -66,25 +77,25 @@
                             </div>
                             <span class="error-message error-message-noc-taluka"></span>
                         </div>
-                    <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6">
                             <label>6. Village<span class="color-nic-red">*</span></label>
                             <div class="input-group">
                                 <select class="form-control" id="villages_for_noc_data" name="villages_for_noc_data"
                                         data-placeholder="Status !"  onchange="checkValidation('noc', 'villages_for_noc_data', villageValidationMessage);
-                                    getPlotData($(this), 'plot_no', 'noc_data');" disabled="">
+                                                getPlotData($(this), 'plot_no', 'noc_data');" disabled="">
                                     <option value="">Select Village</option>
                                 </select>
                             </div>
                             <span class="error-message error-message-noc-villages_for_noc_data"></span>
                         </div>
                     </div>
-                <div class="row">
-                    <div class="form-group col-sm-6">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
                             <label>7. Plot No.<span class="color-nic-red">*</span></label>
                             <div class="input-group">
-                                 <select class="form-control" id="plot_no_for_noc_data" name="plot_no_for_noc_data"
+                                <select class="form-control" id="plot_no_for_noc_data" name="plot_no_for_noc_data"
                                         data-placeholder="Status !" onchange="checkValidation('noc', 'plot_no_for_noc_data', plotnoValidationMessage);
-                                    getAreaData($(this));" disabled="">
+                                                getAreaData($(this));" disabled="">
                                     <option value="">Select Plot NO</option>
                                 </select>
                             </div>
@@ -97,11 +108,11 @@
                             </div>
                             <span class="error-message error-message-noc-survey_no"></span>
                         </div>
-                        
-                    
+
+
                     </div>
-                <div class="row">
-                    <div class="form-group col-sm-6">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
                             <label>9. Admeasuring in square metre<span class="color-nic-red">*</span></label>
                             <div class="input-group">
                                 <input type="text" id="govt_industrial_estate_area" name="govt_industrial_estate_area" class="form-control" readonly="" value="{{govt_industrial_estate_area}}">
@@ -115,7 +126,7 @@
                             </div>
                             <span class="error-message error-message-noc-admeasuring_square_metre"></span>
                         </div>
-                        
+
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6">
@@ -125,7 +136,7 @@
                             </div>
                             <span class="error-message error-message-noc-loan_amount"></span>
                         </div>
-                     
+
                         <div class="form-group col-sm-6">
                             <label>12. Purpose Of Loan<span class="color-nic-red">*</span></label>
                             <div class="input-group">
@@ -134,8 +145,8 @@
                             <span class="error-message error-message-noc-purpose_of_lease"></span>
                         </div>
                     </div>
-                     <div class="row">
-                         <div class="form-group col-sm-6">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
                             <label>14. Bank Account Number<span class="color-nic-red">*</span></label>
                             <div class="input-group">
                                 <input type="text" id="ac_number" name="ac_number" class="form-control" readonly="" value="{{ac_number}}">
@@ -150,7 +161,7 @@
                             <span class="error-message error-message-noc-bank_name"></span>
                         </div>
                     </div>
-                <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-6">
                             <label>16. Branch Name<span class="color-nic-red">*</span></label>
                             <div class="input-group">
@@ -166,10 +177,10 @@
                             <span class="error-message error-message-noc-ifsc_code"></span>
                         </div>
                     </div>
-                    </div>
-                <div class="row">
-                        
-                   <div class="form-group col-sm-3">
+                    <!--</div>-->
+                    <div class="row">
+
+                        <div class="form-group col-sm-3">
                             <label>17. Perioad Of Loan<span class="color-nic-red">*</span></label><br>
                             <label>Date (From) </label>
                             <div class="input-group date">
@@ -196,78 +207,78 @@
                     </div>
 
 
-                <div class="row">
-                    <div class="form-group col-sm-12">
+                    <div class="row">
+                        <div class="form-group col-sm-12">
                             <label>18. Reason for obtaining loan from Bank. <span style="color: red;">* </span> &emsp;</label>
                             <input type="radio" id="reason_of_loan_from_bank_yes" name="reason_of_loan_from_bank"  
                                    disabled="" value="{{IS_CHECKED_YES}}"> Yes &emsp; 
                             <input type="radio" id="reason_of_loan_from_bank_no" name="reason_of_loan_from_bank" 
                                    disabled="" value="{{IS_CHECKED_NO}}"> No
                         </div>
-                    <div class=" reason_of_loan_from_bank_div" style="display: none;">
-                        <div class="col-6 m-b-5px" id="reason_of_loan_doc_container_for_noc_view">
-                            <label>18.1 Document from Bank.</span></label><br>
-                            <label class="f-w-n">Document Not Uploaded</label><br>
-                        </div>
-                        <div class="form-group col-sm-12" id="reason_of_loan_doc_name_container_for_noc_view" style="display: none;">
-                            <label>18.1 Document from Bank.</label><br>
-                            <a id="reason_of_loan_doc_name_download" target="_blank"><label id="reason_of_loan_doc_name_image_view" class="btn-nic-blue f-w-n" style="border: 2px solid blue;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                        <div class=" reason_of_loan_from_bank_div" style="display: none;">
+                            <div class="col-6 m-b-5px" id="reason_of_loan_doc_container_for_noc_view">
+                                <label>18.1 Document from Bank.</span></label><br>
+                                <label class="f-w-n">Document Not Uploaded</label><br>
+                            </div>
+                            <div class="form-group col-sm-12" id="reason_of_loan_doc_name_container_for_noc_view" style="display: none;">
+                                <label>18.1 Document from Bank.</label><br>
+                                <a id="reason_of_loan_doc_name_download" target="_blank"><label id="reason_of_loan_doc_name_image_view" class="btn btn-sm btn-nic-blue f-w-n" style="border: 2px solid blue;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-sm-12">
+                    <div class="row">
+                        <div class="form-group col-sm-12">
                             <label>19. Request original Letter from Bank.<span style="color: red;">* </span> &emsp;</label>
                             <input type="radio" id="request_letter_of_bank_yes" name="request_letter_of_bank"  
                                    disabled="" value="{{IS_CHECKED_YES}}"> Yes &emsp; 
                             <input type="radio" id="request_letter_of_bank_no" name="request_letter_of_bank" 
                                    disabled="" value="{{IS_CHECKED_NO}}"> No
                         </div>
-                    <div class=" request_letter_doc_div" style="display: none;">
-                        <div class="col-6 m-b-5px" id="request_letter_doc_container_for_noc_view">
-                            <label>19.1 Original Letter.</span></label><br>
-                            <label class="f-w-n">Document Not Uploaded</label><br>
-                        </div>
-                        <div class="form-group col-sm-12" id="request_letter_doc_name_container_for_noc_view" style="display: none;">
-                            <label>19.1 Original Letter.</label><br>
-                            <a id="request_letter_doc_name_download" target="_blank"><label id="request_letter_doc_name_image_view" class="btn-nic-blue f-w-n" style="border: 2px solid blue;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                        <div class=" request_letter_doc_div" style="display: none;">
+                            <div class="col-6 m-b-5px" id="request_letter_doc_container_for_noc_view">
+                                <label>19.1 Original Letter.</span></label><br>
+                                <label class="f-w-n">Document Not Uploaded</label><br>
+                            </div>
+                            <div class="form-group col-sm-12" id="request_letter_doc_name_container_for_noc_view" style="display: none;">
+                                <label>19.1 Original Letter.</label><br>
+                                <a id="request_letter_doc_name_download" target="_blank"><label id="request_letter_doc_name_image_view" class="btn btn-sm btn-nic-blue f-w-n" style="border: 2px solid blue;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-sm-12">
+                    <div class="row">
+                        <div class="form-group col-sm-12">
                             <label>20. Valid authorization to sign on behalf of Lessee.<span style="color: red;">* </span> &emsp;</label>
                             <input type="radio" id="behalf_of_lessee_yes" name="behalf_of_lessee"  
                                    disabled="" value="{{IS_CHECKED_YES}}"> Yes &emsp; 
                             <input type="radio" id="behalf_of_lessee_no" name="behalf_of_lessee" 
                                    disabled="" value="{{IS_CHECKED_NO}}"> No
                         </div>
-                    <div class=" behalf_of_lessee_div" style="display: none;">
-                        <div class="col-6 m-b-5px" id="behalf_of_lessee_doc_container_for_noc_view">
-                            <label>20.1 Document from Bank.</span></label><br>
-                            <label class="f-w-n">Document Not Uploaded</label><br>
-                        </div>
-                        <div class="form-group col-sm-12" id="behalf_of_lessee_doc_name_container_for_noc_view" style="display: none;">
-                            <label>20.1 Document from Bank.</label><br>
-                            <a id="behalf_of_lessee_doc_name_download" target="_blank"><label id="behalf_of_lessee_doc_name_image_view" class="btn-nic-blue f-w-n" style="border: 2px solid blue;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                        <div class=" behalf_of_lessee_div" style="display: none;">
+                            <div class="col-6 m-b-5px" id="behalf_of_lessee_doc_container_for_noc_view">
+                                <label>20.1 Document from Bank.</span></label><br>
+                                <label class="f-w-n">Document Not Uploaded</label><br>
+                            </div>
+                            <div class="form-group col-sm-12" id="behalf_of_lessee_doc_name_container_for_noc_view" style="display: none;">
+                                <label>20.1 Document from Bank.</label><br>
+                                <a id="behalf_of_lessee_doc_name_download" target="_blank"><label id="behalf_of_lessee_doc_name_image_view" class="btn btn-sm btn-nic-blue f-w-n" style="border: 2px solid blue;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                  <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-12">
                             <label>21. No Due Certificate for Public Undertaking / Paid Challan. <span style="color: red;">* </span> &emsp;</label>
                             <input type="radio" id="public_undertaking_yes" name="public_undertaking" disabled="" value="{{IS_CHECKED_YES}}"> Yes &emsp; 
                             <input type="radio" id="public_undertaking_no" name="public_undertaking" disabled="" value="{{IS_CHECKED_NO}}"> No
                         </div>
-                        <div class=" public_undertaking_div" style="display: none;">
-                            <div class="form-group col-sm-12" id="public_undertaking_doc_container_for_noc">
+                        <div class="public_undertaking_div" style="display: none;">
+                            <div class="form-group col-sm-12" id="public_undertaking_doc_container_for_noc_view">
                                 <label>21.1 Certificate for Public Undertaking.</label><br>
                                 <label class="f-w-n">Document Not Uploaded</label><br>
                             </div>
 
-                            <div class="form-group col-sm-12" id="public_undertaking_doc_name_container_for_noc" style="display: none;">
+                            <div class="form-group col-sm-12" id="public_undertaking_doc_name_container_for_noc_view" style="display: none;">
                                 <label>21.1 Certificate for Public Undertaking.</label><br>
-                                <a id="public_undertaking_doc_name_download" target="_blank"><label id="public_undertaking_doc_name_image" class="btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                                <a id="public_undertaking_doc_name_download" target="_blank"><label id="public_undertaking_doc_name_image_view" class="btn btn-sm btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
                             </div>
                         </div>  
                     </div>

@@ -7,7 +7,7 @@
                 <div style="font-size: 16px; text-align: center; margin-top: 0px;font-weight: bold;">Application format for Permission of Sale/Transfer(Seller) of Lease rights of Government Industrial Plot</div>
             </div>
             <form role="form" id="seller_form" name="seller_form" onsubmit="return false;">
-                
+
                 <input type="hidden" id="seller_id" name="seller_id" value="{{seller_data.seller_id}}">
                 <div class="card-body">
                     <div class="row">
@@ -21,6 +21,17 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6">
+                            <label> Entity / Establishment Type <span class="color-nic-red">*</span></label>
+                            <div class="input-group">
+                                <select id="entity_establishment_type" name="entity_establishment_type" class="form-control select2"
+                                        data-placeholder="Select Entity / Establishment Type" style="width: 100%;" onblur="checkValidation('seller', 'entity_establishment_type', entityEstablishmentTypeValidationMessage);">
+                                </select>
+                            </div>
+                            <span class="error-message error-message-seller-entity_establishment_type"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
                             <label>1. Name of Applicant<span class="color-nic-red">*</span></label>
                             <div class="input-group">
                                 <input type="text" id="name_of_applicant" name="name_of_applicant" class="form-control" placeholder="Enter Name of Applicant !" onblur="checkValidation('seller', 'name_of_applicant', applicantNameValidationMessage);"
@@ -29,7 +40,7 @@
                             <span class="error-message error-message-seller-name_of_applicant"></span>
                         </div>
 
-                       <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6">
                             <label>2. Date of Application<span style="color: red;">*</span></label>
                             <div class="input-group">
                                 <input type="text" class= "form-control" placeholder="dd-mm-yyyy"
@@ -41,53 +52,53 @@
                             <span class="error-message error-message-seller-application_date"></span>
                         </div>
                     </div>
-               <div class="row">
-                    <div class="form-group col-sm-6">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
                             <label>3. State / UT<span style="color: red;">*</span></label>
                             <div class="input-group">
                                 <select class="form-control" id="state" name="state"
-                                    data-placeholder="Status !" onblur="checkValidation('seller', 'state', stateValidationMessage);">
+                                        data-placeholder="Status !" onblur="checkValidation('seller', 'state', stateValidationMessage);">
                                     <option value="">Select State</option>
                                     <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
                                 </select>
                             </div>
                             <span class="error-message error-message-seller-state"></span>
-                    </div>
-                    <div class="form-group col-sm-6">
+                        </div>
+                        <div class="form-group col-sm-6">
                             <label>4. District<span style="color: red;">*</span></label>
                             <div class="input-group">
                                 <select class="form-control" id="district" name="district"
-                                    data-placeholder="Status !" onblur="checkValidation('seller', 'district', districtValidationMessage);">
+                                        data-placeholder="Status !" onblur="checkValidation('seller', 'district', districtValidationMessage);">
                                     <option value="">Select District</option>
                                     <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
                                 </select>
                             </div>
                             <span class="error-message error-message-seller-district"></span>
+                        </div>
                     </div>
-                </div>
 
-                     <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-6">
                             <label>5. Taluka</label>
                             <div class="input-group">
                                 <select class="form-control" id="taluka" name="taluka"
-                                    data-placeholder="Status !" onblur="checkValidation('seller', 'taluka', talukaValidationMessage);">
+                                        data-placeholder="Status !" onblur="checkValidation('seller', 'taluka', talukaValidationMessage);">
                                     <option value="">Select Taluka</option>
                                     <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
                                 </select>
                             </div>
                             <span class="error-message error-message-seller-taluka"></span>
-                    </div>
+                        </div>
                         <div class="form-group col-sm-6">
                             <label>6. Villages<span style="color: red;">*</span></label>
                             <div class="input-group">
-                                <select class="form-control" id="villages_for_noc_data" name="villages_for_noc_data"
-                                        data-placeholder="Status !"  onchange="checkValidation('seller', 'villages_for_noc_data', villageNameValidationMessage);
-                                    getPlotData($(this), 'plot_no', 'seller_data');">
+                                <select class="form-control" id="villages_for_seller_data" name="villages_for_seller_data"
+                                        data-placeholder="Status !"  onchange="checkValidation('seller', 'villages_for_seller_data', villageNameValidationMessage);
+                                            getPlotData($(this), 'plot_no', 'seller_data');">
                                     <option value="">Select Village</option>
                                 </select>
                             </div>
-                            <span class="error-message error-message-seller-villages_for_noc_data"></span>
+                            <span class="error-message error-message-seller-villages_for_seller_data"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -96,7 +107,7 @@
                             <div class="input-group">
                                 <select class="form-control" id="plot_no_for_seller_data" name="plot_no_for_seller_data"
                                         data-placeholder="Status !" onchange="checkValidation('seller', 'plot_no_for_seller_data', plotnoValidationMessage);
-                                    getAreaData($(this));">
+                                            getAreaData($(this), 'seller_data');">
                                     <option value="">Select Plot NO</option>
                                 </select>
                             </div>
@@ -106,11 +117,11 @@
                         <div class="form-group col-sm-6">
                             <label>8. Admeasuring in square metre<span class="color-nic-red">*</span></label>
                             <div class="input-group">
-                                <input type="text" id="govt_industrial_estate_area" name="govt_industrial_estate_area" class="form-control" placeholder="Enter Admeasuring square metre!"  maxlength="100" value="{{seller_data.govt_industrial_estate_area}}" disabled="">
+                                <input type="text" id="govt_industrial_estate_area" name="govt_industrial_estate_area" class="form-control" placeholder="Enter Admeasuring square metre!"  maxlength="100" value="{{seller_data.govt_industrial_estate_area}}" readonly="">
                             </div>
                             <span class="error-message error-message-seller-govt_industrial_estate_area"></span>
                         </div>
-                       
+
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6">
@@ -139,14 +150,14 @@
                         <div class="form-group col-sm-6">
                             <label>12. Name Of Purchaser<span class="color-nic-red">*</span></label>
                             <div class="input-group">
-                                <input type="text" id="transferer_name" name="transferer_name" class="form-control" placeholder="Enter sellerer Name !"  maxlength="100" onblur="checkValidation('seller', 'transferer_name', nameofservicingValidationMessage);" value="{{seller_data.transferer_name}}">
+                                <input type="text" id="transferer_name" name="transferer_name" class="form-control" placeholder="Enter Purchaser Name !"  maxlength="100" onblur="checkValidation('seller', 'transferer_name', nameofservicingValidationMessage);" value="{{seller_data.transferer_name}}">
                             </div>
                             <span class="error-message error-message-seller-transferer_name"></span>
                         </div>
                     </div>
-                     
+
                     <div class="row">
-                      <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6">
                             <label>13. Details of Product of Purchaser<span class="color-nic-red">*</span></label>
                             <div class="input-group">
                                 <input type="text" id="name_of_servicing" name="name_of_servicing" class="form-control" placeholder="Enter Manufacturing/service activity !"  maxlength="100" onblur="checkValidation('seller', 'name_of_servicing', nameofservicingValidationMessage);" value="{{seller_data.name_of_servicing}}">
@@ -163,7 +174,7 @@
                     </div>
 
                     <div class="row">
-                      <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6">
                             <label>15. PAN Number<span class="color-nic-red">*</span></label>
                             <div class="input-group">
                                 <input type="text" id="pan_no" name="pan_no" class="form-control" placeholder="Enter PAN Number !"  maxlength="100" onblur="checkValidation('seller', 'pan_no', nameofservicingValidationMessage);" value="{{seller_data.pan_no}}">
@@ -180,7 +191,7 @@
                     </div>
 
                     <div class="row">
-                       <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6">
                             <label>17. Account No. for Transactions.<span class="color-nic-red">*</span></label>
                             <div class="input-group">
                                 <input type="text" id="trans_account_no" name="trans_account_no" class="form-control" placeholder="Enter Manufacturing/service activity !"  maxlength="100" onblur="checkValidation('seller', 'trans_account_no', nameofservicingValidationMessage);" value="{{seller_data.trans_account_no}}">
@@ -189,265 +200,265 @@
                         </div>
                     </div>
 
-                     <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-12">
                             <label>18. Request letter with reason to Sale/Transfer.<span style="color: red;">* </span> &emsp;</label>
                             <input type="radio" id="request_letter_reason_yes" name="request_letter_reason" value="{{IS_CHECKED_YES}}"> Yes &emsp; 
                             <input type="radio" id="request_letter_reason_no" name="request_letter_reason" value="{{IS_CHECKED_NO}}"> No
                             <br><span class="error-message error-message-seller-request_letter_reason"></span>
                         </div>
-                    <div class=" request_letter_reason_div" style="display: none;">
-                        <div class="form-group col-sm-12 " id="request_letter_reason_doc_container_for_seller">
-                            <label>18.1 Request letter. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
-                            <input type="file" id="request_letter_reason_doc_for_seller" name="request_letter_reason_doc_for_seller"
-                                   accept="image/pdf">
-                             <div class="error-message error-message-seller-request_letter_reason_doc_for_seller"></div>
-                        </div>
+                        <div class="request_letter_reason_div" style="display: none;">
+                            <div class="form-group col-sm-12 " id="request_letter_reason_doc_container_for_seller">
+                                <label>18.1 Request letter. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
+                                <input type="file" id="request_letter_reason_doc_for_seller" name="request_letter_reason_doc_for_seller"
+                                       accept="application/pdf" class="spinner_container_for_seller_{{VALUE_ONE}}" onchange="Seller.listview.uploadDocumentForSeller(VALUE_ONE);">
+                                <div class="error-message error-message-seller-request_letter_reason_doc_for_seller"></div>
+                            </div>
 
-                     <div class="form-group col-sm-12" id="request_letter_reason_doc_name_container_for_seller" style="display: none;">
-                            <label>18.1 Request letter. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
-                            <a id="request_letter_reason_doc_name_download" target="_blank"><label id="request_letter_reason_doc_name_image_for_seller" class="btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                            <button type="button" class="btn btn-xs btn-danger" style="vertical-align: top;"
-                                    onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_ONE);">
-                                <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            <div class="form-group col-sm-12" id="request_letter_reason_doc_name_container_for_seller" style="display: none;">
+                                <label>18.1 Request letter. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
+                                <a id="request_letter_reason_doc_name_download" target="_blank"><label id="request_letter_reason_doc_name_image_for_seller" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_seller_{{VALUE_ONE}}" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                                <button type="button" id="request_letter_reason_doc_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_seller_{{VALUE_ONE}}" style="vertical-align: top;"
+                                        onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_ONE);">
+                                    <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            </div>
                         </div>
                     </div>
-                  </div>
 
-                  <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-12">
                             <label>19. Original 7 X 12 extract Document.<span style="color: red;">* </span> &emsp;</label>
                             <input type="radio" id="original_extract_yes" name="original_extract" value="{{IS_CHECKED_YES}}"> Yes &emsp; 
                             <input type="radio" id="original_extract_no" name="original_extract" value="{{IS_CHECKED_NO}}"> No
                             <br><span class="error-message error-message-seller-original_extract"></span>
                         </div>
-                    <div class=" original_extract_div" style="display: none;">
-                        <div class="form-group col-sm-12 " id="original_extract_doc_container_for_seller">
-                            <label>19.1 Original 7 X 12 extract. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
-                            <input type="file" id="original_extract_doc_for_seller" name="original_extract_doc_for_seller"
-                                   accept="image/pdf">
-                             <div class="error-message error-message-seller-original_extract_doc_for_seller"></div>
-                        </div>
+                        <div class="original_extract_div" style="display: none;">
+                            <div class="form-group col-sm-12 " id="original_extract_doc_container_for_seller">
+                                <label>19.1 Original 7 X 12 extract. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
+                                <input type="file" id="original_extract_doc_for_seller" name="original_extract_doc_for_seller"
+                                       accept="application/pdf" class="spinner_container_for_seller_{{VALUE_TWO}}" onchange="Seller.listview.uploadDocumentForSeller(VALUE_TWO);">
+                                <div class="error-message error-message-seller-original_extract_doc_for_seller"></div>
+                            </div>
 
-                     <div class="form-group col-sm-12" id="original_extract_doc_name_container_for_seller" style="display: none;">
-                            <label>19.1 Original 7 X 12 extract. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
-                            <a id="original_extract_doc_name_download" target="_blank"><label id="original_extract_doc_name_image_for_seller" class="btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                            <button type="button" class="btn btn-xs btn-danger" style="vertical-align: top;"
-                                    onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_TWO);">
-                                <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            <div class="form-group col-sm-12" id="original_extract_doc_name_container_for_seller" style="display: none;">
+                                <label>19.1 Original 7 X 12 extract. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
+                                <a id="original_extract_doc_name_download" target="_blank"><label id="original_extract_doc_name_image_for_seller" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_seller_{{VALUE_TWO}}" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                                <button type="button" id="original_extract_doc_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_seller_{{VALUE_TWO}}" style="vertical-align: top;"
+                                        onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_TWO);">
+                                    <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            </div>
                         </div>
                     </div>
-                  </div>
 
-                  <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-12">
                             <label>20. No Due Certificate from Mamlatdar/Patel Talati regarding land revenue.<span style="color: red;">* </span> &emsp;</label>
                             <input type="radio" id="nodue_from_mamlatdar_yes" name="nodue_from_mamlatdar" value="{{IS_CHECKED_YES}}"> Yes &emsp; 
                             <input type="radio" id="nodue_from_mamlatdar_no" name="nodue_from_mamlatdar" value="{{IS_CHECKED_NO}}"> No
                             <br><span class="error-message error-message-seller-nodue_from_mamlatdar"></span>
                         </div>
-                    <div class=" nodue_from_mamlatdar_div" style="display: none;">
-                        <div class="form-group col-sm-12 " id="nodue_from_mamlatdar_doc_container_for_seller">
-                            <label>20.1 No Due Certificate from Mamlatdar. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
-                            <input type="file" id="nodue_from_mamlatdar_doc_for_seller" name="nodue_from_mamlatdar_doc_for_seller"
-                                   accept="image/pdf">
-                             <div class="error-message error-message-seller-nodue_from_mamlatdar_doc_for_seller"></div>
-                        </div>
+                        <div class="nodue_from_mamlatdar_div" style="display: none;">
+                            <div class="form-group col-sm-12 " id="nodue_from_mamlatdar_doc_container_for_seller">
+                                <label>20.1 No Due Certificate from Mamlatdar. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
+                                <input type="file" id="nodue_from_mamlatdar_doc_for_seller" name="nodue_from_mamlatdar_doc_for_seller"
+                                       accept="application/pdf" class="spinner_container_for_seller_{{VALUE_THREE}}" onchange="Seller.listview.uploadDocumentForSeller(VALUE_THREE);">
+                                <div class="error-message error-message-seller-nodue_from_mamlatdar_doc_for_seller"></div>
+                            </div>
 
-                     <div class="form-group col-sm-12" id="nodue_from_mamlatdar_doc_name_container_for_seller" style="display: none;">
-                            <label>20.1 No Due Certificate from Mamlatdar. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
-                            <a id="nodue_from_mamlatdar_doc_name_download" target="_blank"><label id="nodue_from_mamlatdar_doc_name_image_for_seller" class="btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                            <button type="button" class="btn btn-xs btn-danger" style="vertical-align: top;"
-                                    onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_THREE);">
-                                <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            <div class="form-group col-sm-12" id="nodue_from_mamlatdar_doc_name_container_for_seller" style="display: none;">
+                                <label>20.1 No Due Certificate from Mamlatdar. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
+                                <a id="nodue_from_mamlatdar_doc_name_download" target="_blank"><label id="nodue_from_mamlatdar_doc_name_image_for_seller" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_seller_{{VALUE_THREE}}" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                                <button type="button" id="nodue_from_mamlatdar_doc_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_seller_{{VALUE_THREE}}" style="vertical-align: top;"
+                                        onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_THREE);">
+                                    <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            </div>
                         </div>
                     </div>
-                  </div>
-                  <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-12">
                             <label>21. No Due Certificate from Electricity Department/last bill paid copy.<span style="color: red;">* </span> &emsp;</label>
                             <input type="radio" id="nodue_from_electricity_yes" name="nodue_from_electricity" value="{{IS_CHECKED_YES}}"> Yes &emsp; 
                             <input type="radio" id="nodue_from_electricity_no" name="nodue_from_electricity" value="{{IS_CHECKED_NO}}"> No
                             <br><span class="error-message error-message-seller-nodue_from_electricity"></span>
                         </div>
-                    <div class=" nodue_from_electricity_div" style="display: none;">
-                        <div class="form-group col-sm-12 " id="nodue_from_electricity_doc_container_for_seller">
-                            <label>21.1 No Due Certificate from Electricity. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
-                            <input type="file" id="nodue_from_electricity_doc_for_seller" name="nodue_from_electricity_doc_for_seller"
-                                   accept="image/pdf">
-                             <div class="error-message error-message-seller-nodue_from_electricity_doc_for_seller"></div>
-                        </div>
+                        <div class=" nodue_from_electricity_div" style="display: none;">
+                            <div class="form-group col-sm-12 " id="nodue_from_electricity_doc_container_for_seller">
+                                <label>21.1 No Due Certificate from Electricity. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
+                                <input type="file" id="nodue_from_electricity_doc_for_seller" name="nodue_from_electricity_doc_for_seller"
+                                       accept="application/pdf" class="spinner_container_for_seller_{{VALUE_FOUR}}" onchange="Seller.listview.uploadDocumentForSeller(VALUE_FOUR);">
+                                <div class="error-message error-message-seller-nodue_from_electricity_doc_for_seller"></div>
+                            </div>
 
-                     <div class="form-group col-sm-12" id="nodue_from_electricity_doc_name_container_for_seller" style="display: none;">
-                            <label>21.1 No Due Certificate from Electricity. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
-                            <a id="nodue_from_electricity_doc_name_download" target="_blank"><label id="nodue_from_electricity_doc_name_image_for_seller" class="btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                            <button type="button" class="btn btn-xs btn-danger" style="vertical-align: top;"
-                                    onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_FOUR);">
-                                <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            <div class="form-group col-sm-12" id="nodue_from_electricity_doc_name_container_for_seller" style="display: none;">
+                                <label>21.1 No Due Certificate from Electricity. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
+                                <a id="nodue_from_electricity_doc_name_download" target="_blank"><label id="nodue_from_electricity_doc_name_image_for_seller" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_seller_{{VALUE_FOUR}}" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                                <button type="button" id="nodue_from_electricity_doc_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_seller_{{VALUE_FOUR}}" style="vertical-align: top;"
+                                        onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_FOUR);">
+                                    <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            </div>
                         </div>
                     </div>
-                  </div>
-                  <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-12">
                             <label>22. No Dues Certificate from Banks/Financial Institution/Bank regarding loan.<span style="color: red;">* </span> &emsp;</label>
                             <input type="radio" id="nodue_from_bank_yes" name="nodue_from_bank" value="{{IS_CHECKED_YES}}"> Yes &emsp; 
                             <input type="radio" id="nodue_from_bank_no" name="nodue_from_bank" value="{{IS_CHECKED_NO}}"> No
                             <br><span class="error-message error-message-seller-nodue_from_bank"></span>
                         </div>
-                    <div class=" nodue_from_bank_div" style="display: none;">
-                        <div class="form-group col-sm-12 " id="nodue_from_bank_doc_container_for_seller">
-                            <label>22.1 No Due Certificate from Banks. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
-                            <input type="file" id="nodue_from_bank_doc_for_seller" name="nodue_from_bank_doc_for_seller"
-                                   accept="image/pdf">
-                             <div class="error-message error-message-seller-nodue_from_bank_doc_for_seller"></div>
-                        </div>
+                        <div class=" nodue_from_bank_div" style="display: none;">
+                            <div class="form-group col-sm-12 " id="nodue_from_bank_doc_container_for_seller">
+                                <label>22.1 No Due Certificate from Banks. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
+                                <input type="file" id="nodue_from_bank_doc_for_seller" name="nodue_from_bank_doc_for_seller"
+                                       accept="application/pdf" class="spinner_container_for_seller_{{VALUE_FIVE}}" onchange="Seller.listview.uploadDocumentForSeller(VALUE_FIVE);">
+                                <div class="error-message error-message-seller-nodue_from_bank_doc_for_seller"></div>
+                            </div>
 
-                     <div class="form-group col-sm-12" id="nodue_from_bank_doc_name_container_for_seller" style="display: none;">
-                            <label>22.1 No Due Certificate from Banks. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
-                            <a id="nodue_from_bank_doc_name_download" target="_blank"><label id="nodue_from_bank_doc_name_image_for_seller" class="btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                            <button type="button" class="btn btn-xs btn-danger" style="vertical-align: top;"
-                                    onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_FIVE);">
-                                <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            <div class="form-group col-sm-12" id="nodue_from_bank_doc_name_container_for_seller" style="display: none;">
+                                <label>22.1 No Due Certificate from Banks. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
+                                <a id="nodue_from_bank_doc_name_download" target="_blank"><label id="nodue_from_bank_doc_name_image_for_seller" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_seller_{{VALUE_FIVE}}" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                                <button type="button" id="nodue_from_bank_doc_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_seller_{{VALUE_FIVE}}" style="vertical-align: top;"
+                                        onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_FIVE);">
+                                    <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            </div>
                         </div>
                     </div>
-                  </div>
-                  <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-12">
                             <label>23. Panchayat tax receipt/No Dues Certificate from group Gram Panchayat/Municipality regarding panchayat tax.<span style="color: red;">* </span> &emsp;</label>
                             <input type="radio" id="nodues_from_grampanchayat_yes" name="nodues_from_grampanchayat" value="{{IS_CHECKED_YES}}"> Yes &emsp; 
                             <input type="radio" id="nodues_from_grampanchayat_no" name="nodues_from_grampanchayat" value="{{IS_CHECKED_NO}}"> No
                             <br><span class="error-message error-message-seller-nodues_from_grampanchayat"></span>
                         </div>
-                    <div class=" nodues_from_grampanchayat_div" style="display: none;">
-                        <div class="form-group col-sm-12 " id="nodues_from_grampanchayat_doc_container_for_seller">
-                            <label>23.1 No Due Certificate from Gram Panchayat. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
-                            <input type="file" id="nodues_from_grampanchayat_doc_for_seller" name="nodues_from_grampanchayat_doc_for_seller"
-                                   accept="image/pdf">
-                             <div class="error-message error-message-seller-nodues_from_grampanchayat_doc_for_seller"></div>
-                        </div>
+                        <div class=" nodues_from_grampanchayat_div" style="display: none;">
+                            <div class="form-group col-sm-12 " id="nodues_from_grampanchayat_doc_container_for_seller">
+                                <label>23.1 No Due Certificate from Gram Panchayat. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
+                                <input type="file" id="nodues_from_grampanchayat_doc_for_seller" name="nodues_from_grampanchayat_doc_for_seller"
+                                       accept="application/pdf" class="spinner_container_for_seller_{{VALUE_SIX}}" onchange="Seller.listview.uploadDocumentForSeller(VALUE_SIX);">
+                                <div class="error-message error-message-seller-nodues_from_grampanchayat_doc_for_seller"></div>
+                            </div>
 
-                     <div class="form-group col-sm-12" id="nodues_from_grampanchayat_doc_name_container_for_seller" style="display: none;">
-                            <label>23.1 No Due Certificate from Gram Panchayat. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
-                            <a id="nodues_from_grampanchayat_doc_name_download" target="_blank"><label id="nodues_from_grampanchayat_doc_name_image_for_seller" class="btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                            <button type="button" class="btn btn-xs btn-danger" style="vertical-align: top;"
-                                    onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_SIX);">
-                                <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            <div class="form-group col-sm-12" id="nodues_from_grampanchayat_doc_name_container_for_seller" style="display: none;">
+                                <label>23.1 No Due Certificate from Gram Panchayat. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
+                                <a id="nodues_from_grampanchayat_doc_name_download" target="_blank"><label id="nodues_from_grampanchayat_doc_name_image_for_seller" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_seller_{{VALUE_SIX}}" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                                <button type="button" id="nodues_from_grampanchayat_doc_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_seller_{{VALUE_SIX}}" style="vertical-align: top;"
+                                        onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_SIX);">
+                                    <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            </div>
                         </div>
                     </div>
-                  </div>
-                  <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-12">
                             <label>24. Challan of lease rent from Lessee.<span style="color: red;">* </span> &emsp;</label>
                             <input type="radio" id="challan_of_lease_yes" name="challan_of_lease" value="{{IS_CHECKED_YES}}"> Yes &emsp; 
                             <input type="radio" id="challan_of_lease_no" name="challan_of_lease" value="{{IS_CHECKED_NO}}"> No
                             <br><span class="error-message error-message-seller-challan_of_lease"></span>
                         </div>
-                    <div class=" challan_of_lease_div" style="display: none;">
-                        <div class="form-group col-sm-12 " id="challan_of_lease_doc_container_for_seller">
-                            <label>24.1 Challan of lease. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
-                            <input type="file" id="challan_of_lease_doc_for_seller" name="challan_of_lease_doc_for_seller"
-                                   accept="image/pdf">
-                             <div class="error-message error-message-seller-challan_of_lease_doc_for_seller"></div>
-                        </div>
+                        <div class=" challan_of_lease_div" style="display: none;">
+                            <div class="form-group col-sm-12 " id="challan_of_lease_doc_container_for_seller">
+                                <label>24.1 Challan of lease. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
+                                <input type="file" id="challan_of_lease_doc_for_seller" name="challan_of_lease_doc_for_seller"
+                                       accept="application/pdf" class="spinner_container_for_seller_{{VALUE_SEVEN}}" onchange="Seller.listview.uploadDocumentForSeller(VALUE_SEVEN);">
+                                <div class="error-message error-message-seller-challan_of_lease_doc_for_seller"></div>
+                            </div>
 
-                     <div class="form-group col-sm-12" id="challan_of_lease_doc_name_container_for_seller" style="display: none;">
-                            <label>24.1 Challan of lease. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
-                            <a id="challan_of_lease_doc_name_download" target="_blank"><label id="challan_of_lease_doc_name_image_for_seller" class="btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                            <button type="button" class="btn btn-xs btn-danger" style="vertical-align: top;"
-                                    onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_SEVEN);">
-                                <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            <div class="form-group col-sm-12" id="challan_of_lease_doc_name_container_for_seller" style="display: none;">
+                                <label>24.1 Challan of lease. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
+                                <a id="challan_of_lease_doc_name_download" target="_blank"><label id="challan_of_lease_doc_name_image_for_seller" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_seller_{{VALUE_SEVEN}}" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                                <button type="button" id="challan_of_lease_doc_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_seller_{{VALUE_SEVEN}}" style="vertical-align: top;"
+                                        onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_SEVEN);">
+                                    <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            </div>
                         </div>
                     </div>
-                  </div>
-                  <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-12">
                             <label>25. Occupancy Certificate, if there is factory building.<span style="color: red;">* </span> &emsp;</label>
                             <input type="radio" id="occupancy_certy_yes" name="occupancy_certy" value="{{IS_CHECKED_YES}}"> Yes &emsp; 
                             <input type="radio" id="occupancy_certy_no" name="occupancy_certy" value="{{IS_CHECKED_NO}}"> No
                             <br><span class="error-message error-message-seller-occupancy_certy"></span>
                         </div>
-                    <div class=" occupancy_certy_div" style="display: none;">
-                        <div class="form-group col-sm-12 " id="occupancy_certy_doc_container_for_seller">
-                            <label>25.1 Occupancy Certificate. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
-                            <input type="file" id="occupancy_certy_doc_for_seller" name="occupancy_certy_doc_for_seller"
-                                   accept="image/pdf">
-                             <div class="error-message error-message-seller-occupancy_certy_doc_for_seller"></div>
-                        </div>
+                        <div class=" occupancy_certy_div" style="display: none;">
+                            <div class="form-group col-sm-12 " id="occupancy_certy_doc_container_for_seller">
+                                <label>25.1 Occupancy Certificate. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
+                                <input type="file" id="occupancy_certy_doc_for_seller" name="occupancy_certy_doc_for_seller"
+                                       accept="application/pdf" class="spinner_container_for_seller_{{VALUE_EIGHT}}" onchange="Seller.listview.uploadDocumentForSeller(VALUE_EIGHT);">
+                                <div class="error-message error-message-seller-occupancy_certy_doc_for_seller"></div>
+                            </div>
 
-                     <div class="form-group col-sm-12" id="occupancy_certy_doc_name_container_for_seller" style="display: none;">
-                            <label>25.1 Occupancy Certificate. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
-                            <a id="occupancy_certy_doc_name_download" target="_blank"><label id="occupancy_certy_doc_name_image_for_seller" class="btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                            <button type="button" class="btn btn-xs btn-danger" style="vertical-align: top;"
-                                    onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_EIGHT);">
-                                <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            <div class="form-group col-sm-12" id="occupancy_certy_doc_name_container_for_seller" style="display: none;">
+                                <label>25.1 Occupancy Certificate. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
+                                <a id="occupancy_certy_doc_name_download" target="_blank"><label id="occupancy_certy_doc_name_image_for_seller" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_seller_{{VALUE_EIGHT}}" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                                <button type="button" id="occupancy_certy_doc_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_seller_{{VALUE_EIGHT}}" style="vertical-align: top;"
+                                        onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_EIGHT);">
+                                    <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            </div>
                         </div>
                     </div>
-                  </div>
-                  <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-12">
                             <label>26. No Due Certificate from P.C.C., VAT, C.I.F. & B. and Central Excise.<span style="color: red;">* </span> &emsp;</label>
                             <input type="radio" id="nodue_from_excise_yes" name="nodue_from_excise" value="{{IS_CHECKED_YES}}"> Yes &emsp; 
                             <input type="radio" id="nodue_from_excise_no" name="nodue_from_excise" value="{{IS_CHECKED_NO}}"> No
                             <br><span class="error-message error-message-seller-nodue_from_excise"></span>
                         </div>
-                    <div class=" nodue_from_excise_div" style="display: none;">
-                        <div class="form-group col-sm-12 " id="nodue_from_excise_doc_container_for_seller">
-                            <label>26.1 No Due Certificate from Central Excise. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
-                            <input type="file" id="nodue_from_excise_doc_for_seller" name="nodue_from_excise_doc_for_seller"
-                                   accept="image/pdf">
-                             <div class="error-message error-message-seller-nodue_from_excise_doc_for_seller"></div>
-                        </div>
+                        <div class=" nodue_from_excise_div" style="display: none;">
+                            <div class="form-group col-sm-12 " id="nodue_from_excise_doc_container_for_seller">
+                                <label>26.1 No Due Certificate from Central Excise. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
+                                <input type="file" id="nodue_from_excise_doc_for_seller" name="nodue_from_excise_doc_for_seller"
+                                      accept="application/pdf" class="spinner_container_for_seller_{{VALUE_NINE}}" onchange="Seller.listview.uploadDocumentForSeller(VALUE_NINE);">
+                                <div class="error-message error-message-seller-nodue_from_excise_doc_for_seller"></div>
+                            </div>
 
-                     <div class="form-group col-sm-12" id="nodue_from_excise_doc_name_container_for_seller" style="display: none;">
-                            <label>26.1 No Due Certificate from Central Excise. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
-                            <a id="nodue_from_excise_doc_name_download" target="_blank"><label id="nodue_from_excise_doc_name_image_for_seller" class="btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                            <button type="button" class="btn btn-xs btn-danger" style="vertical-align: top;"
-                                    onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_NINE);">
-                                <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            <div class="form-group col-sm-12" id="nodue_from_excise_doc_name_container_for_seller" style="display: none;">
+                                <label>26.1 No Due Certificate from Central Excise. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
+                                <a id="nodue_from_excise_doc_name_download" target="_blank"><label id="nodue_from_excise_doc_name_image_for_seller" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_seller_{{VALUE_NINE}}" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                                <button type="button" id="nodue_from_excise_doc_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_seller_{{VALUE_NINE}}" style="vertical-align: top;"
+                                        onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_NINE);">
+                                    <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            </div>
                         </div>
                     </div>
-                  </div>
-                  <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-12">
                             <label>27. Valid authorization to sign on behalf of Lessee/Seller.<span style="color: red;">* </span> &emsp;</label>
                             <input type="radio" id="sign_behalf_lessee_yes" name="sign_behalf_lessee" value="{{IS_CHECKED_YES}}"> Yes &emsp; 
                             <input type="radio" id="sign_behalf_lessee_no" name="sign_behalf_lessee" value="{{IS_CHECKED_NO}}"> No
                             <br><span class="error-message error-message-seller-sign_behalf_lessee"></span>
                         </div>
-                    <div class=" sign_behalf_lessee_div" style="display: none;">
-                        <div class="form-group col-sm-12 " id="sign_behalf_lessee_doc_container_for_seller">
-                            <label>27.1 Sign on behalf of Lessee/Seller. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
-                            <input type="file" id="sign_behalf_lessee_doc_for_seller" name="sign_behalf_lessee_doc_for_seller"
-                                   accept="image/pdf">
-                             <div class="error-message error-message-seller-sign_behalf_lessee_doc_for_seller"></div>
-                        </div>
+                        <div class=" sign_behalf_lessee_div" style="display: none;">
+                            <div class="form-group col-sm-12 " id="sign_behalf_lessee_doc_container_for_seller">
+                                <label>27.1 Sign on behalf of Lessee/Seller. <span style="color: red;">* <br>(Maximum File Size: 2MB)(Upload pdf Only)</span></label><br>
+                                <input type="file" id="sign_behalf_lessee_doc_for_seller" name="sign_behalf_lessee_doc_for_seller"
+                                       accept="application/pdf" class="spinner_container_for_seller_{{VALUE_TEN}}" onchange="Seller.listview.uploadDocumentForSeller(VALUE_TEN);">
+                                <div class="error-message error-message-seller-sign_behalf_lessee_doc_for_seller"></div>
+                            </div>
 
-                     <div class="form-group col-sm-12" id="sign_behalf_lessee_doc_name_container_for_seller" style="display: none;">
-                            <label>27.1 Sign on behalf of Lessee/Seller. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
-                            <a id="sign_behalf_lessee_doc_name_download" target="_blank"><label id="sign_behalf_lessee_doc_name_image_for_seller" class="btn-nic-blue f-w-n" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                            <button type="button" class="btn btn-xs btn-danger" style="vertical-align: top;"
-                                    onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_TEN);">
-                                <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            <div class="form-group col-sm-12" id="sign_behalf_lessee_doc_name_container_for_seller" style="display: none;">
+                                <label>27.1 Sign on behalf of Lessee/Seller. <span style="color: red;">*<br> (Maximum File Size: 2MB)(Upload pdf Only) <span style="color: red;">*</span></label><br>
+                                <a id="sign_behalf_lessee_doc_name_download" target="_blank"><label id="sign_behalf_lessee_doc_name_image_for_seller" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_seller_{{VALUE_TEN}}" style="border: 2px solid black;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                                <button type="button" id="sign_behalf_lessee_doc_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_seller_{{VALUE_TEN}}" style="vertical-align: top;"
+                                        onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_TEN);">
+                                    <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
+                            </div>
                         </div>
                     </div>
-                  </div>
-                    
-                   <div class="row">
+
+                    <div class="row">
                         <div class="col-12 m-b-5px" id="seal_and_stamp_container_for_seller">
                             <label>28. Signature<span style="color: red;">* (Maximum File Size: 1MB)(Upload jpg, png, jpeg ,jfif Only)</span></label><br>
                             <input type="file" id="seal_and_stamp_for_seller" name="seal_and_stamp_for_seller"
-                                   accept="image/jpg,image/png,image/jpeg,image/jfif">
+                                   accept="image/jpg,image/png,image/jpeg,image/jfif" class="spinner_container_for_seller_{{VALUE_ELEVEN}}" onchange="Seller.listview.uploadDocumentForSeller(VALUE_ELEVEN);">
                             <div class="error-message error-message-seller-seal_and_stamp_for_seller"></div>
                         </div>
                         <div class="form-group col-sm-12" id="seal_and_stamp_name_container_for_seller" style="display: none;">
-                            <label>28. Principal Employer Seal & Stamp <span style="color: red;">*</label><br>
-                            <a target="_blank" id="seal_and_stamp_download"><img id="seal_and_stamp_name_image_for_seller" style="width: 250px; height: 250px; border: 2px solid blue;"></a>
-                            <button type="button" class="btn btn-sm btn-danger" style="vertical-align: top;"
-                                    onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}',VALUE_ELEVEN);">
+                            <label>28. Signature <span style="color: red;">*</label><br>
+                            <a target="_blank" id="seal_and_stamp_download"><img id="seal_and_stamp_name_image_for_seller" class="spinner_name_container_for_seller_{{VALUE_ELEVEN}}" style="width: 250px; height: 250px; border: 2px solid blue;"></a>
+                            <button type="button" id="seal_and_stamp_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_seller_{{VALUE_ELEVEN}}" style="vertical-align: top;"
+                                    onclick="Seller.listview.askForRemove('{{seller_data.seller_id}}', VALUE_ELEVEN);">
                                 <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
                         </div>
                     </div>
- 
+
                     <div class="form-group">
                         <button type="button" id="draft_btn_for_seller" class="btn btn-sm btn-nic-blue" onclick="Seller.listview.submitSeller({{VALUE_ONE}});" style="margin-right: 5px;"><i class="fas fa-download"></i>&nbsp; Save as Draft</button>
                         <button type="button" id="submit_btn_for_seller" class="btn btn-sm btn-success" onclick="Seller.listview.askForSubmitSeller({{VALUE_TWO}});" style="margin-right: 5px;"><i class="fas fa-save"></i>&nbsp; Submit Application</button>

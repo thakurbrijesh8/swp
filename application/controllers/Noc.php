@@ -95,152 +95,6 @@ class Noc extends CI_Controller {
                 echo json_encode(get_error_array($validation_message));
                 return false;
             }
-            if ($noc_data['reason_of_loan_from_bank'] == IS_CHECKED_YES) {
-                if ($_FILES['reason_of_loan_doc_for_noc']['name'] != '') {
-                    $main_path = 'documents/noc';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'noc';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['reason_of_loan_doc_for_noc']['name']);
-                    $filename = 'noc_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['reason_of_loan_doc_for_noc']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $noc_data['reason_of_loan_doc'] = $filename;
-                }
-            }
-
-            if ($noc_data['request_letter_of_bank'] == IS_CHECKED_YES) {
-                if ($_FILES['request_letter_doc_for_noc']['name'] != '') {
-                    $main_path = 'documents/noc';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'noc';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['request_letter_doc_for_noc']['name']);
-                    $filename = 'noc_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['request_letter_doc_for_noc']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $noc_data['request_letter_doc'] = $filename;
-                }
-            }
-
-            if ($noc_data['behalf_of_lessee'] == IS_CHECKED_YES) {
-                if ($_FILES['behalf_of_lessee_doc_for_noc']['name'] != '') {
-                    $main_path = 'documents/noc';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'noc';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['behalf_of_lessee_doc_for_noc']['name']);
-                    $filename = 'noc_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['behalf_of_lessee_doc_for_noc']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $noc_data['behalf_of_lessee_doc'] = $filename;
-                }
-            }
-
-            if ($noc_data['public_undertaking'] == IS_CHECKED_YES) {
-                if ($_FILES['public_undertaking_doc_for_noc']['name'] != '') {
-                    $main_path = 'documents/noc';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'noc';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['public_undertaking_doc_for_noc']['name']);
-                    $filename = 'noc_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['public_undertaking_doc_for_noc']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $noc_data['public_undertaking_doc'] = $filename;
-                }
-            }
-            if ($_FILES['seal_and_stamp_for_noc']['name'] != '') {
-                $main_path = 'documents/noc';
-                // if (!is_dir($main_path)) {
-                //     mkdir($main_path);
-                //     chmod("$main_path", 0755);
-                // }
-                $documents_path = 'documents';
-                if (!is_dir($documents_path)) {
-                    mkdir($documents_path);
-                    chmod($documents_path, 0777);
-                }
-                $module_path = $documents_path . DIRECTORY_SEPARATOR . 'noc';
-                if (!is_dir($module_path)) {
-                    mkdir($module_path);
-                    chmod($module_path, 0777);
-                }
-                $this->load->library('upload');
-                $temp_filename = str_replace('_', '', $_FILES['seal_and_stamp_for_noc']['name']);
-                $filename = 'noc_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                //Change file name
-                $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                if (!move_uploaded_file($_FILES['seal_and_stamp_for_noc']['tmp_name'], $final_path)) {
-                    echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                    return;
-                }
-                $noc_data['signature'] = $filename;
-            }
 
             $this->db->trans_start();
             // $noc_data['proprietor_details'] = $proprietorData;
@@ -285,6 +139,7 @@ class Noc extends CI_Controller {
 
     function _get_post_data_for_noc() {
         $noc_data = array();
+        $noc_data['entity_establishment_type'] = get_from_post('entity_establishment_type');
         $noc_data['name_of_applicant'] = get_from_post('name_of_applicant');
         $noc_data['application_date'] = get_from_post('application_date');
         $noc_data['state'] = get_from_post('state');
@@ -311,10 +166,12 @@ class Noc extends CI_Controller {
     }
 
     function _check_validation_for_noc($noc_data) {
+        if (!$noc_data['entity_establishment_type']) {
+            return ENTITY_ESTABLISHMENT_TYPE_MESSAGE;
+        }
         if (!$noc_data['name_of_applicant']) {
             return APPLICANT_NAME_MESSAGE;
         }
-
         if (!$noc_data['state']) {
             return STATE_MESSAGE;
         }
@@ -490,6 +347,13 @@ class Noc extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            $this->payment_lib->get_payment_history_data($session_user_id, VALUE_ELEVEN, $noc_id, $noc_data);
+            $noc_data['fb_data'] = $this->utility_model->get_result_data_by_id('module_type', VALUE_ELEVEN, 'fees_bifurcation', 'module_id', $noc_id);
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
+                return;
+            }
             $success_array = get_success_array();
             $success_array['noc_data'] = $noc_data;
             echo json_encode($success_array);
@@ -548,23 +412,39 @@ class Noc extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            $ex_em_data = $this->utility_model->get_by_id('noc_id', $noc_id, 'noc');
+            if (empty($ex_em_data)) {
+                echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+            if ($ex_em_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
+            if ($ex_em_data['payment_type'] == VALUE_TWO) {
+                $user_payment_type = get_from_post('user_payment_type_for_noc_upload_challan');
+                if ($user_payment_type != VALUE_ONE && $user_payment_type != VALUE_TWO && $user_payment_type != VALUE_THREE) {
+                    echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                    return false;
+                }
+            }
             $noc_data = array();
             if ($_FILES['fees_paid_challan_for_noc_upload_challan']['name'] != '') {
                 $main_path = 'documents/noc';
-                // if (!is_dir($main_path)) {
-                //     mkdir($main_path);
-                //     chmod("$main_path", 0755);
-                // }
-                $documents_path = 'documents';
-                if (!is_dir($documents_path)) {
-                    mkdir($documents_path);
-                    chmod($documents_path, 0777);
+                if (!is_dir($main_path)) {
+                    mkdir($main_path);
+                    chmod("$main_path", 0755);
                 }
-                $module_path = $documents_path . DIRECTORY_SEPARATOR . 'noc';
-                if (!is_dir($module_path)) {
-                    mkdir($module_path);
-                    chmod($module_path, 0777);
-                }
+//                $documents_path = 'documents';
+//                if (!is_dir($documents_path)) {
+//                    mkdir($documents_path);
+//                    chmod($documents_path, 0777);
+//                }
+//                $module_path = $documents_path . DIRECTORY_SEPARATOR . 'noc';
+//                if (!is_dir($module_path)) {
+//                    mkdir($module_path);
+//                    chmod($module_path, 0777);
+//                }
                 $this->load->library('upload');
                 $temp_filename = str_replace('_', '', $_FILES['fees_paid_challan_for_noc_upload_challan']['name']);
                 $filename = 'fees_paid_challan_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
@@ -578,6 +458,23 @@ class Noc extends CI_Controller {
                 $noc_data['fees_paid_challan'] = $filename;
                 $noc_data['fees_paid_challan_updated_date'] = date('Y-m-d H:i:s');
             }
+            if ($ex_em_data['payment_type'] == VALUE_TWO) {
+                $noc_data['status'] = VALUE_FOUR;
+                if ($user_payment_type == VALUE_TWO) {
+                    $noc_data['status'] = VALUE_EIGHT;
+                } else if ($user_payment_type == VALUE_THREE) {
+                    $noc_data['status'] = VALUE_THREE;
+
+                    $enc_pg_data = $this->payment_lib->get_encrypted_details_for_pg($user_id, VALUE_ELEVEN, $noc_id, $ex_em_data['district'], $ex_em_data['total_fees'], $noc_data);
+                    if ($enc_pg_data['success'] == false) {
+                        echo json_encode(get_error_array($enc_pg_data['message']));
+                        return;
+                    }
+                }
+                $noc_data['user_payment_type'] = $user_payment_type;
+            } else {
+                $noc_data['user_payment_type'] = VALUE_ZERO;
+            }
             $noc_data['updated_by'] = $user_id;
             $noc_data['updated_time'] = date('Y-m-d H:i:s');
             $this->db->trans_start();
@@ -588,7 +485,15 @@ class Noc extends CI_Controller {
                 return;
             }
             $success_array = get_success_array();
+            $success_array['status'] = isset($noc_data['status']) ? $noc_data['status'] : $ex_em_data['status'];
             $success_array['message'] = CHALLAN_UPLOADED_MESSAGE;
+            $success_array['payment_type'] = $ex_em_data['payment_type'];
+            $success_array['user_payment_type'] = $noc_data['user_payment_type'];
+            if ($ex_em_data['payment_type'] == VALUE_TWO && $noc_data['user_payment_type'] == VALUE_THREE) {
+                $success_array['op_mmptd'] = $enc_pg_data['op_mmptd'];
+                $success_array['op_enct'] = $enc_pg_data['op_enct'];
+                $success_array['op_mt'] = $enc_pg_data['op_mt'];
+            }
             echo json_encode($success_array);
         } catch (\Exception $e) {
             echo json_encode(get_error_array($e->getMessage()));
@@ -627,8 +532,64 @@ class Noc extends CI_Controller {
         }
     }
 
+    function upload_noc_document() {
+        try {
+            if (!is_ajax()) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
+            $session_user_id = get_from_session('temp_id_for_eodbsws');
+            $noc_id = get_from_post('noc_id');
+            $file_no = get_from_post('file_no');
+
+            if ($file_no == VALUE_ONE) {
+                $noc_data = $this->utility_model->upload_document('reason_of_loan_doc_for_noc', 'noc', 'reason_of_loan_', 'reason_of_loan_doc');
+            }
+            if ($file_no == VALUE_TWO) {
+                $noc_data = $this->utility_model->upload_document('request_letter_doc_for_noc', 'noc', 'request_letter_', 'request_letter_doc');
+            }
+            if ($file_no == VALUE_THREE) {
+                $noc_data = $this->utility_model->upload_document('behalf_of_lessee_doc_for_noc', 'noc', 'behalf_of_lessee_', 'behalf_of_lessee_doc');
+            }
+            if ($file_no == VALUE_FOUR) {
+                $noc_data = $this->utility_model->upload_document('public_undertaking_doc_for_noc', 'noc', 'public_undertaking_', 'public_undertaking_doc');
+            }
+            if ($file_no == VALUE_FIVE) {
+                $noc_data = $this->utility_model->upload_document('seal_and_stamp_for_noc', 'noc', 'signature_', 'signature');
+            }
+            if (!$noc_data) {
+                return false;
+            }
+            $this->db->trans_start();
+            if (!$noc_id) {
+                $noc_data['user_id'] = $session_user_id;
+                $noc_data['status'] = VALUE_ONE;
+                $noc_data['created_by'] = $session_user_id;
+                $noc_data['created_time'] = date('Y-m-d H:i:s');
+                $noc_id = $this->utility_model->insert_data('noc', $noc_data);
+            } else {
+                $noc_data['updated_by'] = $session_user_id;
+                $noc_data['updated_time'] = date('Y-m-d H:i:s');
+                $this->utility_model->update_data('noc_id', $noc_id, 'noc', $noc_data);
+            }
+
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(array('success' => FALSE, 'message' => DATABASE_ERROR_MESSAGE));
+                return;
+            }
+            $success_array = get_success_array();
+            $success_array['noc_data'] = $noc_data;
+            $success_array['noc_id'] = $noc_id;
+            $success_array['file_no'] = $file_no;
+            echo json_encode($success_array);
+        } catch (\Exception $e) {
+            echo json_encode(get_error_array($e->getMessage()));
+            return false;
+        }
+    }
 }
 
 /*
- * EOF: ./application/controller/BOCW.php
+ * EOF: ./application/controller/NOC.php
  */

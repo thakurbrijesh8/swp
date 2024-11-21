@@ -162,15 +162,23 @@ Subletting.listView = Backbone.View.extend({
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE) {
             rowData.show_form_one_btn = true;
         }
-        if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX) {
-            rowData.ADMIN_SUBLETTING_DOC_PATH = ADMIN_SUBLETTING_DOC_PATH;
-            rowData.show_download_upload_challan_btn = true;
+        if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
+                rowData.ADMIN_SUBLETTING_DOC_PATH = ADMIN_SUBLETTING_DOC_PATH;
+                rowData.show_download_upload_challan_btn = true;
+            }
         }
         if (rowData.status == VALUE_FIVE) {
             rowData.show_download_certificate_btn = true;
         }
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
+        }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         return sublettingActionTemplate(rowData);
     },
@@ -182,7 +190,8 @@ Subletting.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_THIRTEEN, data);
+            return regNoRenderer(VALUE_THIRTEEN, data)
+                    + getFRContainer(VALUE_THIRTEEN, data, full.rating, full.fr_datetime);
         };
         var that = this;
         Subletting.router.navigate('subletting');
@@ -196,6 +205,7 @@ Subletting.listView = Backbone.View.extend({
             columns: [
                 {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
                 {data: 'subletting_id', 'class': 'v-a-m text-center f-w-b', 'render': tempRegNoRenderer},
+                {data: 'entity_establishment_type', 'class': 'text-center', 'render': entityEstablishmentRenderer},
                 {data: 'name_of_applicant', 'class': 'text-center'},
                 {data: 'plot_no', 'class': 'text-center'},
                 {data: 'name_of_manufacturing', 'class': 'text-center'},
@@ -251,6 +261,7 @@ Subletting.listView = Backbone.View.extend({
             templateData.application_date = dateTo_DD_MM_YYYY();
         }
         $('#subletting_form_and_datatable_container').html(sublettingFormTemplate((templateData)));
+        renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(tempVillagesData, 'villages_for_noc_data', 'village_id', 'village_name', 'Village');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor([], 'plot_no_for_subletting_data', 'plot_no', 'plot_no', 'Plot No');
 
@@ -260,7 +271,7 @@ Subletting.listView = Backbone.View.extend({
             $('#state').val(formData.state);
             $('#district').val(formData.district);
             $('#taluka').val(formData.taluka);
-
+            $('#entity_establishment_type').val(formData.entity_establishment_type);
             $('#villages_for_noc_data').val(formData.village == 0 ? '' : formData.village);
             var plotData = tempPlotData[formData.village] ? tempPlotData[formData.village] : [];
             renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(plotData, 'plot_no_for_subletting_data', 'plot_id', 'plot_no', 'Plot No');
@@ -409,9 +420,7 @@ Subletting.listView = Backbone.View.extend({
 
         }
 
-
-
-
+        generateSelect2();
         datePicker();
         $('#subletting_form').find('input').keypress(function (e) {
             if (e.which == 13) {
@@ -489,9 +498,11 @@ Subletting.listView = Backbone.View.extend({
         formData.application_date = dateTo_DD_MM_YYYY(formData.application_date);
         //    formData.date = dateTo_DD_MM_YYYY(formData.date);
         $('#subletting_form_and_datatable_container').html(sublettingViewTemplate(formData));
+        renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
         $('#state').val(formData.state);
         $('#district').val(formData.district);
         $('#taluka').val(formData.taluka);
+        $('#entity_establishment_type').val(formData.entity_establishment_type);
         // $('#villages_for_noc_data').val(formData.village);
         // $('#plot_no_for_subletting_data').val(formData.plot_no);
 
@@ -645,6 +656,9 @@ Subletting.listView = Backbone.View.extend({
         if (!tempIdInSession || tempIdInSession == null) {
             loginPage();
             return false;
+        }
+        if (!sublettingData.entity_establishment_type) {
+            return getBasicMessageAndFieldJSONArray('entity_establishment_type', entityEstablishmentTypeValidationMessage);
         }
         if (!sublettingData.name_of_applicant) {
             return getBasicMessageAndFieldJSONArray('name_of_applicant', applicantNameValidationMessage);
@@ -1173,10 +1187,33 @@ Subletting.listView = Backbone.View.extend({
     },
     showChallan: function (sublettingData) {
         showPopup();
-        if (sublettingData.status != VALUE_FIVE) {
-            sublettingData.show_fees_paid = true;
+        if (sublettingData.status != VALUE_FIVE && sublettingData.status != VALUE_SIX && sublettingData.status != VALUE_SEVEN && sublettingData.status != VALUE_ELEVEN) {
+            if (!sublettingData.hide_submit_btn) {
+                sublettingData.show_fees_paid = true;
+            }
         }
+        if (sublettingData.payment_type == VALUE_ONE) {
+            sublettingData.utitle = 'Fees Paid Challan Copy';
+        } else {
+            sublettingData.style = 'display: none;';
+        }
+        if (sublettingData.payment_type == VALUE_TWO) {
+            sublettingData.show_dd_po_option = true;
+            sublettingData.utitle = 'Demand Draft (DD)';
+        }
+        sublettingData.module_type = VALUE_THIRTEEN;
         $('#popup_container').html(sublettingUploadChallanTemplate(sublettingData));
+        loadFB(VALUE_THIRTEEN, sublettingData.fb_data);
+        loadPH(VALUE_THIRTEEN, sublettingData.subletting_id, sublettingData.ph_data);
+
+        if (sublettingData.payment_type == VALUE_TWO) {
+            generateBoxes('radio', userPaymentTypeArray, 'user_payment_type', 'subletting_upload_challan', sublettingData.user_payment_type, true);
+            showSubContainerForPaymentDetails('user_payment_type', 'subletting_upload_challan', 'uc', 'radio');
+            if (sublettingData.user_payment_type == VALUE_ZERO) {
+                $('input[name=user_payment_type_for_subletting_upload_challan][value="' + VALUE_ONE + '"]').click();
+            }
+        }
+
         if (sublettingData.challan != '') {
             $('#challan_container_for_subletting_upload_challan').hide();
             $('#challan_name_container_for_subletting_upload_challan').show();
@@ -1309,7 +1346,12 @@ Subletting.listView = Backbone.View.extend({
                     return false;
                 }
                 Swal.close();
-                $('#status_' + sublettingId).html(appStatusArray[VALUE_FOUR]);
+                $('#status_' + sublettingId).html(appStatusArray[parseData.status]);
+                if (parseData.payment_type == VALUE_TWO && parseData.user_payment_type == VALUE_THREE) {
+                    openFullPageOverlay();
+                    submitPG(parseData);
+                    return false;
+                }
                 showSuccess(parseData.message);
             }
         });
@@ -1383,5 +1425,181 @@ Subletting.listView = Backbone.View.extend({
                 loadQueryManagementModule(parseData, templateData, tmpData);
             }
         });
+    },
+    uploadDocumentForSubletting: function (fileNo) {
+        var that = this;
+        if ($('#request_letter_premises_for_subletting').val() != '') {
+            var requestLetterPremisesDocument = checkValidationForDocument('request_letter_premises_for_subletting', VALUE_ONE, 'subletting', 10240);
+            if (requestLetterPremisesDocument == false) {
+                return false;
+            }
+        }
+        if ($('#original_extract_certificate_for_subletting').val() != '') {
+            var originalExtractCertificateDocument = checkValidationForDocument('original_extract_certificate_for_subletting', VALUE_ONE, 'subletting', 10240);
+            if (originalExtractCertificateDocument == false) {
+                return false;
+            }
+        }
+        if ($('#land_revenue_certificate_for_subletting').val() != '') {
+            var landRevenueCertificateDocument = checkValidationForDocument('land_revenue_certificate_for_subletting', VALUE_ONE, 'subletting', 10240);
+            if (landRevenueCertificateDocument == false) {
+                return false;
+            }
+        }
+        if ($('#electricity_bill_certificate_for_subletting').val() != '') {
+            var electricityBillCertificateDocument = checkValidationForDocument('electricity_bill_certificate_for_subletting', VALUE_ONE, 'subletting', 10240);
+            if (electricityBillCertificateDocument == false) {
+                return false;
+            }
+        }
+        if ($('#bank_loan_certificate_for_subletting').val() != '') {
+            var bankLoanCertificateDocument = checkValidationForDocument('bank_loan_certificate_for_subletting', VALUE_ONE, 'subletting', 10240);
+            if (bankLoanCertificateDocument == false) {
+                return false;
+            }
+        }
+        if ($('#panchayat_tax_certificate_for_subletting').val() != '') {
+            var panchayatTaxCertificateDocument = checkValidationForDocument('panchayat_tax_certificate_for_subletting', VALUE_ONE, 'subletting', 10240);
+            if (panchayatTaxCertificateDocument == false) {
+                return false;
+            }
+        }
+        if ($('#challan_of_lease_rent_for_subletting').val() != '') {
+            var challanOfLeaseRentDocument = checkValidationForDocument('challan_of_lease_rent_for_subletting', VALUE_ONE, 'subletting', 10240);
+            if (challanOfLeaseRentDocument == false) {
+                return false;
+            }
+        }
+        if ($('#occupancy_certificate_for_subletting').val() != '') {
+            var occupancyCertificateDocument = checkValidationForDocument('occupancy_certificate_for_subletting', VALUE_ONE, 'subletting', 10240);
+            if (occupancyCertificateDocument == false) {
+                return false;
+            }
+        }
+        if ($('#central_excise_certificate_for_subletting').val() != '') {
+            var centralExciseCertificateDocument = checkValidationForDocument('central_excise_certificate_for_subletting', VALUE_ONE, 'subletting', 10240);
+            if (centralExciseCertificateDocument == false) {
+                return false;
+            }
+        }
+        if ($('#authorization_sign_lessee_for_subletting').val() != '') {
+            var authorizationSignLessee = checkValidationForDocument('authorization_sign_lessee_for_subletting', VALUE_TWO, 'subletting', 10240);
+            if (authorizationSignLessee == false) {
+                return false;
+            }
+        }
+        if ($('#seal_and_stamp_for_subletting').val() != '') {
+            var sealAndStamp = checkValidationForDocument('seal_and_stamp_for_subletting', VALUE_TWO, 'subletting', 10240);
+            if (sealAndStamp == false) {
+                return false;
+            }
+        }
+
+        $('.spinner_container_for_subletting_' + fileNo).hide();
+        $('.spinner_name_container_for_subletting_' + fileNo).hide();
+        $('#spinner_template_' + fileNo).show();
+        openFullPageOverlay();
+        var sublettingId = $('#subletting_id').val();
+        var formData = new FormData($('#subletting_form')[0]);
+        formData.append("csrf_token_eodbsws", getTokenData()['csrf_token_eodbsws']);
+        formData.append("file_no", fileNo);
+        formData.append("subletting_id", sublettingId);
+        $.ajax({
+            type: 'POST',
+            url: 'subletting/upload_subletting_document',
+            data: formData,
+            mimeType: "multipart/form-data",
+            contentType: false,
+            cache: false,
+            processData: false,
+            error: function (textStatus, errorThrown) {
+                generateNewCSRFToken();
+                if (textStatus.status === 403) {
+                    loginPage();
+                    return false;
+                }
+                if (!textStatus.statusText) {
+                    loginPage();
+                    return false;
+                }
+                $('#spinner_template_' + fileNo).hide();
+                $('.spinner_container_for_subletting_' + fileNo).show();
+                $('.spinner_name_container_for_subletting_' + fileNo).hide();
+                closeFullPageOverlay();
+                showError(textStatus.statusText);
+            },
+            success: function (data) {
+                closeFullPageOverlay();
+                if (!isJSON(data)) {
+                    loginPage();
+                    return false;
+                }
+                var parseData = JSON.parse(data);
+                setNewToken(parseData.temp_token);
+                if (parseData.success == false) {
+                    $('#spinner_template_' + fileNo).hide();
+                    $('.spinner_container_for_subletting_' + fileNo).show();
+                    $('.spinner_name_container_for_subletting_' + fileNo).hide();
+                    showError(parseData.message);
+                    return false;
+                }
+                $('#spinner_template_' + fileNo).hide();
+                $('.spinner_container_for_subletting_' + fileNo).hide();
+                $('.spinner_name_container_for_subletting_' + fileNo).show();
+                $('#subletting_id').val(parseData.subletting_id);
+                var sublettingData = parseData.subletting_data;
+                if (parseData.file_no == VALUE_ONE) {
+                    that.showDocument('request_letter_premises_container_for_subletting', 'request_letter_premises_name_image_for_subletting', 'request_letter_premises_name_container_for_subletting',
+                            'request_letter_premises_download', 'request_letter_premises_remove_btn', sublettingData.request_letter_premises, parseData.subletting_id, VALUE_ONE);
+                }
+                if (parseData.file_no == VALUE_TWO) {
+                    that.showDocument('original_extract_certificate_container_for_subletting', 'original_extract_certificate_name_image_for_subletting', 'original_extract_certificate_name_container_for_subletting',
+                            'original_extract_certificate_download', 'original_extract_certificate_remove_btn', sublettingData.original_extract_certificate, parseData.subletting_id, VALUE_TWO);
+                }
+                if (parseData.file_no == VALUE_THREE) {
+                    that.showDocument('land_revenue_certificate_container_for_subletting', 'land_revenue_certificate_name_image_for_subletting', 'land_revenue_certificate_name_container_for_subletting',
+                            'land_revenue_certificate_download', 'land_revenue_certificate_remove_btn', sublettingData.land_revenue_certificate, parseData.subletting_id, VALUE_THREE);
+                }
+                if (parseData.file_no == VALUE_FOUR) {
+                    that.showDocument('electricity_bill_certificate_container_for_subletting', 'electricity_bill_certificate_name_image_for_subletting', 'electricity_bill_certificate_name_container_for_subletting',
+                            'electricity_bill_certificate_download', 'electricity_bill_certificate_remove_btn', sublettingData.electricity_bill_certificate, parseData.subletting_id, VALUE_FOUR);
+                }
+                if (parseData.file_no == VALUE_FIVE) {
+                    that.showDocument('bank_loan_certificate_container_for_subletting', 'bank_loan_certificate_name_image_for_subletting', 'bank_loan_certificate_name_container_for_subletting',
+                            'bank_loan_certificate_download', 'bank_loan_certificate_remove_btn', sublettingData.bank_loan_certificate, parseData.subletting_id, VALUE_FIVE);
+                }
+                if (parseData.file_no == VALUE_SIX) {
+                    that.showDocument('panchayat_tax_certificate_container_for_subletting', 'panchayat_tax_certificate_name_image_for_subletting', 'panchayat_tax_certificate_name_container_for_subletting',
+                            'panchayat_tax_certificate_download', 'panchayat_tax_certificate_remove_btn', sublettingData.panchayat_tax_certificate, parseData.subletting_id, VALUE_SIX);
+                }
+                if (parseData.file_no == VALUE_SEVEN) {
+                    that.showDocument('challan_of_lease_rent_container_for_subletting', 'challan_of_lease_rent_name_image_for_subletting', 'challan_of_lease_rent_name_container_for_subletting',
+                            'challan_of_lease_rent_download', 'challan_of_lease_rent_remove_btn', sublettingData.challan_of_lease_rent, parseData.subletting_id, VALUE_SEVEN);
+                }
+                if (parseData.file_no == VALUE_EIGHT) {
+                    that.showDocument('occupancy_certificate_container_for_subletting', 'occupancy_certificate_name_image_for_subletting', 'occupancy_certificate_name_container_for_subletting',
+                            'occupancy_certificate_download', 'occupancy_certificate_remove_btn', sublettingData.occupancy_certificate, parseData.subletting_id, VALUE_EIGHT);
+                }
+                if (parseData.file_no == VALUE_NINE) {
+                    that.showDocument('central_excise_certificate_container_for_subletting', 'central_excise_certificate_name_image_for_subletting', 'central_excise_certificate_name_container_for_subletting',
+                            'central_excise_certificate_download', 'central_excise_certificate_remove_btn', sublettingData.central_excise_certificate, parseData.subletting_id, VALUE_NINE);
+                }
+                if (parseData.file_no == VALUE_TEN) {
+                    that.showDocument('authorization_sign_lessee_container_for_subletting', 'authorization_sign_lessee_name_image_for_subletting', 'authorization_sign_lessee_name_container_for_subletting',
+                            'authorization_sign_lessee_download', 'authorization_sign_lessee_remove_btn', sublettingData.authorization_sign_lessee, parseData.subletting_id, VALUE_TEN);
+                }
+                if (parseData.file_no == VALUE_ELEVEN) {
+                    that.showDocument('seal_and_stamp_container_for_subletting', 'seal_and_stamp_name_image_for_subletting', 'seal_and_stamp_name_container_for_subletting',
+                            'seal_and_stamp_download', 'seal_and_stamp_remove_btn', sublettingData.signature, parseData.subletting_id, VALUE_ELEVEN);
+                }
+            }
+        });
+    },
+    showDocument: function (containerHideId, documentSrcPathId, containerShowId, documenthrefPathId, removeDocumentBtnId, dbDocumentFieldName, dbDocumentFieldId, VALUE) {
+        $('#' + containerHideId).hide();
+        $('#' + documentSrcPathId).attr('src', baseUrl + 'documents/subletting/' + dbDocumentFieldName);
+        $('#' + containerShowId).show();
+        $('#' + documenthrefPathId).attr("href", baseUrl + 'documents/subletting/' + dbDocumentFieldName);
+        $('#' + removeDocumentBtnId).attr('onclick', 'Subletting.listview.askForRemove("' + dbDocumentFieldId + '","' + VALUE + '")');
     }
 });

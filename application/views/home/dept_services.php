@@ -524,7 +524,7 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-12 accordion-item">
+            <div class="col-12 accordion-item">
                 <div class="card card-primary">
                     <div class="card-header cursor-pointer" data-card-widget="collapse">
                         <h3 class="card-title">District Industries Centre - DNH</h3>
@@ -540,9 +540,6 @@
                                     <tr class="text-center">
                                         <th style="width: 10px;">No.</th>
                                         <th style="min-width: 150px;">Name of Service</th>
-                                        <th style="min-width: 115px;">Timeline<br>(Working Days)</th>
-                                        <th style="min-width: 150px;">Competent Authority </th>
-                                        <th style="min-width: 120px;">Deemed Approval Authority</th>
                                         <th style="width: 100px;">View</th>
                                         <th style="width: 100px;">Apply</th>
                                     </tr>
@@ -551,9 +548,6 @@
                                     <tr>
                                         <td class="text-center">1.</td>
                                         <td>NOC for Mortgage</td>
-                                        <td class="text-center"></td>
-                                        <td></td>
-                                        <td class="text-center"></td>
                                         <td class="text-center">
                                             <a href="Javascript:void(0);" onclick="Noc.listview.listPage();">Click Here</a>
                                         </td>
@@ -564,9 +558,6 @@
                                     <tr>
                                         <td class="text-center">2.</td>
                                         <td>Permission for Seller of Plot</td>
-                                        <td class="text-center"></td>
-                                        <td></td>
-                                        <td class="text-center"></td>
                                         <td class="text-center">
                                             <a href="Javascript:void(0);" onclick="Seller.listview.listPage();">Click Here</a>
                                         </td>
@@ -577,9 +568,6 @@
                                     <tr>
                                         <td class="text-center">3.</td>
                                         <td>Permission for Buyer of Plot</td>
-                                        <td class="text-center"></td>
-                                        <td></td>
-                                        <td class="text-center"></td>
                                         <td class="text-center">
                                             <a href="Javascript:void(0);" onclick="Transfer.listview.listPage();">Click Here</a>
                                         </td>
@@ -590,9 +578,6 @@
                                     <tr>
                                         <td class="text-center">4.</td>
                                         <td>Permission for sub-letting for Lessee</td>
-                                        <td class="text-center"></td>
-                                        <td></td>
-                                        <td class="text-center"></td>
                                         <td class="text-center">
                                             <a href="Javascript:void(0);" onclick="Subletting.listview.listPage();">Click Here</a>
                                         </td>
@@ -603,9 +588,6 @@
                                     <tr>
                                         <td class="text-center">5.</td>
                                         <td>Permission for sub-letting for Sub-Lessee</td>
-                                        <td class="text-center"></td>
-                                        <td></td>
-                                        <td class="text-center"></td>
                                         <td class="text-center">
                                             <a href="Javascript:void(0);" onclick="Sublessee.listview.listPage();">Click Here</a>
                                         </td>
@@ -618,7 +600,7 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div> 
             <div class="col-12 accordion-item">
                 <div class="card card-primary">
                     <div class="card-header cursor-pointer" data-card-widget="collapse">

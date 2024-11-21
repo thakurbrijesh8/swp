@@ -7,7 +7,7 @@
                 <div style="font-size: 16px; text-align: center; margin-top: 0px;font-weight: bold;">Application format for Permission of Sale/Transfer(Seller) of Lease rights of Government Industrial Plot</div>
             </div>
             <form role="form" id="transfer_form" name="transfer_form" onsubmit="return false;">
-                
+
                 <input type="hidden" id="transfer_id" name="transfer_id" value="{{transfer_data.transfer_id}}">
                 <div class="card-body">
                     <div class="row">
@@ -17,6 +17,17 @@
                             District Industries Centre,<br>
                             DNH&DD,<br>
                             Silvassa.
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label> Entity / Establishment Type <span class="color-nic-red">*</span></label>
+                            <div class="input-group">
+                                <select id="entity_establishment_type" name="entity_establishment_type" class="form-control select2"
+                                        data-placeholder="Select Entity / Establishment Type" style="width: 100%;" onblur="checkValidation('transfer', 'entity_establishment_type', entityEstablishmentTypeValidationMessage);">
+                                </select>
+                            </div>
+                            <span class="error-message error-message-transfer-entity_establishment_type"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -40,55 +51,55 @@
                             <span class="error-message error-message-transfer-application_date"></span>
                         </div>
                     </div>
-                <div class="row">
-                    <div class="form-group col-sm-6">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
                             <label>3. State / UT<span style="color: red;">*</span></label>
                             <div class="input-group">
                                 <select class="form-control" id="state" name="state"
-                                    data-placeholder="Status !" onblur="checkValidation('transfer', 'state', stateValidationMessage);">
+                                        data-placeholder="Status !" onblur="checkValidation('transfer', 'state', stateValidationMessage);">
                                     <option value="">Select State</option>
                                     <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
                                 </select>
                             </div>
                             <span class="error-message error-message-transfer-state"></span>
-                    </div>
-                    <div class="form-group col-sm-6">
+                        </div>
+                        <div class="form-group col-sm-6">
                             <label>4. District<span style="color: red;">*</span></label>
                             <div class="input-group">
                                 <select class="form-control" id="district" name="district"
-                                    data-placeholder="Status !" onblur="checkValidation('transfer', 'district', districtValidationMessage);">
+                                        data-placeholder="Status !" onblur="checkValidation('transfer', 'district', districtValidationMessage);">
                                     <option value="">Select District</option>
                                     <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
                                 </select>
                             </div>
                             <span class="error-message error-message-transfer-district"></span>
+                        </div>
                     </div>
-                </div>
 
-                     <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-6">
                             <label>5. Taluka</label>
                             <div class="input-group">
                                 <select class="form-control" id="taluka" name="taluka"
-                                    data-placeholder="Status !" onblur="checkValidation('transfer', 'taluka', talukaValidationMessage);">
+                                        data-placeholder="Status !" onblur="checkValidation('transfer', 'taluka', talukaValidationMessage);">
                                     <option value="">Select Taluka</option>
                                     <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
                                 </select>
                             </div>
                             <span class="error-message error-message-transfer-taluka"></span>
-                    </div>
-                   <div class="form-group col-sm-6">
+                        </div>
+                        <div class="form-group col-sm-6">
                             <label>6. Villages<span style="color: red;">*</span></label>
                             <div class="input-group">
                                 <select class="form-control" id="villages_for_noc_data" name="villages_for_noc_data"
-                                    data-placeholder="Status !" onblur="checkValidation('transfer', 'villages_for_noc_data', villageNameValidationMessage); getPlotData($(this), 'plot_no', 'transfer_data');">
-                                       <option value="">Select Village</option>
+                                        data-placeholder="Status !" onblur="checkValidation('transfer', 'villages_for_noc_data', villageNameValidationMessage); getPlotData($(this), 'plot_no', 'transfer_data');">
+                                    <option value="">Select Village</option>
 
                                 </select>
                             </div>
                             <span class="error-message error-message-transfer-villages_for_noc_data"></span>
+                        </div>
                     </div>
-                </div>
 
                     <div class="row">
                         <div class="form-group col-sm-6">
@@ -96,11 +107,11 @@
                             <div class="input-group">
                                 <select class="form-control" id="plot_no_for_transfer_data" name="plot_no_for_transfer_data"
                                         data-placeholder="Status !" onchange="checkValidation('transfer', 'plot_no_for_transfer_data', plotnoValidationMessage);
-                                    getAreaData($(this));">
+                                            getAreaData($(this), 'noc_data');">
                                     <option value="">Select Plot No.</option>
                                 </select>
                             </div>
-                            <span class="error-message error-message-noc-plot_no"></span>
+                            <span class="error-message error-message-transfer-plot_no"></span>
                         </div>
                         <div class="form-group col-sm-6">
                             <label>8. Admeasuring in square metre<span class="color-nic-red">*</span></label>
@@ -109,7 +120,7 @@
                             </div>
                             <span class="error-message error-message-transfer-govt_industrial_estate_area"></span>
                         </div>
-                    
+
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6">
@@ -126,7 +137,7 @@
                             </div>
                             <span class="error-message error-message-transfer-admeasuring_square_metre"></span>
                         </div>
-                    
+
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-12">
@@ -137,7 +148,7 @@
                             <span class="error-message error-message-transfer-reason_of_transfer"></span>
                         </div>
                     </div>
-                     
+
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <label>12. Name of Purchaser<span class="color-nic-red">*</span></label>
@@ -146,7 +157,7 @@
                             </div>
                             <span class="error-message error-message-transfer-transferer_name"></span>
                         </div>
-                    <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6">
                             <label>13. Details of Product of Purchaser<span class="color-nic-red">*</span></label>
                             <div class="input-group">
                                 <input type="text" id="name_of_servicing" name="name_of_servicing" class="form-control" placeholder="Enter Manufacturing/service activity !"  maxlength="100" onblur="checkValidation('transfer', 'name_of_servicing', nameofservicingValidationMessage);" value="{{transfer_data.name_of_servicing}}">
@@ -169,7 +180,7 @@
                             </div>
                             <span class="error-message error-message-transfer-aadhar_no"></span>
                         </div>
-                
+
                     </div>
 
                     <div class="row">
@@ -187,7 +198,7 @@
                             </div>
                             <span class="error-message error-message-transfer-gst_no"></span>
                         </div>
-                
+
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6">
@@ -199,34 +210,34 @@
                         </div>                
                     </div>
 
-                     <!-- checklist -->
-                      <div class="row">
+                    <!-- checklist -->
+                    <div class="row">
                         <div class="form-group col-sm-12">
                             <label>19.Request letter with details of manufacture items.? (if Yes, please attach details) <span class="color-nic-red">*</span></label>
                             <div class="input-group">
                                 <input type="radio" id="request_letter_yes" name="request_letter" class=""  value="{{VALUE_ONE}}" >&nbsp; Yes
                                 &emsp;
                                 <input type="radio" id="request_letter_no" name="request_letter" class="" style="margin-bottom: 0px;"
-                                        value="{{VALUE_TWO}}">&nbsp;No
+                                       value="{{VALUE_TWO}}">&nbsp;No
                                 <br/><span class="error-message error-message-transfer-request_letter"></span>
                             </div>
                         </div>
                         <div class="form-group col-sm-12 request_letter_upload_div" id="request_letter_upload_container_for_transfer" style="display: none;">
                             <label>19.1 Please attach details document<span style="color: red;">* <br>(Maximum File Size: 1MB)&nbsp; (Upload PDF Only)</span></label><br>
                             <input type="file" id="request_letter_upload_for_transfer" name="request_letter_upload_for_transfer"
-                                   accept="image/jpg,image/png,image/jpeg,image/jfif">
+                                   accept="application/pdf" class="spinner_container_for_transfer_{{VALUE_ONE}}" onchange="Transfer.listview.uploadDocumentForTransfer(VALUE_ONE);">
                             <div class="error-message error-message-transfer-request_letter_upload_for_transfer"></div>
                         </div>
                         <div class="form-group col-sm-12" id="request_letter_upload_name_container_for_transfer" style="display: none;">
                             <label>19.1 Please attach details document<span style="color: red;">* <br>(Maximum File Size: 1MB)&nbsp; (Upload PDF Only)</span></label><br>
-                            <a id="request_letter_upload_name_image_for_transfer_download" target="_blank"><label id="request_letter_upload_name_image_for_transfer" class="btn-nic-blue f-w-n" style="border: 2px solid black;padding: 4px 4px 4px 4px;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                            <button type="button" class="btn btn-sm btn-danger" style="vertical-align: top;"
-                                    onclick="Transfer.listview.askForRemove('{{transfer_data.transfer_id}}','request_letter_upload','transfer');">
+                            <a id="request_letter_upload_name_image_for_transfer_download" target="_blank"><label id="request_letter_upload_name_image_for_transfer" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_transfer_{{VALUE_ONE}}" style="border: 2px solid black;padding: 4px 4px 4px 4px;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            <button type="button" id="request_letter_upload_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_transfer_{{VALUE_ONE}}" style="vertical-align: top;"
+                                    onclick="Transfer.listview.askForRemove('{{transfer_data.transfer_id}}', VALUE_ONE);">
                                 <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
                         </div>
                     </div>
                     <!-- 2 -->
-                     <div class="row">
+                    <div class="row">
                         <div class="form-group col-sm-12">
                             <label>20.Details of Project Report. (if Yes, please attach details) <span class="color-nic-red">*</span></label>
                             <div class="input-group">
@@ -239,14 +250,14 @@
                         <div class="form-group col-sm-12 project_report_upload_div" id="project_report_upload_container_for_transfer" style="display: none;">
                             <label>20.1 Please attach details document<span style="color: red;">* <br>(Maximum File Size: 1MB)&nbsp; (Upload PDF Only)</span></label><br>
                             <input type="file" id="project_report_upload_for_transfer" name="project_report_upload_for_transfer"
-                                   accept="image/jpg,image/png,image/jpeg,image/jfif">
+                                   accept="application/pdf" class="spinner_container_for_transfer_{{VALUE_TWO}}" onchange="Transfer.listview.uploadDocumentForTransfer(VALUE_TWO);">
                             <div class="error-message error-message-transfer-project_report_upload_for_transfer"></div>
                         </div>
                         <div class="form-group col-sm-12" id="project_report_upload_name_container_for_transfer" style="display: none;">
                             <label>20.1 Please attach details document<span style="color: red;">* <br>(Maximum File Size: 1MB)&nbsp; (Upload PDF Only)</span></label><br>
-                            <a id="project_report_upload_name_image_for_transfer_download" target="_blank"><label id="project_report_upload_name_image_for_transfer" class="btn-nic-blue f-w-n" style="border: 2px solid black;padding: 4px 4px 4px 4px;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                            <button type="button" class="btn btn-sm btn-danger" style="vertical-align: top;"
-                                    onclick="Transfer.listview.askForRemove('{{transfer_data.transfer_id}}','project_report_upload','transfer');">
+                            <a id="project_report_upload_name_image_for_transfer_download" target="_blank"><label id="project_report_upload_name_image_for_transfer" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_transfer_{{VALUE_TWO}}" style="border: 2px solid black;padding: 4px 4px 4px 4px;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            <button type="button" id="project_report_upload_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_transfer_{{VALUE_TWO}}" style="vertical-align: top;"
+                                    onclick="Transfer.listview.askForRemove('{{transfer_data.transfer_id}}', VALUE_TWO);">
                                 <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
                         </div>
                     </div>
@@ -264,14 +275,14 @@
                         <div class="form-group col-sm-12 constitution_project_upload_div" id="constitution_project_upload_container_for_transfer" style="display: none;">
                             <label>21.1 Please attach details document<span style="color: red;">* <br>(Maximum File Size: 1MB)&nbsp; (Upload PDF Only)</span></label><br>
                             <input type="file" id="constitution_project_upload_for_transfer" name="constitution_project_upload_for_transfer"
-                                   accept="image/jpg,image/png,image/jpeg,image/jfif">
+                                  accept="application/pdf" class="spinner_container_for_transfer_{{VALUE_THREE}}" onchange="Transfer.listview.uploadDocumentForTransfer(VALUE_THREE);">
                             <div class="error-message error-message-transfer-constitution_project_upload_for_transfer"></div>
                         </div>
                         <div class="form-group col-sm-12" id="constitution_project_upload_name_container_for_transfer" style="display: none;">
                             <label>21.1 Please attach details document<span style="color: red;">* <br>(Maximum File Size: 1MB)&nbsp; (Upload PDF Only)</span></label><br>
-                            <a id="constitution_project_upload_name_image_for_transfer_download" target="_blank"><label id="constitution_project_upload_name_image_for_transfer" class="btn-nic-blue f-w-n" style="border: 2px solid black;padding: 4px 4px 4px 4px;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                            <button type="button" class="btn btn-sm btn-danger" style="vertical-align: top;"
-                                    onclick="Transfer.listview.askForRemove('{{transfer_data.transfer_id}}','constitution_project_upload','transfer');">
+                            <a id="constitution_project_upload_name_image_for_transfer_download" target="_blank"><label id="constitution_project_upload_name_image_for_transfer" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_transfer_{{VALUE_THREE}}" style="border: 2px solid black;padding: 4px 4px 4px 4px;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            <button type="button" id="constitution_project_upload_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_transfer_{{VALUE_THREE}}" class="btn btn-sm btn-danger" style="vertical-align: top;"
+                                    onclick="Transfer.listview.askForRemove('{{transfer_data.transfer_id}}', VALUE_THREE);">
                                 <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
                         </div>
                     </div>
@@ -289,18 +300,18 @@
                         <div class="form-group col-sm-12 valid_authorization_upload_div" id="valid_authorization_upload_container_for_transfer" style="display: none;">
                             <label>22.1 Please attach details document<span style="color: red;">* <br>(Maximum File Size: 1MB)&nbsp; (Upload PDF Only)</span></label><br>
                             <input type="file" id="valid_authorization_upload_for_transfer" name="valid_authorization_upload_for_transfer"
-                                   accept="image/jpg,image/png,image/jpeg,image/jfif">
+                                   accept="application/pdf" class="spinner_container_for_transfer_{{VALUE_FOUR}}" onchange="Transfer.listview.uploadDocumentForTransfer(VALUE_FOUR);">
                             <div class="error-message error-message-transfer-valid_authorization_upload_for_transfer"></div>
                         </div>
                         <div class="form-group col-sm-12" id="valid_authorization_upload_name_container_for_transfer" style="display: none;">
                             <label>22.1 Please attach details document<span style="color: red;">* <br>(Maximum File Size: 1MB)&nbsp; (Upload PDF Only)</span></label><br>
-                            <a id="valid_authorization_upload_name_image_for_transfer_download" target="_blank"><label id="valid_authorization_upload_name_image_for_transfer" class="btn-nic-blue f-w-n" style="border: 2px solid black;padding: 4px 4px 4px 4px;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
-                            <button type="button" class="btn btn-sm btn-danger" style="vertical-align: top;"
-                                    onclick="Transfer.listview.askForRemove('{{transfer_data.transfer_id}}','valid_authorization_upload','transfer');">
+                            <a id="valid_authorization_upload_name_image_for_transfer_download" target="_blank"><label id="valid_authorization_upload_name_image_for_transfer" class="btn btn-sm btn-nic-blue f-w-n spinner_name_container_for_transfer_{{VALUE_FOUR}}" style="border: 2px solid black;padding: 4px 4px 4px 4px;">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            <button type="button" id="valid_authorization_upload_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_transfer_{{VALUE_FOUR}}" class="btn btn-sm btn-danger" style="vertical-align: top;"
+                                    onclick="Transfer.listview.askForRemove('{{transfer_data.transfer_id}}', VALUE_FOUR);">
                                 <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
                         </div>
                     </div>
-                     <!-- checklist -->
+                    <!-- checklist -->
 
                     <div class="row">
                         <div class="form-group col-md-12">
@@ -317,14 +328,14 @@
                         <div class="col-12 m-b-5px" id="sign_seal_container_for_transfer">
                             <label>24.Upload Authorized Signature Designation with Seal<span style="color: red;">* <br>(Maximum File Size: 1MB)&nbsp; (Upload JPG | PNG | JPEG | JFIF Only)</span></label><br>
                             <input type="file" id="sign_seal_for_transfer" name="sign_seal_for_transfer"
-                                   accept="image/jpg,image/png,image/jpeg,image/jfif">
+                                   accept="image/jpg,image/png,image/jpeg,image/jfif" class="spinner_container_for_transfer_{{VALUE_FIVE}}" onchange="Transfer.listview.uploadDocumentForTransfer(VALUE_FIVE);">
                             <div class="error-message error-message-transfer-sign_seal_for_transfer"></div>
                         </div>
                         <div class="form-group col-sm-12" id="sign_seal_name_container_for_transfer" style="display: none;">
-                            <label>24.1 Authorized Signatory Designation with Seal<span style="color: red;">* <br>(Maximum File Size: 1MB)&nbsp; (Upload JPG | PNG | JPEG | JFIF Only)</span></label><br><a id="seal_and_stamp_download" target="_blank">
-                            <img id="sign_seal_name_image_for_transfer" style="width: 250px; height: 250px; border: 2px solid blue;"></a>
-                            <button type="button" class="btn btn-sm btn-danger" style="vertical-align: top;"
-                                    onclick="Transfer.listview.askForRemove('{{transfer_data.transfer_id}}','sign_seal','transfer');">
+                            <label>24.Authorized Signatory Designation with Seal<span style="color: red;">* <br>(Maximum File Size: 1MB)&nbsp; (Upload JPG | PNG | JPEG | JFIF Only)</span></label><br>
+                            <a id="seal_and_stamp_download" target="_blank"><img id="sign_seal_name_image_for_transfer" class="spinner_name_container_for_transfer_{{VALUE_FIVE}}" style="width: 250px; height: 250px; border: 2px solid blue;"></a>
+                            <button type="button" id="seal_and_stamp_remove_btn" class="btn btn-sm btn-danger spinner_name_container_for_seller_{{VALUE_FIVE}}" style="vertical-align: top;"
+                                    onclick="Transfer.listview.askForRemove('{{transfer_data.transfer_id}}', VALUE_FIVE);">
                                 <i class="fas fa-trash" style="padding-right: 4px;"></i> Remove</button>
                         </div>
                     </div>

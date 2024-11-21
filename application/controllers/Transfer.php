@@ -96,156 +96,6 @@ class Transfer extends CI_Controller {
                 return false;
             }
 
-            //checklist
-            if ($transfer_data['request_letter'] == IS_CHECKED_YES) {
-                if ($_FILES['request_letter_upload_for_transfer']['name'] != '') {
-                    $main_path = 'documents/transfer';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'transfer';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['request_letter_upload_for_transfer']['name']);
-                    $filename = 'transfer_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['request_letter_upload_for_transfer']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $transfer_data['request_letter_upload'] = $filename;
-                }
-            }
-            // 2
-            if ($transfer_data['project_report'] == IS_CHECKED_YES) {
-                if ($_FILES['project_report_upload_for_transfer']['name'] != '') {
-                    $main_path = 'documents/transfer';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'transfer';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['project_report_upload_for_transfer']['name']);
-                    $filename = 'transfer_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['project_report_upload_for_transfer']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $transfer_data['project_report_upload'] = $filename;
-                }
-            }
-            // 3
-            if ($transfer_data['constitution_project'] == IS_CHECKED_YES) {
-                if ($_FILES['constitution_project_upload_for_transfer']['name'] != '') {
-                    $main_path = 'documents/transfer';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'transfer';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['constitution_project_upload_for_transfer']['name']);
-                    $filename = 'transfer_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['constitution_project_upload_for_transfer']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $transfer_data['constitution_project_upload'] = $filename;
-                }
-            }
-            // 4
-            if ($transfer_data['valid_authorization'] == IS_CHECKED_YES) {
-                if ($_FILES['valid_authorization_upload_for_transfer']['name'] != '') {
-                    $main_path = 'documents/transfer';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'transfer';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['valid_authorization_upload_for_transfer']['name']);
-                    $filename = 'transfer_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['valid_authorization_upload_for_transfer']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $transfer_data['valid_authorization_upload'] = $filename;
-                }
-            }
-
-            //end checklist
-            if ($_FILES['sign_seal_for_transfer']['name'] != '') {
-                $main_path = 'documents/transfer';
-                // if (!is_dir($main_path)) {
-                //     mkdir($main_path);
-                //     chmod("$main_path", 0755);
-                // }
-                $documents_path = 'documents';
-                if (!is_dir($documents_path)) {
-                    mkdir($documents_path);
-                    chmod($documents_path, 0777);
-                }
-                $module_path = $documents_path . DIRECTORY_SEPARATOR . 'transfer';
-                if (!is_dir($module_path)) {
-                    mkdir($module_path);
-                    chmod($module_path, 0777);
-                }
-                $this->load->library('upload');
-                $temp_filename = str_replace('_', '', $_FILES['sign_seal_for_transfer']['name']);
-                $filename = 'transfer_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                //Change file name
-                $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                if (!move_uploaded_file($_FILES['sign_seal_for_transfer']['tmp_name'], $final_path)) {
-                    echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                    return;
-                }
-                $transfer_data['sign_seal'] = $filename;
-            }
-
             $this->db->trans_start();
 
             // $transfer_data['proprietor_details'] = $proprietorData;
@@ -266,6 +116,10 @@ class Transfer extends CI_Controller {
                 $this->utility_model->update_data('transfer_id', $transfer_id, 'transfer', $transfer_data);
             }
 
+            if ($module_type == VALUE_TWO) {
+                $this->utility_lib->send_sms_and_email_for_app_submitted($user_id, VALUE_SIX, VALUE_TWELVE, $transfer_id);
+            }
+
             $this->db->trans_complete();
             if ($this->db->trans_status() === FALSE) {
                 echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
@@ -282,6 +136,7 @@ class Transfer extends CI_Controller {
 
     function _get_post_data_for_transfer() {
         $transfer_data = array();
+        $transfer_data['entity_establishment_type'] = get_from_post('entity_establishment_type');
         $transfer_data['name_of_applicant'] = get_from_post('name_of_applicant');
         $transfer_data['application_date'] = get_from_post('application_date');
         $transfer_data['state'] = get_from_post('state');
@@ -308,6 +163,9 @@ class Transfer extends CI_Controller {
     }
 
     function _check_validation_for_transfer($transfer_data) {
+        if (!$transfer_data['entity_establishment_type']) {
+            return ENTITY_ESTABLISHMENT_TYPE_MESSAGE;
+        }
         if (!$transfer_data['name_of_applicant']) {
             return APPLICANT_NAME_MESSAGE;
         }
@@ -377,14 +235,13 @@ class Transfer extends CI_Controller {
             }
             $session_user_id = get_from_session('temp_id_for_eodbsws');
             $transfer_id = get_from_post('transfer_id');
-            $document_id = get_from_post('document_id');
-            $table_name = get_from_post('table_name');
+            $document_type = get_from_post('document_type');
             if (!is_post() || $session_user_id == NULL || !$session_user_id || !$transfer_id || $transfer_id == NULL) {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
             $this->db->trans_start();
-            $ex_est_data = $this->utility_model->get_by_id('transfer_id', $transfer_id, $table_name);
+            $ex_est_data = $this->utility_model->get_by_id('transfer_id', $transfer_id, 'transfer');
             if (empty($ex_est_data)) {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return;
@@ -394,12 +251,41 @@ class Transfer extends CI_Controller {
                 echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
                 return;
             }
-            $file_path = 'documents' . DIRECTORY_SEPARATOR . 'transfer' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR . $ex_est_data[$document_id];
+
+            if ($document_type == VALUE_ONE) {
+                $file_path = 'documents' . DIRECTORY_SEPARATOR . 'transfer' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR . $ex_est_data['request_letter_upload'];
+            }
+            if ($document_type == VALUE_TWO) {
+                $file_path = 'documents' . DIRECTORY_SEPARATOR . 'transfer' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR . $ex_est_data['project_report_upload'];
+            }
+            if ($document_type == VALUE_THREE) {
+                $file_path = 'documents' . DIRECTORY_SEPARATOR . 'transfer' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR . $ex_est_data['constitution_project_upload'];
+            }
+            if ($document_type == VALUE_FOUR) {
+                $file_path = 'documents' . DIRECTORY_SEPARATOR . 'transfer' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR . $ex_est_data['valid_authorization_upload'];
+            }
+            if ($document_type == VALUE_FIVE) {
+                $file_path = 'documents' . DIRECTORY_SEPARATOR . 'transfer' . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR . $ex_est_data['sign_seal'];
+            }
 
             if (file_exists($file_path)) {
                 unlink($file_path);
             }
-            $this->utility_model->update_data('transfer_id', $transfer_id, $table_name, array($document_id => '', 'updated_by' => $session_user_id, 'updated_time' => date('Y-m-d H:i:s')));
+            if ($document_type == VALUE_ONE) {
+                $this->utility_model->update_data('transfer_id', $transfer_id, 'transfer', array('request_letter_upload' => '', 'updated_by' => $session_user_id, 'updated_time' => date('Y-m-d H:i:s')));
+            }
+            if ($document_type == VALUE_TWO) {
+                $this->utility_model->update_data('transfer_id', $transfer_id, 'transfer', array('project_report_upload' => '', 'updated_by' => $session_user_id, 'updated_time' => date('Y-m-d H:i:s')));
+            }
+            if ($document_type == VALUE_THREE) {
+                $this->utility_model->update_data('transfer_id', $transfer_id, 'transfer', array('constitution_project_upload' => '', 'updated_by' => $session_user_id, 'updated_time' => date('Y-m-d H:i:s')));
+            }
+            if ($document_type == VALUE_FOUR) {
+                $this->utility_model->update_data('transfer_id', $transfer_id, 'transfer', array('valid_authorization_upload' => '', 'updated_by' => $session_user_id, 'updated_time' => date('Y-m-d H:i:s')));
+            }
+            if ($document_type == VALUE_FIVE) {
+                $this->utility_model->update_data('transfer_id', $transfer_id, 'transfer', array('sign_seal' => '', 'updated_by' => $session_user_id, 'updated_time' => date('Y-m-d H:i:s')));
+            }
 
             $success_array = get_success_array();
             $success_array['message'] = DOCUMENT_REMOVED_MESSAGE;
@@ -463,6 +349,13 @@ class Transfer extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            $this->payment_lib->get_payment_history_data($session_user_id, VALUE_TWELVE, $transfer_id, $transfer_data);
+            $transfer_data['fb_data'] = $this->utility_model->get_result_data_by_id('module_type', VALUE_TWELVE, 'fees_bifurcation', 'module_id', $transfer_id);
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
+                return;
+            }
             $success_array = get_success_array();
             $success_array['transfer_data'] = $transfer_data;
             echo json_encode($success_array);
@@ -521,23 +414,39 @@ class Transfer extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            $ex_em_data = $this->utility_model->get_by_id('transfer_id', $transfer_id, 'transfer');
+            if (empty($ex_em_data)) {
+                echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+            if ($ex_em_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
+            if ($ex_em_data['payment_type'] == VALUE_TWO) {
+                $user_payment_type = get_from_post('user_payment_type_for_transfer_upload_challan');
+                if ($user_payment_type != VALUE_ONE && $user_payment_type != VALUE_TWO && $user_payment_type != VALUE_THREE) {
+                    echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                    return false;
+                }
+            }
             $transfer_data = array();
             if ($_FILES['fees_paid_challan_for_transfer_upload_challan']['name'] != '') {
                 $main_path = 'documents/transfer';
-                // if (!is_dir($main_path)) {
-                //     mkdir($main_path);
-                //     chmod("$main_path", 0755);
-                // }
-                $documents_path = 'documents';
-                if (!is_dir($documents_path)) {
-                    mkdir($documents_path);
-                    chmod($documents_path, 0777);
+                if (!is_dir($main_path)) {
+                    mkdir($main_path);
+                    chmod("$main_path", 0755);
                 }
-                $module_path = $documents_path . DIRECTORY_SEPARATOR . 'transfer';
-                if (!is_dir($module_path)) {
-                    mkdir($module_path);
-                    chmod($module_path, 0777);
-                }
+//                $documents_path = 'documents';
+//                if (!is_dir($documents_path)) {
+//                    mkdir($documents_path);
+//                    chmod($documents_path, 0777);
+//                }
+//                $module_path = $documents_path . DIRECTORY_SEPARATOR . 'transfer';
+//                if (!is_dir($module_path)) {
+//                    mkdir($module_path);
+//                    chmod($module_path, 0777);
+//                }
                 $this->load->library('upload');
                 $temp_filename = str_replace('_', '', $_FILES['fees_paid_challan_for_transfer_upload_challan']['name']);
                 $filename = 'fees_paid_challan_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
@@ -551,6 +460,23 @@ class Transfer extends CI_Controller {
                 $transfer_data['fees_paid_challan'] = $filename;
                 $transfer_data['fees_paid_challan_updated_date'] = date('Y-m-d H:i:s');
             }
+            if ($ex_em_data['payment_type'] == VALUE_TWO) {
+                $transfer_data['status'] = VALUE_FOUR;
+                if ($user_payment_type == VALUE_TWO) {
+                    $transfer_data['status'] = VALUE_EIGHT;
+                } else if ($user_payment_type == VALUE_THREE) {
+                    $transfer_data['status'] = VALUE_THREE;
+
+                    $enc_pg_data = $this->payment_lib->get_encrypted_details_for_pg($user_id, VALUE_TWELVE, $transfer_id, $ex_em_data['district'], $ex_em_data['total_fees'], $transfer_data);
+                    if ($enc_pg_data['success'] == false) {
+                        echo json_encode(get_error_array($enc_pg_data['message']));
+                        return;
+                    }
+                }
+                $transfer_data['user_payment_type'] = $user_payment_type;
+            } else {
+                $transfer_data['user_payment_type'] = VALUE_ZERO;
+            }
             $transfer_data['updated_by'] = $user_id;
             $transfer_data['updated_time'] = date('Y-m-d H:i:s');
             $this->db->trans_start();
@@ -561,7 +487,15 @@ class Transfer extends CI_Controller {
                 return;
             }
             $success_array = get_success_array();
+            $success_array['status'] = isset($transfer_data['status']) ? $transfer_data['status'] : $ex_em_data['status'];
             $success_array['message'] = CHALLAN_UPLOADED_MESSAGE;
+            $success_array['payment_type'] = $ex_em_data['payment_type'];
+            $success_array['user_payment_type'] = $transfer_data['user_payment_type'];
+            if ($ex_em_data['payment_type'] == VALUE_TWO && $transfer_data['user_payment_type'] == VALUE_THREE) {
+                $success_array['op_mmptd'] = $enc_pg_data['op_mmptd'];
+                $success_array['op_enct'] = $enc_pg_data['op_enct'];
+                $success_array['op_mt'] = $enc_pg_data['op_mt'];
+            }
             echo json_encode($success_array);
         } catch (\Exception $e) {
             echo json_encode(get_error_array($e->getMessage()));
@@ -600,8 +534,64 @@ class Transfer extends CI_Controller {
         }
     }
 
+    function upload_transfer_document() {
+        try {
+            if (!is_ajax()) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
+            $session_user_id = get_from_session('temp_id_for_eodbsws');
+            $transfer_id = get_from_post('transfer_id');
+            $file_no = get_from_post('file_no');
+
+            if ($file_no == VALUE_ONE) {
+                $transfer_data = $this->utility_model->upload_document('request_letter_upload_for_transfer', 'transfer', 'request_letter_upload_', 'request_letter_upload');
+            }
+            if ($file_no == VALUE_TWO) {
+                $transfer_data = $this->utility_model->upload_document('project_report_upload_for_transfer', 'transfer', 'project_report_upload_', 'project_report_upload');
+            }
+            if ($file_no == VALUE_THREE) {
+                $transfer_data = $this->utility_model->upload_document('constitution_project_upload_for_transfer', 'transfer', 'constitution_project_upload_', 'constitution_project_upload');
+            }
+            if ($file_no == VALUE_FOUR) {
+                $transfer_data = $this->utility_model->upload_document('valid_authorization_upload_for_transfer', 'transfer', 'valid_authorization_upload_', 'valid_authorization_upload');
+            }
+            if ($file_no == VALUE_FIVE) {
+                $transfer_data = $this->utility_model->upload_document('sign_seal_for_transfer', 'transfer', 'sign_seal_', 'sign_seal');
+            }
+            if (!$transfer_data) {
+                return false;
+            }
+            $this->db->trans_start();
+            if (!$transfer_id) {
+                $transfer_data['user_id'] = $session_user_id;
+                $transfer_data['status'] = VALUE_ONE;
+                $transfer_data['created_by'] = $session_user_id;
+                $transfer_data['created_time'] = date('Y-m-d H:i:s');
+                $transfer_id = $this->utility_model->insert_data('transfer', $transfer_data);
+            } else {
+                $transfer_data['updated_by'] = $session_user_id;
+                $transfer_data['updated_time'] = date('Y-m-d H:i:s');
+                $this->utility_model->update_data('transfer_id', $transfer_id, 'transfer', $transfer_data);
+            }
+
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(array('success' => FALSE, 'message' => DATABASE_ERROR_MESSAGE));
+                return;
+            }
+            $success_array = get_success_array();
+            $success_array['transfer_data'] = $transfer_data;
+            $success_array['transfer_id'] = $transfer_id;
+            $success_array['file_no'] = $file_no;
+            echo json_encode($success_array);
+        } catch (\Exception $e) {
+            echo json_encode(get_error_array($e->getMessage()));
+            return false;
+        }
+    }
 }
 
 /*
- * EOF: ./application/controller/BOCW.php
+ * EOF: ./application/controller/Transfer.php
  */

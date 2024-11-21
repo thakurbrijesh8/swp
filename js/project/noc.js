@@ -99,15 +99,23 @@ Noc.listView = Backbone.View.extend({
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE) {
             rowData.show_form_one_btn = true;
         }
-        if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX) {
-            rowData.ADMIN_NOC_DOC_PATH = ADMIN_NOC_DOC_PATH;
-            rowData.show_download_upload_challan_btn = true;
+        if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
+                rowData.ADMIN_SHOP_DOC_PATH = ADMIN_SHOP_DOC_PATH;
+                rowData.show_download_upload_challan_btn = true;
+            }
         }
         if (rowData.status == VALUE_FIVE) {
             rowData.show_download_certificate_btn = true;
         }
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
+        }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         return nocActionTemplate(rowData);
     },
@@ -119,7 +127,8 @@ Noc.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_ELEVEN, data);
+            return regNoRenderer(VALUE_ELEVEN, data)
+                    + getFRContainer(VALUE_ELEVEN, data, full.rating, full.fr_datetime);
         };
         var that = this;
         Noc.router.navigate('noc');
@@ -133,6 +142,7 @@ Noc.listView = Backbone.View.extend({
             columns: [
                 {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
                 {data: 'noc_id', 'class': 'v-a-m text-center f-w-b', 'render': tempRegNoRenderer},
+                {data: 'entity_establishment_type', 'class': 'text-center', 'render': entityEstablishmentRenderer},
                 {data: 'name_of_applicant', 'class': 'text-center'},
                 {data: 'survey_no', 'class': 'text-center'},
                 {data: 'govt_industrial_estate_area', 'class': 'text-center'},
@@ -192,6 +202,7 @@ Noc.listView = Backbone.View.extend({
         $('#noc_form_and_datatable_container').html(nocFormTemplate(templateData));
         renderOptionsForTwoDimensionalArray(premisesStatusArray, 'premises_status');
         renderOptionsForTwoDimensionalArray(identityChoiceArray, 'identity_choice');
+        renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
         //renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(tempVillagesData, 'villages_for_noc_data', 'village_name', 'village_name', 'Village');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(tempVillagesData, 'villages_for_noc_data', 'village_id', 'village_name', 'Village');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor([], 'plot_no_for_noc_data', 'plot_no', 'plot_no', 'Plot No');
@@ -200,7 +211,7 @@ Noc.listView = Backbone.View.extend({
             $('#state').val(formData.state);
             $('#district').val(formData.district);
             $('#taluka').val(formData.taluka);
-
+            $('#entity_establishment_type').val(formData.entity_establishment_type);
             $('#villages_for_noc_data').val(formData.village == 0 ? '' : formData.village);
             var plotData = tempPlotData[formData.village] ? tempPlotData[formData.village] : [];
             renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(plotData, 'plot_no_for_noc_data', 'plot_id', 'plot_no', 'Plot No');
@@ -269,7 +280,7 @@ Noc.listView = Backbone.View.extend({
         } else if (formData.public_undertaking == IS_CHECKED_NO) {
             $('#public_undertaking_no').attr('checked', 'checked');
         }
-
+        generateSelect2();
         datePicker();
         startDateEndDateFunctionality('loan_from_date', 'to_date');
         $('#noc_form').find('input').keypress(function (e) {
@@ -351,13 +362,13 @@ Noc.listView = Backbone.View.extend({
         formData.VIEW_UPLODED_DOCUMENT = VIEW_UPLODED_DOCUMENT;
         // formData.loan_to_date = dateTo_DD_MM_YYYY(formData.loan_to_date);
         $('#noc_form_and_datatable_container').html(nocViewTemplate(formData));
-
+        renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombination(tempVillagesData, 'villages_for_noc_data', 'village_id', 'village_name', 'Village');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombination([], 'plot_no_for_noc_data', 'plot_no', 'plot_no', 'Plot No');
         $('#state').val(formData.state);
         $('#district').val(formData.district);
         $('#taluka').val(formData.taluka);
-
+        $('#entity_establishment_type').val(formData.entity_establishment_type);
         $('#villages_for_noc_data').val(formData.village == 0 ? '' : formData.village);
         var plotData = tempPlotData[formData.village] ? tempPlotData[formData.village] : [];
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombination(plotData, 'plot_no_for_noc_data', 'plot_id', 'plot_no', 'Plot No');
@@ -426,6 +437,9 @@ Noc.listView = Backbone.View.extend({
         if (!tempIdInSession || tempIdInSession == null) {
             loginPage();
             return false;
+        }
+        if (!nocData.entity_establishment_type) {
+            return getBasicMessageAndFieldJSONArray('entity_establishment_type', entityEstablishmentTypeValidationMessage);
         }
         if (!nocData.name_of_applicant) {
             return getBasicMessageAndFieldJSONArray('name_of_applicant', applicantNameValidationMessage);
@@ -818,14 +832,37 @@ Noc.listView = Backbone.View.extend({
     },
     showChallan: function (nocData) {
         showPopup();
-        if (nocData.status != VALUE_FIVE) {
-            nocData.show_fees_paid = true;
+        if (nocData.status != VALUE_FIVE && nocData.status != VALUE_SIX && nocData.status != VALUE_SEVEN && nocData.status != VALUE_ELEVEN) {
+            if (!nocData.hide_submit_btn) {
+                nocData.show_fees_paid = true;
+            }
         }
+        if (nocData.payment_type == VALUE_ONE) {
+            nocData.utitle = 'Fees Paid Challan Copy';
+        } else {
+            nocData.style = 'display: none;';
+        }
+        if (nocData.payment_type == VALUE_TWO) {
+            nocData.show_dd_po_option = true;
+            nocData.utitle = 'Demand Draft (DD)';
+        }
+        nocData.module_type = VALUE_ELEVEN;
         $('#popup_container').html(nocUploadChallanTemplate(nocData));
+        loadFB(VALUE_ELEVEN, nocData.fb_data);
+        loadPH(VALUE_ELEVEN, nocData.noc_id, nocData.ph_data);
+
+        if (nocData.payment_type == VALUE_TWO) {
+            generateBoxes('radio', userPaymentTypeArray, 'user_payment_type', 'noc_upload_challan', nocData.user_payment_type, true);
+            showSubContainerForPaymentDetails('user_payment_type', 'noc_upload_challan', 'uc', 'radio');
+            if (nocData.user_payment_type == VALUE_ZERO) {
+                $('input[name=user_payment_type_for_noc_upload_challan][value="' + VALUE_ONE + '"]').click();
+            }
+        }
+
         if (nocData.challan != '') {
             $('#challan_container_for_noc_upload_challan').hide();
             $('#challan_name_container_for_noc_upload_challan').show();
-            $('#challan_name_href_for_noc_upload_challan').attr('href', 'documents/noc/' + nocData.challan);
+            $('#challan_name_href_for_noc_upload_challan').attr('href', ADMIN_NOC_DOC_PATH + nocData.challan);
             $('#challan_name_for_noc_upload_challan').html(nocData.challan);
         }
         if (nocData.fees_paid_challan != '') {
@@ -953,7 +990,12 @@ Noc.listView = Backbone.View.extend({
                     return false;
                 }
                 Swal.close();
-                $('#status_' + nocId).html(appStatusArray[VALUE_FOUR]);
+                $('#status_' + nocId).html(appStatusArray[parseData.status]);
+                if (parseData.payment_type == VALUE_TWO && parseData.user_payment_type == VALUE_THREE) {
+                    openFullPageOverlay();
+                    submitPG(parseData);
+                    return false;
+                }
                 showSuccess(parseData.message);
             }
         });
@@ -1027,5 +1069,121 @@ Noc.listView = Backbone.View.extend({
                 loadQueryManagementModule(parseData, templateData, tmpData);
             }
         });
-    }
+    },
+    uploadDocumentForNoc: function (fileNo) {
+        var that = this;
+        if ($('#reason_of_loan_doc_for_noc').val() != '') {
+            var reasonOfLoanDocument = checkValidationForDocument('reason_of_loan_doc_for_noc', VALUE_ONE, 'noc', 10240);
+            if (reasonOfLoanDocument == false) {
+                return false;
+            }
+        }
+        if ($('#request_letter_doc_for_noc').val() != '') {
+            var requestLetterDocument = checkValidationForDocument('request_letter_doc_for_noc', VALUE_ONE, 'noc', 10240);
+            if (requestLetterDocument == false) {
+                return false;
+            }
+        }
+        if ($('#behalf_of_lessee_doc_for_noc').val() != '') {
+            var behalfOfLesseeDocument = checkValidationForDocument('behalf_of_lessee_doc_for_noc', VALUE_ONE, 'noc', 10240);
+            if (behalfOfLesseeDocument == false) {
+                return false;
+            }
+        }
+        if ($('#public_undertaking_doc_for_noc').val() != '') {
+            var publicUndertakingDocument = checkValidationForDocument('public_undertaking_doc_for_noc', VALUE_ONE, 'noc', 10240);
+            if (publicUndertakingDocument == false) {
+                return false;
+            }
+        }
+        if ($('#seal_and_stamp_for_noc').val() != '') {
+            var sealAndStamp = checkValidationForDocument('seal_and_stamp_for_noc', VALUE_TWO, 'noc', 10240);
+            if (sealAndStamp == false) {
+                return false;
+            }
+        }
+
+        $('.spinner_container_for_noc_' + fileNo).hide();
+        $('.spinner_name_container_for_noc_' + fileNo).hide();
+        $('#spinner_template_' + fileNo).show();
+        openFullPageOverlay();
+        var nocId = $('#noc_id').val();
+        var formData = new FormData($('#noc_form')[0]);
+        formData.append("csrf_token_eodbsws", getTokenData()['csrf_token_eodbsws']);
+        formData.append("file_no", fileNo);
+        formData.append("noc_id", nocId);
+        $.ajax({
+            type: 'POST',
+            url: 'noc/upload_noc_document',
+            data: formData,
+            mimeType: "multipart/form-data",
+            contentType: false,
+            cache: false,
+            processData: false,
+            error: function (textStatus, errorThrown) {
+                generateNewCSRFToken();
+                if (textStatus.status === 403) {
+                    loginPage();
+                    return false;
+                }
+                if (!textStatus.statusText) {
+                    loginPage();
+                    return false;
+                }
+                $('#spinner_template_' + fileNo).hide();
+                $('.spinner_container_for_noc_' + fileNo).show();
+                $('.spinner_name_container_for_noc_' + fileNo).hide();
+                closeFullPageOverlay();
+                showError(textStatus.statusText);
+            },
+            success: function (data) {
+                closeFullPageOverlay();
+                if (!isJSON(data)) {
+                    loginPage();
+                    return false;
+                }
+                var parseData = JSON.parse(data);
+                setNewToken(parseData.temp_token);
+                if (parseData.success == false) {
+                    $('#spinner_template_' + fileNo).hide();
+                    $('.spinner_container_for_noc_' + fileNo).show();
+                    $('.spinner_name_container_for_noc_' + fileNo).hide();
+                    showError(parseData.message);
+                    return false;
+                }
+                $('#spinner_template_' + fileNo).hide();
+                $('.spinner_container_for_noc_' + fileNo).hide();
+                $('.spinner_name_container_for_noc_' + fileNo).show();
+                $('#noc_id').val(parseData.noc_id);
+                var nocData = parseData.noc_data;
+                if (parseData.file_no == VALUE_ONE) {
+                    that.showDocument('reason_of_loan_doc_container_for_noc', 'reason_of_loan_doc_name_image', 'reason_of_loan_doc_name_container_for_noc',
+                            'reason_of_loan_doc_name_download', 'reason_of_loan_doc_remove_btn', nocData.reason_of_loan_doc, parseData.noc_id, VALUE_ONE);
+                }
+                if (parseData.file_no == VALUE_TWO) {
+                    that.showDocument('request_letter_doc_container_for_noc', 'request_letter_doc_name_image', 'request_letter_doc_name_container_for_noc',
+                            'request_letter_doc_name_download', 'request_letter_doc_remove_btn', nocData.request_letter_doc, parseData.noc_id, VALUE_TWO);
+                }
+                if (parseData.file_no == VALUE_THREE) {
+                    that.showDocument('behalf_of_lessee_doc_container_for_noc', 'behalf_of_lessee_doc_name_image', 'behalf_of_lessee_doc_name_container_for_noc',
+                            'behalf_of_lessee_doc_name_download', 'behalf_of_lessee_doc_remove_btn', nocData.behalf_of_lessee_doc, parseData.noc_id, VALUE_THREE);
+                }
+                if (parseData.file_no == VALUE_FOUR) {
+                    that.showDocument('public_undertaking_doc_container_for_noc', 'public_undertaking_doc_name_image', 'public_undertaking_doc_name_container_for_noc',
+                            'public_undertaking_doc_name_download', 'public_undertaking_doc_remove_btn', nocData.public_undertaking_doc, parseData.noc_id, VALUE_FOUR);
+                }
+                if (parseData.file_no == VALUE_FIVE) {
+                    that.showDocument('seal_and_stamp_container_for_noc', 'seal_and_stamp_name_image_for_noc', 'seal_and_stamp_name_container_for_noc',
+                            'seal_and_stamp_download', 'seal_and_stamp_remove_btn', nocData.signature, parseData.noc_id, VALUE_FIVE);
+                }
+            }
+        });
+    },
+    showDocument: function (containerHideId, documentSrcPathId, containerShowId, documenthrefPathId, removeDocumentBtnId, dbDocumentFieldName, dbDocumentFieldId, VALUE) {
+        $('#' + containerHideId).hide();
+        $('#' + documentSrcPathId).attr('src', baseUrl + 'documents/noc/' + dbDocumentFieldName);
+        $('#' + containerShowId).show();
+        $('#' + documenthrefPathId).attr("href", baseUrl + 'documents/noc/' + dbDocumentFieldName);
+        $('#' + removeDocumentBtnId).attr('onclick', 'Noc.listview.askForRemove("' + dbDocumentFieldId + '","' + VALUE + '")');
+    },
 });

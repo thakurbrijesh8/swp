@@ -101,9 +101,11 @@ Transfer.listView = Backbone.View.extend({
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE) {
             rowData.show_form_one_btn = true;
         }
-        if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX) {
-            rowData.ADMIN_TRANSFER_DOC_PATH = ADMIN_TRANSFER_DOC_PATH;
-            rowData.show_download_upload_challan_btn = true;
+        if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
+                rowData.ADMIN_TRANSFER_DOC_PATH = ADMIN_TRANSFER_DOC_PATH;
+                rowData.show_download_upload_challan_btn = true;
+            }
         }
         if (rowData.status == VALUE_FIVE) {
             rowData.show_download_certificate_btn = true;
@@ -111,17 +113,25 @@ Transfer.listView = Backbone.View.extend({
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
         }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
+        }
         return transferActionTemplate(rowData);
     },
     loadTransferData: function (sDistrict, sStatus) {
         if (!tempIdInSession || tempIdInSession == null) {
             loginPage();
+
             return false;
         }
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_TWELVE, data);
+            return regNoRenderer(VALUE_TWELVE, data)
+                    + getFRContainer(VALUE_TWELVE, data, full.rating, full.fr_datetime);
         };
         var that = this;
         Transfer.router.navigate('transfer');
@@ -135,6 +145,7 @@ Transfer.listView = Backbone.View.extend({
             columns: [
                 {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
                 {data: 'transfer_id', 'class': 'v-a-m text-center f-w-b', 'render': tempRegNoRenderer},
+                {data: 'entity_establishment_type', 'class': 'text-center', 'render': entityEstablishmentRenderer},
                 {data: 'name_of_applicant', 'class': 'text-center'},
                 {data: 'survey_no', 'class': 'text-center'},
                 {data: 'transferer_name', 'class': 'text-center'},
@@ -193,7 +204,7 @@ Transfer.listView = Backbone.View.extend({
         $('#transfer_form_and_datatable_container').html(transferFormTemplate((templateData)));
         renderOptionsForTwoDimensionalArray(premisesStatusArray, 'premises_status');
         renderOptionsForTwoDimensionalArray(identityChoiceArray, 'identity_choice');
-
+        renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
 
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(tempVillagesData, 'villages_for_noc_data', 'village_id', 'village_name', 'Village');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor([], 'plot_no_for_transfer_data', 'plot_no', 'plot_no', 'Plot No');
@@ -204,7 +215,7 @@ Transfer.listView = Backbone.View.extend({
             $('#district').val(formData.district);
             $('#taluka').val(formData.taluka);
             // $('#villages_for_transfer_data').val(formData.village);
-
+            $('#entity_establishment_type').val(formData.entity_establishment_type);
             $('#villages_for_noc_data').val(formData.village == 0 ? '' : formData.village);
             var plotData = tempPlotData[formData.village] ? tempPlotData[formData.village] : [];
 
@@ -268,6 +279,7 @@ Transfer.listView = Backbone.View.extend({
 
 
         }
+        generateSelect2();
         datePicker();
         $('#transfer_form').find('input').keypress(function (e) {
             if (e.which == 13) {
@@ -346,6 +358,7 @@ Transfer.listView = Backbone.View.extend({
         formData.application_date = dateTo_DD_MM_YYYY(formData.application_date);
 
         $('#transfer_form_and_datatable_container').html(transferViewTemplate(formData));
+        renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
         renderOptionsForTwoDimensionalArray(premisesStatusArray, 'premises_status');
         renderOptionsForTwoDimensionalArray(identityChoiceArray, 'identity_choice');
 
@@ -356,7 +369,7 @@ Transfer.listView = Backbone.View.extend({
         $('#taluka').val(formData.taluka);
         $('#declarationone').attr('checked', 'checked');
         // $('#villages_for_transfer_data').val(formData.village);
-
+        $('#entity_establishment_type').val(formData.entity_establishment_type);
         $('#villages_for_noc_data').val(formData.village == 0 ? '' : formData.village);
         var plotData = tempPlotData[formData.village] ? tempPlotData[formData.village] : [];
 
@@ -423,6 +436,9 @@ Transfer.listView = Backbone.View.extend({
         if (!tempIdInSession || tempIdInSession == null) {
             loginPage();
             return false;
+        }
+        if (!transferData.entity_establishment_type) {
+            return getBasicMessageAndFieldJSONArray('entity_establishment_type', entityEstablishmentTypeValidationMessage);
         }
         if (!transferData.name_of_applicant) {
             return getBasicMessageAndFieldJSONArray('name_of_applicant', applicantNameValidationMessage);
@@ -680,7 +696,7 @@ Transfer.listView = Backbone.View.extend({
         });
     },
 
-    askForRemove: function (transferId, docType, tableName) {
+    askForRemove: function (transferId, docType) {
         if (!tempIdInSession || tempIdInSession == null) {
             loginPage();
             return false;
@@ -690,10 +706,10 @@ Transfer.listView = Backbone.View.extend({
             showError(invalidAccessValidationMessage);
             return false;
         }
-        var yesEvent = 'Transfer.listview.removeDocument(\'' + transferId + '\',\'' + docType + '\',\'' + tableName + '\')';
+        var yesEvent = 'Transfer.listview.removeDocument(\'' + transferId + '\',\'' + docType + '\')';
         showConfirmation(yesEvent, 'Remove');
     },
-    removeDocument: function (transferId, docId, tableName) {
+    removeDocument: function (transferId, docType) {
         if (!tempIdInSession || tempIdInSession == null) {
             loginPage();
             return false;
@@ -706,7 +722,7 @@ Transfer.listView = Backbone.View.extend({
         $.ajax({
             type: 'POST',
             url: 'transfer/remove_document',
-            data: $.extend({}, {'transfer_id': transferId, 'document_id': docId, 'table_name': tableName}, getTokenData()),
+            data: $.extend({}, {'transfer_id': transferId, 'document_type': docType}, getTokenData()),
             error: function (textStatus, errorThrown) {
                 generateNewCSRFToken();
                 if (textStatus.status === 403) {
@@ -733,8 +749,36 @@ Transfer.listView = Backbone.View.extend({
                     return false;
                 }
                 showSuccess(parseData.message);
-                removeDocument(docId, 'transfer');
-
+                if (docType == VALUE_ONE) {
+                    $('#request_letter_upload_name_container_for_transfer').hide();
+                    $('#request_letter_upload_name_image_for_transfer').attr('src', '');
+                    $('#request_letter_upload_container_for_transfer').show();
+                    $('#request_letter_upload_for_transfer').val('');
+                }
+                if (docType == VALUE_TWO) {
+                    $('#project_report_upload_name_container_for_transfer').hide();
+                    $('#project_report_upload_name_image_for_transfer').attr('src', '');
+                    $('#project_report_upload_container_for_transfer').show();
+                    $('#project_report_upload_for_transfer').val('');
+                }
+                if (docType == VALUE_THREE) {
+                    $('#constitution_project_upload_name_container_for_transfer').hide();
+                    $('#constitution_project_upload_name_image_for_transfer').attr('src', '');
+                    $('#constitution_project_upload_container_for_transfer').show();
+                    $('#constitution_project_upload_for_transfer').val('');
+                }
+                if (docType == VALUE_FOUR) {
+                    $('#valid_authorization_upload_name_container_for_transfer').hide();
+                    $('#valid_authorization_upload_name_image_for_transfer').attr('src', '');
+                    $('#valid_authorization_upload_container_for_transfer').show();
+                    $('#valid_authorization_upload_for_transfer').val('');
+                }
+                if (docType == VALUE_FIVE) {
+                    $('#sign_seal_name_container_for_transfer').hide();
+                    $('#sign_seal_name_image_for_transfer').attr('src', '');
+                    $('#sign_seal_container_for_transfer').show();
+                    $('#sign_seal_for_transfer').val('');
+                }
 
             }
         });
@@ -810,10 +854,33 @@ Transfer.listView = Backbone.View.extend({
     },
     showChallan: function (transferData) {
         showPopup();
-        if (transferData.status != VALUE_FIVE) {
-            transferData.show_fees_paid = true;
+        if (transferData.status != VALUE_FIVE && transferData.status != VALUE_SIX && transferData.status != VALUE_SEVEN && transferData.status != VALUE_ELEVEN) {
+            if (!transferData.hide_submit_btn) {
+                transferData.show_fees_paid = true;
+            }
         }
+        if (transferData.payment_type == VALUE_ONE) {
+            transferData.utitle = 'Fees Paid Challan Copy';
+        } else {
+            transferData.style = 'display: none;';
+        }
+        if (transferData.payment_type == VALUE_TWO) {
+            transferData.show_dd_po_option = true;
+            transferData.utitle = 'Demand Draft (DD)';
+        }
+        transferData.module_type = VALUE_TWELVE;
         $('#popup_container').html(transferUploadChallanTemplate(transferData));
+        loadFB(VALUE_TWELVE, transferData.fb_data);
+        loadPH(VALUE_TWELVE, transferData.transfer_id, transferData.ph_data);
+        if (transferData.payment_type == VALUE_TWO) {
+
+            generateBoxes('radio', userPaymentTypeArray, 'user_payment_type', 'transfer_upload_challan', transferData.user_payment_type, true);
+            showSubContainerForPaymentDetails('user_payment_type', 'transfer_upload_challan', 'uc', 'radio');
+            if (transferData.user_payment_type == VALUE_ZERO) {
+                $('input[name=user_payment_type_for_transfer_upload_challan][value="' + VALUE_ONE + '"]').click();
+            }
+        }
+
         if (transferData.challan != '') {
             $('#challan_container_for_transfer_upload_challan').hide();
             $('#challan_name_container_for_transfer_upload_challan').show();
@@ -945,7 +1012,12 @@ Transfer.listView = Backbone.View.extend({
                     return false;
                 }
                 Swal.close();
-                $('#status_' + transferId).html(appStatusArray[VALUE_FOUR]);
+                $('#status_' + transferId).html(appStatusArray[parseData.status]);
+                if (parseData.payment_type == VALUE_TWO && parseData.user_payment_type == VALUE_THREE) {
+                    openFullPageOverlay();
+                    submitPG(parseData);
+                    return false;
+                }
                 showSuccess(parseData.message);
             }
         });
@@ -1019,5 +1091,121 @@ Transfer.listView = Backbone.View.extend({
                 loadQueryManagementModule(parseData, templateData, tmpData);
             }
         });
-    }
+    },
+    uploadDocumentForTransfer: function (fileNo) {
+        var that = this;
+        if ($('#request_letter_upload_for_transfer').val() != '') {
+            var requestLetterUploadDocument = checkValidationForDocument('request_letter_upload_for_transfer', VALUE_ONE, 'transfer', 10240);
+            if (requestLetterUploadDocument == false) {
+                return false;
+            }
+        }
+        if ($('#project_report_upload_for_transfer').val() != '') {
+            var projectReportUploadDocument = checkValidationForDocument('project_report_upload_for_transfer', VALUE_ONE, 'transfer', 10240);
+            if (projectReportUploadDocument == false) {
+                return false;
+            }
+        }
+        if ($('#constitution_project_upload_for_transfer').val() != '') {
+            var constitutionProjectUploadDocument = checkValidationForDocument('constitution_project_upload_for_transfer', VALUE_ONE, 'transfer', 10240);
+            if (constitutionProjectUploadDocument == false) {
+                return false;
+            }
+        }
+        if ($('#valid_authorization_upload_for_transfer').val() != '') {
+            var validAuthorizationUploadDocument = checkValidationForDocument('valid_authorization_upload_for_transfer', VALUE_ONE, 'transfer', 10240);
+            if (validAuthorizationUploadDocument == false) {
+                return false;
+            }
+        }
+        if ($('#sign_seal_for_transfer').val() != '') {
+            var sealAndStamp = checkValidationForDocument('sign_seal_for_transfer', VALUE_TWO, 'transfer', 10240);
+            if (sealAndStamp == false) {
+                return false;
+            }
+        }
+
+        $('.spinner_container_for_transfer_' + fileNo).hide();
+        $('.spinner_name_container_for_transfer_' + fileNo).hide();
+        $('#spinner_template_' + fileNo).show();
+        openFullPageOverlay();
+        var transferId = $('#transfer_id').val();
+        var formData = new FormData($('#transfer_form')[0]);
+        formData.append("csrf_token_eodbsws", getTokenData()['csrf_token_eodbsws']);
+        formData.append("file_no", fileNo);
+        formData.append("transfer_id", transferId);
+        $.ajax({
+            type: 'POST',
+            url: 'transfer/upload_transfer_document',
+            data: formData,
+            mimeType: "multipart/form-data",
+            contentType: false,
+            cache: false,
+            processData: false,
+            error: function (textStatus, errorThrown) {
+                generateNewCSRFToken();
+                if (textStatus.status === 403) {
+                    loginPage();
+                    return false;
+                }
+                if (!textStatus.statusText) {
+                    loginPage();
+                    return false;
+                }
+                $('#spinner_template_' + fileNo).hide();
+                $('.spinner_container_for_transfer_' + fileNo).show();
+                $('.spinner_name_container_for_transfer_' + fileNo).hide();
+                closeFullPageOverlay();
+                showError(textStatus.statusText);
+            },
+            success: function (data) {
+                closeFullPageOverlay();
+                if (!isJSON(data)) {
+                    loginPage();
+                    return false;
+                }
+                var parseData = JSON.parse(data);
+                setNewToken(parseData.temp_token);
+                if (parseData.success == false) {
+                    $('#spinner_template_' + fileNo).hide();
+                    $('.spinner_container_for_transfer_' + fileNo).show();
+                    $('.spinner_name_container_for_transfer_' + fileNo).hide();
+                    showError(parseData.message);
+                    return false;
+                }
+                $('#spinner_template_' + fileNo).hide();
+                $('.spinner_container_for_transfer_' + fileNo).hide();
+                $('.spinner_name_container_for_transfer_' + fileNo).show();
+                $('#transfer_id').val(parseData.transfer_id);
+                var transferData = parseData.transfer_data;
+                if (parseData.file_no == VALUE_ONE) {
+                    that.showDocument('request_letter_upload_container_for_transfer', 'request_letter_upload_name_image_for_transfer', 'request_letter_upload_name_container_for_transfer',
+                            'request_letter_upload_name_image_for_transfer_download', 'request_letter_upload_remove_btn', transferData.request_letter_upload, parseData.transfer_id, VALUE_ONE);
+                }
+                if (parseData.file_no == VALUE_TWO) {
+                    that.showDocument('project_report_upload_container_for_transfer', 'project_report_upload_name_image_for_transfer', 'project_report_upload_name_container_for_transfer',
+                            'project_report_upload_name_image_for_transfer_download', 'project_report_upload_remove_btn', transferData.project_report_upload, parseData.transfer_id, VALUE_TWO);
+                }
+                if (parseData.file_no == VALUE_THREE) {
+                    that.showDocument('constitution_project_upload_container_for_transfer', 'constitution_project_upload_name_image_for_transfer', 'constitution_project_upload_name_container_for_transfer',
+                            'constitution_project_upload_name_image_for_transfer_download', 'constitution_project_upload_remove_btn', transferData.constitution_project_upload, parseData.transfer_id, VALUE_THREE);
+                }
+                if (parseData.file_no == VALUE_FOUR) {
+                    that.showDocument('valid_authorization_upload_container_for_transfer', 'valid_authorization_upload_name_image_for_transfer', 'valid_authorization_upload_name_container_for_transfer',
+                            'valid_authorization_upload_name_image_for_transfer_download', 'valid_authorization_upload_remove_btn', transferData.valid_authorization_upload, parseData.transfer_id, VALUE_FOUR);
+                }
+                if (parseData.file_no == VALUE_FIVE) {
+                    that.showDocument('sign_seal_container_for_transfer', 'sign_seal_name_image_for_transfer', 'sign_seal_name_container_for_transfer',
+                            'seal_and_stamp_download', 'seal_and_stamp_remove_btn', transferData.sign_seal, parseData.transfer_id, VALUE_FIVE);
+                }
+            }
+        });
+    },
+    showDocument: function (containerHideId, documentSrcPathId, containerShowId, documenthrefPathId, removeDocumentBtnId, dbDocumentFieldName, dbDocumentFieldId, VALUE) {
+        $('#' + containerHideId).hide();
+        $('#' + documentSrcPathId).attr('src', baseUrl + 'documents/transfer/' + dbDocumentFieldName);
+        $('#' + containerShowId).show();
+        $('#' + documenthrefPathId).attr("href", baseUrl + 'documents/transfer/' + dbDocumentFieldName);
+        $('#' + removeDocumentBtnId).attr('onclick', 'Transfer.listview.askForRemove("' + dbDocumentFieldId + '","' + VALUE + '")');
+    },
 });

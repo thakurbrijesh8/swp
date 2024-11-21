@@ -96,329 +96,6 @@ class Seller extends CI_Controller {
                 return false;
             }
 
-            if ($seller_data['request_letter_reason'] == IS_CHECKED_YES) {
-                if ($_FILES['request_letter_reason_doc_for_seller']['name'] != '') {
-                    $main_path = 'documents/seller';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'seller';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['request_letter_reason_doc_for_seller']['name']);
-                    $filename = 'seller_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['request_letter_reason_doc_for_seller']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $seller_data['request_letter_reason_doc'] = $filename;
-                }
-            }
-
-            if ($seller_data['original_extract'] == IS_CHECKED_YES) {
-                if ($_FILES['original_extract_doc_for_seller']['name'] != '') {
-                    $main_path = 'documents/seller';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'seller';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['original_extract_doc_for_seller']['name']);
-                    $filename = 'seller_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['original_extract_doc_for_seller']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $seller_data['original_extract_doc'] = $filename;
-                }
-            }
-
-            if ($seller_data['nodue_from_mamlatdar'] == IS_CHECKED_YES) {
-                if ($_FILES['nodue_from_mamlatdar_doc_for_seller']['name'] != '') {
-                    $main_path = 'documents/seller';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'seller';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['nodue_from_mamlatdar_doc_for_seller']['name']);
-                    $filename = 'seller_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['nodue_from_mamlatdar_doc_for_seller']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $seller_data['nodue_from_mamlatdar_doc'] = $filename;
-                }
-            }
-
-            if ($seller_data['nodue_from_electricity'] == IS_CHECKED_YES) {
-                if ($_FILES['nodue_from_electricity_doc_for_seller']['name'] != '') {
-                    $main_path = 'documents/seller';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'seller';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['nodue_from_electricity_doc_for_seller']['name']);
-                    $filename = 'seller_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['nodue_from_electricity_doc_for_seller']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $seller_data['nodue_from_electricity_doc'] = $filename;
-                }
-            }
-
-            if ($seller_data['nodue_from_bank'] == IS_CHECKED_YES) {
-                if ($_FILES['nodue_from_bank_doc_for_seller']['name'] != '') {
-                    $main_path = 'documents/seller';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'seller';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['nodue_from_bank_doc_for_seller']['name']);
-                    $filename = 'seller_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['nodue_from_bank_doc_for_seller']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $seller_data['nodue_from_bank_doc'] = $filename;
-                }
-            }
-            if ($seller_data['nodues_from_grampanchayat'] == IS_CHECKED_YES) {
-                if ($_FILES['nodues_from_grampanchayat_doc_for_seller']['name'] != '') {
-                    $main_path = 'documents/seller';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'seller';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['nodues_from_grampanchayat_doc_for_seller']['name']);
-                    $filename = 'seller_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['nodues_from_grampanchayat_doc_for_seller']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $seller_data['nodues_from_grampanchayat_doc'] = $filename;
-                }
-            }
-            if ($seller_data['challan_of_lease'] == IS_CHECKED_YES) {
-                if ($_FILES['challan_of_lease_doc_for_seller']['name'] != '') {
-                    $main_path = 'documents/seller';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'seller';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['challan_of_lease_doc_for_seller']['name']);
-                    $filename = 'seller_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['challan_of_lease_doc_for_seller']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $seller_data['challan_of_lease_doc'] = $filename;
-                }
-            }
-            if ($seller_data['occupancy_certy'] == IS_CHECKED_YES) {
-                if ($_FILES['occupancy_certy_doc_for_seller']['name'] != '') {
-                    $main_path = 'documents/seller';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'seller';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['occupancy_certy_doc_for_seller']['name']);
-                    $filename = 'seller_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['occupancy_certy_doc_for_seller']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $seller_data['occupancy_certy_doc'] = $filename;
-                }
-            }
-            if ($seller_data['nodue_from_excise'] == IS_CHECKED_YES) {
-                if ($_FILES['nodue_from_excise_doc_for_seller']['name'] != '') {
-                    $main_path = 'documents/seller';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'seller';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['nodue_from_excise_doc_for_seller']['name']);
-                    $filename = 'seller_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['nodue_from_excise_doc_for_seller']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $seller_data['nodue_from_excise_doc'] = $filename;
-                }
-            }
-            if ($seller_data['sign_behalf_lessee'] == IS_CHECKED_YES) {
-                if ($_FILES['sign_behalf_lessee_doc_for_seller']['name'] != '') {
-                    $main_path = 'documents/seller';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'seller';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['sign_behalf_lessee_doc_for_seller']['name']);
-                    $filename = 'seller_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['sign_behalf_lessee_doc_for_seller']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $seller_data['sign_behalf_lessee_doc'] = $filename;
-                }
-            }
-
-            if ($_FILES['seal_and_stamp_for_seller']['name'] != '') {
-                $main_path = 'documents/seller';
-                // if (!is_dir($main_path)) {
-                //     mkdir($main_path);
-                //     chmod("$main_path", 0755);
-                // }
-                $documents_path = 'documents';
-                if (!is_dir($documents_path)) {
-                    mkdir($documents_path);
-                    chmod($documents_path, 0777);
-                }
-                $module_path = $documents_path . DIRECTORY_SEPARATOR . 'seller';
-                if (!is_dir($module_path)) {
-                    mkdir($module_path);
-                    chmod($module_path, 0777);
-                }
-                $this->load->library('upload');
-                $temp_filename = str_replace('_', '', $_FILES['seal_and_stamp_for_seller']['name']);
-                $filename = 'seller_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                //Change file name
-                $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                if (!move_uploaded_file($_FILES['seal_and_stamp_for_seller']['tmp_name'], $final_path)) {
-                    echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                    return;
-                }
-                $seller_data['signature'] = $filename;
-            }
-
             $this->db->trans_start();
 
             // $seller_data['proprietor_details'] = $proprietorData;
@@ -461,12 +138,13 @@ class Seller extends CI_Controller {
 
     function _get_post_data_for_seller() {
         $seller_data = array();
+        $seller_data['entity_establishment_type'] = get_from_post('entity_establishment_type');
         $seller_data['name_of_applicant'] = get_from_post('name_of_applicant');
         $seller_data['application_date'] = get_from_post('application_date');
         $seller_data['state'] = get_from_post('state');
         $seller_data['district'] = get_from_post('district');
         $seller_data['taluka'] = get_from_post('taluka');
-        $seller_data['village'] = get_from_post('villages_for_noc_data');
+        $seller_data['village'] = get_from_post('villages_for_seller_data');
         $seller_data['plot_no'] = get_from_post('plot_no_for_seller_data');
         $seller_data['survey_no'] = get_from_post('survey_no');
         $seller_data['govt_industrial_estate_area'] = get_from_post('govt_industrial_estate_area');
@@ -492,6 +170,9 @@ class Seller extends CI_Controller {
     }
 
     function _check_validation_for_seller($seller_data) {
+        if (!$seller_data['entity_establishment_type']) {
+            return ENTITY_ESTABLISHMENT_TYPE_MESSAGE;
+        }
         if (!$seller_data['name_of_applicant']) {
             return APPLICANT_NAME_MESSAGE;
         }
@@ -707,6 +388,13 @@ class Seller extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            $this->payment_lib->get_payment_history_data($session_user_id, VALUE_EIGHTEEN, $seller_id, $seller_data);
+            $seller_data['fb_data'] = $this->utility_model->get_result_data_by_id('module_type', VALUE_EIGHTEEN, 'fees_bifurcation', 'module_id', $seller_id);
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
+                return;
+            }
             $success_array = get_success_array();
             $success_array['seller_data'] = $seller_data;
             echo json_encode($success_array);
@@ -765,23 +453,39 @@ class Seller extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            $ex_em_data = $this->utility_model->get_by_id('seller_id', $seller_id, 'lease_seller');
+            if (empty($ex_em_data)) {
+                echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+            if ($ex_em_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
+            if ($ex_em_data['payment_type'] == VALUE_TWO) {
+                $user_payment_type = get_from_post('user_payment_type_for_seller_upload_challan');
+                if ($user_payment_type != VALUE_ONE && $user_payment_type != VALUE_TWO && $user_payment_type != VALUE_THREE) {
+                    echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                    return false;
+                }
+            }
             $seller_data = array();
             if ($_FILES['fees_paid_challan_for_seller_upload_challan']['name'] != '') {
                 $main_path = 'documents/seller';
-                // if (!is_dir($main_path)) {
-                //     mkdir($main_path);
-                //     chmod("$main_path", 0755);
-                // }
-                $documents_path = 'documents';
-                if (!is_dir($documents_path)) {
-                    mkdir($documents_path);
-                    chmod($documents_path, 0777);
+                if (!is_dir($main_path)) {
+                    mkdir($main_path);
+                    chmod("$main_path", 0755);
                 }
-                $module_path = $documents_path . DIRECTORY_SEPARATOR . 'seller';
-                if (!is_dir($module_path)) {
-                    mkdir($module_path);
-                    chmod($module_path, 0777);
-                }
+//                $documents_path = 'documents';
+//                if (!is_dir($documents_path)) {
+//                    mkdir($documents_path);
+//                    chmod($documents_path, 0777);
+//                }
+//                $module_path = $documents_path . DIRECTORY_SEPARATOR . 'seller';
+//                if (!is_dir($module_path)) {
+//                    mkdir($module_path);
+//                    chmod($module_path, 0777);
+//                }
                 $this->load->library('upload');
                 $temp_filename = str_replace('_', '', $_FILES['fees_paid_challan_for_seller_upload_challan']['name']);
                 $filename = 'fees_paid_challan_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
@@ -795,6 +499,23 @@ class Seller extends CI_Controller {
                 $seller_data['fees_paid_challan'] = $filename;
                 $seller_data['fees_paid_challan_updated_date'] = date('Y-m-d H:i:s');
             }
+            if ($ex_em_data['payment_type'] == VALUE_TWO) {
+                $seller_data['status'] = VALUE_FOUR;
+                if ($user_payment_type == VALUE_TWO) {
+                    $seller_data['status'] = VALUE_EIGHT;
+                } else if ($user_payment_type == VALUE_THREE) {
+                    $seller_data['status'] = VALUE_THREE;
+
+                    $enc_pg_data = $this->payment_lib->get_encrypted_details_for_pg($user_id, VALUE_ELEVEN, $seller_id, $ex_em_data['district'], $ex_em_data['total_fees'], $seller_data);
+                    if ($enc_pg_data['success'] == false) {
+                        echo json_encode(get_error_array($enc_pg_data['message']));
+                        return;
+                    }
+                }
+                $seller_data['user_payment_type'] = $user_payment_type;
+            } else {
+                $seller_data['user_payment_type'] = VALUE_ZERO;
+            }
             $seller_data['updated_by'] = $user_id;
             $seller_data['updated_time'] = date('Y-m-d H:i:s');
             $this->db->trans_start();
@@ -805,7 +526,15 @@ class Seller extends CI_Controller {
                 return;
             }
             $success_array = get_success_array();
+            $success_array['status'] = isset($seller_data['status']) ? $seller_data['status'] : $ex_em_data['status'];
             $success_array['message'] = CHALLAN_UPLOADED_MESSAGE;
+            $success_array['payment_type'] = $ex_em_data['payment_type'];
+            $success_array['user_payment_type'] = $seller_data['user_payment_type'];
+            if ($ex_em_data['payment_type'] == VALUE_TWO && $seller_data['user_payment_type'] == VALUE_THREE) {
+                $success_array['op_mmptd'] = $enc_pg_data['op_mmptd'];
+                $success_array['op_enct'] = $enc_pg_data['op_enct'];
+                $success_array['op_mt'] = $enc_pg_data['op_mt'];
+            }
             echo json_encode($success_array);
         } catch (\Exception $e) {
             echo json_encode(get_error_array($e->getMessage()));
@@ -838,16 +567,90 @@ class Seller extends CI_Controller {
             }
             error_reporting(E_ERROR);
             $this->utility_lib->gc_for_seller($existing_seller_data);
-    //        $data = array('seller_data' => $existing_seller_data);
-    //        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'Legal']);
-    //        $mpdf->WriteHTML($this->load->view('seller/certificate', $data, TRUE));
-    //        $mpdf->Output('Repairer_certificate_' . time() . '.pdf', 'I');
+            //        $data = array('seller_data' => $existing_seller_data);
+            //        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'Legal']);
+            //        $mpdf->WriteHTML($this->load->view('seller/certificate', $data, TRUE));
+            //        $mpdf->Output('Repairer_certificate_' . time() . '.pdf', 'I');
         } catch (\Exception $e) {
             print_r($e->getMessage());
             return false;
         }
     }
 
+    function upload_seller_document() {
+        try {
+            if (!is_ajax()) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
+            $session_user_id = get_from_session('temp_id_for_eodbsws');
+            $seller_id = get_from_post('seller_id');
+            $file_no = get_from_post('file_no');
+
+            if ($file_no == VALUE_ONE) {
+                $seller_data = $this->utility_model->upload_document('request_letter_reason_doc_for_seller', 'seller', 'request_letter_reason_', 'request_letter_reason_doc');
+            }
+            if ($file_no == VALUE_TWO) {
+                $seller_data = $this->utility_model->upload_document('original_extract_doc_for_seller', 'seller', 'original_extract_', 'original_extract_doc');
+            }
+            if ($file_no == VALUE_THREE) {
+                $seller_data = $this->utility_model->upload_document('nodue_from_mamlatdar_doc_for_seller', 'seller', 'nodue_from_mamlatdar_', 'nodue_from_mamlatdar_doc');
+            }
+            if ($file_no == VALUE_FOUR) {
+                $seller_data = $this->utility_model->upload_document('nodue_from_electricity_doc_for_seller', 'seller', 'nodue_from_electricity_', 'nodue_from_electricity_doc');
+            }
+            if ($file_no == VALUE_FIVE) {
+                $seller_data = $this->utility_model->upload_document('nodue_from_bank_doc_for_seller', 'seller', 'nodue_from_bank_', 'nodue_from_bank_doc');
+            }
+            if ($file_no == VALUE_SIX) {
+                $seller_data = $this->utility_model->upload_document('nodues_from_grampanchayat_doc_for_seller', 'seller', 'nodues_from_grampanchayat_', 'nodues_from_grampanchayat_doc');
+            }
+            if ($file_no == VALUE_SEVEN) {
+                $seller_data = $this->utility_model->upload_document('challan_of_lease_doc_for_seller', 'seller', 'challan_of_lease_', 'challan_of_lease_doc');
+            }
+            if ($file_no == VALUE_EIGHT) {
+                $seller_data = $this->utility_model->upload_document('occupancy_certy_doc_for_seller', 'seller', 'occupancy_certy_', 'occupancy_certy_doc');
+            }
+            if ($file_no == VALUE_NINE) {
+                $seller_data = $this->utility_model->upload_document('nodue_from_excise_doc_for_seller', 'seller', 'nodue_from_excise_', 'nodue_from_excise_doc');
+            }
+            if ($file_no == VALUE_TEN) {
+                $seller_data = $this->utility_model->upload_document('sign_behalf_lessee_doc_for_seller', 'seller', 'sign_behalf_lessee_', 'sign_behalf_lessee_doc');
+            }
+            if ($file_no == VALUE_ELEVEN) {
+                $seller_data = $this->utility_model->upload_document('seal_and_stamp_for_seller', 'seller', 'signature_', 'signature');
+            }
+            if (!$seller_data) {
+                return false;
+            }
+            $this->db->trans_start();
+            if (!$seller_id) {
+                $seller_data['user_id'] = $session_user_id;
+                $seller_data['status'] = VALUE_ONE;
+                $seller_data['created_by'] = $session_user_id;
+                $seller_data['created_time'] = date('Y-m-d H:i:s');
+                $seller_id = $this->utility_model->insert_data('lease_seller', $seller_data);
+            } else {
+                $seller_data['updated_by'] = $session_user_id;
+                $seller_data['updated_time'] = date('Y-m-d H:i:s');
+                $this->utility_model->update_data('seller_id', $seller_id, 'lease_seller', $seller_data);
+            }
+
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(array('success' => FALSE, 'message' => DATABASE_ERROR_MESSAGE));
+                return;
+            }
+            $success_array = get_success_array();
+            $success_array['seller_data'] = $seller_data;
+            $success_array['seller_id'] = $seller_id;
+            $success_array['file_no'] = $file_no;
+            echo json_encode($success_array);
+        } catch (\Exception $e) {
+            echo json_encode(get_error_array($e->getMessage()));
+            return false;
+        }
+    }
 }
 
 /*

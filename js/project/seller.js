@@ -161,15 +161,23 @@ Seller.listView = Backbone.View.extend({
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE) {
             rowData.show_form_one_btn = true;
         }
-        if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX) {
-            rowData.ADMIN_SELLER_DOC_PATH = ADMIN_SELLER_DOC_PATH;
-            rowData.show_download_upload_challan_btn = true;
+        if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
+                rowData.ADMIN_SHOP_DOC_PATH = ADMIN_SHOP_DOC_PATH;
+                rowData.show_download_upload_challan_btn = true;
+            }
         }
         if (rowData.status == VALUE_FIVE) {
             rowData.show_download_certificate_btn = true;
         }
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
+        }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         return sellerActionTemplate(rowData);
     },
@@ -181,7 +189,8 @@ Seller.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_EIGHTEEN, data);
+            return regNoRenderer(VALUE_EIGHTEEN, data)
+                    + getFRContainer(VALUE_EIGHTEEN, data, full.rating, full.fr_datetime);
         };
         var that = this;
         Seller.router.navigate('seller');
@@ -195,6 +204,7 @@ Seller.listView = Backbone.View.extend({
             columns: [
                 {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
                 {data: 'seller_id', 'class': 'v-a-m text-center f-w-b', 'render': tempRegNoRenderer},
+                {data: 'entity_establishment_type', 'class': 'text-center', 'render': entityEstablishmentRenderer},
                 {data: 'name_of_applicant', 'class': 'text-center'},
                 {data: 'survey_no', 'class': 'text-center'},
                 {data: 'transferer_name', 'class': 'text-center'},
@@ -250,8 +260,9 @@ Seller.listView = Backbone.View.extend({
         }
         $('#seller_form_and_datatable_container').html(sellerFormTemplate((templateData)));
 
+        renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
         //renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(tempVillagesData, 'villages_for_seller_data', 'village_name', 'village_name', 'Village');
-        renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(tempVillagesData, 'villages_for_noc_data', 'village_id', 'village_name', 'Village');
+        renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(tempVillagesData, 'villages_for_seller_data', 'village_id', 'village_name', 'Village');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor([], 'plot_no_for_seller_data', 'plot_no', 'plot_no', 'Plot No');
         if (isEdit) {
 
@@ -259,8 +270,8 @@ Seller.listView = Backbone.View.extend({
             $('#district').val(formData.district);
             $('#taluka').val(formData.taluka);
             // $('#villages_for_seller_data').val(formData.village);
-
-            $('#villages_for_noc_data').val(formData.village == 0 ? '' : formData.village);
+            $('#entity_establishment_type').val(formData.entity_establishment_type);
+            $('#villages_for_seller_data').val(formData.village == 0 ? '' : formData.village);
             var plotData = tempPlotData[formData.village] ? tempPlotData[formData.village] : [];
             renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(plotData, 'plot_no_for_seller_data', 'plot_id', 'plot_no', 'Plot No');
             $('#plot_no_for_seller_data').val(formData.plot_no == 0 ? '' : formData.plot_no);
@@ -403,7 +414,7 @@ Seller.listView = Backbone.View.extend({
             $('#sign_behalf_lessee_no').attr('checked', 'checked');
         }
 
-
+        generateSelect2();
         datePicker();
         $('#seller_form').find('input').keypress(function (e) {
             if (e.which == 13) {
@@ -481,15 +492,16 @@ Seller.listView = Backbone.View.extend({
         formData.application_date = dateTo_DD_MM_YYYY(formData.application_date);
         formData.VIEW_UPLODED_DOCUMENT = VIEW_UPLODED_DOCUMENT;
         $('#seller_form_and_datatable_container').html(sellerViewTemplate(formData));
-        renderOptionsForTwoDimensionalArrayWithKeyValueWithCombination(tempVillagesData, 'villages_for_noc_data', 'village_id', 'village_name', 'Village');
+        renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(tempVillagesData, 'villages_for_seller_data', 'village_id', 'village_name', 'Village');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombination([], 'plot_no_for_seller_data', 'plot_no', 'plot_no', 'Plot No');
 
         //formData.application_date = dateTo_DD_MM_YYYY(templateData.seller_data.application_date);
         $('#state').val(formData.state);
         $('#district').val(formData.district);
         $('#taluka').val(formData.taluka);
-
-        $('#villages_for_noc_data').val(formData.village == 0 ? '' : formData.village);
+        renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
+        $('#entity_establishment_type').val(formData.entity_establishment_type);
+        $('#villages_for_seller_data').val(formData.village == 0 ? '' : formData.village);
         var plotData = tempPlotData[formData.village] ? tempPlotData[formData.village] : [];
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombination(plotData, 'plot_no_for_seller_data', 'plot_id', 'plot_no', 'Plot No');
         $('#plot_no_for_seller_data').val(formData.plot_no == 0 ? '' : formData.plot_no);
@@ -636,6 +648,9 @@ Seller.listView = Backbone.View.extend({
             loginPage();
             return false;
         }
+        if (!sellerData.entity_establishment_type) {
+            return getBasicMessageAndFieldJSONArray('entity_establishment_type', entityEstablishmentTypeValidationMessage);
+        }
         if (!sellerData.name_of_applicant) {
             return getBasicMessageAndFieldJSONArray('name_of_applicant', applicantNameValidationMessage);
         }
@@ -648,8 +663,8 @@ Seller.listView = Backbone.View.extend({
         if (!sellerData.taluka) {
             return getBasicMessageAndFieldJSONArray('taluka', talukaValidationMessage);
         }
-        if (!sellerData.villages_for_noc_data) {
-            return getBasicMessageAndFieldJSONArray('villages_for_noc_data', villageNameValidationMessage);
+        if (!sellerData.villages_for_seller_data) {
+            return getBasicMessageAndFieldJSONArray('villages_for_seller_data', villageNameValidationMessage);
         }
 
         if (!sellerData.plot_no_for_seller_data) {
@@ -1181,10 +1196,33 @@ Seller.listView = Backbone.View.extend({
     },
     showChallan: function (sellerData) {
         showPopup();
-        if (sellerData.status != VALUE_FIVE) {
-            sellerData.show_fees_paid = true;
+        if (sellerData.status != VALUE_FIVE && sellerData.status != VALUE_SIX && sellerData.status != VALUE_SEVEN && sellerData.status != VALUE_ELEVEN) {
+            if (!sellerData.hide_submit_btn) {
+                sellerData.show_fees_paid = true;
+            }
         }
+        if (sellerData.payment_type == VALUE_ONE) {
+            sellerData.utitle = 'Fees Paid Challan Copy';
+        } else {
+            sellerData.style = 'display: none;';
+        }
+        if (sellerData.payment_type == VALUE_TWO) {
+            sellerData.show_dd_po_option = true;
+            sellerData.utitle = 'Demand Draft (DD)';
+        }
+        sellerData.module_type = VALUE_EIGHTEEN;
         $('#popup_container').html(sellerUploadChallanTemplate(sellerData));
+        loadFB(VALUE_EIGHTEEN, sellerData.fb_data);
+        loadPH(VALUE_EIGHTEEN, sellerData.seller_id, sellerData.ph_data);
+
+        if (sellerData.payment_type == VALUE_TWO) {
+            generateBoxes('radio', userPaymentTypeArray, 'user_payment_type', 'seller_upload_challan', sellerData.user_payment_type, true);
+            showSubContainerForPaymentDetails('user_payment_type', 'seller_upload_challan', 'uc', 'radio');
+            if (sellerData.user_payment_type == VALUE_ZERO) {
+                $('input[name=user_payment_type_for_seller_upload_challan][value="' + VALUE_ONE + '"]').click();
+            }
+        }
+
         if (sellerData.challan != '') {
             $('#challan_container_for_seller_upload_challan').hide();
             $('#challan_name_container_for_seller_upload_challan').show();
@@ -1316,7 +1354,12 @@ Seller.listView = Backbone.View.extend({
                     return false;
                 }
                 Swal.close();
-                $('#status_' + sellerId).html(appStatusArray[VALUE_FOUR]);
+                $('#status_' + sellerId).html(appStatusArray[parseData.status]);
+                if (parseData.payment_type == VALUE_TWO && parseData.user_payment_type == VALUE_THREE) {
+                    openFullPageOverlay();
+                    submitPG(parseData);
+                    return false;
+                }
                 showSuccess(parseData.message);
             }
         });
@@ -1390,5 +1433,181 @@ Seller.listView = Backbone.View.extend({
                 loadQueryManagementModule(parseData, templateData, tmpData);
             }
         });
-    }
+    },
+    uploadDocumentForSeller: function (fileNo) {
+        var that = this;
+        if ($('#request_letter_reason_doc_for_seller').val() != '') {
+            var requestLetterReasonDocument = checkValidationForDocument('request_letter_reason_doc_for_seller', VALUE_ONE, 'seller', 10240);
+            if (requestLetterReasonDocument == false) {
+                return false;
+            }
+        }
+        if ($('#original_extract_doc_for_seller').val() != '') {
+            var originalExtractDocument = checkValidationForDocument('original_extract_doc_for_seller', VALUE_ONE, 'seller', 10240);
+            if (originalExtractDocument == false) {
+                return false;
+            }
+        }
+        if ($('#nodue_from_mamlatdar_doc_for_seller').val() != '') {
+            var nodueFromMamlatdarDocument = checkValidationForDocument('nodue_from_mamlatdar_doc_for_seller', VALUE_ONE, 'seller', 10240);
+            if (nodueFromMamlatdarDocument == false) {
+                return false;
+            }
+        }
+        if ($('#nodue_from_electricity_doc_for_seller').val() != '') {
+            var nodueFromElectricityDocument = checkValidationForDocument('nodue_from_electricity_doc_for_seller', VALUE_ONE, 'seller', 10240);
+            if (nodueFromElectricityDocument == false) {
+                return false;
+            }
+        }
+        if ($('#nodue_from_bank_doc_for_seller').val() != '') {
+            var nodueFromBankDocument = checkValidationForDocument('nodue_from_bank_doc_for_seller', VALUE_ONE, 'seller', 10240);
+            if (nodueFromBankDocument == false) {
+                return false;
+            }
+        }
+        if ($('#nodues_from_grampanchayat_doc_for_seller').val() != '') {
+            var noduesFromGrampanchayatDocument = checkValidationForDocument('nodues_from_grampanchayat_doc_for_seller', VALUE_ONE, 'seller', 10240);
+            if (noduesFromGrampanchayatDocument == false) {
+                return false;
+            }
+        }
+        if ($('#challan_of_lease_doc_for_seller').val() != '') {
+            var challanOfLeaseDocument = checkValidationForDocument('challan_of_lease_doc_for_seller', VALUE_ONE, 'seller', 10240);
+            if (challanOfLeaseDocument == false) {
+                return false;
+            }
+        }
+        if ($('#occupancy_certy_doc_for_seller').val() != '') {
+            var occupancyCertyDocument = checkValidationForDocument('occupancy_certy_doc_for_seller', VALUE_ONE, 'seller', 10240);
+            if (occupancyCertyDocument == false) {
+                return false;
+            }
+        }
+        if ($('#nodue_from_excise_doc_for_seller').val() != '') {
+            var nodueFromExciseDocument = checkValidationForDocument('nodue_from_excise_doc_for_seller', VALUE_ONE, 'seller', 10240);
+            if (nodueFromExciseDocument == false) {
+                return false;
+            }
+        }
+        if ($('#sign_behalf_lessee_doc_for_seller').val() != '') {
+            var signBehalfLesseeDocument = checkValidationForDocument('sign_behalf_lessee_doc_for_seller', VALUE_ONE, 'seller', 10240);
+            if (signBehalfLesseeDocument == false) {
+                return false;
+            }
+        }
+        if ($('#seal_and_stamp_for_seller').val() != '') {
+            var sealAndStamp = checkValidationForDocument('seal_and_stamp_for_seller', VALUE_TWO, 'seller', 10240);
+            if (sealAndStamp == false) {
+                return false;
+            }
+        }
+
+        $('.spinner_container_for_seller_' + fileNo).hide();
+        $('.spinner_name_container_for_seller_' + fileNo).hide();
+        $('#spinner_template_' + fileNo).show();
+        openFullPageOverlay();
+        var sellerId = $('#seller_id').val();
+        var formData = new FormData($('#seller_form')[0]);
+        formData.append("csrf_token_eodbsws", getTokenData()['csrf_token_eodbsws']);
+        formData.append("file_no", fileNo);
+        formData.append("seller_id", sellerId);
+        $.ajax({
+            type: 'POST',
+            url: 'seller/upload_seller_document',
+            data: formData,
+            mimeType: "multipart/form-data",
+            contentType: false,
+            cache: false,
+            processData: false,
+            error: function (textStatus, errorThrown) {
+                generateNewCSRFToken();
+                if (textStatus.status === 403) {
+                    loginPage();
+                    return false;
+                }
+                if (!textStatus.statusText) {
+                    loginPage();
+                    return false;
+                }
+                $('#spinner_template_' + fileNo).hide();
+                $('.spinner_container_for_seller_' + fileNo).show();
+                $('.spinner_name_container_for_seller_' + fileNo).hide();
+                closeFullPageOverlay();
+                showError(textStatus.statusText);
+            },
+            success: function (data) {
+                closeFullPageOverlay();
+                if (!isJSON(data)) {
+                    loginPage();
+                    return false;
+                }
+                var parseData = JSON.parse(data);
+                setNewToken(parseData.temp_token);
+                if (parseData.success == false) {
+                    $('#spinner_template_' + fileNo).hide();
+                    $('.spinner_container_for_seller_' + fileNo).show();
+                    $('.spinner_name_container_for_seller_' + fileNo).hide();
+                    showError(parseData.message);
+                    return false;
+                }
+                $('#spinner_template_' + fileNo).hide();
+                $('.spinner_container_for_seller_' + fileNo).hide();
+                $('.spinner_name_container_for_seller_' + fileNo).show();
+                $('#seller_id').val(parseData.seller_id);
+                var sellerData = parseData.seller_data;
+                if (parseData.file_no == VALUE_ONE) {
+                    that.showDocument('request_letter_reason_doc_container_for_seller', 'request_letter_reason_doc_name_image_for_seller', 'request_letter_reason_doc_name_container_for_seller',
+                            'request_letter_reason_doc_name_download', 'request_letter_reason_doc_remove_btn', sellerData.request_letter_reason_doc, parseData.seller_id, VALUE_ONE);
+                }
+                if (parseData.file_no == VALUE_TWO) {
+                    that.showDocument('original_extract_doc_container_for_seller', 'original_extract_doc_name_image_for_seller', 'original_extract_doc_name_container_for_seller',
+                            'original_extract_doc_name_download', 'original_extract_doc_remove_btn', sellerData.original_extract_doc, parseData.seller_id, VALUE_TWO);
+                }
+                if (parseData.file_no == VALUE_THREE) {
+                    that.showDocument('nodue_from_mamlatdar_doc_container_for_seller', 'nodue_from_mamlatdar_doc_name_image_for_seller', 'nodue_from_mamlatdar_doc_name_container_for_seller',
+                            'nodue_from_mamlatdar_doc_name_download', 'nodue_from_mamlatdar_doc_remove_btn', sellerData.nodue_from_mamlatdar_doc, parseData.seller_id, VALUE_THREE);
+                }
+                if (parseData.file_no == VALUE_FOUR) {
+                    that.showDocument('nodue_from_electricity_doc_container_for_seller', 'nodue_from_electricity_doc_name_image_for_seller', 'nodue_from_electricity_doc_name_container_for_seller',
+                            'nodue_from_electricity_doc_name_download', 'nodue_from_electricity_doc_remove_btn', sellerData.nodue_from_electricity_doc, parseData.seller_id, VALUE_FOUR);
+                }
+                if (parseData.file_no == VALUE_FIVE) {
+                    that.showDocument('nodue_from_bank_doc_container_for_seller', 'nodue_from_bank_doc_name_image_for_seller', 'nodue_from_bank_doc_name_container_for_seller',
+                            'nodue_from_bank_doc_name_download', 'nodue_from_bank_doc_remove_btn', sellerData.nodue_from_bank_doc, parseData.seller_id, VALUE_FIVE);
+                }
+                if (parseData.file_no == VALUE_SIX) {
+                    that.showDocument('nodues_from_grampanchayat_doc_container_for_seller', 'nodues_from_grampanchayat_doc_name_image_for_seller', 'nodues_from_grampanchayat_doc_name_container_for_seller',
+                            'nodues_from_grampanchayat_doc_name_download', 'nodues_from_grampanchayat_doc_remove_btn', sellerData.nodues_from_grampanchayat_doc, parseData.seller_id, VALUE_SIX);
+                }
+                if (parseData.file_no == VALUE_SEVEN) {
+                    that.showDocument('challan_of_lease_doc_container_for_seller', 'challan_of_lease_doc_name_image_for_seller', 'challan_of_lease_doc_name_container_for_seller',
+                            'challan_of_lease_doc_name_download', 'challan_of_lease_doc_remove_btn', sellerData.challan_of_lease_doc, parseData.seller_id, VALUE_SEVEN);
+                }
+                if (parseData.file_no == VALUE_EIGHT) {
+                    that.showDocument('occupancy_certy_doc_container_for_seller', 'occupancy_certy_doc_name_image_for_seller', 'occupancy_certy_doc_name_container_for_seller',
+                            'occupancy_certy_doc_name_download', 'occupancy_certy_doc_remove_btn', sellerData.occupancy_certy_doc, parseData.seller_id, VALUE_EIGHT);
+                }
+                if (parseData.file_no == VALUE_NINE) {
+                    that.showDocument('nodue_from_excise_doc_container_for_seller', 'nodue_from_excise_doc_name_image_for_seller', 'nodue_from_excise_doc_name_container_for_seller',
+                            'nodue_from_excise_doc_name_download', 'nodue_from_excise_doc_remove_btn', sellerData.nodue_from_excise_doc, parseData.seller_id, VALUE_NINE);
+                }
+                if (parseData.file_no == VALUE_TEN) {
+                    that.showDocument('sign_behalf_lessee_doc_container_for_seller', 'sign_behalf_lessee_doc_name_image_for_seller', 'sign_behalf_lessee_doc_name_container_for_seller',
+                            'sign_behalf_lessee_doc_name_download', 'sign_behalf_lessee_doc_remove_btn', sellerData.sign_behalf_lessee_doc, parseData.seller_id, VALUE_TEN);
+                }
+                if (parseData.file_no == VALUE_ELEVEN) {
+                    that.showDocument('seal_and_stamp_container_for_seller', 'seal_and_stamp_name_image_for_seller', 'seal_and_stamp_name_container_for_seller',
+                            'seal_and_stamp_download', 'seal_and_stamp_remove_btn', sellerData.signature, parseData.seller_id, VALUE_ELEVEN);
+                }
+            }
+        });
+    },
+    showDocument: function (containerHideId, documentSrcPathId, containerShowId, documenthrefPathId, removeDocumentBtnId, dbDocumentFieldName, dbDocumentFieldId, VALUE) {
+        $('#' + containerHideId).hide();
+        $('#' + documentSrcPathId).attr('src', baseUrl + 'documents/seller/' + dbDocumentFieldName);
+        $('#' + containerShowId).show();
+        $('#' + documenthrefPathId).attr("href", baseUrl + 'documents/seller/' + dbDocumentFieldName);
+        $('#' + removeDocumentBtnId).attr('onclick', 'Seller.listview.askForRemove("' + dbDocumentFieldId + '","' + VALUE + '")');
+    },
 });

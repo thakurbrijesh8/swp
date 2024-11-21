@@ -12,6 +12,7 @@
                     <tr class="bg-light-gray">
                         <th class="text-center" style="width: 30px;">No.</th>
                         <th class="text-center" style="width: 30px;">Application Number</th>
+                        <th class="text-center" style="min-width: 30px;">Entity / Establishment Type</th>
                         <th class="text-center" style="min-width: 165px;">Applicant Name</th>
                         <th class="text-center" style="min-width: 165px;">Plot No</th>
                         <th class="text-center" style="min-width: 165px;">Name of Manufacturing</th>

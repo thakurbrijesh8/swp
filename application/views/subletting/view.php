@@ -162,7 +162,7 @@
                         </div>
                         <div class="form-group col-sm-12" id="request_letter_premises_name_container_for_subletting" style="display: none;">
                             <label>12.1 Request letter of sub-let premises. <span style="color: red;">* </label><br>
-                            <a target="_blank" id="request_letter_premises_download"><label id="request_letter_premises_name_image_for_subletting" style="border: 2px solid black;" class="btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            <a target="_blank" id="request_letter_premises_download"><label id="request_letter_premises_name_image_for_subletting" style="border: 2px solid black;" class="btn btn-sm btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
                         </div>
                     </div>
 
@@ -181,7 +181,7 @@
                         </div>
                         <div class="form-group col-sm-12" id="original_extract_certificate_name_container_for_subletting" style="display: none;">
                             <label>13.1 Original 7 X 12 extract. <span style="color: red;">* </label><br>
-                            <a target="_blank" id="original_extract_certificate_download"><label id="original_extract_certificate_name_image_for_subletting" style="border: 2px solid black;" class="btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            <a target="_blank" id="original_extract_certificate_download"><label id="original_extract_certificate_name_image_for_subletting" style="border: 2px solid black;" class="btn btn-sm btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
                         </div>
                     </div>
                      <div class="row">
@@ -199,7 +199,7 @@
                         </div>
                         <div class="form-group col-sm-12" id="land_revenue_certificate_name_container_for_subletting" style="display: none;">
                             <label>14.1 No Due Certificate regarding land revenue. <span style="color: red;">* </label><br>
-                            <a target="_blank" id="land_revenue_certificate_download"><label id="land_revenue_certificate_name_image_for_subletting" style="border: 2px solid black;" class="btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            <a target="_blank" id="land_revenue_certificate_download"><label id="land_revenue_certificate_name_image_for_subletting" style="border: 2px solid black;" class="btn btn-sm btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
                         </div>
                     </div>
                      <div class="row">
@@ -217,7 +217,7 @@
                         </div>
                         <div class="form-group col-sm-12" id="electricity_bill_certificate_name_container_for_subletting" style="display: none;">
                             <label>15.1 No Due Certificate from Electricity Department. <span style="color: red;">* </label><br>
-                            <a target="_blank" id="electricity_bill_certificate_download"><label id="electricity_bill_certificate_name_image_for_subletting" style="border: 2px solid black;" class="btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            <a target="_blank" id="electricity_bill_certificate_download"><label id="electricity_bill_certificate_name_image_for_subletting" style="border: 2px solid black;" class="btn btn-sm btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
                         </div>
                     </div>
                      <div class="row">
@@ -235,7 +235,7 @@
                         </div>
                         <div class="form-group col-sm-12" id="bank_loan_certificate_name_container_for_subletting" style="display: none;">
                             <label>16.1 No Dues Certificate from Banks regarding loan. <span style="color: red;">* </label><br>
-                            <a target="_blank" id="bank_loan_certificate_download"><label id="bank_loan_certificate_name_image_for_subletting" style="border: 2px solid black;" class="btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            <a target="_blank" id="bank_loan_certificate_download"><label id="bank_loan_certificate_name_image_for_subletting" style="border: 2px solid black;" class="btn btn-sm btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
                         </div>
                     </div>
                      <div class="row">
@@ -253,7 +253,7 @@
                         </div>
                         <div class="form-group col-sm-12" id="panchayat_tax_certificate_name_container_for_subletting" style="display: none;">
                             <label>17.1 No Dues Certificate from group Gram Panchayat regarding panchayat tax. <span style="color: red;">* </label><br>
-                            <a target="_blank" id="panchayat_tax_certificate_download"><label id="panchayat_tax_certificate_name_image_for_subletting" style="border: 2px solid black;" class="btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            <a target="_blank" id="panchayat_tax_certificate_download"><label id="panchayat_tax_certificate_name_image_for_subletting" style="border: 2px solid black;" class="btn btn-sm btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
                         </div>
                     </div>
                      <div class="row">
@@ -271,7 +271,7 @@
                         </div>
                         <div class="form-group col-sm-12" id="challan_of_lease_rent_name_container_for_subletting" style="display: none;">
                             <label>18.1 Challan of lease. <span style="color: red;">* </label><br>
-                            <a target="_blank" id="challan_of_lease_rent_download"><label id="challan_of_lease_rent_name_image_for_subletting" style="border: 2px solid black;" class="btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            <a target="_blank" id="challan_of_lease_rent_download"><label id="challan_of_lease_rent_name_image_for_subletting" style="border: 2px solid black;" class="btn btn-sm btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
                         </div>
                     </div>
                      <div class="row">
@@ -289,7 +289,7 @@
                         </div>
                         <div class="form-group col-sm-12" id="occupancy_certificate_name_container_for_subletting" style="display: none;">
                             <label>19.1 Occupancy Certificate. <span style="color: red;">* </label><br>
-                            <a target="_blank" id="occupancy_certificate_download"><label id="occupancy_certificate_name_image_for_subletting" style="border: 2px solid black;" class="btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            <a target="_blank" id="occupancy_certificate_download"><label id="occupancy_certificate_name_image_for_subletting" style="border: 2px solid black;" class="btn btn-sm btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
                         </div>
                     </div>
                     <div class="row">
@@ -307,7 +307,7 @@
                         </div>
                         <div class="form-group col-sm-12" id="central_excise_certificate_name_container_for_subletting" style="display: none;">
                             <label>20.1 No Due Certificate from Central Excise.<span style="color: red;">* </label><br>
-                            <a target="_blank" id="central_excise_certificate_download"><label id="central_excise_certificate_name_image_for_subletting" style="border: 2px solid black;" class="btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
+                            <a target="_blank" id="central_excise_certificate_download"><label id="central_excise_certificate_name_image_for_subletting" style="border: 2px solid black;" class="btn btn-sm btn-nic-blue f-w-n">{{VIEW_UPLODED_DOCUMENT}}</label></a>
                         </div>
                     </div>
 
