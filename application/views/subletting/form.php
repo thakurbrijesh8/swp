@@ -74,10 +74,8 @@
                         <div class="form-group col-sm-6">
                             <label>4. District</label>
                             <div class="input-group">
-                                <select class="form-control" id="district" name="district"
-                                        data-placeholder="District !" onblur="checkValidation('subletting', 'district', districtValidationMessage);">
-                                    <option value="">Select District</option>
-                                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli </option>
+                                <select id="district" name="district" class="form-control select2"
+                                        data-placeholder="Select District" style="width: 100%;">  
                                 </select>
                             </div>
                             <span class="error-message error-message-subletting-district"></span>   
@@ -246,7 +244,7 @@
                             <div class="form-group col-sm-12" id="electricity_bill_certificate_container_for_subletting">
                                 <label>15.1 No Due Certificate from Electricity Department. <span style="color: red;"><br> (Maximum File Size: 2MB)  &nbsp; (Upload pdf Only)</span></label><br>
                                 <input type="file" id="electricity_bill_certificate_for_subletting" name="electricity_bill_certificate_for_subletting"
-                                      accept="application/pdf" class="spinner_container_for_subletting_{{VALUE_FOUR}}" onchange="Subletting.listview.uploadDocumentForSubletting(VALUE_FOUR);">
+                                       accept="application/pdf" class="spinner_container_for_subletting_{{VALUE_FOUR}}" onchange="Subletting.listview.uploadDocumentForSubletting(VALUE_FOUR);">
                                 <div class="error-message error-message-subletting-electricity_bill_certificate_for_subletting"></div>
                             </div>
                             <div class="form-group col-sm-12" id="electricity_bill_certificate_name_container_for_subletting" style="display: none;">
@@ -296,7 +294,7 @@
                             <div class="form-group col-sm-12" id="panchayat_tax_certificate_container_for_subletting">
                                 <label>17.1 No Dues Certificate from group Gram Panchayat regarding panchayat tax.<span style="color: red;"><br> (Maximum File Size: 2MB) &nbsp; (Upload pdf Only)</span></label><br>
                                 <input type="file" id="panchayat_tax_certificate_for_subletting" name="panchayat_tax_certificate_for_subletting"
-                                      accept="application/pdf" class="spinner_container_for_subletting_{{VALUE_SIX}}" onchange="Subletting.listview.uploadDocumentForSubletting(VALUE_SIX);">
+                                       accept="application/pdf" class="spinner_container_for_subletting_{{VALUE_SIX}}" onchange="Subletting.listview.uploadDocumentForSubletting(VALUE_SIX);">
                                 <div class="error-message error-message-subletting-panchayat_tax_certificate_for_subletting"></div>
                             </div>
                             <div class="form-group col-sm-12" id="panchayat_tax_certificate_name_container_for_subletting" style="display: none;">
@@ -398,7 +396,7 @@
                             <div class="col-12 m-b-5px" id="authorization_sign_lessee_container_for_subletting">
                                 <label>21.1  Sign on behalf of Lessee. <span style="color: red;">* (Maximum File Size: 1MB) &nbsp; (Upload JPG | PNG | JPEG | JFIF Only) </span></label><br>
                                 <input type="file" id="authorization_sign_lessee_for_subletting" name="authorization_sign_lessee_for_subletting"
-                                        accept="image/jpg,image/png,image/jpeg,image/jfif" class="spinner_container_for_subletting_{{VALUE_TEN}}" onchange="Subletting.listview.uploadDocumentForSubletting(VALUE_TEN);">
+                                       accept="image/jpg,image/png,image/jpeg,image/jfif" class="spinner_container_for_subletting_{{VALUE_TEN}}" onchange="Subletting.listview.uploadDocumentForSubletting(VALUE_TEN);">
                                 <div class="error-message error-message-subletting-authorization_sign_lessee_for_subletting"></div>
                             </div>
                             <div class="form-group col-sm-12" id="authorization_sign_lessee_name_container_for_subletting" style="display: none;">
@@ -415,7 +413,7 @@
                         <div class="col-12 m-b-5px" id="seal_and_stamp_container_for_subletting">
                             <label>22. Signature<span style="color: red;">* (Maximum File Size: 1MB) &nbsp; (Upload JPG | PNG | JPEG | JFIF Only) </span></label><br>
                             <input type="file" id="seal_and_stamp_for_subletting" name="seal_and_stamp_for_subletting"
-                                    accept="image/jpg,image/png,image/jpeg,image/jfif" class="spinner_container_for_subletting_{{VALUE_ELEVEN}}" onchange="Subletting.listview.uploadDocumentForSubletting(VALUE_ELEVEN);">
+                                   accept="image/jpg,image/png,image/jpeg,image/jfif" class="spinner_container_for_subletting_{{VALUE_ELEVEN}}" onchange="Subletting.listview.uploadDocumentForSubletting(VALUE_ELEVEN);">
                             <div class="error-message error-message-subletting-seal_and_stamp_for_subletting"></div>
                         </div>
                         <div class="form-group col-sm-12" id="seal_and_stamp_name_container_for_subletting" style="display: none;">

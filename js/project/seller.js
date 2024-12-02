@@ -204,6 +204,7 @@ Seller.listView = Backbone.View.extend({
             columns: [
                 {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
                 {data: 'seller_id', 'class': 'v-a-m text-center f-w-b', 'render': tempRegNoRenderer},
+                {data: 'district', 'class': 'text-center', 'render': districtRenderer},
                 {data: 'entity_establishment_type', 'class': 'text-center', 'render': entityEstablishmentRenderer},
                 {data: 'name_of_applicant', 'class': 'text-center'},
                 {data: 'survey_no', 'class': 'text-center'},
@@ -259,7 +260,7 @@ Seller.listView = Backbone.View.extend({
             templateData.application_date = dateTo_DD_MM_YYYY();
         }
         $('#seller_form_and_datatable_container').html(sellerFormTemplate((templateData)));
-
+        renderOptionsForTwoDimensionalArray(talukaArray, 'district');
         renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
         //renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(tempVillagesData, 'villages_for_seller_data', 'village_name', 'village_name', 'Village');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(tempVillagesData, 'villages_for_seller_data', 'village_id', 'village_name', 'Village');
@@ -492,6 +493,7 @@ Seller.listView = Backbone.View.extend({
         formData.application_date = dateTo_DD_MM_YYYY(formData.application_date);
         formData.VIEW_UPLODED_DOCUMENT = VIEW_UPLODED_DOCUMENT;
         $('#seller_form_and_datatable_container').html(sellerViewTemplate(formData));
+        renderOptionsForTwoDimensionalArray(talukaArray, 'district');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(tempVillagesData, 'villages_for_seller_data', 'village_id', 'village_name', 'Village');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombination([], 'plot_no_for_seller_data', 'plot_no', 'plot_no', 'Plot No');
 

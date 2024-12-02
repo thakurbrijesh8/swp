@@ -142,6 +142,7 @@ Noc.listView = Backbone.View.extend({
             columns: [
                 {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
                 {data: 'noc_id', 'class': 'v-a-m text-center f-w-b', 'render': tempRegNoRenderer},
+                {data: 'district', 'class': 'text-center', 'render': districtRenderer},
                 {data: 'entity_establishment_type', 'class': 'text-center', 'render': entityEstablishmentRenderer},
                 {data: 'name_of_applicant', 'class': 'text-center'},
                 {data: 'survey_no', 'class': 'text-center'},
@@ -200,6 +201,7 @@ Noc.listView = Backbone.View.extend({
             templateData.application_date = dateTo_DD_MM_YYYY();
         }
         $('#noc_form_and_datatable_container').html(nocFormTemplate(templateData));
+        renderOptionsForTwoDimensionalArray(talukaArray, 'district');
         renderOptionsForTwoDimensionalArray(premisesStatusArray, 'premises_status');
         renderOptionsForTwoDimensionalArray(identityChoiceArray, 'identity_choice');
         renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
@@ -362,6 +364,7 @@ Noc.listView = Backbone.View.extend({
         formData.VIEW_UPLODED_DOCUMENT = VIEW_UPLODED_DOCUMENT;
         // formData.loan_to_date = dateTo_DD_MM_YYYY(formData.loan_to_date);
         $('#noc_form_and_datatable_container').html(nocViewTemplate(formData));
+        renderOptionsForTwoDimensionalArray(talukaArray, 'district');
         renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombination(tempVillagesData, 'villages_for_noc_data', 'village_id', 'village_name', 'Village');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombination([], 'plot_no_for_noc_data', 'plot_no', 'plot_no', 'Plot No');

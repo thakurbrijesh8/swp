@@ -68,10 +68,8 @@
                         <div class="form-group col-sm-6">
                             <label>4. District<span style="color: red;">*</span></label>
                             <div class="input-group">
-                                <select class="form-control" id="district" name="district"
-                                        data-placeholder="Status !" onblur="checkValidation('noc', 'district', districtValidationMessage);">
-                                    <option value="">Select District</option>
-                                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                                <select id="district" name="district" class="form-control select2"
+                                        data-placeholder="Select District" style="width: 100%;">  
                                 </select>
                             </div>
                             <span class="error-message error-message-noc-district"></span>
@@ -106,8 +104,8 @@
                         <div class="form-group col-sm-6">
                             <label>7. Plot No.<span style="color: red;">*</span></label>
                             <div class="input-group">
-                                <select class="form-control" id="plot_no_for_noc_data" name="plot_no_for_noc_data"
-                                        data-placeholder="Status !" onchange="checkValidation('noc', 'plot_no_for_noc_data', plotnoValidationMessage);
+                                <select class="form-control select2" id="plot_no_for_noc_data" name="plot_no_for_noc_data"
+                                        data-placeholder="Plot No. !" onchange="checkValidation('noc', 'plot_no_for_noc_data', plotnoValidationMessage);
                                             getAreaData($(this), 'noc_data');">
                                     <option value="">Select Plot NO</option>
                                 </select>

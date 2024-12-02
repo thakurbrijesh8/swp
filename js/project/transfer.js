@@ -145,6 +145,7 @@ Transfer.listView = Backbone.View.extend({
             columns: [
                 {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
                 {data: 'transfer_id', 'class': 'v-a-m text-center f-w-b', 'render': tempRegNoRenderer},
+                {data: 'district', 'class': 'text-center', 'render': districtRenderer},
                 {data: 'entity_establishment_type', 'class': 'text-center', 'render': entityEstablishmentRenderer},
                 {data: 'name_of_applicant', 'class': 'text-center'},
                 {data: 'survey_no', 'class': 'text-center'},
@@ -202,6 +203,7 @@ Transfer.listView = Backbone.View.extend({
         }
 
         $('#transfer_form_and_datatable_container').html(transferFormTemplate((templateData)));
+        renderOptionsForTwoDimensionalArray(talukaArray, 'district');
         renderOptionsForTwoDimensionalArray(premisesStatusArray, 'premises_status');
         renderOptionsForTwoDimensionalArray(identityChoiceArray, 'identity_choice');
         renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
@@ -358,6 +360,7 @@ Transfer.listView = Backbone.View.extend({
         formData.application_date = dateTo_DD_MM_YYYY(formData.application_date);
 
         $('#transfer_form_and_datatable_container').html(transferViewTemplate(formData));
+        renderOptionsForTwoDimensionalArray(talukaArray, 'district');
         renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
         renderOptionsForTwoDimensionalArray(premisesStatusArray, 'premises_status');
         renderOptionsForTwoDimensionalArray(identityChoiceArray, 'identity_choice');

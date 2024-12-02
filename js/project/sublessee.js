@@ -101,15 +101,23 @@ Sublessee.listView = Backbone.View.extend({
         if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE) {
             rowData.show_form_one_btn = true;
         }
-        if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX) {
-            rowData.ADMIN_SUBLESSEE_DOC_PATH = ADMIN_SUBLESSEE_DOC_PATH;
-            rowData.show_download_upload_challan_btn = true;
+        if (rowData.status != VALUE_ZERO && rowData.status != VALUE_ONE && rowData.status != VALUE_TWO && rowData.status != VALUE_SIX && rowData.status != VALUE_NINE) {
+            if (rowData.payment_type != VALUE_THREE && rowData.payment_type != VALUE_ZERO) {
+                rowData.ADMIN_SUBLESSEE_DOC_PATH = ADMIN_SUBLESSEE_DOC_PATH;
+                rowData.show_download_upload_challan_btn = true;
+            }
         }
         if (rowData.status == VALUE_FIVE) {
             rowData.show_download_certificate_btn = true;
         }
         if (rowData.query_status != VALUE_ZERO) {
             rowData.show_query_btn = true;
+        }
+        if (rowData.status == VALUE_FIVE || rowData.status == VALUE_SIX) {
+            rowData.show_fr_btn = true;
+        }
+        if (rowData.status == VALUE_ZERO || rowData.status == VALUE_ONE || rowData.status == VALUE_TWO || rowData.status == VALUE_THREE) {
+            rowData.show_withdraw_application_btn = true;
         }
         return sublesseeActionTemplate(rowData);
     },
@@ -121,7 +129,8 @@ Sublessee.listView = Backbone.View.extend({
 
         var searchData = dashboardNaviationToModule(sDistrict, sStatus);
         var tempRegNoRenderer = function (data, type, full, meta) {
-            return regNoRenderer(VALUE_SEVENTEEN, data);
+            return regNoRenderer(VALUE_SEVENTEEN, data)
+                    + getFRContainer(VALUE_SEVENTEEN, data, full.rating, full.fr_datetime);
         };
         var that = this;
         Sublessee.router.navigate('sublessee');
@@ -135,6 +144,8 @@ Sublessee.listView = Backbone.View.extend({
             columns: [
                 {data: '', 'render': serialNumberRenderer, 'class': 'text-center'},
                 {data: 'sublessee_id', 'class': 'v-a-m text-center f-w-b', 'render': tempRegNoRenderer},
+                {data: 'district', 'class': 'text-center', 'render': districtRenderer},
+                {data: 'entity_establishment_type', 'class': 'text-center', 'render': entityEstablishmentRenderer},
                 {data: 'name_of_applicant', 'class': 'text-center'},
                 {data: 'plot_no', 'class': 'text-center'},
                 {data: 'name_of_manufacturing', 'class': 'text-center'},
@@ -191,6 +202,8 @@ Sublessee.listView = Backbone.View.extend({
             templateData.date = dateTo_DD_MM_YYYY();
         }
         $('#sublessee_form_and_datatable_container').html(sublesseeFormTemplate((templateData)));
+        renderOptionsForTwoDimensionalArray(talukaArray, 'district');
+        renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(tempVillagesData, 'villages_for_noc_data', 'village_id', 'village_name', 'Village');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor([], 'plot_no_for_sublessee_data', 'plot_no', 'plot_no', 'Plot No');
 
@@ -200,7 +213,7 @@ Sublessee.listView = Backbone.View.extend({
             $('#state').val(formData.state);
             $('#district').val(formData.district);
             $('#taluka').val(formData.taluka);
-
+            $('#entity_establishment_type').val(formData.entity_establishment_type);
             $('#villages_for_noc_data').val(formData.village == 0 ? '' : formData.village);
             var plotData = tempPlotData[formData.village] ? tempPlotData[formData.village] : [];
             renderOptionsForTwoDimensionalArrayWithKeyValueWithCombinationFor(plotData, 'plot_no_for_sublessee_data', 'plot_id', 'plot_no', 'Plot No');
@@ -267,7 +280,7 @@ Sublessee.listView = Backbone.View.extend({
                 $('#seal_and_stamp_download').attr("href", baseUrl + 'documents/sublessee/' + formData.signature);
             }
         }
-
+        generateSelect2();
         datePicker();
         $('#sublessee_form').find('input').keypress(function (e) {
             if (e.which == 13) {
@@ -346,6 +359,8 @@ Sublessee.listView = Backbone.View.extend({
         Sublessee.router.navigate('view_sublessee_form');
         formData.date = dateTo_DD_MM_YYYY(formData.date);
         $('#sublessee_form_and_datatable_container').html(sublesseeViewTemplate(formData));
+        renderOptionsForTwoDimensionalArray(talukaArray, 'district');
+        renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
         $('#state').val(formData.state);
         $('#district').val(formData.district);
         $('#taluka').val(formData.taluka);
@@ -355,7 +370,7 @@ Sublessee.listView = Backbone.View.extend({
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombination(tempVillagesData, 'villages_for_noc_data', 'village_id', 'village_name', 'Village');
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombination([], 'plot_no_for_sublessee_data', 'plot_no', 'plot_no', 'Plot No');
 
-
+        $('#entity_establishment_type').val(formData.entity_establishment_type);
         $('#villages_for_noc_data').val(formData.village == 0 ? '' : formData.village);
         var plotData = tempPlotData[formData.village] ? tempPlotData[formData.village] : [];
         renderOptionsForTwoDimensionalArrayWithKeyValueWithCombination(plotData, 'plot_no_for_sublessee_data', 'plot_id', 'plot_no', 'Plot No');
@@ -424,6 +439,9 @@ Sublessee.listView = Backbone.View.extend({
         if (!tempIdInSession || tempIdInSession == null) {
             loginPage();
             return false;
+        }
+        if (!sublesseeData.entity_establishment_type) {
+            return getBasicMessageAndFieldJSONArray('entity_establishment_type', entityEstablishmentTypeValidationMessage);
         }
         if (!sublesseeData.name_of_applicant) {
             return getBasicMessageAndFieldJSONArray('name_of_applicant', applicantNameValidationMessage);
@@ -780,10 +798,33 @@ Sublessee.listView = Backbone.View.extend({
     },
     showChallan: function (sublesseeData) {
         showPopup();
-        if (sublesseeData.status != VALUE_FIVE) {
-            sublesseeData.show_fees_paid = true;
+        if (sublesseeData.status != VALUE_FIVE && sublesseeData.status != VALUE_SIX && sublesseeData.status != VALUE_SEVEN && sublesseeData.status != VALUE_ELEVEN) {
+            if (!sublesseeData.hide_submit_btn) {
+                sublesseeData.show_fees_paid = true;
+            }
         }
+        if (sublesseeData.payment_type == VALUE_ONE) {
+            sublesseeData.utitle = 'Fees Paid Challan Copy';
+        } else {
+            sublesseeData.style = 'display: none;';
+        }
+        if (sublesseeData.payment_type == VALUE_TWO) {
+            sublesseeData.show_dd_po_option = true;
+            sublesseeData.utitle = 'Demand Draft (DD)';
+        }
+        sublesseeData.module_type = VALUE_SEVENTEEN;
         $('#popup_container').html(sublesseeUploadChallanTemplate(sublesseeData));
+        loadFB(VALUE_SEVENTEEN, sublesseeData.fb_data);
+        loadPH(VALUE_SEVENTEEN, sublesseeData.sublessee_id, sublesseeData.ph_data);
+
+        if (sublesseeData.payment_type == VALUE_TWO) {
+            generateBoxes('radio', userPaymentTypeArray, 'user_payment_type', 'sublessee_upload_challan', sublesseeData.user_payment_type, true);
+            showSubContainerForPaymentDetails('user_payment_type', 'sublessee_upload_challan', 'uc', 'radio');
+            if (sublesseeData.user_payment_type == VALUE_ZERO) {
+                $('input[name=user_payment_type_for_sublessee_upload_challan][value="' + VALUE_ONE + '"]').click();
+            }
+        }
+
         if (sublesseeData.challan != '') {
             $('#challan_container_for_sublessee_upload_challan').hide();
             $('#challan_name_container_for_sublessee_upload_challan').show();
@@ -916,7 +957,12 @@ Sublessee.listView = Backbone.View.extend({
                     return false;
                 }
                 Swal.close();
-                $('#status_' + sublesseeId).html(appStatusArray[VALUE_FOUR]);
+                $('#status_' + sublesseeId).html(appStatusArray[parseData.status]);
+                if (parseData.payment_type == VALUE_TWO && parseData.user_payment_type == VALUE_THREE) {
+                    openFullPageOverlay();
+                    submitPG(parseData);
+                    return false;
+                }
                 showSuccess(parseData.message);
             }
         });
@@ -990,5 +1036,121 @@ Sublessee.listView = Backbone.View.extend({
                 loadQueryManagementModule(parseData, templateData, tmpData);
             }
         });
-    }
+    },
+    uploadDocumentForSublessee: function (fileNo) {
+        var that = this;
+        if ($('#request_letter_manufacture_for_sublessee').val() != '') {
+            var requestLetterManufactureDocument = checkValidationForDocument('request_letter_manufacture_for_sublessee', VALUE_ONE, 'sublessee', 10240);
+            if (requestLetterManufactureDocument == false) {
+                return false;
+            }
+        }
+        if ($('#detail_project_report_for_sublessee').val() != '') {
+            var detailProjectReportDocument = checkValidationForDocument('detail_project_report_for_sublessee', VALUE_ONE, 'sublessee', 10240);
+            if (detailProjectReportDocument == false) {
+                return false;
+            }
+        }
+        if ($('#memorandum_partnership_deed_for_sublessee').val() != '') {
+            var memorandumPartnershipDeedDocument = checkValidationForDocument('memorandum_partnership_deed_for_sublessee', VALUE_ONE, 'sublessee', 10240);
+            if (memorandumPartnershipDeedDocument == false) {
+                return false;
+            }
+        }
+        if ($('#behalf_sign_sublessee_for_sublessee').val() != '') {
+            var behalfSignSublessee = checkValidationForDocument('behalf_sign_sublessee_for_sublessee', VALUE_TWO, 'sublessee', 10240);
+            if (behalfSignSublessee == false) {
+                return false;
+            }
+        }
+        if ($('#seal_and_stamp_for_sublessee').val() != '') {
+            var sealAndStamp = checkValidationForDocument('seal_and_stamp_for_sublessee', VALUE_TWO, 'sublessee', 10240);
+            if (sealAndStamp == false) {
+                return false;
+            }
+        }
+
+        $('.spinner_container_for_sublessee_' + fileNo).hide();
+        $('.spinner_name_container_for_sublessee_' + fileNo).hide();
+        $('#spinner_template_' + fileNo).show();
+        openFullPageOverlay();
+        var sublesseeId = $('#sublessee_id').val();
+        var formData = new FormData($('#sublessee_form')[0]);
+        formData.append("csrf_token_eodbsws", getTokenData()['csrf_token_eodbsws']);
+        formData.append("file_no", fileNo);
+        formData.append("sublessee_id", sublesseeId);
+        $.ajax({
+            type: 'POST',
+            url: 'sublessee/upload_sublessee_document',
+            data: formData,
+            mimeType: "multipart/form-data",
+            contentType: false,
+            cache: false,
+            processData: false,
+            error: function (textStatus, errorThrown) {
+                generateNewCSRFToken();
+                if (textStatus.status === 403) {
+                    loginPage();
+                    return false;
+                }
+                if (!textStatus.statusText) {
+                    loginPage();
+                    return false;
+                }
+                $('#spinner_template_' + fileNo).hide();
+                $('.spinner_container_for_sublessee_' + fileNo).show();
+                $('.spinner_name_container_for_sublessee_' + fileNo).hide();
+                closeFullPageOverlay();
+                showError(textStatus.statusText);
+            },
+            success: function (data) {
+                closeFullPageOverlay();
+                if (!isJSON(data)) {
+                    loginPage();
+                    return false;
+                }
+                var parseData = JSON.parse(data);
+                setNewToken(parseData.temp_token);
+                if (parseData.success == false) {
+                    $('#spinner_template_' + fileNo).hide();
+                    $('.spinner_container_for_sublessee_' + fileNo).show();
+                    $('.spinner_name_container_for_sublessee_' + fileNo).hide();
+                    showError(parseData.message);
+                    return false;
+                }
+                $('#spinner_template_' + fileNo).hide();
+                $('.spinner_container_for_sublessee_' + fileNo).hide();
+                $('.spinner_name_container_for_sublessee_' + fileNo).show();
+                $('#sublessee_id').val(parseData.sublessee_id);
+                var sublesseeData = parseData.sublessee_data;
+                if (parseData.file_no == VALUE_ONE) {
+                    that.showDocument('request_letter_manufacture_container_for_sublessee', 'request_letter_manufacture_name_image_for_sublessee', 'request_letter_manufacture_name_container_for_sublessee',
+                            'request_letter_manufacture_download', 'request_letter_manufacture_remove_btn', sublesseeData.request_letter_manufacture, parseData.sublessee_id, VALUE_ONE);
+                }
+                if (parseData.file_no == VALUE_TWO) {
+                    that.showDocument('detail_project_report_container_for_sublessee', 'detail_project_report_name_image_for_sublessee', 'detail_project_report_name_container_for_sublessee',
+                            'detail_project_report_download', 'detail_project_report_remove_btn', sublesseeData.detail_project_report, parseData.sublessee_id, VALUE_TWO);
+                }
+                if (parseData.file_no == VALUE_THREE) {
+                    that.showDocument('memorandum_partnership_deed_container_for_sublessee', 'memorandum_partnership_deed_name_image_for_sublessee', 'memorandum_partnership_deed_name_container_for_sublessee',
+                            'memorandum_partnership_deed_download', 'memorandum_partnership_deed_remove_btn', sublesseeData.memorandum_partnership_deed, parseData.sublessee_id, VALUE_THREE);
+                }
+                if (parseData.file_no == VALUE_FOUR) {
+                    that.showDocument('behalf_sign_sublessee_container_for_sublessee', 'behalf_sign_sublessee_name_image_for_sublessee', 'behalf_sign_sublessee_name_container_for_sublessee',
+                            'behalf_sign_sublessee_download', 'behalf_sign_sublessee_remove_btn', sublesseeData.behalf_sign_sublessee, parseData.sublessee_id, VALUE_FOUR);
+                }
+                if (parseData.file_no == VALUE_FIVE) {
+                    that.showDocument('seal_and_stamp_container_for_sublessee', 'seal_and_stamp_name_image_for_sublessee', 'seal_and_stamp_name_container_for_sublessee',
+                            'seal_and_stamp_download', 'seal_and_stamp_remove_btn', sublesseeData.signature, parseData.sublessee_id, VALUE_FIVE);
+                }
+            }
+        });
+    },
+    showDocument: function (containerHideId, documentSrcPathId, containerShowId, documenthrefPathId, removeDocumentBtnId, dbDocumentFieldName, dbDocumentFieldId, VALUE) {
+        $('#' + containerHideId).hide();
+        $('#' + documentSrcPathId).attr('src', baseUrl + 'documents/sublessee/' + dbDocumentFieldName);
+        $('#' + containerShowId).show();
+        $('#' + documenthrefPathId).attr("href", baseUrl + 'documents/sublessee/' + dbDocumentFieldName);
+        $('#' + removeDocumentBtnId).attr('onclick', 'Sublessee.listview.askForRemove("' + dbDocumentFieldId + '","' + VALUE + '")');
+    },
 });

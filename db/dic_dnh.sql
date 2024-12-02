@@ -62,6 +62,48 @@ ALTER TABLE `sub_letting` ADD `total_fees` DECIMAL NOT NULL AFTER `user_payment_
 
 ALTER TABLE `sub_letting` ADD `last_op_reference_number` VARCHAR(100) NOT NULL AFTER `total_fees`;
 
+ALTER TABLE `sub_lessee` ADD `entity_establishment_type` TINYINT(1) NOT NULL AFTER `user_id`;
+
+ALTER TABLE `sub_lessee` ADD `withdrawal_remarks` VARCHAR(200) NOT NULL AFTER `remarks`;
+
+ALTER TABLE `sub_lessee` ADD `rating` TINYINT(1) NOT NULL AFTER `query_status`;
+
+ALTER TABLE `sub_lessee` ADD `feedback` VARCHAR(200) NOT NULL AFTER `rating`;
+
+ALTER TABLE `sub_lessee` ADD `fr_datetime` DATETIME NOT NULL AFTER `feedback`;
+
+ALTER TABLE `sub_lessee` ADD `payment_type` TINYINT(1) NOT NULL AFTER `processing_days`, ADD `user_payment_type` TINYINT(1) NOT NULL AFTER `payment_type`;
+
+ALTER TABLE `sub_lessee` ADD `total_fees` DECIMAL NOT NULL AFTER `user_payment_type`;
+
+ALTER TABLE `sub_lessee` ADD `last_op_reference_number` VARCHAR(100) NOT NULL AFTER `total_fees`;
+
+ALTER TABLE `noc` CHANGE `district` `district` TINYINT(1) NOT NULL;
+
+ALTER TABLE `lease_seller` CHANGE `district` `district` TINYINT(1) NOT NULL;
+
+ALTER TABLE `transfer` CHANGE `district` `district` TINYINT(1) NOT NULL;
+
+ALTER TABLE `sub_lessee` CHANGE `district` `district` TINYINT(1) NOT NULL;
+
+ALTER TABLE `sub_letting` CHANGE `district` `district` TINYINT(1) NOT NULL;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

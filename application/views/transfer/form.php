@@ -66,10 +66,8 @@
                         <div class="form-group col-sm-6">
                             <label>4. District<span style="color: red;">*</span></label>
                             <div class="input-group">
-                                <select class="form-control" id="district" name="district"
-                                        data-placeholder="Status !" onblur="checkValidation('transfer', 'district', districtValidationMessage);">
-                                    <option value="">Select District</option>
-                                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                                <select id="district" name="district" class="form-control select2"
+                                        data-placeholder="Select District" style="width: 100%;">  
                                 </select>
                             </div>
                             <span class="error-message error-message-transfer-district"></span>
@@ -275,7 +273,7 @@
                         <div class="form-group col-sm-12 constitution_project_upload_div" id="constitution_project_upload_container_for_transfer" style="display: none;">
                             <label>21.1 Please attach details document<span style="color: red;">* <br>(Maximum File Size: 1MB)&nbsp; (Upload PDF Only)</span></label><br>
                             <input type="file" id="constitution_project_upload_for_transfer" name="constitution_project_upload_for_transfer"
-                                  accept="application/pdf" class="spinner_container_for_transfer_{{VALUE_THREE}}" onchange="Transfer.listview.uploadDocumentForTransfer(VALUE_THREE);">
+                                   accept="application/pdf" class="spinner_container_for_transfer_{{VALUE_THREE}}" onchange="Transfer.listview.uploadDocumentForTransfer(VALUE_THREE);">
                             <div class="error-message error-message-transfer-constitution_project_upload_for_transfer"></div>
                         </div>
                         <div class="form-group col-sm-12" id="constitution_project_upload_name_container_for_transfer" style="display: none;">

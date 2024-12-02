@@ -96,145 +96,6 @@ class Sublessee extends CI_Controller {
                 return false;
             }
 
-            if ($sublessee_data['request_letter'] == IS_CHECKED_YES) {
-                if ($_FILES['request_letter_manufacture_for_sublessee']['name'] != '') {
-                    $main_path = 'documents/sublessee';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'sublessee';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['request_letter_manufacture_for_sublessee']['name']);
-                    $filename = 'request_letter_manufacture_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['request_letter_manufacture_for_sublessee']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $sublessee_data['request_letter_manufacture'] = $filename;
-                }
-            }
-            if ($sublessee_data['detail_project'] == IS_CHECKED_YES) {
-                if ($_FILES['detail_project_report_for_sublessee']['name'] != '') {
-                    $main_path = 'documents/sublessee';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'sublessee';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['detail_project_report_for_sublessee']['name']);
-                    $filename = 'detail_project_report_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['detail_project_report_for_sublessee']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $sublessee_data['detail_project_report'] = $filename;
-                }
-            }
-            if ($sublessee_data['partnership_deed'] == IS_CHECKED_YES) {
-                if ($_FILES['memorandum_partnership_deed_for_sublessee']['name'] != '') {
-                    $main_path = 'documents/sublessee';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'sublessee';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['memorandum_partnership_deed_for_sublessee']['name']);
-                    $filename = 'memorandum_partnership_deed_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['memorandum_partnership_deed_for_sublessee']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $sublessee_data['memorandum_partnership_deed'] = $filename;
-                }
-            }
-            if ($sublessee_data['sign_sublessee'] == IS_CHECKED_YES) {
-                if ($_FILES['behalf_sign_sublessee_for_sublessee']['name'] != '') {
-                    $main_path = 'documents/sublessee';
-                    // if (!is_dir($main_path)) {
-                    //     mkdir($main_path);
-                    //     chmod("$main_path", 0755);
-                    // }
-                    $documents_path = 'documents';
-                    if (!is_dir($documents_path)) {
-                        mkdir($documents_path);
-                        chmod($documents_path, 0777);
-                    }
-                    $module_path = $documents_path . DIRECTORY_SEPARATOR . 'sublessee';
-                    if (!is_dir($module_path)) {
-                        mkdir($module_path);
-                        chmod($module_path, 0777);
-                    }
-                    $this->load->library('upload');
-                    $temp_filename = str_replace('_', '', $_FILES['behalf_sign_sublessee_for_sublessee']['name']);
-                    $filename = 'behalf_sign_sublessee_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                    //Change file name
-                    $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                    if (!move_uploaded_file($_FILES['behalf_sign_sublessee_for_sublessee']['tmp_name'], $final_path)) {
-                        echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                        return;
-                    }
-                    $sublessee_data['behalf_sign_sublessee'] = $filename;
-                }
-            }
-            if ($_FILES['seal_and_stamp_for_sublessee']['name'] != '') {
-                $main_path = 'documents/sublessee';
-                $documents_path = 'documents';
-                if (!is_dir($documents_path)) {
-                    mkdir($documents_path);
-                    chmod($documents_path, 0777);
-                }
-                $module_path = $documents_path . DIRECTORY_SEPARATOR . 'sublessee';
-                if (!is_dir($module_path)) {
-                    mkdir($module_path);
-                    chmod($module_path, 0777);
-                }
-                $this->load->library('upload');
-                $temp_filename = str_replace('_', '', $_FILES['seal_and_stamp_for_sublessee']['name']);
-                $filename = 'sublessee_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
-                //Change file name
-                $final_path = $main_path . DIRECTORY_SEPARATOR . $filename;
-                if (!move_uploaded_file($_FILES['seal_and_stamp_for_sublessee']['tmp_name'], $final_path)) {
-                    echo json_encode(get_error_array(DOCUMENT_NOT_UPLOAD_MESSAGE));
-                    return;
-                }
-                $sublessee_data['signature'] = $filename;
-            }
             $this->db->trans_start();
             //  if ($subletting_data['request_letter'] == VALUE_TWO) {
             //     $subletting_data['request_letter_premises'] = convert_to_mysql_date_format($subletting_data['request_letter_premises']);
@@ -290,6 +151,7 @@ class Sublessee extends CI_Controller {
 
     function _get_post_data_for_sublessee() {
         $sublessee_data = array();
+        $sublessee_data['entity_establishment_type'] = get_from_post('entity_establishment_type');
         $sublessee_data['name_of_applicant'] = get_from_post('name_of_applicant');
         $sublessee_data['state'] = get_from_post('state');
         $sublessee_data['district'] = get_from_post('district');
@@ -309,6 +171,9 @@ class Sublessee extends CI_Controller {
     }
 
     function _check_validation_for_sublessee($sublessee_data) {
+        if (!$sublessee_data['entity_establishment_type']) {
+            return ENTITY_ESTABLISHMENT_TYPE_MESSAGE;
+        }
         if (!$sublessee_data['name_of_applicant']) {
             return APPLICANT_NAME_MESSAGE;
         }
@@ -467,6 +332,13 @@ class Sublessee extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            $this->payment_lib->get_payment_history_data($session_user_id, VALUE_SEVENTEEN, $sublessee_id, $sublessee_data);
+            $sublessee_data['fb_data'] = $this->utility_model->get_result_data_by_id('module_type', VALUE_SEVENTEEN, 'fees_bifurcation', 'module_id', $sublessee_id);
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
+                return;
+            }
             $success_array = get_success_array();
             $success_array['sublessee_data'] = $sublessee_data;
             echo json_encode($success_array);
@@ -525,19 +397,39 @@ class Sublessee extends CI_Controller {
                 echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
                 return false;
             }
+            $ex_em_data = $this->utility_model->get_by_id('sublessee_id', $sublessee_id, 'sub_lessee');
+            if (empty($ex_em_data)) {
+                echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+            if ($ex_em_data['user_id'] != $user_id) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
+            if ($ex_em_data['payment_type'] == VALUE_TWO) {
+                $user_payment_type = get_from_post('user_payment_type_for_sublessee_upload_challan');
+                if ($user_payment_type != VALUE_ONE && $user_payment_type != VALUE_TWO && $user_payment_type != VALUE_THREE) {
+                    echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                    return false;
+                }
+            }
             $sublessee_data = array();
             if ($_FILES['fees_paid_challan_for_sublessee_upload_challan']['name'] != '') {
                 $main_path = 'documents/sublessee';
-                $documents_path = 'documents';
-                if (!is_dir($documents_path)) {
-                    mkdir($documents_path);
-                    chmod($documents_path, 0777);
+                if (!is_dir($main_path)) {
+                    mkdir($main_path);
+                    chmod("$main_path", 0755);
                 }
-                $module_path = $documents_path . DIRECTORY_SEPARATOR . 'sublessee';
-                if (!is_dir($module_path)) {
-                    mkdir($module_path);
-                    chmod($module_path, 0777);
-                }
+//                $documents_path = 'documents';
+//                if (!is_dir($documents_path)) {
+//                    mkdir($documents_path);
+//                    chmod($documents_path, 0777);
+//                }
+//                $module_path = $documents_path . DIRECTORY_SEPARATOR . 'sublessee';
+//                if (!is_dir($module_path)) {
+//                    mkdir($module_path);
+//                    chmod($module_path, 0777);
+//                }
                 $this->load->library('upload');
                 $temp_filename = str_replace('_', '', $_FILES['fees_paid_challan_for_sublessee_upload_challan']['name']);
                 $filename = 'fees_paid_challan_' . (rand(100000000, 999999999)) . time() . '.' . pathinfo($temp_filename, PATHINFO_EXTENSION);
@@ -551,6 +443,23 @@ class Sublessee extends CI_Controller {
                 $sublessee_data['fees_paid_challan'] = $filename;
                 $sublessee_data['fees_paid_challan_updated_date'] = date('Y-m-d H:i:s');
             }
+            if ($ex_em_data['payment_type'] == VALUE_TWO) {
+                $sublessee_data['status'] = VALUE_FOUR;
+                if ($user_payment_type == VALUE_TWO) {
+                    $sublessee_data['status'] = VALUE_EIGHT;
+                } else if ($user_payment_type == VALUE_THREE) {
+                    $sublessee_data['status'] = VALUE_THREE;
+
+                    $enc_pg_data = $this->payment_lib->get_encrypted_details_for_pg($user_id, VALUE_SEVENTEEN, $sublessee_id, $ex_em_data['district'], $ex_em_data['total_fees'], $sublessee_data);
+                    if ($enc_pg_data['success'] == false) {
+                        echo json_encode(get_error_array($enc_pg_data['message']));
+                        return;
+                    }
+                }
+                $sublessee_data['user_payment_type'] = $user_payment_type;
+            } else {
+                $sublessee_data['user_payment_type'] = VALUE_ZERO;
+            }
             $sublessee_data['updated_by'] = $user_id;
             $sublessee_data['updated_time'] = date('Y-m-d H:i:s');
             $this->db->trans_start();
@@ -561,7 +470,15 @@ class Sublessee extends CI_Controller {
                 return;
             }
             $success_array = get_success_array();
+            $success_array['status'] = isset($sublessee_data['status']) ? $sublessee_data['status'] : $ex_em_data['status'];
             $success_array['message'] = CHALLAN_UPLOADED_MESSAGE;
+            $success_array['payment_type'] = $ex_em_data['payment_type'];
+            $success_array['user_payment_type'] = $sublessee_data['user_payment_type'];
+            if ($ex_em_data['payment_type'] == VALUE_TWO && $sublessee_data['user_payment_type'] == VALUE_THREE) {
+                $success_array['op_mmptd'] = $enc_pg_data['op_mmptd'];
+                $success_array['op_enct'] = $enc_pg_data['op_enct'];
+                $success_array['op_mt'] = $enc_pg_data['op_mt'];
+            }
             echo json_encode($success_array);
         } catch (\Exception $e) {
             echo json_encode(get_error_array($e->getMessage()));
@@ -600,8 +517,64 @@ class Sublessee extends CI_Controller {
         }
     }
 
+    function upload_sublessee_document() {
+        try {
+            if (!is_ajax()) {
+                header("Location:" . base_url() . "login");
+                return false;
+            }
+            $session_user_id = get_from_session('temp_id_for_eodbsws');
+            $sublessee_id = get_from_post('sublessee_id');
+            $file_no = get_from_post('file_no');
+
+            if ($file_no == VALUE_ONE) {
+                $sublessee_data = $this->utility_model->upload_document('request_letter_manufacture_for_sublessee', 'sublessee', 'request_letter_manufacture_', 'request_letter_manufacture');
+            }
+            if ($file_no == VALUE_TWO) {
+                $sublessee_data = $this->utility_model->upload_document('detail_project_report_for_sublessee', 'sublessee', 'detail_project_report_', 'detail_project_report');
+            }
+            if ($file_no == VALUE_THREE) {
+                $sublessee_data = $this->utility_model->upload_document('memorandum_partnership_deed_for_sublessee', 'sublessee', 'memorandum_partnership_deed_', 'memorandum_partnership_deed');
+            }
+            if ($file_no == VALUE_FOUR) {
+                $sublessee_data = $this->utility_model->upload_document('behalf_sign_sublessee_for_sublessee', 'sublessee', 'behalf_sign_sublessee_', 'behalf_sign_sublessee');
+            }
+            if ($file_no == VALUE_FIVE) {
+                $sublessee_data = $this->utility_model->upload_document('seal_and_stamp_for_sublessee', 'sublessee', 'seal_and_stamp_', 'signature');
+            }
+            if (!$sublessee_data) {
+                return false;
+            }
+            $this->db->trans_start();
+            if (!$sublessee_id) {
+                $sublessee_data['user_id'] = $session_user_id;
+                $sublessee_data['status'] = VALUE_ONE;
+                $sublessee_data['created_by'] = $session_user_id;
+                $sublessee_data['created_time'] = date('Y-m-d H:i:s');
+                $sublessee_id = $this->utility_model->insert_data('sub_lessee', $sublessee_data);
+            } else {
+                $sublessee_data['updated_by'] = $session_user_id;
+                $sublessee_data['updated_time'] = date('Y-m-d H:i:s');
+                $this->utility_model->update_data('sublessee_id', $sublessee_id, 'sub_lessee', $sublessee_data);
+            }
+
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(array('success' => FALSE, 'message' => DATABASE_ERROR_MESSAGE));
+                return;
+            }
+            $success_array = get_success_array();
+            $success_array['sublessee_data'] = $sublessee_data;
+            $success_array['sublessee_id'] = $sublessee_id;
+            $success_array['file_no'] = $file_no;
+            echo json_encode($success_array);
+        } catch (\Exception $e) {
+            echo json_encode(get_error_array($e->getMessage()));
+            return false;
+        }
+    }
 }
 
 /*
- * EOF: ./application/controller/BOCW.php
+ * EOF: ./application/controller/Sublessee.php
  */
