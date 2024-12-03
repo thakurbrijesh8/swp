@@ -323,7 +323,6 @@ class Business extends CI_Controller {
         $pan_data['pan_number'] = get_from_post('pan_number_for_pan');
         $pan_data['name'] = get_from_post('name_for_pan');
         $pan_data['father_name'] = get_from_post('father_name_for_pan');
-        $pan_data['pan_number'] = get_from_post('pan_number_for_pan');
         $pan_data['dob'] = get_from_post('dob_for_pan');
         $pan_data['captcha_code'] = get_from_post('captcha_code_for_pan');
         $pan_data['captcha_code_varification'] = get_from_post('captcha_code_varification_for_pan');
@@ -368,8 +367,12 @@ class Business extends CI_Controller {
 //        if (!$privateKey) {
 //            die('Unable to extract private key from PFX. Ensure the PFX contains a private key.');
 //        }
-//
-//        $inputData = '[{"pan":"HMDPS1486N","name":"SOLANKI VISHALBHAI ARVINDBHAI","fathername":"ARVINDBHAI SOLANKI","dob":"05/08/1996"}]'; // The data to sign
+//        $t_a = array();
+//        array_push($t_a, array('pan' => 'AAAAL6704B', 'name' => 'SAMUDRA INDUSTRIES LIMITED.', 'fathername' => '',
+//            'dob' => '15/08/1993'));
+//        $inputData = json_encode($t_a); // The data to sign
+//        echo '<pre>';
+//        print_r($t_a) . '<br>';
 //        $signature = '';
 //        // Step 3: Create a signature
 //        if (openssl_sign($inputData, $signature, $privateKey, OPENSSL_ALGO_SHA256) === false) {
@@ -387,7 +390,9 @@ class Business extends CI_Controller {
 //        ];
 //
 //        // Step 6: Send the request (for demonstration, we will just print it)
-//        echo json_encode($request);
+////        echo json_encode($request);
+//        
+//        print_r($request);
 //
 //        // Free the private key from memory
 //        openssl_free_key($privateKey);
@@ -413,9 +418,9 @@ class Business extends CI_Controller {
         if (openssl_sign($input_data, $signature, $privateKey, OPENSSL_ALGO_SHA256) === false) {
             return array('success' => false, 'message' => UNABLE_SIGN_MESSAGE . '<br>' . openssl_error_string());
         }
-        if (!$signature) {
-            return array('success' => false, 'message' => UNABLE_SIGN_MESSAGE);
-        }
+//        if (!$signature) {
+//            return array('success' => false, 'message' => UNABLE_SIGN_MESSAGE);
+//        }
         return array('success' => true, 'pan_data' => $input_data, 'signature' => base64_encode($signature));
     }
 
@@ -424,7 +429,7 @@ class Business extends CI_Controller {
         return $this->utility_model->insert_data('pan_api', $api_data);
     }
 
-    function _update_pan_data($session_user_id, $pan_sign, $pan_api_rc_array) {
+    function _update_pan_data($session_user_id, $pan_sign, $pan_api_rc_array, $is_test = VALUE_ZERO) {
         $api_data = array();
         $api_data['user_id'] = $session_user_id;
         $api_data['h_records_counts'] = count($pan_sign['pan_data']);
@@ -437,15 +442,35 @@ class Business extends CI_Controller {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_TIMEOUT_MS, 50000);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'User_ID:' . PAN_USER_ID,
-            'Records_count:' . $api_data['h_records_counts'],
-            'Request_time:' . $api_data['h_request_time'],
-            'Transaction_ID:' . $api_data['h_transaction_id'],
-            'Version:' . $api_data['h_version']
-        ]);
-        $post_data = array('inputData' => $pan_sign['pan_data'], 'signature' => $pan_sign['signature']);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+        $headers = array(
+            'User_ID: ' . PAN_USER_ID,
+            'Records_count: ' . $api_data['h_records_counts'],
+            'Request_time: ' . $api_data['h_request_time'],
+            'Transaction_ID: ' . $api_data['h_transaction_id'],
+            'Version: ' . $api_data['h_version']
+        );
+
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        if ($is_test == VALUE_ONE) {
+//        $f = fopen('request.txt', 'w');
+//        curl_setopt($ch, CURLOPT_VERBOSE, true);
+//        curl_setopt($ch, CURLOPT_STDERR, $f);
+        }
+
+        $post_data = array('inputData' => json_decode($pan_sign['pan_data'], true), 'signature' => $pan_sign['signature']);
+        if ($is_test == VALUE_ONE) {
+            echo '<pre>';
+            echo 'Headers : <br>';
+            print_r($headers);
+            echo '<br>Post Data in Array : <br>';
+            print_r($post_data);
+            echo '<br>Post Data in JSON : ' . json_encode($post_data) . '<br><br>';
+        }
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(json_encode($post_data)));
         $response = curl_exec($ch);
         if (curl_errno($ch)) {
@@ -481,8 +506,14 @@ class Business extends CI_Controller {
             $this->_insert_pan_log($api_data);
             return array('success' => false, 'message' => $api_data['api_message']);
         }
-        if (empty($response['outputData']) || !$response['outputData']) {
+        if ($api_data['response_code'] != VALUE_ONE) {
             $api_data['api_status'] = VALUE_SEVEN;
+            $api_data['api_message'] = $pan_api_rc_array[$res_data['response_Code']];
+            $this->_insert_pan_log($api_data);
+            return array('success' => false, 'message' => $api_data['api_message']);
+        }
+        if (empty($response['outputData']) || !$response['outputData']) {
+            $api_data['api_status'] = VALUE_EIGHT;
             $api_data['api_message'] = $pan_api_s_array[$api_data['api_status']];
             $this->_insert_pan_log($api_data);
             return array('success' => false, 'message' => $api_data['api_message']);
@@ -514,6 +545,96 @@ class Business extends CI_Controller {
         return array('success' => true, 'pan_api_id' => $pan_api_id, 'api_data' => $api_data);
     }
 
+    function test_fetch_details_from_pan() {
+        try {
+            $session_user_id = get_from_session('temp_id_for_eodbsws');
+            if (!is_post() || $session_user_id == NULL || !$session_user_id) {
+                echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+
+            $pan_data = array();
+            $pan_data['pan_number'] = 'AAAAL6704B';
+            $pan_data['name'] = 'SAMUDRA INDUSTRIES LIMITED.';
+            $pan_data['father_name'] = '';
+            $pan_data['dob'] = '15/08/1993';
+
+            $ex_data = $this->utility_model->get_by_id('user_id', $session_user_id, 'pan', 'pan_number', $pan_data['pan_number']);
+            if (!empty($ex_data)) {
+                echo json_encode(get_error_array(DETAILS_ALREADY_EXISTS_MESSAGE));
+                return false;
+            }
+            $m_pan_data = array();
+            array_push($m_pan_data, array(
+                'pan' => $pan_data['pan_number'],
+                'name' => $pan_data['name'],
+                'fathername' => $pan_data['father_name'],
+                'dob' => $pan_data['dob'],
+            ));
+            $pan_sign = $this->_get_signature_for_pan_data(json_encode($m_pan_data));
+            if ($pan_sign['success'] == false) {
+                echo json_encode(get_error_array($pan_sign['message']));
+                return false;
+            }
+            $pan_api_rc_array = $this->config->item('pan_api_response_code_array');
+            $return_data = $this->_update_pan_data($session_user_id, $pan_sign, $pan_api_rc_array, VALUE_ONE);
+            if ($return_data['success'] == false) {
+                echo json_encode(get_error_array($return_data['message']));
+                return false;
+            }
+            $new_pan_data = isset($return_data['api_data']['response_data'][0]) ? $return_data['api_data']['response_data'][0] : [];
+            if (empty($new_pan_data)) {
+                echo json_encode(get_error_array(INVALID_ACCESS_MESSAGE));
+                return false;
+            }
+            $pan_status_array = $this->config->item('pan_status_array');
+            if (!isset($pan_status_array[$new_pan_data['pan_status']])) {
+                echo json_encode(get_error_array(PAN_INVALID_STATUS_MESSAGE));
+                return false;
+            }
+            $pan_status_message = $pan_status_array[$new_pan_data['pan_status']];
+            if ($new_pan_data['pan_status'] == 'F' || $new_pan_data['pan_status'] == 'X' ||
+                    $new_pan_data['pan_status'] == 'D' || $new_pan_data['pan_status'] == 'N') {
+                echo json_encode(get_error_array($pan_status_message));
+                return false;
+            }
+            if ($new_pan_data['name'] == 'N') {
+                echo json_encode(get_error_array(PAN_NAME_NM_MESSAGE));
+                return false;
+            }
+            if ($new_pan_data['dob'] == 'N') {
+                echo json_encode(get_error_array(PAN_DOB_NM_MESSAGE));
+                return false;
+            }
+            if ($new_pan_data['seeding_status'] == 'R') {
+                echo json_encode(get_error_array(PAN_INOPERATIVE_MESSAGE));
+                return false;
+            }
+            $i_pan_data = array();
+            $i_pan_data['user_id'] = $session_user_id;
+            $i_pan_data['pan_api_id'] = $return_data['pan_api_id'];
+            $i_pan_data['pan_number'] = $pan_data['pan'];
+            $i_pan_data['name'] = $pan_data['name'];
+            $i_pan_data['father_name'] = $pan_data['father_name'];
+            $i_pan_data['dob'] = convert_to_mysql_date_format($pan_data['dob']);
+            $i_pan_data['created_by'] = $session_user_id;
+            $i_pan_data['created_time'] = date('Y-m-d H:i:s');
+            $this->db->trans_start();
+            $this->utility_model->insert_data('pan', $i_pan_data);
+            $this->db->trans_complete();
+            if ($this->db->trans_status() === FALSE) {
+                echo json_encode(get_error_array(DATABASE_ERROR_MESSAGE));
+                return;
+            }
+            $success_array = get_success_array();
+            $success_array['message'] = PAN_VF_MESSAGE;
+            echo json_encode($success_array);
+        } catch (\Exception $e) {
+            echo json_encode(get_error_array($e->getMessage()));
+            return false;
+        }
+    }
+
     function fetch_details_from_pan() {
         try {
             if (!is_ajax()) {
@@ -543,7 +664,7 @@ class Business extends CI_Controller {
                 'pan' => $pan_data['pan_number'],
                 'name' => $pan_data['name'],
                 'fathername' => $pan_data['father_name'],
-                'dob' => $pan_data['dob'],
+                'dob' => str_replace('-', '/', $pan_data['dob']),
             ));
             $pan_sign = $this->_get_signature_for_pan_data(json_encode($m_pan_data));
             if ($pan_sign['success'] == false) {

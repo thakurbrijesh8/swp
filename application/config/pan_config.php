@@ -13,7 +13,8 @@ $config['pan_api_status_array'] = array(
     VALUE_FOUR => 'Invalid JSON Return From PAN Portal',
     VALUE_FIVE => 'Empty JSON Return From PAN Portal',
     VALUE_SIX => 'Invalid Response Code Return From PAN Portal',
-    VALUE_SEVEN => 'Empty Response Data Return From PAN Portal',
+    VALUE_SEVEN => 'Response Code Error',
+    VALUE_EIGHT => 'Empty Response Data Return From PAN Portal',
 );
 
 $config['pan_api_response_code_array'] = array(
