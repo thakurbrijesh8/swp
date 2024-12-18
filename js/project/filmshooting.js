@@ -35,7 +35,6 @@ FilmShooting.listView = Backbone.View.extend({
             return false;
         }
         activeLink('menu_dept_services');
-//        addClass('filmshooting', 'active');
         FilmShooting.router.navigate('filmshooting');
         var templateData = {};
         this.$el.html(filmShootingListTemplate(templateData));
@@ -48,7 +47,6 @@ FilmShooting.listView = Backbone.View.extend({
             return false;
         }
         activeLink('menu_dept_services');
-//        addClass('filmshooting', 'active');
         this.$el.html(filmShootingListTemplate);
         this.newFilmShootingForm(false, {});
     },
@@ -186,21 +184,11 @@ FilmShooting.listView = Backbone.View.extend({
                         'witness_one_sign_name_container_for_filmshooting',
                         'witness_one_sign_download', 'witness_one_sign', formData.witness_one_sign, formData.filmshooting_id, VALUE_FIVE);
             }
-            // if (formData.witness_one_sign != '') {
-            //     $('#witness_one_sign_container_for_filmshooting').hide();
-            //     $('#witness_one_sign_name_image_for_filmshooting').attr('src', baseUrl + 'documents/filmshooting/' + formData.witness_one_sign);
-            //     $('#witness_one_sign_name_container_for_filmshooting').show();
-            // }
             if (formData.witness_two_sign != '') {
                 that.showDocument('witness_two_sign_container_for_filmshooting', 'witness_two_sign_name_image_for_filmshooting',
                         'witness_two_sign_name_container_for_filmshooting',
                         'witness_two_sign_download', 'witness_two_sign', formData.witness_two_sign, formData.filmshooting_id, VALUE_SIX);
             }
-            // if (formData.witness_two_sign != '') {
-            //     $('#witness_two_sign_container_for_filmshooting').hide();
-            //     $('#witness_two_sign_name_image_for_filmshooting').attr('src', baseUrl + 'documents/filmshooting/' + formData.witness_two_sign);
-            //     $('#witness_two_sign_name_container_for_filmshooting').show();
-            // }
         }
         generateSelect2();
         datePicker();
@@ -265,7 +253,7 @@ FilmShooting.listView = Backbone.View.extend({
             }
         });
     },
-    viewFilmShootingForm: function (parseData) {
+    viewFilmShootingForm: function (parseData , isPrint) {
         var that = this;
         var templateData = {};
         if (!tempIdInSession || tempIdInSession == null) {
@@ -274,57 +262,29 @@ FilmShooting.listView = Backbone.View.extend({
         }
         var formData = parseData.filmshooting_data;
         FilmShooting.router.navigate('view_filmshooting_form');
-        formData.shooting_date_time = dateTo_DD_MM_YYYY(formData.shooting_date_time);
+        formData.title = 'View'        
         formData.VIEW_UPLODED_DOCUMENT = VIEW_UPLODED_DOCUMENT;
-        $('#filmshooting_form_and_datatable_container').html(filmShootingViewTemplate(formData));
-        if (formData.declaration != '') {
-            that.showDocument('declaration_container_for_filmshooting', 'declaration_name_image_for_filmshooting',
-                    'declaration_name_container_for_filmshooting',
-                    'declaration_download', 'declaration', formData.declaration);
+        formData.application_number = regNoRenderer(VALUE_TWENTYTWO, formData.filmshooting_id);
+        formData.district_text = talukaArray[formData.district] ? talukaArray[formData.district] : '';
+        formData.entity_establishment_type = entityEstablishmentTypeArray[formData.entity_establishment_type] ? entityEstablishmentTypeArray[formData.entity_establishment_type] : '';
+        formData.shooting_date_time = dateTo_DD_MM_YYYY(formData.shooting_date_time);
+        if (formData.dob == 'NaN-NaN-NaN') {
+            formData.dob = '';
+         }
+        formData.show_declaration = formData.declaration != '' ? true : false;
+        formData.show_producer_signature = formData.producer_signature != '' ? true : false;
+        formData.show_authorized_representative_sign = formData.authorized_representative_sign != '' ? true : false;
+        formData.show_seal_of_company = formData.seal_of_company != '' ? true : false;
+        formData.show_witness_one_sign = formData.witness_one_sign != '' ? true : false;
+        formData.show_witness_two_sign = formData.witness_two_sign != '' ? true : false;
+        showPopup();
+        $('.swal2-popup').css('width', '45em');
+        $('#popup_container').html(filmShootingViewTemplate(formData));
+        if (isPrint) {
+            setTimeout(function () {
+                $('#pa_btn_for_icview').click();
+            }, 500);
         }
-        renderOptionsForTwoDimensionalArray(talukaArray, 'district');
-        renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
-        $('#district').val(formData.district);
-        $('#entity_establishment_type').val(formData.entity_establishment_type);
-
-        if (formData.producer_signature != '') {
-            that.showDocument('producer_signature_container_for_filmshooting', 'producer_signature_name_image_for_filmshooting',
-                    'producer_signature_name_container_for_filmshooting',
-                    'producer_signature_download', 'producer_signature', formData.producer_signature);
-        }
-
-        if (formData.authorized_representative_sign != '') {
-            that.showDocument('authorized_representative_sign_container_for_filmshooting', 'authorized_representative_sign_name_image_for_filmshooting',
-                    'authorized_representative_sign_name_container_for_filmshooting',
-                    'authorized_representative_sign_download', 'authorized_representative_sign', formData.authorized_representative_sign);
-        }
-        if (formData.seal_of_company != '') {
-            that.showDocument('seal_of_company_container_for_filmshooting', 'seal_of_company_name_image_for_filmshooting',
-                    'seal_of_company_name_container_for_filmshooting',
-                    'seal_of_company_download', 'seal_of_company', formData.seal_of_company);
-        }
-
-        if (formData.witness_one_sign != '') {
-            that.showDocument('witness_one_sign_container_for_filmshooting', 'witness_one_sign_name_image_for_filmshooting',
-                    'witness_one_sign_name_container_for_filmshooting',
-                    'witness_one_sign_download', 'witness_one_sign', formData.witness_one_sign);
-        }
-        // if (formData.witness_one_sign != '') {
-        //     $('#witness_one_sign_container_for_filmshooting').hide();
-        //     $('#witness_one_sign_name_image_for_filmshooting').attr('src', baseUrl + 'documents/filmshooting/' + formData.witness_one_sign);
-        //     $('#witness_one_sign_name_container_for_filmshooting').show();
-        // }
-        if (formData.witness_two_sign != '') {
-            that.showDocument('witness_two_sign_container_for_filmshooting', 'witness_two_sign_name_image_for_filmshooting',
-                    'witness_two_sign_name_container_for_filmshooting',
-                    'witness_two_sign_download', 'witness_two_sign', formData.witness_two_sign);
-        }
-        // if (formData.witness_two_sign != '') {
-        //     $('#witness_two_sign_container_for_filmshooting').hide();
-        //     $('#witness_two_sign_name_image_for_filmshooting').attr('src', baseUrl + 'documents/filmshooting/' + formData.witness_two_sign);
-        //     $('#witness_two_sign_name_container_for_filmshooting').show();
-        // }
-
     },
     checkValidationForFilmShooting: function (filmShootingData) {
         if (!tempIdInSession || tempIdInSession == null) {
@@ -526,8 +486,6 @@ FilmShooting.listView = Backbone.View.extend({
             showError(invalidAccessValidationMessage);
             return false;
         }
-        // var yesEvent = 'FilmShooting.listview.removeDocument(\'' + filmShootingId + '\',\'' + docId + '\')';
-        // showConfirmation(yesEvent, 'Remove');
         var yesEvent = 'FilmShooting.listview.removeDocument(\'' + filmShootingId + '\',\'' + docType + '\',\'' + tableName + '\')';
         showConfirmation(yesEvent, 'Remove');
     },
@@ -547,7 +505,6 @@ FilmShooting.listView = Backbone.View.extend({
         $.ajax({
             type: 'POST',
             url: 'filmshooting/remove_document',
-            // data: $.extend({}, {'filmshooting_id': filmShootingId, 'document_id': docId}, getTokenData()),
             data: $.extend({}, {'filmshooting_id': filmShootingId, 'document_type': docType}, getTokenData()),
             error: function (textStatus, errorThrown) {
                 generateNewCSRFToken();
@@ -581,10 +538,6 @@ FilmShooting.listView = Backbone.View.extend({
                 $('.spinner_container_for_filmshooting_' + docType).show();
                 $('.spinner_name_container_for_filmshooting_' + docType).hide();
                 showSuccess(parseData.message);
-                // $('#' + docId + '_name_container_for_filmshooting').hide();
-                // $('#' + docId + '_name_image_for_filmshooting').attr('src', '');
-                // $('#' + docId + '_container_for_filmshooting').show();
-                // $('#' + docId + '_for_filmshooting').val('');
                 if (docType == VALUE_ONE) {
                     removeDocumentValue('declaration_name_container_for_filmshooting',
                             'declaration_name_image_for_filmshooting', 'declaration_container_for_filmshooting',
@@ -917,7 +870,6 @@ FilmShooting.listView = Backbone.View.extend({
         });
     },
 
-    // drct upload code
     uploadDocumentForFilmShooting: function (fileNo) {
         var that = this;
 

@@ -133,11 +133,9 @@ SocietyRegistration.listView = Backbone.View.extend({
             var row = societyRegistrationDataTable.row(tr);
 
             if (row.child.isShown()) {
-                // This row is already open - close it
                 row.child.hide();
                 tr.removeClass('shown');
             } else {
-                // Open this row
                 row.child(that.actionRenderer(row.data())).show();
                 tr.addClass('shown');
             }
@@ -231,7 +229,7 @@ SocietyRegistration.listView = Backbone.View.extend({
             }
         });
     },
-    viewSocietyRegistrationForm: function (societyRegistrationData) {
+    viewSocietyRegistrationForm: function (societyRegistrationData , isPrint) {
         if (!tempIdInSession || tempIdInSession == null) {
             loginPage();
             return false;
@@ -247,6 +245,11 @@ SocietyRegistration.listView = Backbone.View.extend({
         loadMDoc(VALUE_SIXTY, societyRegistrationData.m_doc, '_view');
         if (societyRegistrationData['m_other_doc'].length != VALUE_ZERO) {
             loadMOtherDoc(VALUE_SIXTY, societyRegistrationData.m_other_doc, '_view');
+        }
+        if (isPrint) {
+            setTimeout(function () {
+                $('#pa_btn_for_icview').click();
+            }, 500);
         }
     },
     checkValidationForSocietyRegistration: function (societyRegistrationData) {

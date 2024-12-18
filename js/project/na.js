@@ -36,7 +36,6 @@ Na.listView = Backbone.View.extend({
             return false;
         }
         activeLink('menu_dept_services');
-//        addClass('na', 'active');
         Na.router.navigate('na');
         var templateData = {};
         this.$el.html(naListTemplate(templateData));
@@ -121,11 +120,9 @@ Na.listView = Backbone.View.extend({
             var row = naDataTable.row(tr);
 
             if (row.child.isShown()) {
-                // This row is already open - close it
                 row.child.hide();
                 tr.removeClass('shown');
             } else {
-                // Open this row
                 row.child(that.actionRenderer(row.data())).show();
                 tr.addClass('shown');
             }
@@ -158,39 +155,6 @@ Na.listView = Backbone.View.extend({
             $('#declaration_for_na').attr('checked', 'checked');
             $('#district').val(formData.district);
             $('#entity_establishment_type').val(formData.entity_establishment_type);
-            //$('#area_of_site_used').val(formData.area_of_site_used);
-            //$('#occupant_class').val(formData.occupant_class);
-            //$('#situated_land').val(formData.situated_land);
-
-//            if (formData.electrical_distance_land == IS_CHECKED_YES) {
-//                $('#electrical_distance_land_yes').attr('checked', 'checked');
-//            } else if (formData.electrical_distance_land == IS_CHECKED_NO) {
-//                $('#electrical_distance_land_no').attr('checked', 'checked');
-//            }
-//
-//            if (formData.acquisition_under_land == IS_CHECKED_YES) {
-//                $('#acquisition_under_land_yes').attr('checked', 'checked');
-//            } else if (formData.acquisition_under_land == IS_CHECKED_NO) {
-//                $('#acquisition_under_land_no').attr('checked', 'checked');
-//            }
-//
-//            if (formData.accessible_land == IS_CHECKED_YES) {
-//                $('#accessible_land_yes').attr('checked', 'checked');
-//            } else if (formData.accessible_land == IS_CHECKED_NO) {
-//                $('#accessible_land_no').attr('checked', 'checked');
-//            }
-//
-//            if (formData.site_access_land == IS_CHECKED_YES) {
-//                $('#site_access_land_yes').attr('checked', 'checked');
-//            } else if (formData.site_access_land == IS_CHECKED_NO) {
-//                $('#site_access_land_no').attr('checked', 'checked');
-//            }
-//
-//            if (formData.rejected_land == IS_CHECKED_YES) {
-//                $('#rejected_land_yes').attr('checked', 'checked');
-//            } else if (formData.rejected_land == IS_CHECKED_NO) {
-//                $('#rejected_land_no').attr('checked', 'checked');
-//            }
 
             if (formData.certified_copy != '') {
                 that.showDocument('certified_copy_container', 'certified_copy_name_image', 'certified_copy_name_container',
@@ -289,7 +253,7 @@ Na.listView = Backbone.View.extend({
             }
         });
     },
-    viewNaForm: function (parseData) {
+    viewNaForm: function (parseData , isPrint) {
         var that = this;
         var templateData = {};
         if (!tempIdInSession || tempIdInSession == null) {
@@ -297,83 +261,47 @@ Na.listView = Backbone.View.extend({
             return false;
         }
         var formData = parseData.na_data;
+        Na.router.navigate('view_na_form');
+        formData.title = 'View'
         formData.IS_CHECKED_YES = IS_CHECKED_YES;
         formData.IS_CHECKED_NO = IS_CHECKED_NO;
         formData.VIEW_UPLODED_DOCUMENT = VIEW_UPLODED_DOCUMENT;
-        Na.router.navigate('view_na_form');
-        $('#na_form_and_datatable_container').html(naViewTemplate(formData));
-        renderOptionsForTwoDimensionalArray(talukaArray, 'district');
-        renderOptionsForTwoDimensionalArray(entityEstablishmentTypeArray, 'entity_establishment_type');
+        formData.VALUE_TWO = VALUE_TWO;
+        formData.VALUE_THREE = VALUE_THREE;
+        formData.VALUE_FOUR = VALUE_FOUR;
+        formData.VALUE_FIVE = VALUE_FIVE;
+        formData.VALUE_SEVEN = VALUE_SEVEN;
+        formData.VALUE_SIX = VALUE_SIX;
+        formData.application_number = regNoRenderer(VALUE_FOURTY, formData.na_id);
+        formData.district_text = talukaArray[formData.district] ? talukaArray[formData.district] : '';
+        formData.entity_establishment_type = entityEstablishmentTypeArray[formData.entity_establishment_type] ? entityEstablishmentTypeArray[formData.entity_establishment_type] : '';        
+        formData.show_certified_copy = formData.certified_copy != '' ? true : false;
+        formData.show_sketch_layout = formData.sketch_layout != '' ? true : false;
+        formData.show_written_consent = formData.written_consent !='' ? true : false;
+        formData.show_form_land_document = formData.form_land_document !='' ? true : false;
+        formData.show_site_plan_document = formData.site_plan_document !='' ? true : false;
+        formData.show_signature_na = formData.signature != '' ? true : false; 
+        showPopup();
+        $('.swal2-popup').css('width', '45em');
+        $('#popup_container').html(naViewTemplate(formData));
         $('#declaration_for_na').attr('checked', 'checked');
-        $('#district').val(formData.district);
-        $('#entity_establishment_type').val(formData.entity_establishment_type);
-        //$('#area_of_site_used').val(formData.area_of_site_used);
-        //$('#occupant_class').val(formData.occupant_class);
-        //$('#situated_land').val(formData.situated_land);
-
-//        if (formData.electrical_distance_land == IS_CHECKED_YES) {
-//            $('#electrical_distance_land_yes').attr('checked', 'checked');
-//        } else if (formData.electrical_distance_land == IS_CHECKED_NO) {
-//            $('#electrical_distance_land_no').attr('checked', 'checked');
-//        }
-//
-//        if (formData.acquisition_under_land == IS_CHECKED_YES) {
-//            $('#acquisition_under_land_yes').attr('checked', 'checked');
-//        } else if (formData.acquisition_under_land == IS_CHECKED_NO) {
-//            $('#acquisition_under_land_no').attr('checked', 'checked');
-//        }
-//
-//        if (formData.accessible_land == IS_CHECKED_YES) {
-//            $('#accessible_land_yes').attr('checked', 'checked');
-//        } else if (formData.accessible_land == IS_CHECKED_NO) {
-//            $('#accessible_land_no').attr('checked', 'checked');
-//        }
-//
-//        if (formData.site_access_land == IS_CHECKED_YES) {
-//            $('#site_access_land_yes').attr('checked', 'checked');
-//        } else if (formData.site_access_land == IS_CHECKED_NO) {
-//            $('#site_access_land_no').attr('checked', 'checked');
-//        }
-//
-//        if (formData.rejected_land == IS_CHECKED_YES) {
-//            $('#rejected_land_yes').attr('checked', 'checked');
-//        } else if (formData.rejected_land == IS_CHECKED_NO) {
-//            $('#rejected_land_no').attr('checked', 'checked');
-//        }
-
-        if (formData.certified_copy != '') {
-            that.showDocument('certified_copy_container', 'certified_copy_name_image', 'certified_copy_name_container',
-                    'certified_copy_download', 'certified_copy_remove_btn', formData.certified_copy, formData.na_id, VALUE_FOUR);
-        }
-        if (formData.sketch_layout != '') {
-            that.showDocument('sketch_layout_container', 'sketch_layout_name_image', 'sketch_layout_name_container',
-                    'sketch_layout_download', 'sketch_layout_remove_btn', formData.sketch_layout, formData.na_id, VALUE_FIVE);
-        }
-        if (formData.written_consent != '') {
-            that.showDocument('written_consent_container', 'written_consent_name_image', 'written_consent_name_container',
-                    'written_consent_download', 'written_consent_remove_btn', formData.written_consent, formData.na_id, VALUE_SIX);
-        }
-        if (formData.form_land_document != '') {
-            that.showDocument('form_land_document_container', 'form_land_document_name_image', 'form_land_document_name_container',
-                    'form_land_document_download', 'form_land_document_remove_btn', formData.form_land_document, formData.na_id, VALUE_ONE);
-        }
-        if (formData.site_plan_document != '') {
-            that.showDocument('site_plan_document_container', 'site_plan_document_name_image', 'site_plan_document_name_container',
-                    'site_plan_document_download', 'site_plan_document_remove_btn', formData.site_plan_document, formData.na_id, VALUE_TWO);
-        }
-        if (formData.signature != '') {
-            that.showDocument('seal_and_stamp_container_for_na', 'seal_and_stamp_name_image_for_na', 'seal_and_stamp_name_container_for_na',
-                    'seal_and_stamp_download', 'seal_and_stamp_remove_btn', formData.signature, formData.na_id, VALUE_THREE);
-        }
-
         $('.remove_btn_hidden').hide();
+        if(formData.multiple_applicant){
+
+        }
         var applicantInfo = JSON.parse(formData.multiple_applicant);
-        $.each(applicantInfo, function (key, value) {
-            that.addMultipleApplicant(value);
-            $(".name_of_applicant").prop("readonly", true);
-            $(".address_of_applicant").prop("readonly", true);
-            $('.remove_btn_hidden').hide();
-        })
+        var tableHTML = '<table table class="table table-bordered m-b-0px" style="margin-top: 10px;"><thead  class="bg-beige"><tr style="color: #000;"><th style="width: 50px">Sr No.</th><th style="width: 330px">Full Name of the Applicant</th><th style="width: 330px">Full Postel Address of the Applicant</th></tr></thead><tbody>';
+        $.each(applicantInfo, function(index, value) {
+            tableHTML += '<tr><td class="text-center">' + (index + 1) + '</td><td>' + value.name + '</td><td>' + value.address + '</td></tr>';
+        });
+        tableHTML += '</tbody></table>';
+        $('#applicant_display_for_na_view').html(tableHTML);
+
+        if (isPrint) {
+            setTimeout(function () {
+                $('#pa_btn_for_icview').click();
+            }, 500);
+        }
     },
     checkValidationForNa: function (naData) {
         if (!tempIdInSession || tempIdInSession == null) {
@@ -395,9 +323,6 @@ Na.listView = Backbone.View.extend({
         if (!naData.occupation) {
             return getBasicMessageAndFieldJSONArray('occupation', occupationValidationMessage);
         }
-//        if (!naData.purpose) {
-//            return getBasicMessageAndFieldJSONArray('purpose', naPurposeValidationMessage);
-//        }
         if (!naData.village) {
             return getBasicMessageAndFieldJSONArray('village', villageValidationMessage);
         }
@@ -434,31 +359,6 @@ Na.listView = Backbone.View.extend({
         if (!naData.rejected_land) {
             return getBasicMessageAndFieldJSONArray('rejected_land', naRejectedLandValidationMessage);
         }
-//        var electrical_distance_land = $('input[name=electrical_distance_land]:checked').val();
-//        if (electrical_distance_land == '' || electrical_distance_land == null) {
-//            $('#electrical_distance_land_yes').focus();
-//            return getBasicMessageAndFieldJSONArray('electrical_distance_land', naElectricalDistanceLandValidationMessage);
-//        }
-//        var acquisition_under_land = $('input[name=acquisition_under_land]:checked').val();
-//        if (acquisition_under_land == '' || acquisition_under_land == null) {
-//            $('#acquisition_under_land_yes').focus();
-//            return getBasicMessageAndFieldJSONArray('acquisition_under_land', naAcquisitionsUnderLandValidationMessage);
-//        }
-//        var accessible_land = $('input[name=accessible_land]:checked').val();
-//        if (accessible_land == '' || accessible_land == null) {
-//            $('#accessible_land_yes').focus();
-//            return getBasicMessageAndFieldJSONArray('accessible_land', naAccessibleLandValidationMessage);
-//        }
-//        var site_access_land = $('input[name=site_access_land]:checked').val();
-//        if (site_access_land == '' || site_access_land == null) {
-//            $('#site_access_land_yes').focus();
-//            return getBasicMessageAndFieldJSONArray('site_access_land', naSiteAccessLandValidationMessage);
-//        }
-//        var rejected_land = $('input[name=rejected_land]:checked').val();
-//        if (rejected_land == '' || site_access_land == null) {
-//            $('#rejected_land_yes').focus();
-//            return getBasicMessageAndFieldJSONArray('rejected_land', naRejectedLandValidationMessage);
-//        }
         return '';
     },
     askForSubmitNa: function (moduleType) {
@@ -486,7 +386,6 @@ Na.listView = Backbone.View.extend({
         if (validationData != '') {
             $('#' + validationData.field).focus();
             validationMessageShow('na-' + validationData.field, validationData.message);
-            //$('html, body').animate({scrollTop: '0px'}, 0);
             return false;
         }
         var applicantInfoItem = [];
